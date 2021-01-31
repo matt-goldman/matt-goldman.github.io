@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "HTTP Status Codes in your API"
+date:   2019-11-17 18:05:55 +0300
+image:  10.jpg
+tags:   http
+---
+
 While working on the SSW Rewards mobile app, I got into a discussion with some of my colleagues about whether your API needs to be HTTP standards-compliant. It was an interesting discussion, and while it’s one I’m sure most people are fed up with by now, I decided to document my findings as I didn’t find a clear or definitive answer.
 
 For more information about the app, check out the link above, but for some relevant background, the app lets you scan QR codes to earn points – these points can then later be used to claim rewards or enter you into a draw to win bigger prizes. When a user scans a QR code that they’ve already scanned, we needed a way to show them that they’ve already got the points for this achievement.
@@ -34,6 +42,7 @@ In fact, while researching an unrelated issue (API versioning), I came across th
 
 BUT IT'S NOT "RESTful" IF YOU... ENOUGH!
 Thanks Troy!
+
 To clarify, I’m Robin in this picture. Maybe it’s because of my background in health, where standards compliance is paramount, or because of my previous work consulting on GRC, but to me standards are important. But in the real world, I’m just an irritating jerk (something my incredibly patient partner would have no hesitation in confirming!).
 
 Wanting a definitive answer, I turned to the first place I look in these situations – the SSW Rules. And sure enough, Rule 10 under Rules to Better WebAPI, is Do you return the correct response code?
