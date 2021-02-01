@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "HTTP Status Codes in your API"
+title:  "HTTP Status Codes in your APIs"
 date:   2019-11-17 18:05:55 +0300
-image:  10.jpg
+image:  http-codes-image.jpg
 tags:   http
 ---
 
