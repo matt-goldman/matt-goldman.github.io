@@ -29,6 +29,7 @@ markdown: kramdown
 remote-theme: artemsheludko/zolan
 plugins:
   - jekyll-feed
+  - jekyll-paginate
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -41,3 +42,6 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+paginate: 5
+paginate_path: "/page/:num"
