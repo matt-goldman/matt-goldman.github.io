@@ -34,7 +34,9 @@ Each user needs a different set of configuration to get up and running with thei
 
 These are just some examples, there could be countless others depending on your unique needs.
 
-Getting this configuration into your users' hands and onto their device is critical. Not only that, but you need to do it in a way that is as easy for them as possible. Users have come to expect a level of automagic configuration in the software we build for them now; and it doesn't matter how sophisticated your app is - if they have to manually enter all that configuration, they're not going to be happy.
+With a web app, this is a simple problem to solve. Yo configure the instance or tenant using any of a number of established methods (DevOps pipeline variables, app configuration, etc.). Then all you need to do is give them the URL, and they can access the app with everything already configured for them. But the real trick is getting this configuration into your users' hands and onto their mobile device.
+
+You also need to do it in a way that is as easy for them as possible. Users have come to expect a level of automagic configuration in the software we build for them now; and it doesn't matter how sophisticated your app is - if they have to manually enter all that configuration, they're not going to be happy.
 
 Let's take a look at some ways we can get this config to your users.
 
@@ -43,13 +45,23 @@ One way to get tenant specific config into your users' mobile apps is manually. 
 
 {% include image.html url="/images/tenant-config-manual.png" description="Manual Configuration Entry Form" %}
 
-In this example, the user is presented with a form which tells them to enter the configuration provided to them by their sysadmin (just like the old days with Outlook on desktop).
+In this example, the user is presented with a form which tells them to enter the configuration provided to them by their sysadmin (just like the old days with Outlook on desktop). Their sysadmin presumably sends them an email or directs them to an intrante resource where their config is documented.
 
 Let's take a look at the code for how a simple form like this wokrs
 // TODO: Add the gists here
 
-We can see here that we've got a very simple entry form, where the user can enter all the configuration required to connect and log into their instance of MedMan (a dummy application used for this demo - link to repo with full code at the bottom). The fields of the form are bound to properties of the ViewModel. When the user taps the **Save** button, a command in the ViewModel is called, that performs some simple validation, and then saves all the values to secure storage. The app then navigates to a login page, which consumes some of the values the user has entered here.
+We can see here that we've got a very simple entry form, where the user can enter all the configuration required to connect and log into their instance of MedMan (a dummy application used for this demo - link to repo with full code at the bottom). The fields of the form are bound to properties of the ViewModel. When the user taps the **Save** button a command in the ViewModel is called, that performs some simple validation, and then saves all the values to secure storage. The app then navigates to a login page, which consumes some of the values the user has entered here.
 
 There are some pros and cons to this approach. The major advantage is that, for a developer, it's trivial to build, and there are virtually no 'moving parts', so it's also reliable.
 
-The downside, and it's a big one, is that this is a terrible user experience.
+The downside, and it's a big one, is that this is a *terrible* user experience.
+
+There's plenty of room for human error here - the user could enter this information incorrectly (especially likely on a small touchscreen keyboard), the information they receive could be wrong or prone to change. And it puts the responsibility onto them to do something that we should take care of for them.
+
+# Option B - Automagic Config with QR Codes
+To make this a better experience for the user, the first step is to get rid of that entry form. One way to do this is to somehow transfer that config from the web app to their mobile device. If they've already got access to the web app then, even though they may not realise it, they already have access to all of their tenant or instance config.
+
+One way to do that is by encoding the configuration into a QR code and scanning that on the mobile device.
+
+{% include image.html url="/images/qr-config.png" description="Automagic config with a QR code" %}
+
