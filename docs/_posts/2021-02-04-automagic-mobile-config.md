@@ -59,9 +59,43 @@ The downside, and it's a big one, is that this is a *terrible* user experience.
 There's plenty of room for human error here - the user could enter this information incorrectly (especially likely on a small touchscreen keyboard), the information they receive could be wrong or prone to change. And it puts the responsibility onto them to do something that we should take care of for them.
 
 # Option B - Automagic Config with QR Codes
-To make this a better experience for the user, the first step is to get rid of that entry form. One way to do this is to somehow transfer that config from the web app to their mobile device. If they've already got access to the web app then, even though they may not realise it, they already have access to all of their tenant or instance config.
+To make this a better experience for the user, the first step is to get rid of that entry form. 
+
+If they've already got access to the web app then, even though they may not realise it, they already have access to all of their tenant or instance config. So one option is to transfer that config from the web app to their mobile device.
 
 One way to do that is by encoding the configuration into a QR code and scanning that on the mobile device.
 
 {% include image.html url="/images/qr-config.png" description="Automagic config with a QR code" %}
 
+In this approach, when the user opens their app, they are directed to find a QR code in the desktop app and scan it to retrieve the config. The desktop app (Angular in this example) grabs the config from the back end as a JSON string, then Base64 encodes that, and then displays the Base64 endoded string as a QR code.
+
+The mobile app then reverses this process - it scans the code, Base64 decods the string to a JSON string, then deserializes the JSON string to a config object.
+
+// TODO: Add the gists here
+
+After that the process is the same as in Option A - the values are saved in Secure Storage and the user is redirected to the login page.
+
+Neat, huh?
+
+This is definitely an improved experience over Option A for the user. The advantage is that it doesn't require manual form entry so reduces the risk of human error. It's also cool and techy.
+
+But it has some downsides too. One of these is that the user needs to be at their desk and logged in to the desktop app before they can use the mobile app. Another is reliance on the camera - some users may not have a device with a camera (unlikely as that is), or their camera may be damaged. Or they may not want to give your app permission to access the camera. Personally, I have also had mixed results with the reliability of QR code scanning on Android (using the [ZXing library](https://devblogs.microsoft.com/xamarin/barcode-scanning-made-easy-with-zxing-net-for-xamarin-forms/)); YMMV, and if this is an apporach you like and want to adopt, then this is is something that you can overcome so shouldn't consider a barrier. But worth noting.
+
+The biggest downside, though, is that it still requires a manual step for the user to configure their device. It may be 'cool' and techy, but I like to ask myself - does it pass the [Gregory Benford test]({{ site.baseurl }}{% link _pages/gregory-benford-test.md %})?
+
+The answer in this case is no. Not only does the user have to take steps specifically for configuring their app, but the inner workings are on display for them to see.
+
+Using this QR code approach is certainly viable (in fact I have this in production use in an app I've worked on), but it can be improved.
+
+# Option C - Automagic Config from a URL
+In the above example, the Angular application retrieves the config from the back end, before encoding it into a QR code to display to the user. So, why not cut out the middle-man, and just give the user the URL so their app can pick up the config directly?
+
+{% include image.html url="/images/automagic-url-config.png" description="Automagic config from a URL" %}
+
+In this case, the user enters a URL. This would presumably be provided to them by their sysadmin, or could also be displayed from their desktop app, or could in fact just be the URL of the desktop app. In this case, this replaces the scanning of the QR code - the app downloads the JSON directly from the URL, and then deserializes to a config object, and then saves the values to Secure Storage.
+
+This approach solves two of the problems from the QR code option - no reliance on camera, and the user doesn't have to be at their desk. But it reintroduces the problem of manual entry and risk of human error, and it still doesn't pass the Gregory Benford test.
+
+Still, this is a good option to include in your app as a fallback (more on this later).
+
+# Option D - Automagic Config from Email
