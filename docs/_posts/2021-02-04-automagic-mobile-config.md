@@ -96,6 +96,78 @@ In this case, the user enters a URL. This would presumably be provided to them b
 
 This approach solves two of the problems from the QR code option - no reliance on camera, and the user doesn't have to be at their desk. But it reintroduces the problem of manual entry and risk of human error, and it still doesn't pass the Gregory Benford test.
 
-Still, this is a good option to include in your app as a fallback (more on this later).
+Still, this is a good option to include in your app as a fallback (more on this at the end).
 
 # Option D - Automagic Config from Email
+If your app requires your users to log in, it's almost certain that they will be using their email address as the username. Seeing as they will be entering their email address anyway, why not use it to get their config for them automagically?
+
+This option definitely passes the Gregory Benford test - yes, it requires a manual step (entering an email address), but the user expects to do this anyway as part of the login process. The user doesn't see this as a config step, its just part of their normal login; they have no idea that there is any 'magic' going on behind the scenes to configure their app for them. Also, while this is still a manual option (like filling in a form or entering a URL), the email address is something the user knows and uses all the time. So the risk of human error is lower, and even if the user makes a mistake, they can spot and correct that themselves easily.
+
+## Using a Config Broker
+To pull off this config sleight-of-hand, let's assume that any user with the same SMTP domain (the bit after the '@' in your email address) will be part of the same tenant, and will therefore need the same config; just like with Microsoft Exchange or Exchange Online/Office365. One way you can do this is with a config broker service, that might look a little something like this.
+
+{% include image.html url="/images/email-config-broker.png" description="Automagic config with a config broker" %}
+
+Let's break down what's happening here:
+
+1. The user enters their email address
+2. The app extracts the SMTP domain from their email address and sends it off to a config broker
+3. The config broker (in this case an Azure function) looks up their SMTP domain in a database (CosmosDB in this example) and returns the config associated with that domain
+4. The config is sent back to the app
+5. The app now knows what IDP it should use, the config for that IDP, where to find it's back-end API, etc.
+
+This is a viable approach and can work well. But there *are* some problems. Firstly, it's a whole bunch of other services and resources that you have to maintain. This can be especially problematic if your clients host and manage their tenants themselves (rather than consuming a SaaS offering from you). As the app vendor, you still need to maintain this database, and are dependent on your clients giving you accurate and up to date information, which is the second problem.
+
+## Using DNS
+Rather than reinventing the wheel, a far better approach is to replicate what Microsoft have done with Outlook.
+
+{% include image.html url="/images/outlook-mobile.jpg" description="The Outlook mobile app just asks users for their email address" %}
+
+How do Microsoft pull off this trick? The answer is surprisingly simple - with DNS records.
+
+The administrator of any domain that an Outlook client is expected to connect to, whether on desktop or mobile, creates an *autodiscover* record for that domain. So, if I want to set up Outlook to use my email address (matt@goforgoldman.com), I just enter this into Outlook. Outlook then extracts the SMTP domain (goforgoldman.com) and looks up an *autodiscover* record for that domain - autodiscover.goforgoldman.com.
+
+{% include image.html url="/images/autodiscover.png" description="Outlook can now automatically configure itself just from your email address" %}
+
+This is an tried and tested approach that has been working for a long time. If we want to replicate this, we can do so easily. We can't use autodiscover - that's arleady taken by Outlook - but we can create a unique discovery record for our app that any domain administrator can easily create. In the case of our sample app - MedMan - we create a record called *discovermedman*.
+
+{% include image.html url="/images/medman-email.png" description="The final version of our app just asks for the user's email address" %}
+
+Once we have the user's email address, we can extract the SMTP domain, and look for our config at discovermedman.{smtpdomain}.
+
+{% include image.html url="/images/discover-medman.png" description="All required config can now be retrieved using an autodiscover record" %}
+
+This is a much better approach than using a config broker, because the responsibility for maintaining this is with the administrator of the SMTP domain for the tenant. It's true that some may not do it or do it wrong, but in this case it affects one subset of your users, rather than you whole user base.
+
+## One last trick...
+This is great so far. The user has given us their email address so we can get the config, but we also need their email address for the login. To maintain the illusion, they shouldn't have to enter it again. Instead, it should automagically flow through to the login screen.
+
+![Animation showing email address captured and passed through to OAuth login page]({{site.baseurl}}/images/medman-auto-email.gif)
+
+This is achieved through use of the "login_hint" parameter. This parameter is not strictly defined as part of the OAuth standard, but nearly all OAuth compliant identity proviers - and certainly all the major ones - support it. In this example we're using [Azure AD B2C](https://docs.microsoft.com/en-us/azure/active-directory-b2c/overview) as the IDP and the [Microsoft Authentication Library (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) in the client to authenticate against it.
+
+MSAL defines LoginHint as an extension for B2C clients, allowing you to pass a value to a named parameter. But you can just pass it as part of the URL query string too (for any provider that supports it).
+
+In our demo app, when the user enters their email, we don't just use it to look up the config, we also store it in a global state parameter (in this case in a static Constants class). Then when we instantiate our authentication client, we pass in the username (the user's email) as a login hint paramter.
+
+// TODO: add gist here
+
+This let's us use the email address we've already acquired from the user without them having to enter it again.
+
+Magic! 🎩
+
+# Final thoughts
+
+TL;DR - the best way to automatically configure your enterprise mobile app for your users is to use thier email address. They're expecting to give this to you anyway to log in, using it to get their config too is an invisible, magical experience for them.
+
+In these examples we should different methods for configuring a mobile app individually. In the real world, you want to offer fallback options. For example, if the SMTP domain administrator hasn't created your discover record, the user will need another approach. In this case you could offer them the option of scanning a QR code (you might note in the Outlook screenshot this is offered as an alternative option.)
+
+And in case their camera doesn't work, or they don't want to use it or don't have access to the QR code, you should offer them the option of entering a config URL. And finally, as the last option in case everything else has failed, you want to offer them a manual config form as a last resort.
+
+When building software, ask yourself whether it passes the Gregory Benford test. If it does - great! But if not, spare a thought for how you can make it seem more magical.
+
+# Resources
+
+A GitHub repository featuring all the code for this sample can be found here: https://github.com/MattGoldmanSSW/automagic
+
+The different options shown here for the mobile app (Xamarin.Forms) are on different branches, and you will also find the back-end (.NET Core) and the web app (Angular) here too.
