@@ -3,7 +3,7 @@ layout: post
 title:  "Automagic Tenant Config for Mobile Apps"
 date:   2021-02-04 18:05:55 +0300
 image:  is-this-your-card.png
-tags:   mobile, xamarin, configuration, tenant-config, multitenancy
+tags:   mobile
 ---
 
 
