@@ -198,11 +198,11 @@ Magic! 🪄
 
 # Final thoughts
 
-TL;DR: the best way to automatically configure your enterprise mobile app for your users is with thier email address. They're already expecting to use it to log in, so once you have it, using it to get their configuration as well is an invisible, magical experience for them.
+TL;DR: the best way to automatically configure your enterprise mobile app for your users is with their email address. They're already expecting to use it to log in, so once you have it, using it to get their configuration as well is an invisible, magical experience for them.
 
 In these examples I showed different methods for configuring a mobile app individually. In the real world, you want to offer fallback options. For example, if the SMTP domain administrator hasn't created your discover record, the user will need another approach. In this case you could offer them the option of scanning a QR code (you might note in the Outlook screenshot that is offered as an alternative option.)
 
-If their camera doesn't work, or they don't want to use it or don't have access to the QR code, you should offer them the option of entering a config URL. And finally, as a last resprt in case everything else has failed, you should offer them a manual config form.
+If their camera doesn't work, or they don't want to use it or don't have access to the QR code, you should offer them the option of entering a config URL. And finally, as a last resort in case everything else has failed, you should offer them a manual config form.
 
 When building software, ask yourself whether it passes the Gregory Benford test. If it does - great! But if not, spare a thought for how you can make it seem more magical.
 
