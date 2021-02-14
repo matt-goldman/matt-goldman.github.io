@@ -36,3 +36,12 @@ That's all the steps needed in AAD to complete your app registration for FluentE
 
 # 2. Add FluentEmail to your application
 
+
+
+
+
+value
+5eTiS_SydcVaksK5MJ~9.p.jFnsA0E-wh.
+
+ID
+b020b85d-ef3f-46ce-82c7-0ec48038140f
