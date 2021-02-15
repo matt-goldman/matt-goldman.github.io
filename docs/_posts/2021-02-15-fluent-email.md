@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Sending Email via Office365 Exchange Online with Fluent Email"
-date:   2021-02-15 18:05:55 +0300
+date:   2021-02-14 00:05:55 +0300
 image:  fluent-email-title-image.png
 tags:   email dotnet dotnet-core office-365
 ---
@@ -14,7 +14,7 @@ It was possible to do this before using the SMTP sender, but it's better to use 
 * It offers integration with Exchange features, such as calendar, voting buttons, and @ mentions (Note some features are experimental).
 * You authenticate with an API key managed as an Azure AD app registration, so no need to create a service mailbox account and store/rotate login credentials.
 
-You can check out the link above to learn more about FluentEmail in general, but in this post I'm going to show you how to send an email with FluentEmail via Exchange Online. There are two stages to this process - registering the app in Azure AD and adding FLuentEmail to your application.
+You can check out the link above to learn more about FluentEmail in general, but in this post I'm going to show you how to send an email with FluentEmail via Exchange Online. There are two stages to this process - registering the app in Azure AD and adding FluentEmail to your application.
 
 # 1. App Registration
 
@@ -22,31 +22,23 @@ The first thing you need to do is create an app registration in Azure AD. This r
 
 1. Log in to the [Azure portal](https://portal.azure.com) with an account that has admin privileges on the Azure AD tenant that backs your Office 365 tenant.
 2. Go to Azure Active Directrory, and click on App Registrations from the left menu, then click New Registration.
-
 ![Image showing app registration in Auzre portal](/images/azure-email-app-registration.png)
 *App registration in the Azure portal*
-
 3. Enter an applicaiton name. A good practice is to enter the name of the application you are developing, but it's also good to segreagate your permissions. So for example if you are registering other applications with the Microsoft Graph API for other functions (e.g. user management), it's better to create separate registrations for these. I often use [MedMan](https://github.com/matt-goldman/automagic) as my demo application, so in this case I would enter it as `MedMan-EmailSend`.
 4. Select Accounts in this organizational directory only and then click Register.
 5. In your new app registration, click API permissions from the left menu, then click Add a permission.
-
-![Image showing adding permissions to app registrations](/images/azure-app-reg-add-permission.png)
+![Image showing adding permissions to app registrations](/images/azure-app-reg-add-api-permission.png)
 *Add permissions to an app registration*
-
 6. In the Microsoft APIs tab, select Microsoft Graph from Commonly user Microsoft APIs. Then choose Application permissions.
 7. Select the Mail.Send permission (use the search box to make it easier). This is all you need to send email, but select any other permissions as needed (for more information consult the [documentation here](https://docs.microsoft.com/en-us/graph/permissions-reference#mail-permissions).) Then click Add permissions.
-
 ![Image showing Graph API mail permissions](/images/azure-graph-mail-permissions.png)
 *Set the Microsoft Graph API mail permissions*
-
 8. Click Grant admin consent for [your domain], then click yes to confirm.
 9.  Go to Certificates & secrets on the left menu, and under Client secrets, click New client secret.
-
-![App registration client secrets in the Azure portal](/images/azure-app-regclient-secret.png)
+![App registration client secrets in the Azure portal](/images/azure-app-reg-client-secret.png)
 *Generate an app secret for use in your application*
-
 10. Add a description (something like "Used by FluentEmail in MedMan" is appropriate) and set an expiry time. One year is the default and is probably fine, but adjust as needed.
-11. This wil generate a new secret for you. Copy the ID and Value and store them somewhere safe. This page will never display them again, but it's not a big deal if you lose them, as you can just generate a new one.
+11. This wil generate a new secret for you. Copy the Value and store it somewhere safe. This page will never display it again, but it's not a big deal if you lose it, as you can just generate a new one.
 
 That's all the steps needed in AAD to complete your app registration for FluentEmail. Move on to the next stage to add it to your application.
 
