@@ -47,7 +47,7 @@ Speaking of the fish type, your fish will probably also implement an `ISwims` in
 
 While you can pass an object of type cat, dog or fish to the FeedPet method, if you had another method that requires an `ISwims`, you can *only* pass it the fish as its the only type that implements this interface.
 
-To summarise, interfaces define functionality, and offer a contract that this functionality is implemented. Methods can declare an interface as a parameter, and then the method can consime anything that implements the interface. This lets you write cleaner code - you don't have to have one class that does everything that every type of pet can do, and you don't have to re-implement the feed functionality for different kinds of pet.
+To summarise, interfaces define functionality, and offer a contract that promises that this functionality is implemented. Methods can declare an interface as a parameter, and then the method can consume anything that implements the interface. This lets you write cleaner code - you don't have to have one class that does everything that every type of pet can do, and you don't have to re-implement the feed functionality for different kinds of pet.
 
 
 # Dependency Inversion
@@ -75,14 +75,17 @@ Then in my class that implements the FeedPet method, rather than couple it to th
 
 This depdendency is then *injected* into this class, and the class is now dependent on the abstraction rather than any concretion. [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection) is how you implement the dependency inversion principle in practical terms - it's a huge topic on its own so I won't go into detail here, but .NET Core caters for it out of the box.
 
+
+{% gist bb904f5894456531fae7201a2e2bf03f Startup.cs %}
+
 {% gist bb904f5894456531fae7201a2e2bf03f FeedingTimeWithINotifier.cs %}
 
 The benefits of this approach are:
 
-* I have no dependency on any specific notification system, so I can change the whole implementation later if I want to without impacting my FeedPet functionality (they are loosely coupled).
-* I can build multiple implementations of this interface - one for SMS, one for email, one for Microsoft Teams, whatever - and select the appropriate implementation at runtime if I wish.
-* I don't even need a single implementation to continue working on my FeedPet functionality - this can be done later, or in parallel by someone else. I just need the interface defined; as log as at runtime I have an implementation available, my code will work.
-* I can mock implementations to this interface in unit tests which will allow me to focus on testing my core business logic.
+* We have no dependency on any specific notification system, so can change the whole implementation later if we want to without impacting my FeedPet functionality (they are loosely coupled).
+* We can build multiple implementations of this interface - one for SMS, one for email, one for Microsoft Teams, whatever - and select the appropriate implementation at runtime if we wish.
+* We don't even need a single implementation to continue working on my FeedPet functionality - this can be done later, or in parallel by someone else. We just need the interface defined; as log as at runtime we have an implementation available, my code will work.
+* We can mock implementations to this interface in unit tests which will allow me to focus on testing my core business logic.
 
 There's a lot to take in here, but the core concept is this - you define the functionality you need where you need it. Then you take your depdendency on this *abstraction* rather than on any concrete implementation.
 
@@ -91,9 +94,9 @@ Continuing our pet example, we might find a nice email library that implements t
 
 {% gist bb904f5894456531fae7201a2e2bf03f IGoldieEmail.cs %}
 
-This interface is handily provided along with an extension method so we can register the email provider with our container:
+This interface is handily provided along with an extension method so we can register the email provider with our service registration at startup:
 
-{% gist bb904f5894456531fae7201a2e2bf03f Startup.cs %}
+{% gist bb904f5894456531fae7201a2e2bf03f GoldieStartup.cs %}
 
 It's tempting at this point to think that we can just use this in place of our `INotifier` interface that we defined above, but there are some problems if we do this. Firstly, we have now introduced a depdency onto a concretion rather than an abstraction. And second, this means that we have to change our code in the class that feeds the pets. The `IGoldieEmail` interface has a `SendEmail` rather than a `Send` method, and the parameters it expects are different.
 
@@ -109,7 +112,7 @@ This approach gives us a huge amount of flexibility. Look at the following benef
 
 * We can change the implementation details inside `EmailNotifier` as much as we like, without ever having to go back to our FeedPet code and change it to match these changes. We could switch to another library without impacting any other code.
 * Rather than change the `EmailNotifier`, we can write other implementations of the `INotifier` interface and just tell the container to use this new implementation instead of the old one.
-* We can use a factory message to select an appropriate implementation of `INotifier` at runtime. For example, we could have one for email and one for SMS and pick based on user preferences.
+* We can use a factory method to select an appropriate implementation of `INotifier` at runtime. For example, we could have one for email and one for SMS and pick based on owner preferences.
 
 The main benefit though is that the implementation (concretion) details are hidden. Any code that wants to use `INotifier` *only* depends on `INotifier`; not `GoldieEmail`, not some SMS provider, not anything that actually implements the functionality definded by the interface.
 
