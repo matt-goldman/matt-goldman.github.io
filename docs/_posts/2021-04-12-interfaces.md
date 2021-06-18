@@ -14,12 +14,12 @@ Before I talk about interfaces, I want to explain conceptually what they are. At
 When we are writing code, we call the abstractions Interfaces and the concretions Implementations. People often use these terms interchangably, but for the sake of clarity I will be using these terms as described here for the rest of this article. In summary:
 
 * **Abstration**: A high level, conceptual description of some functionality (e.g. 'a car')
-* **Interface**: A code file defining an abstraction (e.g. `ICar.cs`)
+* **Interface**: Code defining an abstraction (e.g. `ICar.cs`)
 * **Concretion**: A tangible instance of an abstraction (e.g. a Mazda 3)
-* **Implementation**: A code file that implements an interface (e.g. `MazdaThree.cs`, which implements `ICar`)
+* **Implementation**: Code that implements an interface (e.g. `MazdaThree.cs`, which implements `ICar`)
 
 # Interfaces
-As mentioned above, an interface is a code file that describes an abstraction. Specifically, it lists the properties and methods that any class that implements this interface must also implement. In this sense it's almost like a contract.
+As mentioned above, an interface is code that describes an abstraction. Specifically, it lists the properties and methods that any class that implements this interface must also implement. In this sense it's almost like a contract.
 
 Following an example I've seen used often, let's use pets as an analogy. Let's say you're writing an application that simulates pet behaviour, and following the Interface Segregation principle (see the SOLID link above), you have an interface that describes each individual behaviour. For example, you might have an ISleeps interface and an IEats interface (it's a convention to name your interfaces starting with an 'I').
 
@@ -55,7 +55,7 @@ Describing our functionality through abstractions and defining it in interfaces 
 
 When you invert dependencies, what you are doing is describing what you need where you need it, rather than describing what you have where you have it.
 
-Continuing out pet behaviour example, let's say you want to implement some functionality that notifies a pet owner every time their pet has been fed. Without dependency inversion, first you need to write or import a notification system. This might be email, or it might be SMS, or it could be something else. But you pick one, in this case email, and you implement it. Then, in your FeedPet method, you can send an email to the pet owner to let them know their pet has been fed:
+Continuing our pet behaviour example, let's say you want to implement some functionality that notifies a pet owner every time their pet has been fed. Without dependency inversion, first you need to write or import a notification system. This might be email, or it might be SMS, or it could be something else. But you pick one, in this case email, and you implement it. Then, in your FeedPet method, you can send an email to the pet owner to let them know their pet has been fed:
 
 {% gist bb904f5894456531fae7201a2e2bf03f FeedingTimeWithEmail.cs %}
 
