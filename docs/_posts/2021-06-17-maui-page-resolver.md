@@ -20,7 +20,7 @@ In Blazor, this is achieved by using `@inject MyDependency` at the top of your p
 
 This means that if your page has a view model, and that view model needs services injected, rather than manually newing up all those dependencies, or using a service locator, you can just call:
 
-```cs
+```csharp
 await Navigation.PushAsync<MyPage>();
 ```
 
