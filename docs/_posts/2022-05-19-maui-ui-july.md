@@ -20,9 +20,10 @@ Then get started on your content! Keep the following in mind:
 
 1. The topic must be related to UI in .NET MAUI
 2. Your blog post or video must be in English
-3. Link back to this post in your blog post or in the description of your video
-4. Publish your blog post or video on the date according to the list below
-5. Post a link to your video or blog post on Twitter, using the hashtags #dotnetmaui and #MAUIUIJuly
+3. Your content should indicate what level it is pitched at (e.g., beginner or advanced)
+4. Link back to this post in your blog post or in the description of your video
+5. Publish your blog post or video on the date according to the list below
+6. Post a link to your video or blog post on Twitter, using the hashtags #dotnetmaui and #MAUIUIJuly
 
 That's it! Looking forward to seeing what you all come up with :)
 
