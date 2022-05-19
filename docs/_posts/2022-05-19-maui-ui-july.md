@@ -36,7 +36,7 @@ That's it! Looking forward to seeing what you all come up with :)
 6. Available
 7. Available
 8. Available
-9. Matt Goldman
+9. **Matt Goldman**
 10. Available
 11. Available
 12. Available
