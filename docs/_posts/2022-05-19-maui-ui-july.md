@@ -6,17 +6,17 @@ image:  maui-ui-july-bg.png
 tags:   mobile maui ui
 ---
 
-Back in 2019 [Steven Thewissen](https://thewissen.io/) gave us the awesome [Xamarin UI July](https://thewissen.io/introducing-xamarin-ui-july/). Steven described it like an advent calendar, where each day throughout the month you would have a new awesome Xamarin UI blog post to open.
+Back in 2019, [Steven Thewissen](https://thewissen.io/) gave us the awesome [Xamarin UI July](https://thewissen.io/introducing-xamarin-ui-july/). Steven described it as an advent calendar, where each day throughout the month you would have a new insightful Xamarin UI blog post to open.
 
-Let's do it again this year for .NET MAUI! Every day throughout July, a community contributed blog post or video will be published showing some awesome UI magic in .NET MAUI. 
+Let's do it again this year, but this time for .NET MAUI! Every day throughout July, a community-contributed blog post or video will be published showing some incredible UI magic in .NET MAUI. 
 
-This time around we'll extend the scope to include videos as well as blog posts. The videos and blog posts will be in English, and each one will be about a specific topic related to UI in .NET MAUI. It can be showing off a beautiful UI or control that someone has crafted, or it can be teaching how to use some aspect of building a UI in .NET MAUI.
+This time around, we'll extend the scope to include videos as well as blog posts. The videos and blog posts will be in English, and each one will be about a specific topic related to UI in .NET MAUI. It can be showing off a beautiful UI or control that someone has crafted, or it can be teaching how to use some aspect of building a UI in .NET MAUI.
 
 
-## How to get involved
+## How to Get Involved
 If you want to participate, shout out on Twitter using the hashtags #dotnetmaui and #MAUIUIJuly, saying which day of the month you want to release your post or video on. Once you've picked a date I'll add your name to the list below to reserve your spot.
 
-Then get started on your content! Keep the following in mind:
+From there, just get started on your content! Keep the following in mind:
 
 1. The topic must be related to UI in .NET MAUI
 2. Your blog post or video must be in English
@@ -25,7 +25,7 @@ Then get started on your content! Keep the following in mind:
 5. Publish your blog post or video on the date according to the list below
 6. Post a link to your video or blog post on Twitter, using the hashtags #dotnetmaui and #MAUIUIJuly
 
-That's it! Looking forward to seeing what you all come up with :)
+That's it! Looking forward to seeing what you all come up with. :)
 
 ## .NET MAUI UI July Schedule
 
@@ -61,4 +61,4 @@ That's it! Looking forward to seeing what you all come up with :)
 30. Available
 31. Available
 
-I hope you enjoy .NET MAUI UI July and I hope you're looking forward to all the cool content as much as I am!
+I hope you enjoy .NET MAUI UI July!
