@@ -39,6 +39,6 @@ That's it! Looking forward to seeing what you all come up with. :)
 
 ## .NET MAUI UI July Schedule
 
-<iframe width="402" height="750" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=CACD053F67AA9F1A%21277865&authkey=%21ANxImtoy7HiiW7M&em=2&wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edesNext=false&ejss=false"></iframe>
+<iframe width="402" height="750" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=CACD053F67AA9F1A%21277865&authkey=%21ANxImtoy7HiiW7M&em=2&wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdInConfigurator=True&wdInConfigurator=True&edesNext=false&ejss=false"></iframe>
 
 I hope you enjoy .NET MAUI UI July!
