@@ -12,6 +12,16 @@ Let's do it again this year, but this time for .NET MAUI! Every day throughout J
 
 This time around, we'll extend the scope to include videos as well as blog posts. The videos and blog posts will be in English, and each one will be about a specific topic related to UI in .NET MAUI. It can be showing off a beautiful UI or control that someone has crafted, or it can be teaching how to use some aspect of building a UI in .NET MAUI.
 
+## What should I do?
+Completely up to you! As long as it's related to .NET MAUI UI, feel free to be as creative as you like. Some common topics people like for this kind of thing include:
+
+* Replicate the UI of a well known app (that's what I'm doing)
+* Pick a fun or interesting design from Dribble and show how you can build it with .NET MAUI
+* Deep dive into a .NET MAUI UI feature
+* Build a popular UI control that doesn't come in the box (like a bottom sheet for example)
+
+These are just examples. If you think something is interesting, there's a good chance the rest of the community will want to see you explain it.
+
 
 ## How to Get Involved
 If you want to participate, shout out on Twitter using the hashtags #dotnetmaui and #MAUIUIJuly, saying which day of the month you want to release your post or video on. Once you've picked a date I'll add your name to the list below to reserve your spot.
