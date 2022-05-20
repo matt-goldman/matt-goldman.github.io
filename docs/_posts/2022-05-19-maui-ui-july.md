@@ -39,36 +39,6 @@ That's it! Looking forward to seeing what you all come up with. :)
 
 ## .NET MAUI UI July Schedule
 
-1. Available
-2. Available
-3. Available
-4. Available
-5. Available
-6. Available
-7. Available
-8. Available
-9. **Matt Goldman**
-10. Available
-11. Available
-12. Available
-13. Available
-14. Available
-15. Available
-16. Available
-17. Available
-18. Available
-19. Available
-20. Available
-21. Available
-22. Available
-23. Available
-24. Available
-25. Available
-26. Available
-27. Available
-28. Available
-29. Available
-30. Available
-31. Available
+<iframe width="402" height="750" frameborder="0" scrolling="no" src="https://onedrive.live.com/embed?resid=CACD053F67AA9F1A%21277865&authkey=%21ANxImtoy7HiiW7M&em=2&wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdInConfigurator=True&wdInConfigurator=True&edesNext=false&ejss=false"></iframe>
 
 I hope you enjoy .NET MAUI UI July!
