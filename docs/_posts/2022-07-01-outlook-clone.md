@@ -1,25 +1,31 @@
 ---
 layout: post
 title:  ".NET MAUI UI July: Outlook Clone"
-date:   2022-07-01 00:000:00 +1000
+date:   2022-07-01 18:05:55 +0300
 image:  maui-ui-july-bg.png
 tags:   mobile maui ui outlook
 ---
 
-Xamarin and .NET MAUI developers are fond of UI challenges, and I often see blog posts and videos of people showing how they’ve replicated a design from a well known app or a design taken from somewhere like Dribbble.com. For .NET MAUI UI July, I’m going to show how we can use .NET MAUI’s built in layouts and controls to replicate a familiar UI: the Microsoft Outlook mobile app. Figure 1 shows Outlook running on iOS.
+<span>This post is an exceprt from my upcoming book _.NET MAUI in Action_. The book is [available now in early access](https://www.manning.com/books/dot-net-maui-in-action?utm_source=goforgoldman&utm_medium=affiliate&utm_campaign=book_goldman_dot_5_10_22&a_aid=goforgoldman&a_bid=38933097), so you can sign up now to get more content like this as it becomes available. And use the code **fccgoldman** for an extra 25% off.</span> [![.NET MAUI in Action promo image](https://freecontent.manning.com/wp-content/uploads/DOTD_NewMEAP_Goldman.png){: width="150" }{: .promo-image }](https://www.manning.com/books/dot-net-maui-in-action?utm_source=goforgoldman&utm_medium=affiliate&utm_campaign=book_goldman_dot_5_10_22&a_aid=goforgoldman&a_bid=38933097)
+{: .promo-block }
+
+<br/>
+In this post for [.NET MAUI UI July](https://twitter.com/hashtag/MAUIUIJuly?src=hashtag_click), I’m going to show how we can use a combination of .NET MAUI’s built in layouts and controls to replicate a familiar UI: the Microsoft Outlook mobile app.    
+
+Figure 1 shows Outlook running on iOS.
  
-![The Outlook mobile UI](/images/outlook.png)
+![The Outlook mobile UI](/images/outlook.png){: width="400" }    
 **Figure 1 Microsoft Outlook running on iOS.**
 
 We’re going to recreate this UI using .NET MAUI. We’re not going to build any of the functionality Outlook provides, we’re just going to recreate the UI of the Inbox screen to exercise our skills in building UIs with .NET MAUI.
 
 ## Building the Outlook UI
 
-Let’s get started! Create a new .NET MAUI app from the blankmaui template and call it OutlookClone. 
+Let’s get started! Create a new .NET MAUI app and call it OutlookClone. 
 
-Outlook uses Microsoft’s Fluent icons, which we can get from the GitHub repository here: https://github.com/microsoft/fluentui-system-icons. The icons are available in various formats but we’ll use the font icons.
+Outlook uses Microsoft’s Fluent icons, which we can get from the GitHub repository here: [https://github.com/microsoft/fluentui-system-icons](https://github.com/microsoft/fluentui-system-icons). The icons are available in various formats but we’ll use the font icons.
 
-Download the two font files (FluentSystemIcons-Filled.ttf and FluentSystemIcons-Regular.ttf), import them into the Resources/Fonts folder, and register the fonts in MauiProgram.cs. I can use https://andreinitescu.github.io/IconFont2Code/ to figure out what glyphs to use, and replace ‘\u’ with ‘&#x’ and add an ending semicolon to use them in XAML.
+Download the two font files (`FluentSystemIcons-Filled.ttf` and `FluentSystemIcons-Regular.ttf`), import them into the `Resources/Fonts` folder, and register the fonts in `MauiProgram.cs`.
 
 ```csharp
 namespace OutlookClone
@@ -44,8 +50,12 @@ namespace OutlookClone
     }
 }
 ```
-
-Now that we’ve got the fonts registered, let’s register the colours (I used a colour picker tool).
+    
+<br/>
+I used [https://andreinitescu.github.io/IconFont2Code/](https://andreinitescu.github.io/IconFont2Code/) to figure out what glyphs to use, and to use them in XAML just replace ‘\u’ with ‘&#x’ and add an ending semicolon.    
+    
+Now that we’ve got the fonts registered, let’s register the colours (I used a colour picker tool). I've registered these in `App.xaml` to simplify the code listing; you can also register them in `Resources/Styles.xaml`.
+    
 
 ```xml
 <?xml version = "1.0" encoding = "UTF-8" ?>
@@ -62,16 +72,18 @@ Now that we’ve got the fonts registered, let’s register the colours (I used 
     </Application.Resources>
 </Application>
 ```
-
+    
+<br/>
+        
 ## The top-level Grid
 At the top level, we can break the UI down into four rows. It’s tempting to combine the top two rows, and break them down internally, but I’ve chosen to make them individual rows in the top-level grid to give more control in relation to the page’s size as a whole.
 
-![The Outlook UI broken down into a Grid](/images/outlool-toplevel-grid.png)
+![The Outlook UI broken down into a Grid](/images/outlook-toplevel-grid.png){: width="400" }    
 **Figure 2 The Outlook Inbox UI broken down as rows in a Grid. We’ve ignored the status bar and safe area. Using this approach, we can see that we have four rows. The top row has the title and search, the next row which has the focused inbox switch and the filter button. At the bottom we can see the tab bar, and between the second and fourth rows is the list of messages, which takes up all the remaining space.**
 
-Next, we have the list of messages, and at the bottom we have the tab bar. In a real-world app, we would use Shell or a TabbedPage to provide these tabs (or import or build a tab bar) but we’re just replicating the UI here, so we’ll build the tabs.
+Next, we have the list of messages, and at the bottom we have the tab bar. In a real-world app, we would use `Shell` or a `TabbedPage` to provide these tabs (or import or build a tab bar) but we’re just replicating the UI here, so we’ll build the tabs.
 
-Looking at this top-level Grid, I can see that the top row (row 0) is slightly larger than the second row (row 1), and that the last row (row 3) is slightly larger still; a close enough approximation which gives us row heights of 50, 40, * and 80.
+Looking at this top-level `Grid`, I can see that the top row (row 0) is slightly larger than the second row (row 1), and that the last row (row 3) is slightly larger still; a close enough approximation which gives us row heights of 50, 40, * and 80. Let's add this to `MainPage.xaml`.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -83,11 +95,11 @@ Looking at this top-level Grid, I can see that the top row (row 0) is slightly l
     </Grid>
 </ContentPage>
 ```
-
+<br/>
 ## The top row
-We’ll use a FlexLayout for the top row of the Grid, which will let us easily position the child items at the start and end using SpaceBetween. Inside this FlexLayout we can use HorizontalStackLayout to position the icon and title at the start, and a Label to position the icon at the end.
+We’ll use a `FlexLayout` for the top row of the `Grid`, which will let us easily position the child items at the start and end using `SpaceBetween`. Inside this `FlexLayout` we can use `HorizontalStackLayout` to position the icon and title at the start, and a `Label` to position the icon at the end.
  
-![The Outlook top bar](/images/outlook-row-0.png)
+![The Outlook top bar](/images/outlook-row-0.png){: width="600" }    
 **Figure 3 We can use a FlexLayout to arrange the top row, using SpaceBetween to position the child views on either side. On the left we can use a HorizontalStackLayout with two Labels (one for the icon and one for the title), and a Label for the search icon on the right.**
 
 ```xml
@@ -149,11 +161,11 @@ We’ll use a FlexLayout for the top row of the Grid, which will let us easily p
     </Grid>
 </ContentPage>
 ```
-
+<br/>
 ## The second row
-We’ll use a FlexLayout for the second row too. Building the focused inbox switch is outside the scope of this exercise (building custom controls is covered in .NET MAUI in Action), so we’ll use some artistic license and replace it with a standard switch and a Label. We’ll place these inside a HorizontalStackLayout and use a second HorizontalStackLayout at the end of the FlexLayout for the filter icon and label.
+We’ll use a `FlexLayout` for the second row too. Building the focused inbox switch is outside the scope of this exercise (building custom controls is covered in _.NET MAUI in Action_), so we’ll use some artistic license and replace it with a standard `Switch` and a `Label`. We’ll place these inside a `HorizontalStackLayout` and use a second `HorizontalStackLayout` at the end of the `FlexLayout` for the filter icon and label.
 
-![The second row in the top bar in Outlook on mobile](/images/outlook-row-1.png) 
+![The second row in the top bar in Outlook on mobile](/images/outlook-row-1.png){: width="600" }     
 **Figure 4 We can use a FlexLayout to arrange the second row, using SpaceBetween to position the child views on either side. On the left is the focused inbox switch control, and on the right is a HorizontalStackLayout with two child Labels: one for the icon and the second for the word ‘Filter’.**
 
 ```xml
@@ -164,7 +176,7 @@ We’ll use a FlexLayout for the second row too. Building the focused inbox swit
 
     <Grid RowDefinitions="50,40,*,80">
         <FlexLayout …>
-		...
+		    ...
         </FlexLayout>
 
         <FlexLayout Grid.Row="1"
@@ -176,7 +188,7 @@ We’ll use a FlexLayout for the second row too. Building the focused inbox swit
 
             <HorizontalStackLayout Margin="5,0,0,0">
 
-                <Label Text="Focused”
+                <Label Text="Focused"
                        TextColor="White"
                        VerticalOptions="Center"/>
 
@@ -208,19 +220,19 @@ We’ll use a FlexLayout for the second row too. Building the focused inbox swit
     </Grid>
 </ContentPage>
 ```
-
+<br/> 
 ## The main section
-The main section of the page is row 2, the messages. CollectionView obviously lends itself to this kind of control. We can also see there’s a floating action button (FAB) in the corner.
+The main section of the page is row 2, the messages. `CollectionView` lends itself to this kind of control. We can also see there’s a floating action button (FAB) in the corner.
 
-![The main message display area in Outlook on mobile](/images/outlook-row-2.png) 
+![The main message display area in Outlook on mobile](/images/outlook-row-2.png){: width="400" }     
 **Figure 5 Using CollectionView for the third row is a no-brainer, but we can see there’s a floating action button in the bottom right-hand corner too. This can be in the same row (there’s only one column) and we can use HorizontalOptions and VerticalOptions to position it at the end.**
 
-We can use a Grid for the messages in the collection, with three columns and three rows.
+We can use a `Grid` for the messages in the collection, with three columns and three rows.
 
-![The message preview broken down as a Grid](/images/outlook-message-template.png) 
+![The message preview broken down as a Grid](/images/outlook-message-template.png){: width="600" }     
 **Figure 6 The message template for the Inbox can be laid out as a Grid, with three columns and three rows. The avatar will reside in the first column and row and will have a row span of 3 (there’s nothing else in the first column). The sender’s name will go into the first row, second column. The subject will go into the second row, second column, and the message body preview will go into the third row, second column, and will span into the third column too. The time or day when the message was sent will go into the first row, third column.**
 
-I’m using an API that generates random quotes from The Simpsons to populate my dummy message list, so knowing the structure of the class I’m using, I can use properties of that class for the bindings in the template.
+I’m using an [API that generates random quotes from The Simpsons](https://thesimpsonsquoteapi.glitch.me) to populate my dummy message list, so knowing the structure of the class I’m using, I can use properties of that class for the bindings in the template.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -230,11 +242,11 @@ I’m using an API that generates random quotes from The Simpsons to populate my
 
     <Grid RowDefinitions="50,40,*,80">
         <FlexLayout …>
-		...
+		    ...
         </FlexLayout>
 
         <FlexLayout …>
-		...
+		    ...
         </FlexLayout>
 
         <CollectionView Grid.Row="2"
@@ -298,7 +310,7 @@ I’m using an API that generates random quotes from The Simpsons to populate my
     </Grid>
 </ContentPage>
 ```
-
+<br/>
 And then let’s add the FAB which is pretty simple:
 
 ```xml
@@ -309,7 +321,7 @@ And then let’s add the FAB which is pretty simple:
 
     <Grid RowDefinitions="50,40,*,80">
         <FlexLayout …>
-		...
+		    ...
         </FlexLayout>
 
         <FlexLayout …>
@@ -339,8 +351,8 @@ And then let’s add the FAB which is pretty simple:
     </Grid>
 </ContentPage>
 ```
-
-I’d also like to add an ActivityIndicator to show while the data is loading.
+<br/>
+I’d also like to add an `ActivityIndicator` to show while the data is loading.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -352,25 +364,25 @@ I’d also like to add an ActivityIndicator to show while the data is loading.
 
 		...
 
-        <ActivityIndicator Grid.Row="2"				#A
-                           Color="{StaticResource Primary}"	#B
-                           IsRunning="True"			#C
-                           IsEnabled="True"			#D
-                           VerticalOptions="Center"		#E
-                           HorizontalOptions="Center"		#F
-                           x:Name="LoadingIndicator"/>		#G
+        <ActivityIndicator Grid.Row="2"
+                           Color="{StaticResource Primary}"
+                           IsRunning="True"
+                           IsEnabled="True"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           x:Name="LoadingIndicator"/>
 
     </Grid>
 </ContentPage>
 ```
-
+<br/>
 ## The tab bar
-To build the tab bar, we’ll add a Grid to the fourth row (row 3) of the page’s top-level Grid. It will have three columns, one for each tab, and within each column will be a VerticalStackLayout to arrange the tab’s icon and label.
+To build the tab bar, we’ll add a `Grid` to the fourth row (row 3) of the page’s top-level `Grid`. It will have three columns, one for each tab, and within each column will be a `VerticalStackLayout` to arrange the tab’s icon and label.
 
-![The Outlook bottom tab bar](/images/outlook-row-3.png) 
+![The Outlook bottom tab bar](/images/outlook-row-3.png){: width="400" }     
 **Figure 7 The last row is the tab bar. We’ll use another Grid for this part, with three columns. In each column we’ll use a VerticalStackLayout with two Labels as child items; one for the tab icon and one for the tab label.**
 
-Let’s start by adding the Grid. Listing 9 shows the code for MainPage.xaml with the tab bar Grid added in bold. Most of the remaining code has been omitted for brevity.
+Let’s start by adding the `Grid`. Listing 9 shows the code for `MainPage.xaml` with the tab bar `Grid` added in bold. Most of the remaining code has been omitted for brevity.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -380,15 +392,15 @@ Let’s start by adding the Grid. Listing 9 shows the code for MainPage.xaml wit
 
     <Grid RowDefinitions="50,40,*,80">
         <FlexLayout …>
-		...
+		    ...
         </FlexLayout>
 
-        <FlexLayout …
-		...
+        <FlexLayout …>
+		    ...
         </FlexLayout>
 
         <Button …>
-		...
+		    ...
         </Button>
 
         <Grid Grid.Row="3"
@@ -474,12 +486,14 @@ Let’s start by adding the Grid. Listing 9 shows the code for MainPage.xaml wit
     </Grid>
 </ContentPage>
 ```
+<br/>
+That completes the UI for the Outlook clone! There’s some additional code needed to get the quotes from the API, which you can see in the full example code repository (linked below). If we run it now, we can see our Outlook clone in action:
 
-That completes the UI for the Outlook clone! There’s some additional code needed to get the quotes from the API, which you can see in the full example code repository  . If we run it now, we can see our Outlook clone in action:
-
-![The completed Outlook replica UI](/images/OutlookClone.gif) 
+![The completed Outlook replica UI](/images/OutlookClone.gif){: width="400" }     
 **Figure 8 The completed OutlookClone app**
 
-And that’s it! You can see how easy it is to build a UI in .NET MAUI. I’d love to see your own UI challenges; what cool apps will you build? There’s also heaps of tweaks you could make to this one; for example, adding SwipeView to the messages, or building the focused inbox switch.
+And that’s it! You can see how easy it is to build a UI in .NET MAUI. I’d love to see your own UI challenges; what cool apps will you build? There’s also heaps of tweaks you could make to this one; for example, adding `SwipeView` to the messages, or building the focused inbox switch.
 
-Get the full source code for this UI challenge here: https://github.com/matt-goldman/outlook 
+Want to share something for .NET MAUI UI July? Tweet #MAUIUIJuly and tag @mattgoldman!
+
+_Get the full source code for this UI challenge [on GitHub](https://github.com/matt-goldman/outlook)_ 
