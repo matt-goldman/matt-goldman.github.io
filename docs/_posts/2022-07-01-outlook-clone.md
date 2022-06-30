@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  ".NET MAUI UI July: Outlook Clone"
-date:   2022-07-01 18:05:55 +0300
+date:   2022-07-01 0:00:00 +1000
 image:  maui-ui-july-bg.png
 tags:   mobile maui ui outlook
 ---
