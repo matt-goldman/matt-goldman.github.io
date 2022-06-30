@@ -72,5 +72,6 @@ That's it! Looking forward to seeing what you all come up with. :)
 | 29   | Brady Stroud       | Coming soon!                                                                                                  |
 | 30   | Liam Elliott       | Coming soon!                                                                                                  |
 | 31   | Carl Sargunar      | Coming soon!                                                                                                  |
+{: .goldie-table }
 
 I hope you enjoy .NET MAUI UI July!
