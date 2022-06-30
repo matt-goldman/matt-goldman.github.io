@@ -10,7 +10,7 @@ tags:   mobile maui ui outlook
 {: .promo-block }
 
 <br/>
-In this post for [.NET MAUI UI July](https://twitter.com/hashtag/MAUIUIJuly?src=hashtag_click), I’m going to show how we can use a combination of .NET MAUI’s built in layouts and controls to replicate a familiar UI: the Microsoft Outlook mobile app.    
+In this post for [.NET MAUI UI July](https://goforgoldman.com/2022/05/19/maui-ui-july.html), I’m going to show how we can use a combination of .NET MAUI’s built in layouts and controls to replicate a familiar UI: the Microsoft Outlook mobile app.    
 
 Figure 1 shows Outlook running on iOS.
  
