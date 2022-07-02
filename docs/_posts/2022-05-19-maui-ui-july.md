@@ -42,7 +42,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 | Date | Person             | Content                                                                                                       |
 | ---- | ------------------ | ------------------------------------------------------------------------------------------------------------- |
 | 1    | **Matt Goldman**       | [.NET MAUI UI July: Outlook Clone (goforgoldman.com)](https://goforgoldman.com/2022/06/30/outlook-clone.html) |
-| 2    | Available          |                                                                                                               |
+| 2    | **Gerald Versluis**    | [Snnpts](https://www.snppts.dev/)                                                                                                           |
 | 3    | Available          |                                                                                                               |
 | 4    | **Andreas Nesheim**    | Coming soon!                                                                                                  |
 | 5    | Available          |                                                                                                               |
