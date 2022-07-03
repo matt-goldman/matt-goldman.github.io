@@ -43,7 +43,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 | ---- | ------------------ | ------------------------------------------------------------------------------------------------------------- |
 | 1    | **Matt Goldman**       | [.NET MAUI UI July: Outlook Clone (goforgoldman.com)](https://goforgoldman.com/2022/06/30/outlook-clone.html) |
 | 2    | **Gerald Versluis**    | [Snnpts](https://www.snppts.dev/)                                                                                                           |
-| 3    | Available          |                                                                                                               |
+| 3    | **Naweed Akram**          |     [Building a Rating Control for .NET MAUI](https://blogs.xgenoapps.com/post/2022/07/03/rating-view-maui)                                                                                                          |
 | 4    | **Andreas Nesheim**    | Coming soon!                                                                                                  |
 | 5    | Available          |                                                                                                               |
 | 6    | **Leomaris Reyes**     | Coming soon!                                                                                                  |
