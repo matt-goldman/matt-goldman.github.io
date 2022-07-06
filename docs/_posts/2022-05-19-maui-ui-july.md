@@ -57,7 +57,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 | 14   | **S Ravi Kumar**       | Coming soon!                                                                                                  |
 | 15   | Available          |                                                                                                               |
 | 16   | **Sam Basu**           | Coming soon!                                                                                                  |
-| 17   | **Tylah Kappa**        | Coming soon!                                                                                                  |
+| 17   | **Tylah Kapa**        | Coming soon!                                                                                                  |
 | 18   | **Michael Ridland**    | Coming soon!                                                                                                  |
 | 19   | **Matt Johnson-Pint**  | Coming soon!                                                                                                  |
 | 20   | **Mark Allibone**      | Coming soon!                                                                                                  |
