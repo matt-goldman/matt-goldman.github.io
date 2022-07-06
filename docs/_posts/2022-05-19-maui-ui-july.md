@@ -46,7 +46,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 | 3    | **Naweed Akram**          |     [Building a Rating Control for .NET MAUI](https://blogs.xgenoapps.com/post/2022/07/03/rating-view-maui)                                                                                                          |
 | 4    | **Andreas Nesheim**    | [F1TV app in .NET MAUI](https://www.andreasnesheim.no/maui-ui-july-replicating-f1tv-app/)                                                                                                |
 | 5    | Available          |                                                                                                               |
-| 6    | **Leomaris Reyes**     | Coming soon!                                                                                                  |
+| 6    | **Leomaris Reyes**     | [Replicating Pet Adoption UI in .NET MAUI](https://askxammy.com/replicating-pet-adoption-ui-in-net-maui/)                                                                                                 |
 | 7    | **Luis Beltran**       | Coming soon!                                                                                                  |
 | 8    | Available          |                                                                                                               |
 | 9    | Available          |                                                                                                               |
@@ -57,7 +57,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 | 14   | **S Ravi Kumar**       | Coming soon!                                                                                                  |
 | 15   | Available          |                                                                                                               |
 | 16   | **Sam Basu**           | Coming soon!                                                                                                  |
-| 17   | **Tylah Kappa**        | Coming soon!                                                                                                  |
+| 17   | **Tylah Kapa**        | Coming soon!                                                                                                  |
 | 18   | **Michael Ridland**    | Coming soon!                                                                                                  |
 | 19   | **Matt Johnson-Pint**  | Coming soon!                                                                                                  |
 | 20   | **Mark Allibone**      | Coming soon!                                                                                                  |
