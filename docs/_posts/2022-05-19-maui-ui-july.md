@@ -47,7 +47,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 | 4    | **Andreas Nesheim**    | [F1TV app in .NET MAUI](https://www.andreasnesheim.no/maui-ui-july-replicating-f1tv-app/)                                                                                                |
 | 5    | Available          |                                                                                                               |
 | 6    | **Leomaris Reyes**     | [Replicating Pet Adoption UI in .NET MAUI](https://askxammy.com/replicating-pet-adoption-ui-in-net-maui/)                                                                                                 |
-| 7    | **Luis Beltran**       | Coming soon!                                                                                                  |
+| 7    | **Luis Beltran**       | [Creating a TreeView in .NET MAUI](https://dev.to/icebeam7/creating-a-treeview-control-in-net-maui-49mp)                                                                                                  |
 | 8    | Available          |                                                                                                               |
 | 9    | Available          |                                                                                                               |
 | 10   | Available          |                                                                                                               |
