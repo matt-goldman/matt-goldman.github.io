@@ -49,13 +49,13 @@ That's it! Looking forward to seeing what you all come up with. :)
 | 6    | **Leomaris Reyes**     | [Replicating Pet Adoption UI in .NET MAUI](https://askxammy.com/replicating-pet-adoption-ui-in-net-maui/)                                                                                                 |
 | 7    | **Luis Beltran**       | [Creating a TreeView in .NET MAUI](https://dev.to/icebeam7/creating-a-treeview-control-in-net-maui-49mp)                                                                                                  |
 | 8    | Available          |                                                                                                               |
-| 9    | Available          |                                                                                                               |
+| 9    | **Naweed Akram**          | [MAUI Planets Part 1](https://blogs.xgenoapps.com/post/2022/07/08/maui-planets)                                                                                                              |
 | 10   | Available          |                                                                                                               |
 | 11   | Available          |                                                                                                               |
 | 12   | **Csaba Huszár**       | Coming soon!                                                                                                  |
 | 13   | **Flavio Gonclaves**   | Coming soon!                                                                                                  |
 | 14   | **S Ravi Kumar**       | Coming soon!                                                                                                  |
-| 15   | Available          |                                                                                                               |
+| 15   | **Naweed Akram**          | Coming soon!                                                                                                              |
 | 16   | **Sam Basu**           | Coming soon!                                                                                                  |
 | 17   | **Tylah Kapa**        | Coming soon!                                                                                                  |
 | 18   | **Michael Ridland**    | Coming soon!                                                                                                  |
