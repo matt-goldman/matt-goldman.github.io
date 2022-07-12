@@ -42,36 +42,36 @@ That's it! Looking forward to seeing what you all come up with. :)
 | Date | Person             | Content                                                                                                       |
 | ---- | ------------------ | ------------------------------------------------------------------------------------------------------------- |
 | 1    | **Matt Goldman**       | [.NET MAUI UI July: Outlook Clone (goforgoldman.com)](https://goforgoldman.com/2022/06/30/outlook-clone.html) |
-| 2    | **Gerald Versluis**    | [Snnpts](https://www.snppts.dev/)                                                                                                           |
-| 3    | **Naweed Akram**          |     [Building a Rating Control for .NET MAUI](https://blogs.xgenoapps.com/post/2022/07/03/rating-view-maui)                                                                                                          |
-| 4    | **Andreas Nesheim**    | [F1TV app in .NET MAUI](https://www.andreasnesheim.no/maui-ui-july-replicating-f1tv-app/)                                                                                                |
+| 2    | **Gerald Versluis**    | [Snnpts](https://www.snppts.dev/)                                                                           |
+| 3    | **Naweed Akram**          |     [Building a Rating Control for .NET MAUI](https://blogs.xgenoapps.com/post/2022/07/03/rating-view-maui)                   |
+| 4    | **Andreas Nesheim**    | [F1TV app in .NET MAUI](https://www.andreasnesheim.no/maui-ui-july-replicating-f1tv-app/)       |
 | 5    | Available          |                                                                                                               |
-| 6    | **Leomaris Reyes**     | [Replicating Pet Adoption UI in .NET MAUI](https://askxammy.com/replicating-pet-adoption-ui-in-net-maui/)                                                                                                 |
-| 7    | **Luis Beltran**       | [Creating a TreeView in .NET MAUI](https://dev.to/icebeam7/creating-a-treeview-control-in-net-maui-49mp)                                                                                                  |
+| 6    | **Leomaris Reyes**     | [Replicating Pet Adoption UI in .NET MAUI](https://askxammy.com/replicating-pet-adoption-ui-in-net-maui/)             |
+| 7    | **Luis Beltran**       | [Creating a TreeView in .NET MAUI](https://dev.to/icebeam7/creating-a-treeview-control-in-net-maui-49mp)      |
 | 8    | Available          |                                                                                                               |
-| 9    | **Naweed Akram**          | [MAUI Planets Part 1](https://blogs.xgenoapps.com/post/2022/07/08/maui-planets)                                                                                                              |
+| 9    | **Naweed Akram**          | [MAUI Planets Part 1](https://blogs.xgenoapps.com/post/2022/07/08/maui-planets)   |
 | 10   | Available          |                                                                                                               |
 | 11   | Available          |                                                                                                               |
-| 12   | **Csaba Huszár**       | Coming soon!                                                                                                  |
-| 13   | **Flavio Gonclaves**   | Coming soon!                                                                                                  |
-| 14   | **S Ravi Kumar**       | Coming soon!                                                                                                  |
-| 15   | **Naweed Akram**          | Coming soon!                                                                                                              |
-| 16   | **Sam Basu**           | Coming soon!                                                                                                  |
-| 17   | **Tylah Kapa**        | Coming soon!                                                                                                  |
-| 18   | **Michael Ridland**    | Coming soon!                                                                                                  |
-| 19   | **Matt Johnson-Pint**  | Coming soon!                                                                                                  |
-| 20   | **Mark Allibone**      | Coming soon!                                                                                                  |
-| 21   | **Shaun Lawrence**     | Coming soon!                                                                                                  |
-| 22   | **Kym Phillpotts**     | Coming soon!                                                                                                  |
-| 23   | **Lachlan Gordon**     | Coming soon!                                                                                                  |
-| 24   | **Jack Pettit**        | Coming soon!                                                                                                  |
-| 25   | **Sebastian Jensen**   | Coming soon!                                                                                                  |
-| 26   | **Naweed Akram**       | Coming soon!                                                                                                  |
-| 27   | **Jean-Marie Alfonsi** | Coming soon!                                                                                                  |
-| 28   | **Diego Rivero**       | Coming soon!                                                                                                  |
-| 29   | **Brady Stroud**       | Coming soon!                                                                                                  |
-| 30   | **Liam Elliott**       | Coming soon!                                                                                                  |
-| 31   | **Carl Sargunar**      | Coming soon!                                                                                                  |
+| 12   | **Csaba Huszár**       | [Binding Lottie in MAUI](https://dev.to/csaba8472/binding-lottie-or-any-other-swift-framework-with-ui-in-maui-543m)            |
+| 13   | **Flavio Gonclaves**   | Coming soon!                |
+| 14   | **S Ravi Kumar**       | Coming soon!                |
+| 15   | **Naweed Akram**          | Coming soon!                            |
+| 16   | **Sam Basu**           | Coming soon!                |
+| 17   | **Tylah Kapa**        | Coming soon!                |
+| 18   | **Michael Ridland**    | Coming soon!                |
+| 19   | **Matt Johnson-Pint**  | Coming soon!                |
+| 20   | **Mark Allibone**      | Coming soon!                |
+| 21   | **Shaun Lawrence**     | Coming soon!                |
+| 22   | **Kym Phillpotts**     | Coming soon!                |
+| 23   | **Lachlan Gordon**     | Coming soon!                |
+| 24   | **Jack Pettit**        | Coming soon!                |
+| 25   | **Sebastian Jensen**   | Coming soon!                |
+| 26   | **Naweed Akram**       | Coming soon!                |
+| 27   | **Jean-Marie Alfonsi** | Coming soon!                |
+| 28   | **Diego Rivero**       | Coming soon!                |
+| 29   | **Brady Stroud**       | Coming soon!                |
+| 30   | **Liam Elliott**       | Coming soon!                |
+| 31   | **Carl Sargunar**      | Coming soon!                |
 {: .goldie-table }
 
 I hope you enjoy .NET MAUI UI July!
