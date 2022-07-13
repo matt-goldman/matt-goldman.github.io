@@ -53,7 +53,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 | 10   | Available          |                                                                                                               |
 | 11   | Available          |                                                                                                               |
 | 12   | **Csaba Huszár**       | [Binding Lottie in MAUI](https://dev.to/csaba8472/binding-lottie-or-any-other-swift-framework-with-ui-in-maui-543m)            |
-| 13   | **Flavio Gonclaves**   | Coming soon!                |
+| 13   | **Flavio Gonclaves**   | [Combining Lottie Animations with Gestures and Scrolling](https://www.cayas.de/blog/lottie-animations-gestures-and-scrolling)                |
 | 14   | **S Ravi Kumar**       | Coming soon!                |
 | 15   | **Naweed Akram**          | Coming soon!                            |
 | 16   | **Sam Basu**           | Coming soon!                |
