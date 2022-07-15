@@ -55,7 +55,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 | 12   | **Csaba Huszár**       | [Binding Lottie in MAUI](https://dev.to/csaba8472/binding-lottie-or-any-other-swift-framework-with-ui-in-maui-543m)            |
 | 13   | **Flavio Gonclaves**   | [Combining Lottie Animations with Gestures and Scrolling](https://www.cayas.de/blog/lottie-animations-gestures-and-scrolling)                |
 | 14   | **S Ravi Kumar**       | Coming soon!                |
-| 15   | **Naweed Akram**          | Coming soon!                            |
+| 15   | **Naweed Akram**          | [MAUI Planets Part 2](https://blogs.xgenoapps.com/post/2022/07/15/maui-planets-part-2)                            |
 | 16   | **Sam Basu**           | Coming soon!                |
 | 17   | **Tylah Kapa**        | Coming soon!                |
 | 18   | **Michael Ridland**    | Coming soon!                |
