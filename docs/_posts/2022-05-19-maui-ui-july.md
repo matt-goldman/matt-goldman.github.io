@@ -59,9 +59,9 @@ That's it! Looking forward to seeing what you all come up with. :)
 | 16   | **Sam Basu**           | [Catering to Desktop and Mobile with .NET MAUI](https://t.co/cQ6vEUYBn0)                |
 | 17   | **Tylah Kapa**        | [Discord UI in .NET MAUI](https://kapa.dev/blog/discord-ui-in-net-maui)                |
 | 18   | **Michael Ridland**    | Coming soon!                |
-| 19   | **Matt Johnson-Pint**  | Coming soon!                |
+| 19   | **Matt Johnson-Pint**  | [Making a Time Zone Picker Control for .NET MAUI](https://blog.sentry.io/2022/07/19/making-a-time-zone-picker-control-for-net-maui)                |
 | 20   | **Mark Allibone**      | Coming soon!                |
-| 21   | **Shaun Lawrence**     | Coming soon!                |
+| 21   | **Shaun Lawrence**     | [Building a Draw Something clone in .NET MAUI](https://blog.bijington.com/2022/07/20/draw-something-clone.html)                |
 | 22   | **Kym Phillpotts**     | Coming soon!                |
 | 23   | **Lachlan Gordon**     | Coming soon!                |
 | 24   | **Jack Pettit**        | Coming soon!                |
