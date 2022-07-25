@@ -65,7 +65,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 | 22   | **Kym Phillpotts**     | Coming soon!                |
 | 23   | **Lachlan Gordon**     | Coming soon!                |
 | 24   | **Brady Stroud**        | [MAUI vs Flutter](https://medium.com/@bradystroud/maui-vs-flutter-multi-platform-frameworks-showdown-2d215a9a86f2)                |
-| 25   | **Sebastian Jensen**   | Coming soon!                |
+| 25   | **Sebastian Jensen**   | [Create a Simple Rating Control](https://medium.com/@tsjdevapps/net-maui-create-a-simple-rating-control-560566fa5014)                |
 | 26   | **Naweed Akram**       | Coming soon!                |
 | 27   | **Jean-Marie Alfonsi** | Coming soon!                |
 | 28   | **Diego Rivero**       | Coming soon!                |
