@@ -64,7 +64,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 | 21   | **Shaun Lawrence**     | [Building a Draw Something clone in .NET MAUI](https://blog.bijington.com/2022/07/20/draw-something-clone.html)                |
 | 22   | **Kym Phillpotts**     | Coming soon!                |
 | 23   | **Lachlan Gordon**     | Coming soon!                |
-| 24   | **Jack Pettit**        | Coming soon!                |
+| 24   | **Brady Stroud**        | [MAUI vs Flutter](https://medium.com/@bradystroud/maui-vs-flutter-multi-platform-frameworks-showdown-2d215a9a86f2)                |
 | 25   | **Sebastian Jensen**   | Coming soon!                |
 | 26   | **Naweed Akram**       | Coming soon!                |
 | 27   | **Jean-Marie Alfonsi** | Coming soon!                |
