@@ -67,7 +67,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 | 24   | **Brady Stroud**        | [MAUI vs Flutter](https://medium.com/@bradystroud/maui-vs-flutter-multi-platform-frameworks-showdown-2d215a9a86f2)                |
 | 25   | **Sebastian Jensen**   | [Create a Simple Rating Control](https://medium.com/@tsjdevapps/net-maui-create-a-simple-rating-control-560566fa5014)                |
 | 26   | **Naweed Akram**       | [Bottom Sheet Control in .NET MAUI](https://blogs.xgenoapps.com/post/2022/07/23/maui-bottom-sheet)                |
-| 27   | **Jean-Marie Alfonsi** | Coming soon!                |
+| 27   | **Jean-Marie Alfonsi** | [MetroLog.Maui](https://www.sharpnado.com/metrolog-maui/)                |
 | 28   | **Diego Rivero**       | Coming soon!                |
 | 29   | **Brady Stroud**       | Coming soon!                |
 | 30   | **Liam Elliott**       | Coming soon!                |
