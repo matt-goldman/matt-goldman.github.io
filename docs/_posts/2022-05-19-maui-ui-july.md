@@ -68,7 +68,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 | 25   | **Sebastian Jensen**   | [Create a Simple Rating Control](https://medium.com/@tsjdevapps/net-maui-create-a-simple-rating-control-560566fa5014)                |
 | 26   | **Naweed Akram**       | [Bottom Sheet Control in .NET MAUI](https://blogs.xgenoapps.com/post/2022/07/23/maui-bottom-sheet)                |
 | 27   | **Jean-Marie Alfonsi** | [MetroLog.Maui](https://www.sharpnado.com/metrolog-maui/)                |
-| 28   | **Diego Rivero**       | Coming soon!                |
+| 28   | **Diego Rivero**       | [Using MAUI.Graphics to build charts](https://grialkit.com/blog/using-maui-graphics-to-build-charts)                |
 | 29   | **Brady Stroud**       | Coming soon!                |
 | 30   | **Liam Elliott**       | Coming soon!                |
 | 31   | **Carl Sargunar**      | Coming soon!                |
