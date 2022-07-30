@@ -60,7 +60,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 | 17   | **Tylah Kapa**        | [Discord UI in .NET MAUI](https://kapa.dev/blog/discord-ui-in-net-maui)                |
 | 18   | **Michael Ridland**    | Coming soon!                |
 | 19   | **Matt Johnson-Pint**  | [Making a Time Zone Picker Control for .NET MAUI](https://blog.sentry.io/2022/07/19/making-a-time-zone-picker-control-for-net-maui)                |
-| 20   | **Mark Allibone**      | Coming soon!                |
+| 20   | **Mark Allibone**      | [Creating a countdown button for .NET MAUI](https://mallibone.com/post/dotnetmaui-countdown-button)               |
 | 21   | **Shaun Lawrence**     | [Building a Draw Something clone in .NET MAUI](https://blog.bijington.com/2022/07/20/draw-something-clone.html)                |
 | 22   | **Kym Phillpotts**     | Coming soon!                |
 | 23   | **Lachlan Gordon**     | Coming soon!                |
@@ -70,7 +70,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 | 27   | **Jean-Marie Alfonsi** | [MetroLog.Maui](https://www.sharpnado.com/metrolog-maui/)                |
 | 28   | **Diego Rivero**       | [Using MAUI.Graphics to build charts](https://grialkit.com/blog/using-maui-graphics-to-build-charts)                |
 | 29   | **Brady Stroud**       | [MAUI Blazor Template](https://medium.com/@bradystroud/maui-blazor-template-84cb6b8db97)                |
-| 30   | **Liam Elliott**       | Coming soon!                |
+| 30   | **Liam Elliott**       | [.NET MAUI Community Toolkit](https://liamelliott.me/coding/maui-community-toolkit/)                |
 | 31   | **Carl Sargunar**      | Coming soon!                |
 {: .goldie-table }
 
