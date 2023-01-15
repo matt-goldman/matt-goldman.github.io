@@ -4,6 +4,7 @@ title:  "Page Resolver and Navigation Extension for MAUI"
 date:   2021-06-17 00:05:55 +0300
 image:  /images/maui.png
 tags:   dotnet maui mobile di
+categories: [.NET, Mobile]
 ---
 
 [.NET MAUI](https://github.com/dotnet/maui) is nearly here! It should go GA with .NET 6 this November.

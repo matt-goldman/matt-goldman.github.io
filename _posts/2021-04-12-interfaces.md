@@ -4,6 +4,7 @@ title:  "Understanding Interfaces and Dependency Inversion"
 date:   2021-04-12 00:05:55 +0300
 image:  /images/pexels-brett-sayles-4373998.jpg
 tags:   interfaces oop ioc di SOLID
+categories: [.NET]
 ---
 
 I saw a [discussion on Reddit](https://www.reddit.com/r/dotnet/comments/mdx9ao/question_about_interfaces/) recently that reminded me of the 'penny drop' moment I had when I started learning about interfaces and [SOLID](https://en.wikipedia.org/wiki/SOLID) principles. I can't remember exactly what spurred this eureka moment, but once I understood that you define interfaces where you consume them, rather than where you implement them, everything made sense. I've jotted down here my way of looking at it which may be useful to someone else coming to grips with these concepts.

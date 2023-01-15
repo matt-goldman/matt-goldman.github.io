@@ -4,6 +4,7 @@ title:  "Automagic Tenant Config for Mobile Apps"
 date:   2021-02-04 18:05:55 +0300
 image:  /images/is-this-your-card.png
 tags:   mobile xamarin configuration tenant-config multitenancy
+categories: [.NET, Mobile]
 ---
 
 
