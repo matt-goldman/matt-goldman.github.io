@@ -4,6 +4,7 @@ title:  ".NET MAUI UI July: Outlook Clone"
 date:   2022-07-01 0:00:00 +1000
 image:  /images/maui-ui-july-bg.png
 tags:   mobile maui ui outlook
+categories: [.NET, Mobile]
 ---
 
 ![.NET MAUI in Action promo image](/images/DOTD_NewMEAP_Goldman.png){: .left } This post is an excerpt from my upcoming book [.NET MAUI in Action](https://www.manning.com/books/dot-net-maui-in-action?utm_source=goforgoldman&utm_medium=affiliate&utm_campaign=book_goldman_dot_5_10_22&a_aid=goforgoldman&a_bid=38933097). The book is available now in early access, so you can sign up now to get more content like this as it becomes available. And use the code **fccgoldman** for an extra 25% off.

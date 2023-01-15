@@ -4,6 +4,7 @@ title:  "Sending Email via Office365 Exchange Online with Fluent Email"
 date:   2021-02-14 00:05:55 +0300
 image:  /images/fluent-email-title-image.png
 tags:   email dotnet dotnet-core office-365
+categories: [.NET]
 ---
 
 [FluentEmail](https://github.com/lukencode/FluentEmail) is an awesome library for simplifying sending email from your .NET applications. It offers a powerful yet simple fluent API, with Razor templating and support for a number of popular senders, including plain old SMTP, SendGrid, Mailkit and, as of Recently, Exchange Online.

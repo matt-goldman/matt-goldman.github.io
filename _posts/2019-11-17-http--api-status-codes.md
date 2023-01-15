@@ -4,6 +4,7 @@ title:  "HTTP Status Codes in your APIs"
 date:   2019-11-17 18:05:55 +0300
 image:  /images/http-codes-image.jpg
 tags:   http
+categories: [Web]
 ---
 
 While working on the [SSW Rewards](https://www.youtube.com/watch?v=ebd6P7cyFPI) mobile app, I got into a discussion with some of my colleagues about whether your API needs to be HTTP standards-compliant. It was an interesting discussion, and while it’s one I’m sure most people are fed up with by now, I decided to document my findings as I didn’t find a clear or definitive answer.
