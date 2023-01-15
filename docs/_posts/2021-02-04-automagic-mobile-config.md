@@ -2,7 +2,7 @@
 layout: post
 title:  "Automagic Tenant Config for Mobile Apps"
 date:   2021-02-04 18:05:55 +0300
-image:  is-this-your-card.png
+image:  /images/is-this-your-card.png
 tags:   mobile xamarin configuration tenant-config multitenancy
 ---
 
@@ -63,11 +63,91 @@ One way to get tenant-specific config into your users' mobile apps is manually. 
 In this example, the user is presented with a form which tells them to enter the configuration provided to them by their sysadmin (just like the old days with Outlook on desktop). Their sysadmin presumably sends them an email or directs them to an intranet resource where their config is documented.
 
 Let's take a look at the code for how a simple form like this works
-{% gist 0123133d47dbc29ad2eaa7b540bee478 ConfigForm.xaml %}
+```xml
+<StackLayout Margin="30"
+             Padding="10"
+             Spacing="10">
+    <Image Source="medmanlogo"/>
+    <Label HorizontalOptions="CenterAndExpand"
+           HorizontalTextAlignment="Center"
+           Text="Config"
+           FontSize="Title"/>
+
+    <Label HorizontalOptions="CenterAndExpand"
+           HorizontalTextAlignment="Center"
+           Text="Get these settings from your system administrator"/>
+
+    <Entry Text="{Binding ApiBaseUri}"
+           Placeholder="API URI"/>
+
+    <Entry Text="{Binding IDP}"
+           Placeholder="Identity Provider"/>
+
+    <Entry Text="{Binding TenantId}"
+           Placeholder="Tenant ID"/>
+
+    <Entry Text="{Binding TenantName}"
+           Placeholder="Tenant Name"/>
+
+    <Entry Text="{Binding AppId}"
+           Placeholder="App / Client ID"/>
+
+    <Entry Text="{Binding SigninPolicy}"
+           Placeholder="Signin Policy ID"/>
+
+    <Label Text="Settings not valid"
+           TextColor="DarkRed"
+           HorizontalOptions="CenterAndExpand"
+           HorizontalTextAlignment="Center"
+           IsVisible="{Binding IsValid, Converter={StaticResource InverseBool}}"/>
+
+    <Button Text="Save"
+            BackgroundColor="{StaticResource Primary}"
+            Command="{Binding SaveConfigCommand}"/>
+
+</StackLayout>
+```
 *The form with fields for the user to enter config items*
 
 We can see here that we've got a very simple entry form, where the user can enter all the configuration required to connect and log into their instance of MedMan (a dummy application used for this demo - link to repo with full code at the bottom). The fields of the form are bound to properties of the ViewModel. When the user taps the **Save** button a command in the ViewModel is called, which performs some simple validation then saves all the values to secure storage. The app then navigates to a login page, which consumes some of the values the user has entered here.
-{% gist 0123133d47dbc29ad2eaa7b540bee478 ConfigFormViewModel.cs %}
+```csharp
+public string IDP { get; set; }
+public string ApiBaseUri { get; set; }
+public string TenantName { get; set; }
+public string TenantId { get; set; }
+public string AppId { get; set; }
+public string SigninPolicy { get; set; }
+
+public ICommand SaveConfigCommand => new Command(async () => await SaveConfig());
+
+public bool IsValid { get; set; } = true;
+
+private async Task SaveConfig()
+{
+    IsValid = ValidateConfig(); // Method omitted for brevity
+
+    OnPropertyChanged("IsValid");
+
+    if (!IsValid)
+        return;
+
+    await SecureStorage.SetAsync(nameof(App.Constants.ApiBaseUri), ApiBaseUri);
+    await SecureStorage.SetAsync(nameof(App.Constants.IDP), IDP);
+
+    if(IDP == "B2C")
+    {
+        await SecureStorage.SetAsync(nameof(App.Constants.TenantId), TenantId);
+        await SecureStorage.SetAsync(nameof(App.Constants.TenantName), TenantName);
+        await SecureStorage.SetAsync(nameof(App.Constants.AppId), AppId);
+        await SecureStorage.SetAsync(nameof(App.Constants.SigninPolicy), SigninPolicy);
+    }
+
+    await App.Constants.InitialiseSecrets();
+    MessagingCenter.Send<object>(this, "ConstantsSaved");
+
+    await Shell.Current.GoToAsync("//LoginPage");
+}
+```
 *ViewModel for the config form*
 
 There are some pros and cons to this approach. The major advantage is that, for a developer, it's trivial to build, and there are virtually no 'moving parts', so it's also reliable.
@@ -90,13 +170,58 @@ In this approach, when the user opens their app, they are directed to find a QR 
 
 The mobile app then reverses this process - it scans the code, Base64 decodes the string to a JSON string, then deserializes the JSON string to a config object.
 
-{% gist 0123133d47dbc29ad2eaa7b540bee478 QRForm.xaml %}
+```xml
+<StackLayout Margin="30"
+             Padding="10"
+             Spacing="10">
+    <Image Source="medmanlogo"/>
+    <Label HorizontalOptions="CenterAndExpand"
+           HorizontalTextAlignment="Center"
+           Text="{Binding QRIcon}"
+           FontFamily="{StaticResource MaterialIcons}"
+           FontSize="65"
+           TextColor="Black"/>
+
+    <Label HorizontalOptions="CenterAndExpand"
+           HorizontalTextAlignment="Center"
+           Text="Scan the QR Code from MedMan in your browser"/>
+
+    <zxing:ZXingScannerView OnScanResult="ZXingScannerView_OnScanResult"
+                            WidthRequest="400"
+                            HeightRequest="400"/>
+
+</StackLayout>
+```
 *A QR scanner instead of a form*
 
-{% gist 0123133d47dbc29ad2eaa7b540bee478 QRForm.xaml.cs %}
+```csharp
+
+...
+private async void ZXingScannerView_OnScanResult(ZXing.Result result)
+{
+    await ViewModel.SaveScannedConfig(result.Text);
+}
+...
+```
 *On a successful scan result, the data is passed to a method in the ViewModel*
 
-{% gist 0123133d47dbc29ad2eaa7b540bee478 QRFormViewModel.cs %}
+```csharp
+public async Task SaveScannedConfig(string config)
+{
+    string jsonConfig = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(config));
+
+    var dto = JsonConvert.DeserializeObject<ConfigDto>(jsonConfig);
+
+    AppId = dto.clientId;
+    TenantId = dto.domain;
+    TenantName = dto.tenantName;
+    SigninPolicy = dto.signUpSignInPolicyId;
+    ApiBaseUri = dto.apiBaseUri;
+    IDP = dto.idp;
+
+    await SaveConfig();
+}
+```
 *The data is decoded, and then saved exactly the same way as with a form*
 
 After that the process is the same as in Option A - the values are saved in Secure Storage and the user is redirected to the login page.
@@ -164,12 +289,113 @@ This is a tried and tested approach that has been working for a long time. If we
 ![](/images/medman-email.png)
 *The final version of our app just asks for the user's email address*
 
-{% gist 0123133d47dbc29ad2eaa7b540bee478 EmailForm.xaml %}
+```xml
+<StackLayout Margin="30"
+             Padding="10"
+             Spacing="10">
+    <Image Source="medmanlogo"/>
+    <Label HorizontalOptions="CenterAndExpand"
+           HorizontalTextAlignment="Center"
+           Text="Config"
+           FontSize="Title"/>
+
+    <Label HorizontalOptions="CenterAndExpand"
+           HorizontalTextAlignment="Center"
+           Text="Enter your email address"/>
+
+    <Entry Text="{Binding UserEmail}"
+           Placeholder="Email"/>
+
+    <Label Text="{Binding ValidationMessage}"
+           TextColor="DarkRed"
+           HorizontalOptions="CenterAndExpand"
+           HorizontalTextAlignment="Center"
+           IsVisible="{Binding IsValid, Converter={StaticResource InverseBool}}"/>
+
+    <Button Text="Save"
+            BackgroundColor="{StaticResource Primary}"
+            Command="{Binding SaveConfigCommand}"/>
+
+</StackLayout>
+```
 *The email form now just has the one entry field*
 
 Once we have the user's email address, we can extract the SMTP domain, and look for our config at discovermedman.{smtpdomain}.
 
-{% gist 0123133d47dbc29ad2eaa7b540bee478 EmailFormViewModel.cs %}
+```csharp
+// Get the domain from the email address
+var domain = GetDomainFromEmail(UserEmail);
+
+Uri configUri;
+
+// Verify that the URL is valid
+IsValid = Uri.TryCreate($"https://discovermedman.{domain}/api/config", UriKind.Absolute, out configUri);
+
+OnPropertyChanged("IsValid");
+OnPropertyChanged("ValidationMessage");
+
+if (!IsValid)
+{
+    ValidationMessage = "Not a valid URL. Please try again.";
+    return;
+}
+
+
+// Get the config from the discover endpoint
+using (HttpClient client = new HttpClient())
+{
+    var configResult = await client.GetAsync(configUri);
+
+    if(!configResult.IsSuccessStatusCode)
+    {
+        IsValid = false;
+        ValidationMessage = "Could not retrieve config";
+        OnPropertyChanged("IsValid");
+        OnPropertyChanged("ValidationMessage");
+        return;
+    }
+
+    configString = await configResult.Content.ReadAsStringAsync();
+}
+
+//validate config
+
+try
+{
+    var dto = JsonConvert.DeserializeObject<ConfigDto>(configString);
+
+    AppId = dto.clientId;
+    TenantId = dto.domain;
+    TenantName = dto.tenantName;
+    SigninPolicy = dto.signUpSignInPolicyId;
+    ApiBaseUri = dto.apiBaseUri;
+    IDP = dto.idp;
+}
+catch (Exception)
+{
+    IsValid = false;
+    ValidationMessage = "Not a valid MedMan URL";
+    OnPropertyChanged("IsValid");
+    OnPropertyChanged("ValidationMessage");
+    return;
+}
+
+IsValid = ValidateConfig();
+
+if (!IsValid)
+{
+    ValidationMessage = "Config from MedMan is invalid";
+    OnPropertyChanged("IsValid");
+    OnPropertyChanged("ValidationMessage");
+    return;
+}
+
+// if got this far, config was retrieved successfully and is good
+
+// save the email to an App constant for use in the login page
+
+App.Constants.UserEmail = UserEmail;
+```
 *We get the user's domain from their email address, then use it to fetch the config. Then save as normal.*
 
 
@@ -189,7 +415,21 @@ MSAL defines Login Hint as an extension for B2C clients, allowing you to pass a 
 
 In our demo app, when the user enters their email, we don't just use it to look up the config, we also store it in a global state parameter (in this case in a static Constants class). Then when we instantiate our authentication client, we pass in the username (the user's email) as a Login Hint paramter.
 
-{% gist 0123133d47dbc29ad2eaa7b540bee478 LoginViewModel.cs %}
+```csharp
+private async void OnLoginClicked(object obj)
+{
+    var result = await App.AuthenticationClient
+        .AcquireTokenInteractive(App.Constants.Scopes)
+        .WithParentActivityOrWindow(App.UIParent)
+        .WithUseEmbeddedWebView(true)
+        .WithLoginHint(App.Constants.UserEmail) // The user's email address is re-used here
+        .ExecuteAsync();
+
+    App.Constants.BearerToken = result.AccessToken;
+
+    await Shell.Current.GoToAsync($"//{nameof(PatientsPage)}");
+}
+```
 *When we saved the config, we stored the user's email address in a Constant, and re-use it here*
 
 This lets us use the email address we've already acquired from the user without them having to enter it again.

@@ -2,7 +2,7 @@
 layout: post
 title:  "Introducing .NET MAUI UI July"
 date:   2022-05-19 18:05:55 +0300
-image:  maui-ui-july-bg.png
+image:  /images/maui-ui-july-bg.png
 tags:   mobile maui ui
 ---
 

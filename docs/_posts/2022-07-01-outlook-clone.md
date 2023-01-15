@@ -2,14 +2,14 @@
 layout: post
 title:  ".NET MAUI UI July: Outlook Clone"
 date:   2022-07-01 0:00:00 +1000
-image:  maui-ui-july-bg.png
+image:  /images/maui-ui-july-bg.png
 tags:   mobile maui ui outlook
 ---
 
-<span>This post is an exceprt from my upcoming book _.NET MAUI in Action_. The book is [available now in early access](https://www.manning.com/books/dot-net-maui-in-action?utm_source=goforgoldman&utm_medium=affiliate&utm_campaign=book_goldman_dot_5_10_22&a_aid=goforgoldman&a_bid=38933097), so you can sign up now to get more content like this as it becomes available. And use the code **fccgoldman** for an extra 25% off.</span> [![.NET MAUI in Action promo image](https://freecontent.manning.com/wp-content/uploads/DOTD_NewMEAP_Goldman.png){: width="150" }{: .promo-image }](https://www.manning.com/books/dot-net-maui-in-action?utm_source=goforgoldman&utm_medium=affiliate&utm_campaign=book_goldman_dot_5_10_22&a_aid=goforgoldman&a_bid=38933097)
-{: .promo-block }
+![.NET MAUI in Action promo image](/images/DOTD_NewMEAP_Goldman.png){: .left } This post is an excerpt from my upcoming book [.NET MAUI in Action](https://www.manning.com/books/dot-net-maui-in-action?utm_source=goforgoldman&utm_medium=affiliate&utm_campaign=book_goldman_dot_5_10_22&a_aid=goforgoldman&a_bid=38933097). The book is available now in early access, so you can sign up now to get more content like this as it becomes available. And use the code **fccgoldman** for an extra 25% off.
+{: .prompt-info }
 
-<br/>
+<br/><br/>
 In this post for [.NET MAUI UI July](https://goforgoldman.com/2022/05/19/maui-ui-july.html), I’m going to show how we can use a combination of .NET MAUI’s built in layouts and controls to replicate a familiar UI: the Microsoft Outlook mobile app.    
 
 Figure 1 shows Outlook running on iOS.

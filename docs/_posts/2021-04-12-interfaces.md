@@ -2,7 +2,7 @@
 layout: post
 title:  "Understanding Interfaces and Dependency Inversion"
 date:   2021-04-12 00:05:55 +0300
-image:  pexels-brett-sayles-4373998.jpg
+image:  /images/pexels-brett-sayles-4373998.jpg
 tags:   interfaces oop ioc di SOLID
 ---
 
@@ -25,25 +25,93 @@ Following an example I've seen used often, let's use pets as an analogy. Let's s
 
 The `ISleeps` interface might define a sleep method:
 
-{% gist bb904f5894456531fae7201a2e2bf03f ISleeps.cs %}
+```csharp
+public interface ISleeps
+{
+  void sleep();
+}
+```
 
 The `IEats` interface might define an eat method:
 
-{% gist bb904f5894456531fae7201a2e2bf03f IEats.cs %}
+```csharp
+public interface IEats
+{
+  void eat(Food food);
+}
+```
 
 Then you might have a dog and a cat type, and each of those implements both of these interfaces:
 
-{% gist bb904f5894456531fae7201a2e2bf03f pets.cs %}
+```csharp
+public class Cat: IEats, ISleeps
+{
+  public void sleep()
+  {
+    // logic for when your cat is sleeping...
+  }
+  
+  public void eat(Food food)
+  {
+    // logic for when your cat eats...
+  }
+}
+
+public class Dog: IEats, ISleeps
+{
+  public void sleep()
+  {
+    // logic for when your dog is sleeping...
+  }
+  
+  public void eat(Food food)
+  {
+    // logic for when your dog eats...
+  }
+}
+```
 
 This now lets you write one method for feeding any type of pet, without having to write separate feeding methods for each type of animal, as long as they implement the interface:
 
-{% gist bb904f5894456531fae7201a2e2bf03f Feeding.cs %}
+```csharp
+public class FeedingTime
+{
+  public void FeedPet(IEats pet)
+  {
+    var food = new Food();
+    pet.eat(food);
+  }
+}
+```
 
 We can see here that the FeedPet method doesn't care whether you pass it a cat, dog or even a fish, as long as you pass it *something* that implements the `IEats` interface. (Obviously we may need to instantiate the right kind of food, but this has been simplified for the example).
 
 Speaking of the fish type, your fish will probably also implement an `ISwims` interface, which defines it's own methods:
 
-{% gist bb904f5894456531fae7201a2e2bf03f Fish.cs %}
+```csharp
+public interface ISwims
+{
+  void swim();
+}
+
+public class Fish : ISwims, IEats, ISleeps
+{
+  public void sleep()
+  {
+    // logic for when your fish is sleeping...
+  }
+  
+  public void eat(Food food)
+  {
+    // logic for when your fish eats...
+  }
+  
+  public void swim()
+  {
+    // logic for when your fish is swimming...
+  }
+}
+```
 
 While you can pass an object of type cat, dog or fish to the FeedPet method, if you had another method that requires an `ISwims`, you can *only* pass it the fish as its the only type that implements this interface.
 
@@ -57,7 +125,26 @@ When you invert dependencies, what you are doing is describing what you need whe
 
 Continuing our pet behaviour example, let's say you want to implement some functionality that notifies a pet owner every time their pet has been fed. Without dependency inversion, first you need to write or import a notification system. This might be email, or it might be SMS, or it could be something else. But you pick one, in this case email, and you implement it. Then, in your FeedPet method, you can send an email to the pet owner to let them know their pet has been fed:
 
-{% gist bb904f5894456531fae7201a2e2bf03f FeedingTimeWithEmail.cs %}
+```csharp
+public class FeedingTime
+{
+  private EmailService _myEmailService;
+  
+  public FeedingTime()
+  {
+    _myEmailSerice = new EmailService(); // we probably have to pass in some SMTP details or something...
+  }
+  
+  public void FeedPet(IEats pet)
+  {
+    var food = new Food();
+    pet.eat(food);
+    
+    // assuming we have set up pet and owner properties for out pet...
+    _myEmailService.Send("Your pet has been fed", $"Your pet {pet.name} has been fed. Kind Regards, FeedingTime", pet.Owner.EmailAddress);
+  }
+}
+```
 
 In this case, the class that implements the FeedPet method is *dependent* on the email system we have implemented, and is now [tightly coupled](https://nordicapis.com/the-difference-between-tight-coupling-and-loose-coupling/) to it. This presents some problems:
 
@@ -69,16 +156,52 @@ The problem here is that the dependency is defined by the implementation. To res
 
 In our pet simulator we would do this by defining an `INotifier` interface:
 
-{% gist bb904f5894456531fae7201a2e2bf03f INotifier.cs %}
+```csharp
+public interface INotifier
+{
+  void Send(string subject, string body, Owner recipient);
+}
+```
 
 Then in my class that implements the FeedPet method, rather than couple it to the email system, I just declare that I am dependent on *something* that implements the `INotifier` interface:
 
 This depdendency is then *injected* into this class, and the class is now dependent on the abstraction rather than any concretion. [Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection) is how you implement the dependency inversion principle in practical terms - it's a huge topic on its own so I won't go into detail here, but .NET Core caters for it out of the box.
 
 
-{% gist bb904f5894456531fae7201a2e2bf03f Startup.cs %}
+```csharp
+public class Startup
+{
+    // ommitted for clarity...
+ 
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddSingleton<INotifier, EmailNotifier>();
+    }
+    
+    // ommitted for clarity...
+}
+```
 
-{% gist bb904f5894456531fae7201a2e2bf03f FeedingTimeWithINotifier.cs %}
+```csharp
+public class FeedingTime
+{
+  private INotifier _notifier;
+  
+  public FeedingTime(INotifier notifier)
+  {
+    _notifier = notifier;
+  }
+  
+  public void FeedPet(IEats pet)
+  {
+    var food = new Food();
+    pet.eat(food);
+    
+    // assuming we have set up pet and owner properties for out pet...
+    _notifier.Send("Your pet has been fed", $"Your pet {pet.name} has been fed. Kind Regards, FeedingTime", pet.Owner);
+  }
+}
+```
 
 The benefits of this approach are:
 
@@ -92,11 +215,28 @@ There's a lot to take in here, but the core concept is this - you define the fun
 # Hiding Implementation Details
 Continuing our pet example, we might find a nice email library that implements the functionality we need. We install the nuget package and look at the readme on the project's GitHub page, and we see that they provide an interface:
 
-{% gist bb904f5894456531fae7201a2e2bf03f IGoldieEmail.cs %}
+```csharp
+public interface IGoldieEmail
+{
+  void SendEmail(string body, string subject, string[] recipients);
+}
+```
 
 This interface is handily provided along with an extension method so we can register the email provider with our service registration at startup:
 
-{% gist bb904f5894456531fae7201a2e2bf03f GoldieStartup.cs %}
+```csharp
+public class Startup
+{
+    // ommitted for clarity...
+ 
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddGoldieMail("senderAddress");
+    }
+    
+    // ommitted for clarity...
+}
+```
 
 It's tempting at this point to think that we can just use this in place of our `INotifier` interface that we defined above, but there are some problems if we do this. Firstly, we have now introduced a depdency onto a concretion rather than an abstraction. And second, this means that we have to change our code in the class that feeds the pets. The `IGoldieEmail` interface has a `SendEmail` rather than a `Send` method, and the parameters it expects are different.
 
@@ -104,7 +244,22 @@ Yes, we have an interface, but it's just a handy reference for the functionality
 
 Instead, what we should do is write our `EmailNotifier` class that implements our `INotifier` interface, which means that our class with the `FeedPet` method doesn't need to change to match the methods provided by the library. Then, in our `EmailNotifier`, we implement the methods on the `INotifier` interface by consuming the functionality from our library:
 
-{% gist bb904f5894456531fae7201a2e2bf03f GoldieMailNotifier.cs %}
+```csharp
+public class EmailNotifier : INotifier
+{
+  private IGoldieEmail _goldieMail;
+  
+  public EmailNotifier(IGoldieEmail goldieMail)
+  {
+    _goldieMail = goldieMail;
+  }
+  
+  public void Send(string subject, string body, Owner recipient)
+  {
+    _goldieMail.SendEmail(body, subjcet, new string[] { recipient.EmailAddress });
+  }
+}
+```
 
 What we've done here is domething called the [adapter pattern](https://en.wikipedia.org/wiki/Adapter_pattern) - although technically we've applied it in reverse, but that's outside the scope of this discussion. 
 
