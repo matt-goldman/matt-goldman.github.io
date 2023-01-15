@@ -232,7 +232,7 @@ This is definitely an improved experience over Option A for the user. The advant
 
 But it has some downsides too. One of these is that the user needs to be at their desk and logged in to the desktop app before they can use the mobile app. Another is reliance on the camera - some users may not have a device with a camera (unlikely as that is), or their camera may be damaged. Or they may not want to give your app permission to access the camera. Personally, I have had mixed results with the reliability of QR code scanning on Android (using the [ZXing library](https://devblogs.microsoft.com/xamarin/barcode-scanning-made-easy-with-zxing-net-for-xamarin-forms/)); YMMV, but if this is an approach you like and want to adopt, it's something that you can overcome so you shouldn't consider it a barrier. But it's worth noting.
 
-The biggest downside, though, is that it still requires a manual step for the user to configure their device. It may be 'cool' and techy, but I like to ask myself - does it pass the [Gregory Benford test]({{ site_base_url}}/gregory-benford-test)?
+The biggest downside, though, is that it still requires a manual step for the user to configure their device. It may be 'cool' and techy, but I like to ask myself - does it pass the Gregory Benford test?
 
 The answer in this case is no. Not only does the user have to take steps specifically for configuring their app, but the inner workings are on display for them to see.
 
