@@ -2,7 +2,7 @@
 layout: post
 title:  "Page Resolver and Navigation Extension for MAUI"
 date:   2021-06-17 00:05:55 +0300
-image:  maui.png
+image:  /images/maui.png
 tags:   dotnet maui mobile di
 ---
 

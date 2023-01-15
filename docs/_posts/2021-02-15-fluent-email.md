@@ -2,7 +2,7 @@
 layout: post
 title:  "Sending Email via Office365 Exchange Online with Fluent Email"
 date:   2021-02-14 00:05:55 +0300
-image:  fluent-email-title-image.png
+image:  /images/fluent-email-title-image.png
 tags:   email dotnet dotnet-core office-365
 ---
 
@@ -50,17 +50,36 @@ To send email using FluentEmail and the Graph sender, you need to first add the 
 
 With those added, you need to set up FluentEmail and the Graph sender in your startup or DI container. In my example this is in `Startup.cs`. First create your graph sender options:
 
-{% gist 8fbb4a3a3865298245a06f0ce3f6a92a CreateGraphSenderOptions.cs %}
+```csharp
+var graphSenderOptions = new GraphSenderOptions
+{
+    ClientId = "3724c544-7da0-4115-9f9b-2c43a2b806cf",
+    Secret = "qBi:FzxcyC57Cz8JGLwMt&",
+    TenantId = "c332bd38-f4c6-44a9-9654-9838abec437e",
+    SaveSentItems = true
+};
+```
 
 In this example I've hard coded these values (don't worry, these are not real values!). But you can also use configuration binding, or pull them in from Key Vault. The client ID and tenant ID can be found on the Overview tab of your app registration, and the secret is the one generated in step 11 above.
 
 The `SaveSentItems` variable lets you decide whether items sent using this sender should be saved in the sent items folder of the mailbox you're sending from. You can set this to true or false. Once you've set up your options you need to register the FluentEmail services:
 
-{% gist 8fbb4a3a3865298245a06f0ce3f6a92a RegisterGraphSender.cs %}
+```csharp
+services.AddFluentEmail("mail@goforgoldman.com", "GoForGoldman Mail Service")
+        .AddRazorRenderer()
+        .AddGraphSender(graphSenderOptions);
+```
 
 In this example, I've specified the default sender email address and friendly name, and passed in the Graph sender options. With that done, all that's left is to send an email:
 
-{% gist 8fbb4a3a3865298245a06f0ce3f6a92a SendEmail.cs %}
+```csharp
+var email = await Email
+    .From("john@email.com") // You can use .DefaultSender to use the sender specified in service registration, or override it here
+    .To("bob@email.com", "bob")
+    .Subject("hows it going bob")
+    .Body("yo bob, long time no see!")
+    .SendAsync();
+```
 *Example from the FluentEmail repo*
 
 That's all there is to it. FluentEmail is simple but also quite flexible and powerful, so there's quite a bit more you can do with it. [Check out the repo](https://github.com/lukencode/FluentEmail), or [Luke Lowrey](https://lukelowrey.com/)'s (original FluentEmail author) [blog post](https://lukelowrey.com/dotnet-email-guide-2021/) for more details on all the cool stuff you can do with it.
