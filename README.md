@@ -1,2 +1,1 @@
-# matt-goldman.github.io
-GoForGoldman Blog
+Blog for goforgoldman
