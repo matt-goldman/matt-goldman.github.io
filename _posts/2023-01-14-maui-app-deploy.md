@@ -40,7 +40,7 @@ To register your Google account as a Google developer account, you will need to 
     
 Once you have signed up, you gain access to the [Google Play developer console](https://play.google.com/console). **In the console, click on the Create App button in the top right-hand corner.** Fill in the form and then click on the **Create App** button in the bottom-right to register the app. After this, you’ll be taken to the app’s dashboard.    
 
-Now that your app is registered in the Google Play console, there are some additional setup tasks that you need to run through. These steps are listed as a set of tasks on the dashboard; you will need to work through all these too to provide necessary metadata for your app. Most of these you can simply click through and answer the questions, but for the privacy policy you need to provide a link. It’s a good idea to consult a solicitor to help you draft or review a privacy policy for your app, but you can also use a free privacy policy generator such as [Termly](https://termly.io). For testing purposes, you are free to use [this one](https://www.privacypolicygenerator.org/live.php?token=vbOLjH1o4uHRr73yvyfSm7tYqPcwl1tX).    
+Now that your app is registered in the Google Play console, there are some additional setup tasks that you need to run through. These steps are listed as a set of tasks on the dashboard; you will need to work through all these too to provide necessary metadata for your app. Most of these you can simply click through and answer the questions, but for the privacy policy you need to provide a link. It’s a good idea to consult a solicitor to help you draft or review a privacy policy for your app, but you can also use a free privacy policy generator such as {% link_to https://termly.io Termly nofollow%}. For testing purposes, you are free to use {% https://www.privacypolicygenerator.org/live.php?token=vbOLjH1o4uHRr73yvyfSm7tYqPcwl1tX 'this one' nofollow %}.    
 
 > When you publish an app, it’s a good idea to have a website for either the app or the publishing company as this lends credibility to the app. You can (and should) host your privacy policy on your website, but during the development phase you could host the policy as a markdown file on GitHub.
 {: .prompt-tip }
@@ -138,7 +138,7 @@ Once you do this, the console will show you a dialog containing your client ID a
 
 You’ll be prompted to enter your client ID and client secret; these are the values you just obtained from the console. From here the process is mostly the same, except that now, as Visual Studio will upload the AAB file directly to Google Play, you need to select the track (e.g., Internal testing, production, etc.), and don't need to manually upload the AAB.    
 
-## Releasing to production
+## Releasing to Production
 Once you’ve got test builds in the Google Play developer console, provided that all the steps up until now have been completed and your app metadata is ready, releasing to production is a simple step, summarized in the figure below.
 
 ![](/images/google-production-track.png) 
