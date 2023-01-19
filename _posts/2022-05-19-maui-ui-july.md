@@ -5,6 +5,8 @@ date:   2022-05-19 18:05:55 +0300
 image:  /images/maui-ui-july-bg.png
 tags:   mobile maui ui
 categories: [.NET, Mobile]
+redirect_from:
+  - /2022/05/19/maui-ui-july.html
 ---
 
 Back in 2019, [Steven Thewissen](https://thewissen.io/) gave us the awesome [Xamarin UI July](https://thewissen.io/introducing-xamarin-ui-july/). Steven described it as an advent calendar, where each day throughout the month you would have a new insightful Xamarin UI blog post to open.
