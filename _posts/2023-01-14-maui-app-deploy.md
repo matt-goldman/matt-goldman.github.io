@@ -7,6 +7,12 @@ tags:   mobile maui ui deploying production
 categories: [.NET, Mobile]
 ---
 
+This post is part one of a three part series:
+
+* Part 1: Android (this post)
+* [Part 2: iOS](/posts/maui-app-deploy-2/)
+* Part 3: Windows (coming soon)
+
 Building apps is fun, but sadly very few people get paid to build apps just for fun; usually, there’s an expectation that you will deliver a working app to users. Running apps on simulators, emulators, and developer machines is cool, but not as cool as having an app you’ve built running on a real device. And, of course, the most rewarding feeling of all is seeing your completed product, deployed and being used by real people.    
 
 In this three-part series of posts, we'll walk through deploying a fictional app called MauiStockTake to the Google Play Store, the iOS App Store, and the Microsoft Store.
@@ -154,4 +160,4 @@ For the final step, you will be prompted to select the countries to distribute t
 Other than this, releasing an app to the Production track is no different to internal testing (or any other track). When you’re ready, click on the **Start roll-out to Production** button. At this stage, Google will review your app and come back to you with any issues they have found, otherwise, once they have finished, your app will be available to download in the Google Play store.    
     
 
-In part 2 of this series, we'll see how to publish an iOS app to the App Store.
+In [part 2](/posts/maui-app-deploy-2/) of this series, we'll see how to publish an iOS app to the App Store.
