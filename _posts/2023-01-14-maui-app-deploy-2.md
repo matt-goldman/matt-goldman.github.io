@@ -2,7 +2,7 @@
 layout: post
 title:  "Deploying your .NET MAUI apps to production - Part 2: iOS"
 date:   2023-01-22 0:00:00 +1000
-image:  /images/maui-deploying-image.png
+image:  /images/maui-deploying-image-2.png
 tags:   mobile maui ui deploying production
 categories: [.NET, Mobile]
 ---
