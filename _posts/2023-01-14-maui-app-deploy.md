@@ -11,7 +11,7 @@ This post is part one of a three part series:
 
 * Part 1: Android (this post)
 * [Part 2: iOS](/posts/maui-app-deploy-2/)
-* Part 3: Windows (coming soon)
+* [Part 3: Windows](/posts/maui-app-deploy-3/)
 
 Building apps is fun, but sadly very few people get paid to build apps just for fun; usually, there’s an expectation that you will deliver a working app to users. Running apps on simulators, emulators, and developer machines is cool, but not as cool as having an app you’ve built running on a real device. And, of course, the most rewarding feeling of all is seeing your completed product, deployed and being used by real people.    
 

@@ -11,7 +11,7 @@ categories: [.NET, Mobile]
 
 * [Part 1: Android](/posts/maui-app-deploy/)
 * Part 2: iOS (this post)
-* Part 3: Windows (coming soon)
+* [Part 3: Windows](/posts/maui-app-deploy-3/)
 
 In part one of this series, we saw how to build, sign and deploy Android apps built with .NET MAUI to the Google Play store. In part two, we'll look at deploying the same app (MauiStockTake) to the iOS App Store.
 
@@ -206,4 +206,4 @@ With your own apps, it is extremely likely that Apple will reject your initial b
 Apple reviews can be frustrating, but eventually you will have a build accepted. Nothing beats the exhilaration if seeing the email in your inbox letting you know that your app has been approved and is now available on the App Store.    
 
 
-In part 3 of this series, we'll see how we can publish Windows apps to the Microsoft Store.
+In [part 3](/posts/maui-app-deploy-3/) of this series, we'll see how we can publish Windows apps to the Microsoft Store.
