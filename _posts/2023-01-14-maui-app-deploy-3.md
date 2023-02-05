@@ -7,7 +7,7 @@ tags:   mobile maui ui deploying production
 categories: [.NET, Mobile]
 ---
 
- This post is part two of a three part series:
+ This post is part three of a three part series:
 
 * [Part 1: Android](/posts/maui-app-deploy/)
 * [Part 2: iOS](/posts/maui-app-deploy-2/)
