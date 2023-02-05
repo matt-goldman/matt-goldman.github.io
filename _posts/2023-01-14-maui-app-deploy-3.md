@@ -36,7 +36,7 @@ To sign up, go to [https://developer.microsoft.com/microsoft-store/register/](ht
 2.	Click the **+ New product** button and select MSIX or PWA apps.
 3.	Enter a name and click Reserve product name. 
     
-    > **NOTE** MauiStockTake is already reserved so you won’t be able to use that.
+    > **NOTE for readers of .NET MAUI in Action**<br>MauiStockTake is already reserved so you won’t be able to use that.
     {: .prompt-info }
 
 4.	In the **Application Overview** section, click **Start your submission.**
@@ -50,7 +50,7 @@ To create a signed bundle, follow these steps:
 2.	In Solution Explorer, right-click on MauiStockTake.UI and select **Publish…**. Select the **Microsoft Store under a new app name** radio button and click **Next**.
 3.	Ensure that the right identity is selected in the drop-down (in the top right of the publishing window). Visual Studio will contact Microsoft Partner Center to retrieve the list of reserved app names. Highlight MauiStockTake (or your variation selected in step 3 of the _Developer Program_ section above) and click **Next**.
 4.	On the next screen, leave the defaults for version number and auto-incrementing, and for symbols and artifacts. In the **Publishing profile** dropdown, select **`<New…>`**.
-5.	In the Create a new MSIX Publishing Profile dialog, change the **Configuration** to **Release | Any CPU**, change the **Target Runtime** to **win10-x64**, leave Self Contained as true, and keep the default Package Location. Then click **OK**.
+5.	In the Create a new MSIX Publishing Profile dialog, change the **Configuration** to **Release &#124; Any CPU**, change the **Target Runtime** to **win10-x64**, leave Self Contained as true, and keep the default Package Location. Then click **OK**.
 6.	Click the **Create** button. The Visual Studio status bar (bottom left) will show the current status, you can also follow the progress in the Output window.
 7.	**The initial publish will fail**; this is ok, by default it adds some metadata in the `Package.appxmanifest` file that we don’t need and that causes it to fail. Once it has failed, open the `Package.appxmanifest` file in the `Platforms/Windows` folder with the text editor (right-click and select **Open With…**, then **XML (Text) Editor**). Look for the line that has been added that starts with `<mp:PhoneIdentity PhoneProductId=…`; delete (or comment) this line.
 8.	Right-click publish the MauiStockTake.UI project again. This time, you should see **Microsoft Store as [your variation of MauiStockTake]  by [your Microsoft nickname]** as an option. Select this radio button, then click **Next**.
@@ -59,11 +59,11 @@ To create a signed bundle, follow these steps:
 This time, Visual Studio should create a release bundle for you successfully. Once you get the confirmation window, click on the **Output location** link to open the folder where the bundle has been created. Then, click **Close** to close the publishing dialog. We will revisit the remaining options (to validate the package and deploy automatically) later.
 
 ## Deploying to the Store
-As with Google, you must manually upload your first build. To do this, go to the Microsoft Partner Center, and navigate to MauiStockTake (or your variation) in Apps and Games, and select **Packages** from the submission sub-heading on the left-hand menu.    
+As with Google, you must manually upload your first build. To do this, go to the Microsoft Partner Center, and navigate to your app in **Apps and Games**, and select **Packages** from the submission sub-heading on the left-hand menu.    
 
 Upload the MSIX package to the Partner Center, either by dragging the file onto the grey upload box or clicking the **browse your files** link and navigating to the package. Once it has finished uploading, click **Save**.     
 
-Once you have completed your first production release (covered in the next section), you can automate some of this process by having Visual Studio automatically upload builds to the Microsoft Partner Center.     
+Now that you have uploaded a build, you can progress to the next section (Releasing to Production). Once you have completed your first production release, you can automate some of this process by having Visual Studio automatically upload builds to the Microsoft Partner Center.     
 
 > You can work through all of the remaining steps without a production release, but the upload will be rejected at the last stage until you have one.
 {: .prompt-warning }
@@ -77,10 +77,10 @@ Some understanding of AAD will be beneficial for this process, as it will help y
 1.	In the Microsoft Partner Center, navigate to **Tenants**. Access this by clicking on the  cog in the top-right, then selecting **Account Settings**, then Tenants under the **Organization profile** sub-heading from the left-hand menu.
 2.	On this screen you have the option to Associate Azure AD or Create Azure AD. 
     
-    > **AAD TENANTS** As mentioned in the introduction to this section on Microsoft, ideally you will create an association with an existing tenant; be that your organization’s tenant or that of your client. If you don’t have one already, you should create one; it’s simple, free, and will be useful for many things, not just publishing apps (for example, you can use it for authentication, rather than IdentityServer). You can find out more about how to do this [here](https://learn.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). <br><br>However, if you can also click the appropriate option to have Microsoft Partner Center manage the creation of a tenant for you. This could also be a good option if you simply want a tenant for publishing apps, and don’t intend to use it for any other purposes.
+    > **AAD TENANTS**<br>As mentioned earlier in this post, ideally you will create an association with an existing tenant; be that your organization’s tenant or that of your client. If you don’t have one already, you should create one; it’s simple, free, and will be useful for many things, not just publishing apps (for example, you can use it for authentication). You can find out more about how to do this [here](https://learn.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). <br><br>However, you can also click the appropriate option to have Microsoft Partner Center manage the creation of a tenant for you. This is an option to consider if you simply want a tenant for publishing apps, and don’t intend to use it for any other purposes.
     {: .prompt-info }
     
-3.	Once you’ve completed the process of adding or associating an AAD tenant, click on **User management** in the left-hand menu. You may be prompted to sign in with an AAD global administrator account; if so, click the **Sign in with Azure AD** button, using global administrator credentials from the tenant you have created or associated.
+3.	Once you’ve completed the process of adding or associating an AAD tenant, click on **User management** in the left-hand menu. You may be prompted to sign in with an AAD global administrator account; if so, click the **Sign in with Azure AD** button, using global administrator credentials from the tenant you have created or associated (if you've just created a tenant, it will be the user account you used to create it).
 4.	Once you’ve signed in with an AAD account, you will see the Users, Groups, and Azure AD Applications tabs; click on **Azure AD Applications**, then click **Add Azure AD Application**.
 5.	Select the **Create Azure AD Application** radio button, then click **Continue**. You can create the app registration manually in the Azure portal and just associate here, but it’s much easier to let the Microsoft Partner Center handle it as it will set all the required Microsoft Graph permissions.
 6.	Enter `MauiStockTake Upload App` as the application name, for the Reply URL enter `https://localhost` (this isn’t used for anything), and for the App ID URI, enter `https://[yourtenantname].onmicrosoft.com/mauistocktakeupload`.
@@ -91,7 +91,7 @@ Some understanding of AAD will be beneficial for this process, as it will help y
 11.	You will also need to enter the AAD tenant ID. You can’t get this from the Microsoft Partner Center, you will need to get it from the Azure portal. [Click here](https://learn.microsoft.com/azure/azure-portal/get-subscription-tenant-id) for more information.
 12.	Check the box to save the client key, then click **OK**. When the dialog closes, click on the **Launch Windows App Certification Kit** button (note: this may also say Verify and publish). App verification will now run; wait for it to complete.
     
-    > **IMPORTANT** Do not use your computer while app verification is running, or it will fail. If at any point it gets stuck, cancel it and start again.
+    > Do not use your computer while app verification is running, or it will fail. If at any point it gets stuck, cancel it and start again.
     {: .prompt-warning }
 
 13.	When app verification has completed, you will see a screen with the **PASSED** heading in green. Click the **Finish** button to dismiss the dialog.
@@ -103,7 +103,7 @@ Unlike with Apple and Google, you don’t manage test users via the Microsoft St
 
 Now that a package has been uploaded, you need to complete the store listings. Use the left-hand menu to navigate to Store listings. The store listings page lets you add an individual listing for each language that you want to provide. `English (United States)` is added by default; you are welcome to add others (using the **Manage additional languages** button), but for now, click on the **English (United States)** link to complete the listing for that language.    
 
-For the **Product name**, enter `MauiStockTake` (or your app name), and complete the **Description** section. You can use the description provided in the chapter 12 resources folder, as well as some Windows screenshots you can use. Once you have added the name, description, and screenshots, click **Save*.    
+For the **Product name**, enter `MauiStockTake` (or your app name), and complete the **Description** section. If you've purchased _.NET MAUI in Action_, the chapter 12 resources folder contains a description and some Windows screenshots you can use. Once you have added the name, description, and screenshots, click **Save**.    
 
 Use the left-hand menu to navigate to **Submission Options**. In this section, you can choose whether to release the app as soon as it’s been approved, release it manually, or schedule its release. There is also a field to provide some notes; this is where you would give the username and password for the reviewers to test with.    
 
@@ -114,7 +114,7 @@ Once you have completed this section, click **Save**. Navigate back to the submi
 As with Google and Apple, reviewers from Microsoft will evaluate your app. Once complete, you’ll receive an email notification that your app has been accepted and is now available via the Microsoft Store.     
 
 # Next Steps
-Much of what is covered in this three part series is not .NET MAUI specific, however as an app developer, understanding how to release and manage an app via the various stores is an essential skill. There is enough nuance to justify a book on the topic all of its own, but the steps outlined in should give you a good foundation.    
+Much of what is covered in this three part series is not .NET MAUI specific, however as an app developer, understanding how to release and manage an app via the various stores is an essential skill. There is enough nuance to justify a book on the topic, but the steps outlined should give you a good foundation.    
 
 While we've covered the essentials of releasing an app, there are some further topics you should consider for production apps, and in this section, I summarize what I consider the three next most essential.
 
@@ -125,7 +125,7 @@ I have found telemetry to be invaluable during this stage. When a reviewer raise
 Check out [this video by Gerald Versluis](https://youtu.be/WicmnH72kf0) for information on client-side logging in .NET MAUI apps. There are several options for capturing this telemetry, including App Center and Application Insights from Microsoft, as well as many third-party options. 
 
 ## Monetization
-So far in this chapter we have discussed publishing a free app. In the case of MauiStockTake, it would be for internal use at Mildred’s Surf Shack, so wouldn’t necessarily be published via the stores, and doesn’t need to generate revenue. But most apps do. My employer, SSW, [has a rule](https://ssw.com.au/rules/how-to-monetize-apps) about this that covers it in more detail.    
+So far in this chapter we have discussed publishing a free app. In the case of MauiStockTake, it would be for internal use at Mildred’s Surf Shack, so wouldn’t necessarily be published via the stores, and doesn’t need to generate revenue. But most apps do. At SSW we [have a rule](https://ssw.com.au/rules/how-to-monetize-apps) about this that covers it in more detail.    
 
 There are many ways that apps can be monetized, and the easiest way to do this for many of these is through the stores. Apple, Google and Microsoft allow you to charge users to buy your app with a one-time fee, pay an ongoing subscription, or make multiple individual transactions within the app. Depending on the nature of your app, transacting via the stores can save you time and money, and you should spend some time familiarizing yourself with how each of the stores’ monetization models work.
 
