@@ -47,6 +47,6 @@ This works because the redirection is done by your browser, not by Apple's serve
 
 ## Other Apple Sign-In gotchas
 
-### User details only once
+### Client secret generated on the fly
 
-### 
+### User details only once
