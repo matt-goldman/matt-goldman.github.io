@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Testing Sign-in with Apple in your local development environment"
-date:   2023-08-01 00:00:00 +1000
+date:   2023-08-01 00:00:01 +1000
 image:  /images/pexels-elvis-2528118.jpg
 tags:   mobile maui ui
 categories: [.NET, Auth, Apple, Authentication, iOS, iPadOS, macOS, Mobile, DNS, openssl, OIDC, OAuth]
