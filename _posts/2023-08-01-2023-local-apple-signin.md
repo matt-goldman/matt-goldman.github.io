@@ -40,10 +40,89 @@ This works because the redirection is done by your browser, not by Apple's serve
 
 ### Generate a self-signed certificate
 
+Setting up the URL is the first part, but if you try to authenticate now, you'll get an error when you get redirected back from Apple. This is because your development environment will (most likely) be using an SSL certificate with the common name (`CN`) `localhost`. When your browser receives this certificate from the address `local.apple-signin.mydomain.com`, it will show a warning and potentially block you from accessing it.
+
+Certificates are usually issued and signed by a [trusted root certification authority](https://www.securew2.com/blog/certificate-authority/), but certificates can also be self-signed.
+
+There are a few ways to generate a self-signed certificate, but one of the easiest ways, and a way that will work across most platforms, is to use [OpenSSL](https://www.openssl.org/). OpenSSL is an open-source SSL toolkit, and while they don't maintain installable binaries, you can install it from your favourite package manager.
+
+    > If you're using Windows and have Git installed, Git ships with an OpenSSL binary, so the easiest way to use it is to add the containing folder (`C:\Program Files\Git\usr\bin`) to your `PATH` variable.
+    {: .prompt-tip }
+
+Before generating the certificate, one important point to note is that most browsers will use the [subject alternative name (`SAN`)](https://support.dnsimple.com/articles/what-is-ssl-san/) for SSL validation now, not just the `CN`. If you just add the URL you added to your `hosts` file to the `CN`, validation will likely fail, so you need to add it as a `SAN` too. With OpenSSL creating this certificate is simple with a single line:
+
+```bash
+openssl req -newkey rsa:4096 -nodes -keyout mycert.key -x509 -days 365 -out mycert.pem -subj "/CN=local.apple-signin.mydomain.com" -addext "subjectAltName = DNS:local.apple-signin.mydomain.com"
+```
+
+This generates a new self-signed certificate and private key, with the desired `CN` and `SAN`. Now that we have a certificate, we can start using it in our application.
 
 ### Configure your application to use the local URL and SSL certificate
 
+To use this certificate in your application, you'll need to convert it to a format that your web server can use. I've been using this in [IdentityServer](https://duendesoftware.com/products/identityserver) in [ASP.NET Core](https://learn.microsoft.com/aspnet/core/introduction-to-aspnet-core), so in my case I need a `.pxf` file, which contains both the certificate and private key in one file. I can use OpenSSL to generate this file:
+
+```bash
+openssl pkcs12 -export -out mycert.pfx -inkey mycert.key -in mycert.pem -password pass:PasswordUsedToProtectThePfxFile
+```
+
+Once I have the `.pfx` file and a corresponding password that I have generated for it, I can use it in my IdentityServer instance (or any ASP.NET Core application). I add the password to my [`secrets.json` file](https://learn.microsoft.com/aspnet/core/security/app-secrets) and place the `.pfx` file in a location accessible to my app (my usual location is a folder called `.applesignin` in my user profile), and use it in my host builder:
+
+```chsarp
+if (Environment.IsDevelopment())
+{
+    // Load certificate password from secrets
+    var certificatePassword = Configuration["appleCertPassword"];
+
+    // Define the path to the certificate
+    var homeDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+    var certificatePath = Path.Combine(homeDirectory, ".applesignin", "mycert.pfx");
+
+    // Load the certificate
+    var certificate = new X509Certificate2(certificatePath, certificatePassword);
+
+    // Configure Kestrel to use the certificate
+    services.Configure<KestrelServerOptions>(options =>
+    {
+        options.ConfigureHttpsDefaults(httpsOptions =>
+        {
+            httpsOptions.ServerCertificate = certificate;
+        });
+    });
+}
+```
+
+One other change you need in ASP.NET Core is to tell it to use the right URL. You can do this in `launchSettings.json`, either by editing the launch profile or creating a new one:
+
+```json
+{
+  "profiles": {
+    "AppleTesting": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://local.apple-signin.mydomain.com:5001"
+    }
+  }
+}
+```
+
+For other web server, the steps will be different. On [nginx](https://www.nginx.com/), for example, you will need to convert the `.pfx` file to a `.crt` file and store it in the `/etc/nginx` folder, along with the private key. You can name these `localhost.key` and `localhost.crt` for nginx to use them by default, or you can create a custom launch configuration.
+
+To create the `.crt` file you can use OpenSSL again:
+
+```bash
+openssl pkcs12 -in mycert.pfx -out localhost.crt -clcerts -nokeys -password pass:TheSamePasswordYouUsedWhenCreatingThePfxFile
+```
+
+### Bonus - trust the certificate
+
+You can trust the certificate when you first browse to your application and see the error, but if you have created the `.crt` file, you can do it manually now too. Simply double-click the file and choose to install it. Note that you need to install it both as a certificate and a trusted root certification authority. This is because it is self-signed, so even if you trust the certificate, if you don't add it as a root CA, then the certification path is not valid.
+
 ## My solution
+
+With all this done, you can now run your application and use Sign-in with Apple, and should have no problem testing locally (which you'll need to do, as I show below).
 
 ## Other Apple Sign-In gotchas
 
