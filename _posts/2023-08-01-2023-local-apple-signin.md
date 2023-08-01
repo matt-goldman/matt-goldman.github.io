@@ -46,8 +46,8 @@ Certificates are usually issued and signed by a [trusted root certification auth
 
 There are a few ways to generate a self-signed certificate, but one of the easiest ways, and a way that will work across most platforms, is to use [OpenSSL](https://www.openssl.org/). OpenSSL is an open-source SSL toolkit, and while they don't maintain installable binaries, you can install it from your favourite package manager.
 
-    > If you're using Windows and have Git installed, Git ships with an OpenSSL binary, so the easiest way to use it is to add the containing folder (`C:\Program Files\Git\usr\bin`) to your `PATH` variable.
-    {: .prompt-tip }
+> If you're using Windows and have Git installed, Git ships with an OpenSSL binary, so the easiest way to use it is to add the containing folder (`C:\Program Files\Git\usr\bin`) to your `PATH` variable.
+{: .prompt-tip }
 
 Before generating the certificate, one important point to note is that most browsers will use the [subject alternative name (`SAN`)](https://support.dnsimple.com/articles/what-is-ssl-san/) for SSL validation now, not just the `CN`. If you just add the URL you added to your `hosts` file to the `CN`, validation will likely fail, so you need to add it as a `SAN` too. With OpenSSL creating this certificate is simple with a single line:
 
