@@ -4,12 +4,12 @@ title:  "Testing Sign-in with Apple in your local development environment"
 date:   2023-08-01 00:00:00 +1000
 image:  /images/sign-in-apple.jpg
 tags:   mobile maui ui
-categories: [.NET, Auth, Apple, Authentication, iOS, iPadOS, macOS, Mobile, DNS, openssl]
+categories: [.NET, Auth, Apple, Authentication, iOS, iPadOS, macOS, Mobile, DNS, openssl, OIDC, OAuth]
 ---
 
 Sign-in with Apple is a great way to authenticate users in your web and mobile apps. Apple get a lot right about single sign-on (SSO), and while some people remain apprehensive about tying their identity to a third party, Apple offer a lot of privacy and security features that make it a compelling option. And, of course, many people already have an Apple ID and prefer to use that for authentication than tying their identity to a social media platform.
     
-Setting up Sign-In with Apple can be tricky. On the surface, it uses a few approaches that are similar to OIDC, but it has a few quirks that can make getting it up and running a little frustrating. One of these is that they don't allow `localhost` as a callback URL, and this presents a challenge for testing in your local development environment. In this post, I'll show you how to work around this limitation, and test Sign-in with Apple in your local development environment.
+Setting up Sign-In with Apple can be tricky. On the surface, it uses a few approaches that are similar to [OIDC](https://openid.net/), but it has a few quirks that can make getting it up and running a little frustrating. One of these is that they don't allow `localhost` as a callback URL, and this presents a challenge for testing in your local development environment. In this post, I'll show you how to work around this limitation, and test Sign-in with Apple in your local development environment.
 
 ## Apple Setup
 
@@ -67,7 +67,7 @@ openssl pkcs12 -export -out mycert.pfx -inkey mycert.key -in mycert.pem -passwor
 
 Once I have the `.pfx` file and a corresponding password that I have generated for it, I can use it in my IdentityServer instance (or any ASP.NET Core application). I add the password to my [`secrets.json` file](https://learn.microsoft.com/aspnet/core/security/app-secrets) and place the `.pfx` file in a location accessible to my app (my usual location is a folder called `.applesignin` in my user profile), and use it in my host builder:
 
-```chsarp
+```csharp
 if (Environment.IsDevelopment())
 {
     // Load certificate password from secrets
@@ -118,14 +118,60 @@ openssl pkcs12 -in mycert.pfx -out localhost.crt -clcerts -nokeys -password pass
 
 ### Bonus - trust the certificate
 
-You can trust the certificate when you first browse to your application and see the error, but if you have created the `.crt` file, you can do it manually now too. Simply double-click the file and choose to install it. Note that you need to install it both as a certificate and a trusted root certification authority. This is because it is self-signed, so even if you trust the certificate, if you don't add it as a root CA, then the certification path is not valid.
+You can trust the certificate when you first browse to your application and see the error, but if you have created the `.crt` file, you can do it manually now too. Simply double-click the file and choose to install it. Note that you need to install it both as a certificate and a trusted root certification authority. This is because it is self-signed, so even if you trust the certificate, if you don't add it as a root CA too, then the certification path is not valid.
 
 ## My solution
 
-With all this done, you can now run your application and use Sign-in with Apple, and should have no problem testing locally (which you'll need to do, as I show below).
+With all this done, you can now run your application and use Sign-in with Apple, and should have no problem testing locally (which you'll definitely need to do, for reasons I show below).
+    
+All of the steps listed above can be done manually, but I've [created a script](https://github.com/matt-goldman/local-signin-with-apple) to simplify the process. It automates the steps of:
+* Generating the certificate (`.pfx`, `.crt`, `.pem`, and `.key`)
+* Importing and trusting
+* Adding the hosts file entry
+
+It places the certificate in a folder called `.applesignin` in your user profile, so all you need to do after running the script is [configure your application to use it](#configure-your-application-to-use-the-local-url-and-ssl-certificate).
+    
+The script has the following prerequisites:
+* [PowerShell Core](https://github.com/PowerShell/PowerShell)
+* OpenSSL
+
+The script also needs to be run with root or administrator privileges (this is required for writing to the hosts file and importing the certificate into the trusted root CA store).
+
+It turns all the steps above into a one-liner:
+
+```powershell
+Generate-LocalCert.ps1
+```
+
+This will use a default URL and will generate a certificate password for you, but these can be supplied as arguments too:
+
+```powershell
+Generate-LocalCert.ps1 -url local.apple-signin.mydomain.com -certPassword myC00lp@55w%rd
+```
+
+With this simple script, you can solve all the pain of developing locally for Sign-In with Apple into a trivial one-liner.
 
 ## Other Apple Sign-In gotchas
 
+There are a couple of interesting quirks related to Sign-In with Apple which, while not directly related to working locally, certainly necessitate having a local, debuggable instance of your application running while you get it working.
+
 ### Client secret generated on the fly
 
+When you use [Sign-In with Apple with the REST API](https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_rest_api) (this is the equivalent of using Apple as an OIDC provider) you need to include a client secret with your request. Note though that this isn't a static secret (the good news is that this means it doesn't expire); instead, it's generated on the fly anf signed with the private key you generate in the Apple developer portal when [setting up Sign-in with Apple](#apple-setup) (the private key does however expire so this still needs to be managed).
+    
+You don't necessarily need to work out the mechanics of this yourself as there are packages available that do it for you (in my IdentityServer app, for example, I'm using the [AspNet.Security.OAuth.Providers
+](https://github.com/aspnet-contrib/AspNet.Security.OAuth.Providers) package, but there are others, for .NET and most other languages/frameworks). Nevertheless, getting it right can be tricky, and if you can't debug and troubleshoot this locally, you're in for a world of pain.
+
 ### User details only once
+
+A quirk of Apple's policies is that they only ever return user profile claims the first time a user logs in to your application (note that this is the app registration in Apple, so if it's shared in an app group, it applies to the group too). This means that you need to capture whatever profile information you need about the user (e.g. first and last name) on that very first sign-in, as Apple will never send it again. There is also no equivalent of the [userinfo endpoint](https://openid.net/specs/openid-connect-core-1_0.html#UserInfo), so if you miss it this first time, you can never get it from Apple again.
+    
+The only way around this is for the user to de-register the application (i.e. [stop using Sign-in with Apple with the app](https://support.apple.com/en-us/HT210426)) and register again.
+    
+Therefore, while you can go to lengths to ensure you capture this information at first sign-in, it's critical to provide a form for your user to submit this information, especially if it's critical to your application's functionality. This can be frustrating in particular if you use multiple OIDC providers, as this step will most likely be unnecessary with others, so you'll have to tailor your sign-up process per IDP.
+
+## Conclusion
+
+If you're setting up Sign-In with Apple, it's not easy to get it working in your local development environment. And, sadly, due to the quirks of the way Apple implement this service, this can be particularly necessary. Fortunately, there are ways to make it work, as documented above. And using the script I have provided makes the process about as simple as it can get.
+   
+If you have any feedback or another way of dealing with this, I'd love to hear about it in the comments!
