@@ -1,0 +1,49 @@
+layout: post
+title:  "Book review: The Phoenix Project"
+date:   2023-09-18 00:00:01 +1000
+image:  /images/phoenix-project.png
+tags:   management leadership devops
+categories: [Management]
+---
+
+[The Phoenix Project](https://itrevolution.com/product/the-phoenix-project/) by Gene Kim, Kevin Behr, and George Spafford has been out for about 10 years now, and most people I've spoken to about it have read it. I, however, have just gotten around to reading it, after it was recommended to me quite some time ago by [Huw Bristow](https://uk.linkedin.com/in/huwbristow).
+
+The sub-title of the book is
+> A Novel about IT, DevOps, and Helping Your Business Win
+
+This is an accurate summation, but it also does the book an injustice. DevOps is ubiquitous now, but when the book was first published it wasn't as well-established a discipline, and many IT organisations (internal and external) suffered the pain of rigid, Waterfall style project management (rather than product management), and the friction between operations (governed predominantly through ITIL) and development - and, in many ways, the rest of the business, or clients - was a constant source of stress. In many organisations this is still true.
+
+The book has an interesting and unique style; it's told from a first-person perspective, but also in present tense. The story progresses through a high-stress and high-stakes scenario, and this approach helps lend a sense of immediacy and urgency to the narrative.
+
+The purpose of the book was to evangelise the discipline of DevOps and help business understand how it can lead to lower stress and increased value through automation, allowing workers to focus on important tasks. But it does a lot more than this - it also espouses the relevance and value of management theory and principles originating in the automotive industry for IT and development teams and organisations.
+
+In this review, I'll look at the core lessons from the book in terms of management principles, and then give my overall impression and takeaways.
+
+## Management Principles
+
+One of the key inspirations for the book is [The Goal](https://northriverpress.com/the-goal-30th-anniversary-edition/) by Eliyahu M. Goldratt and Jeff Cox. Like _The Phoenix Project_, _The Goal_ is a novel that is used to convey a management principle; in this case, Goldratt's [theory of constraints](https://en.wikipedia.org/wiki/Theory_of_constraints). Originally published in 1984, it illustrates the principle that all work in the pipeline is dictated by a single constraint or bottleneck. I haven't read this book yet, but it's now on my list.
+
+Another key inspiration for the book are the Lean Manufacturing Principles originating in the [Toyota Production System](https://en.wikipedia.org/wiki/Toyota_Production_System). In the book, the protagonist Bill Palmer encounters a mentor called Erik, who coaches Bill through his struggles in his now role as VP of IT Operations at Parts Unlimited, a fictional (yet all-too-real feeling, as we will see) automotive parts manufacturer (and retailer, one of the sources of tension in the book). Erik tries to impart to Bill his wisdom and knowledge of manufacturing management, and how these principles apply to IT management as well. Erik's knowledge is distilled down to two main areas: the Four Types of Work, and the Three Ways.
+
+### Four Types of Work:
+
+1. Business Projects: These are the traditional projects that IT works on, often coming directly from business needs. They might include creating new features, entering new markets, or any task that provides direct value to the business.
+2. Internal IT Projects: These projects do not always directly provide value to the business but are essential for the internal workings of the IT department. Examples might be upgrading a database, transitioning to a new platform, or other infrastructure changes.
+3. Changes: This type of work originates from the ongoing need to keep systems up-to-date, efficient, and in accordance with business needs. Changes could be the result of either Business Projects or Internal IT Projects and may involve updates, patches, or other modifications.
+4. Unplanned Work or Recovery Work: This is the reactionary work that is required when things go wrong. It can often be disruptive and take precedence over all other types of work. The goal in any efficient system is to minimize unplanned work as it often comes at the cost of other value-adding activities.
+
+### The Three Ways:
+
+1. Flow of Work from Left to Right (First Way): This focuses on the performance of the entire system and not just a specific silo of work. The goal is to achieve a smooth and fast flow of work from Development to IT Operations to the customer. Key practices in this way include continuous integration, continuous testing, and continuous delivery.
+2. Feedback from Right to Left (Second Way): This is about creating a culture where feedback from one stage of the value stream is used to prevent problems in previous stages. It emphasizes the importance of understanding and responding to all customers, both internal and external. Key practices involve creating short and fast feedback loops to ensure that any defects are identified and corrected as quickly as possible.
+3. Culture of Continual Experimentation and Learning (Third Way): This encourages a culture where risks are taken, and a resilient system is built. The emphasis is on constant experimentation and learning from failures. It also values repetition and practice, believing that the more something is practised, the more proficient an organization becomes.
+
+## Realism...
+
+Works of fiction depicting a particular industry or profession are usually criticised for their sensationalised or overly-dramatic representations of the working life of professionals, with little representation of the true mundaneness of the field. Some prominent examples that come to mind would be hacking/cybersecurity,  medicine, and politics.
+
+Somehow, _The Phoenix Project_ not only manages to weave a compelling and dramatic tale, it does so while 
+
+## ...and Fantasy
+
+## Conclusion
