@@ -100,3 +100,5 @@ Today he would have been 50 years old. He died too young, and it's not fair that
 Today, I'm remembering Mike. And I'm not mourning him, I'm thinking about how lucky I am to have had him in my life, and how privileged I am to have called him my friend. I sincerely hope I can honour his legacy by living up to the example he set. With any opportunity, I will tell people about Mike, and try to keep his influence rippling out into the world.
 
 Happy birthday, big brother. I miss you.
+
+![Mike with the autographed picture of Carrie Fisher that I got him for his 40th birthday, 10 years ago](/images/carrie.jpg)
