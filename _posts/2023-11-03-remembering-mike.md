@@ -2,7 +2,7 @@
 layout: post
 title:  "Remembering Mike"
 date:   2023-11-03 00:00:01 +1000
-image:  /images/ef-core.png
+image:  /images/troops.jpg
 tags:   
 categories: []
 ---
@@ -10,6 +10,8 @@ categories: []
 This post is a bit different to my usual content, and a bit longer too. For anyone just here for tech and dev stuff, please feel free to skip this one.
 
 Four and a half years ago, on 19th March 2019, my best friend Mike passed away. He was 45 at the time, and today would've been his 50th birthday.
+
+![Mike, as I will always remember him](/images/mike.jpg)
 
 I'm quite a few years younger than Mike, and I remember when he had his 25th birthday at his uni bar, there was a fair bit of teasing about hitting the quarter century mark. 25 seems so young now - but it's funny, today 45 seems somehow even younger.
 
@@ -51,4 +53,50 @@ The first time I met Lisa was during basketball practice. I'd come to visit Mike
 
 But off the court was a completely different story. Lisa is beyond any shadow of a doubt one of the kindest, most caring, most compassionate, and most empathetic people I have ever met. She puts all those around her first. She's one of those people who, when you speak to her, you can tell is listening intently to every word you are saying. She's as genuine as they come.
 
-Lisa changed Mike. Over the years, Mike's hard edges softened, and this changed my relationship with him too. We became true friends, and all of this led to one of the highest honours I've ever received in my life. Mike and Lisa asked me to be godfather to their firstborn son.
+Lisa changed Mike. Over the years, Mike's hard edges softened, and this changed my relationship with him too. We became true friends, and all of this led to one of the highest honours I've ever received in my life. Mike and Lisa asked me to be godfather to their firstborn son Chase.
+
+![Me and Mike wearing our Storm Trooper helmets that Lisa surprised us with](/images/troops.jpg)
+
+I'll never forget the day of the christening. Mike and Lisa, both Catholic, had explained to the priest that one of the godfathers (Lisa's brother and father were godfathers too) would be Jewish. The priest gave a long speech about the spiritual responsibilities of a godparent, about how their role is to guide the child in the ways of Christ, and stared daggers at me for emphasis every few words. Well, fortunately I wasn't struck by lightning as I entered teh church, and my fingers didn't sizzle when I dipped them in the font of holy water. As I reached over to draw the cross ✝️ on Chase's forehead, I looked up and saw Mike's shoulders shaking as he fought to contain his laughter - he was sure I was about to draw a Star of David ✡️. Of course I didn't do this - I respected the honour that I had been given - but I;d be lying if I hadn't had the same thought too!
+
+![Me, Mike, and Chase embroiled in an epic lightsabre battle](/images/lightsabers.jpg)
+
+10 years later came another huge honour. Mike and Lisa got married, and asked me to be the best man. By this time I had moved to Australia, and this was actually my first trip back. The wedding was spectacular - not in a lavish, ostentatious way, but in the fun way you would expect no less of from Mike and Lisa. They had Han and Leia figurines on the wedding cake, and small Star Wars easter eggs peppered throughout the event. Chase and I were co-best-men, and Mike had ordered custom made lightsaber hilts for the three of us, which we wore hanging from our belts under our tuxedoes. Connor, their other son, was a baby, and therefore a little too young for best man duties, but you could tell he had as much fun at the wedding as everyone else!
+
+![Me and Mike at his Stag](/images/stag.jpg)
+
+In Jersey, Mike found the dream life he'd been chasing. It was a struggle at first - the four of them were living with Lisa's parents, which was definitely a strain, but also brought them all so close together. Mike was already a part of the family; Lisa's family are some of the most welcoming people I've ever met, and have always made me feel like a part of their family too (in fact, I'm sure if you asked them, they would say that they consider me family without a second thought). But this time certainly helped strengthen that bond.
+
+![Me with Mike, Lisa, Chase, Connor, and Lisa's parents](/images/jersey-pub.jpg)
+
+Quite literally the last thing Mike ever did was to make John, Lisa's dad, proud. On the day that he died, he was installing a wall-mounted TV bracket, and he'd placed a spirit level on top. He wanted to show John what a good job he'd done.
+
+It's been a relatively short time since then, only four and a half years. But it's been such an eventful four and a half years, not just for the world (Mike checked out before COVID), but for me personally. I miss Mike every day, but some of the most important things have happened in my life in that time, and I wish he'd been around to see them. And of course to give me guidance; there are always days when I wish I had his advice on things.
+
+There are so many more things that made Mike special. It would take another post several times the length of this one to list them all, but there is one in particular that I've touched on earlier, one more story I have to share.
+
+The area where we lived growing up had its share of rough elements. In particular, the neighbourhood where Mike grew up was a hotspot for a well-known racist, nationalist organisation; probably not the best for a mixed race guy like Mike, but fortunately, he'd managed to void any confrontations with these groups. That is, until I got him into one.
+
+One day after school, Iain and I were hanging out at the local shopping centre. A group of lads from our school - one of whom happened to be the son of a prominent member of one of these groups - decided to start picking on us. I can't blame them - like I said earlier, I was a little shit back then, and while I don't condone their actions, I at least understand. Poor Iain was probably an innocent bystander.
+
+Fortunately this didn't escalate to any violence. We knew most of the staff at the store where Mike worked; he wasn't their that day, but one of his colleagues let the two of us go out via the back. A few days later, possibly a week, we were at the shopping centre again. Mike was there, and we'd told him about what had happened, when this same group of lads sowed up. As I mentioned, Mike was a big guy, and he put the fear of god into these kids.
+
+Of course he didn't physically harm them, but he loomed over them and made it clear that they weren't to touch "his little mates". I'll never forget how grateful I was to Mike for standing up for us - something my father had never done when I got bullied as a small child - but this one, selfless act, nearly cost Mike his life.
+
+The next day, the father of one of these boys, the one I mentioned earlier, turned up at the store with a group of thugs demanding that Mike be brought out. Thank whatever higher power may or may not exist that Mike was not working that day. There is absolutely no question that they would have killed him.
+
+The next week was a horrifying blur. Demands at school for us to tell them where Mike lived, confirm whether he was Scott's brother. Calls into the headmaster's office, calls between the school and the store. Calls with Mike.
+
+Eventually, Mike decided it was best to leave the country. He had some family in Canada and decided to go and stay with them and lay low for a while. I honestly can't remember how it all eventually blew over. I guess the thugs lost interest. But I'll always remember with crystal clarity Mike's last words to me on the phone before he left.
+
+"You take care of yourself, ok?"
+
+It was said with such a sense of resignation, of finality. It seemed like Mike didn't expect to survive. Immediately after that phone call I burst into tears.
+
+I've never known such courage, such honour, in another human being. Mike was my brother, my best friend, and an absolute inspiration. And it all began in this one moment. I've barely scratched the surface here, but Mike saved me in so many ways, not just this one. He truly changed my life. He was the first person to inspire me to take accountability and responsibility, to rise above my circumstances, rather than to blame them.
+
+Today he would have been 50 years old. He died too young, and it's not fair that he was denied the privilege of growing old, and watching his kids grow up. It's not fair that his kids were denied a father, and it's not fair that the rest of the world was denied a good man.
+
+Today, I'm remembering Mike. And I'm not mourning him, I'm thinking about how lucky I am to have had him in my life, and how privileged I am to have called him my friend. I sincerely hope I can honour his legacy by living up to the example he set. With any opportunity, I will tell people about Mike, and try to keep his influence rippling out into the world.
+
+Happy birthday, big brother. I miss you.
