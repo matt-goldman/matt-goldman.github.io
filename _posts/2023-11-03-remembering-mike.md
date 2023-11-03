@@ -84,7 +84,7 @@ The area where we lived growing up had its share of rough elements. In particula
 
 One day after school, Iain and I were hanging out at the local shopping centre. A group of lads from our school - one of whom happened to be the son of a prominent member of one of these groups - decided to start picking on us. I can't blame them - like I said earlier, I was a little shit back then, and while I don't condone their actions, I at least understand. Poor Iain was probably an innocent bystander.
 
-Fortunately this didn't escalate to any violence. We knew most of the staff at the store where Mike worked; he wasn't there that day, but one of his colleagues let the two of us go out via the back. A few days later, possibly a week, we were at the shopping centre again. Mike was there, and we'd told him about what had happened, when this same group of lads sowed up. As I mentioned, Mike was a big guy, and he put the fear of god into these kids.
+Fortunately this didn't escalate to any violence. We knew most of the staff at the store where Mike worked; he wasn't there that day, but one of his colleagues let the two of us go out via the back. A few days later, possibly a week, we were at the shopping centre again. Mike was there, and we'd told him about what had happened, when this same group of lads showed up. As I mentioned, Mike was a big guy, and he put the fear of god into these kids.
 
 Of course he didn't physically harm them, but he loomed over them and made it clear that they weren't to touch "his little mates". I'll never forget how grateful I was to Mike for standing up for us - something my father had never done when I got bullied as a small child - but this one, selfless act, nearly cost Mike his life.
 
