@@ -2,7 +2,7 @@
 layout: post
 title:  "Understanding .NET MAUI Page and Navigation Lifecycle Event Order"
 date:   2023-11-22 00:00:01 +1000
-image:  /images/nav-events-cover.png
+image:  /images/nav-event-cover.png
 tags:   dotnet dotnetmaui
 categories: [.NET]
 ---
