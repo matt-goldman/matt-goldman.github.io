@@ -42,7 +42,7 @@ Here are the results from my experimentation:
 I focused on three key events, and here's the sequence in which they occur:
 
 1. **Receive navigation parameters:**This event triggers when your page or binding context receives navigation data, either as individual query attributes or a navigation dictionary. Refer to the [.NET MAUI docs](https://learn.microsoft.com/dotnet/maui/fundamentals/shell/navigation?view=net-maui-8.0#pass-data) for more details. Logically, this should be the first step, allowing your page or ViewModel to utilise this data immediately.
-2. **Appeared:** Following that, the `OnAppearing`` page lifecycle method is executed. This was a bit surprising to me, but it makes sense when you think about it.
+2. **Appeared:** Following that, the `OnAppearing` page lifecycle method is executed. This was a bit surprising to me, but it makes sense when you think about it.
 3. **Navigated to:** The final event I monitored was the `OnNavigatedTo` lifecycle event. The .NET MAUI team are unofficially recommending the use of `OnNavigatedTo` for page initialisation (unofficially because it comes up all the time in online discussions, but is not in the docs), so it's interesting to see it occur after the page has appeared.
 
 Understanding this sequence is crucial, especially when handling navigation parameters effectively.
@@ -64,3 +64,5 @@ The timing differences are fascinating. On Windows, the page appears relatively 
 The consistent order of .NET MAUI's lifecycle events across platforms was expected, but is still reassuring, and knowing this order is important in a lot of cases (as in my workshop app that I mentioned above, for example). The timing variations are interesting, and while not immediately relevant to my needs, could highlight the need for optimisation across different platforms.
 
 Hopefully you'll find this information useful as well!
+
+You can find the repo with these experiments here: [https://github.com/matt-goldman/NavigationQueryTest](https://github.com/matt-goldman/NavigationQueryTest)
