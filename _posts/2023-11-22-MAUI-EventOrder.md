@@ -16,22 +16,22 @@ Here are the results from my experimentation:
 <div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center;">
     <figure style="flex: 50%; text-align: center;">
         <!-- Image 1: Windows -->
-        <img src="/images/events-order-windows.png" alt="Event timings on Windows" style="max-width: 100%; height: auto;">
+        <img src="/images/event-order-windows.png" alt="Event timings on Windows" style="max-width: 100%; height: auto;">
         <figcaption>Event timings on Windows</figcaption>
     </figure>
     <figure style="flex: 50%; text-align: center;">
         <!-- Image 2: macOS -->
-        <img src="/images/events-order-macos.png" alt="Event timings on macOS" style="max-width: 100%; height: auto;">
+        <img src="/images/event-order-macos.png" alt="Event timings on macOS" style="max-width: 100%; height: auto;">
         <figcaption>Event timings on macOS</figcaption>
     </figure>
     <figure style="flex: 50%; text-align: center;">
         <!-- Image 3: Android -->
-        <img src="/images/events-order-android.png" alt="Event timings on Android" style="max-width: 100%; height: auto;">
+        <img src="/images/event-order-android.png" alt="Event timings on Android" style="max-width: 100%; height: auto;">
         <figcaption>Event timings on Android</figcaption>
     </figure>
     <figure style="flex: 50%; text-align: center;">
         <!-- Image 4: iOS -->
-        <img src="/images/events-order-ios.jpeg" alt="Event timings on iOS" style="max-width: 100%; height: auto;">
+        <img src="/images/event-order-ios.jpeg" alt="Event timings on iOS" style="max-width: 100%; height: auto;">
         <figcaption>Event timings on iOS</figcaption>
     </figure>
 </div>
