@@ -13,9 +13,9 @@ To get a clearer picture, I developed a small application to monitor these event
 
 Here are the results from my experimentation:
 
-![Event timings on Windows](/images/events-order-windows.png) ![Event timings on macOS](/images/events-order-macos.png)
+![Event timings on Windows](/images/event-order-windows.png) ![Event timings on macOS](/images/event-order-macos.png)
 
-![Event timings on Android](/images/events-order-android.png) ![Event timings on iOS](/images/events-order-ios.jpeg)
+![Event timings on Android](/images/event-order-android.png) ![Event timings on iOS](/images/event-order-ios.jpeg)
 
 ## Deciphering the Event Order
 
