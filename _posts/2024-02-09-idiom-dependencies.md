@@ -13,7 +13,7 @@ On mobile, it shows page content with navigation tabs at the bottom. Most of the
 
 On desktop the layout is different - it will have navigation tabs on the left, and to the right have the list/detail combination. You can see this approach in Microsoft Teams.
 
-![/images/teams-desktop-mobile.png](On desktop, the navigation tabs are on the left, followed by a list. The detail for the selected list item is displayed on the right. On mobile, the navigation tabs are at the bottom, and only the list (or detail) is shown.)
+![On desktop, the navigation tabs are on the left, followed by a list. The detail for the selected list item is displayed on the right. On mobile, the navigation tabs are at the bottom, and only the list (or detail) is shown.](/images/teams-desktop-mobile.png)
 
 ## The requirements
 
