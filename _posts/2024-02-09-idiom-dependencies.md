@@ -7,13 +7,14 @@ tags:   dotnet dotnetmaui di dependency-injection
 categories: [.NET]
 ---
 
-While working on my upcoming [hands-on .NET MAUI workshop for NDC](https://ndcsydney.com/workshops/hands-on-cross-platform-mobile-and-desktop-apps-with-net-maui/9b5cb208bd43) (note - link will probably not work after the conference), I was thinking about different layouts for desktop, tablet, and mobile apps. The app we build during the workshop is a simple chat app, in the vein of WhatsApp or Signal (with a little inspiration from Teams), and has a different depending on the device idiom.
+While working on my upcoming [hands-on .NET MAUI workshop for NDC](https://ndcsydney.com/workshops/hands-on-cross-platform-mobile-and-desktop-apps-with-net-maui/9b5cb208bd43) (note - link will probably not work after the conference), I was thinking about different layouts for desktop, tablet, and mobile apps. The app we build during the workshop is a simple chat app, in the vein of WhatsApp or Signal (with a little inspiration from Teams), and has a different layout depending on the device idiom.
 
 On mobile, it shows page content with navigation tabs at the bottom. Most of the pages show a list (e.g. people, chats, etc.) and when you tap the list, it navigates to a details page (e.g. the user's profile, the active chat window for the selected chat).
 
 On desktop the layout is different - it will have navigation tabs on the left, and to the right have the list/detail combination. You can see this approach in Microsoft Teams.
 
 ![On desktop, the navigation tabs are on the left, followed by a list. The detail for the selected list item is displayed on the right. On mobile, the navigation tabs are at the bottom, and only the list (or detail) is shown.](/images/teams-desktop-mobile.png)
+_On desktop, the navigation tabs are on the left, followed by a list. The detail for the selected list item is displayed on the right. On mobile, the navigation tabs are at the bottom, and only the list (or detail) is shown._
 
 ## The requirements
 
@@ -110,8 +111,6 @@ In this example, in the constructor the device idiom is detected and used to set
 
 **If this were a real chat app that I was building for a client, this is the approach I would take.** However, for my workshop I wanted to demonstrate the power of using different idioms to display different layouts on the same page, and this got me wondering how I would solve this in a real-world app where this was a requirement.
 
-**Note:** I still used David's approach to showing tabs on mobile and the flyout (left-hand navigation) on desktop and tablet.
-
 ## The simple solution
 
 The easiest approach is to simply inject all the dependencies into the page. In the constructor we can use the idiom logic to assign arguments to fields and/or the page's binding context. When we exit the constructor, the unused dependencies will eventually be cleaned up by the garbage collector, and the memory overhead is unlikely to impact anything but the most performance intensive apps.
@@ -137,6 +136,8 @@ public partial class ChatListPage : ContentPage
 ```
 
 **This is the example I used in my workshop.** It's not perfect, and I definitely wouldn't use this in a production app (and I mention that in the workshop), but for the purpose of illustrating different idiom layouts, this is fine.
+
+**Note:** I still used David's approach to showing tabs on mobile and the flyout (left-hand navigation) on desktop and tablet.
 
 ## Alternative approach 1: Use PageResolver
 
@@ -179,7 +180,7 @@ In the chat app described in this post, it might look a little something like th
               IsVisible="{OnIdiom Phone=False, Desktop=True}">
             <layouts:ChatLayout x:Name="Messages">
                 <layouts:ChatLayout.BindingContext>
-                    <resolver:ResolveViewModel x:TypeArguments="vm:MyViewModel" />
+                    <resolver:ResolveViewModel x:TypeArguments="vm:ChatViewModel" />
                 </layouts:ChatLayout.BindingContext>
             </layouts:ChatLayout>
         </Grid>
@@ -191,7 +192,7 @@ In the chat app described in this post, it might look a little something like th
 
 ## Alternative approach 2: Use a dependency wrapper or envelope
 
-The final approach I considered was to use an interface to define the dependencies for the chat page. Then I could provide one implementation for desktop and tablet, and another for phone, and use the idiom logic to register the appropriate implementation.
+The final approach I considered in any depth was to use an interface to define the dependencies for the chat page. Then I could provide one implementation for desktop and tablet, and another for phone, and use the idiom logic to register the appropriate implementation.
 
 The interface might look like this:
 
@@ -241,7 +242,7 @@ if (DeviceInfo.Current.DeviceIdiom == DeviceIdiom.Desktop || DeviceInfo.Current.
 {
     builder.Service.AddTransient<IChatListPageDependencies, DesktopTabletChatListDependencies>();
 }
-else if
+else if (DeviceInfo.Current.DeviceIdiom == DeviceIdiom.Phone)
 {
     builder.Service.AddTransient<IChatListPageDependencies, PhoneChatListDependencies>();
 }
