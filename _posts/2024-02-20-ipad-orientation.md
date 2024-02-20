@@ -36,11 +36,19 @@ I stumbled across [this article by Flavio Goncalves](https://www.cayas.de/en/blo
 
 Flavio shares his code in that post, and you can see that it uses the `DeviceDisplay.MainDisplayInfoChanged` event to trigger layout changes. Note that this is related to the main device display, and _not_ the app, so this approach is more reliable than `OrientationStateTrigger` on iPad. One problem for me though is that this event doesn't fire during lifecycle events (like app start or page load), so it can be problematic if you rely on orientation to set the initial state of your app.
 
-The approach I ended up using was the `SizeChanged` event. This fired when a page is initialised, and any time the page is resized. This would be because the device was rotated, or because the app went into a split view for multitasking. This therefore gave me the most dependable results.
+The approach I ended up using was the `SizeChanged` event. This fires when a page is initialised, as well as any time the page is resized; including if the device was rotated, or because the app went into a split view for multitasking. This therefore gave me the most dependable results.
 
-You can override this method, which will pass in a `height` and `width` parameter that you can compare to determine the orientation of your app. From there, you can programmatically trigger a visual state, and update your layout accordingly.
+You can then get the page's `height` and `width` properties that you can compare to determine its orientation. From there, you can programmatically trigger a visual state, and update your layout accordingly.
 
 ```csharp
+public MyResponsivePageConstructor()
+{
+    if (DeviceInfo.Current.Idiom == DeviceIdiom.Tablet)
+    {
+        this.SizeChanged += OnSizeChanged;
+    }
+}
+
 public void OnSizeChanged(object? sender, EventArgs e)
 {
     if (this.Width > this.Height)
@@ -55,6 +63,8 @@ public void OnSizeChanged(object? sender, EventArgs e)
     }
 }
 ```
+
+Note that the `LayoutChanged` event works just as well.
 
 In this case, `LayoutGrid` and `DetailGrid` represent my full responsive page (including list and detail) and the detail pane respectively. They have styles attached that control the column definitions (one column for the portrait layout, two for landscape) of the layout and visibility of the detail, using visual state manager.
 
