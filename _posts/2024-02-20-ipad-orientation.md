@@ -38,9 +38,17 @@ Flavio shares his code in that post, and you can see that it uses the `DeviceDis
 
 The approach I ended up using was the `SizeChanged` event. This fired when a page is initialised, and any time the page is resized. This would be because the device was rotated, or because the app went into a split view for multitasking. This therefore gave me the most dependable results.
 
-You can override this method, which will pass in a `height` and `width` parameter that you can compare to determine the orientation of your app. From there, you can programmatically trigger a visual state, and update your layout accordingly.
+You can then get the page's `height` and `width` properties that you can compare to determine its orientation. From there, you can programmatically trigger a visual state, and update your layout accordingly.
 
 ```csharp
+public MyResponsivePageConstructor()
+{
+    if (DeviceInfo.Current.Idiom == DeviceIdiom.Tablet)
+    {
+        this.SizeChanged += OnSizeChanged;
+    }
+}
+
 public void OnSizeChanged(object? sender, EventArgs e)
 {
     if (this.Width > this.Height)
@@ -55,6 +63,8 @@ public void OnSizeChanged(object? sender, EventArgs e)
     }
 }
 ```
+
+Note that the `LayoutChanged` event works just as well.
 
 In this case, `LayoutGrid` and `DetailGrid` represent my full responsive page (including list and detail) and the detail pane respectively. They have styles attached that control the column definitions (one column for the portrait layout, two for landscape) of the layout and visibility of the detail, using visual state manager.
 
