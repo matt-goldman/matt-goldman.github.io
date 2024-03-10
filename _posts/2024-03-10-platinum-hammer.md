@@ -25,7 +25,7 @@ The concept of the golden hammer isn't confined to technology and engineering; i
 
 ⚠️ **Warning:** Explicit language in clip
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/yaAPeIxsgL0?si=uwphe6ZSDkadQEcB&start=151&end=166" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yaAPeIxsgL0?si=uwphe6ZSDkadQEcB&start=136&end=151" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 _Ben Affleck is Kevin Smith's golden hammer_
 
 This phenomenon isn’t unique to Smith; many directors have their preferred actors, like Tim Burton's frequent collaborations with Michael Keaton and later Johnny Depp, or Christopher Nolan with Cillian Murphy. It highlights how comfort and familiarity can influence decision-making across different contexts.
