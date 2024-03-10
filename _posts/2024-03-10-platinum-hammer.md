@@ -11,7 +11,7 @@ categories: [Management]
 
 Most of us aim to use the right tool for the job, navigating the balance between tried and trusted methods and the allure of new solutions. This balance is often skewed by cognitive biases, leading us to favor familiar tools or be dazzled by new technology.
 
-# The golden hammer
+## The golden hammer
 
 Sometimes we can rely too much on familiar tools, trying to adapt the problem to the solution, rather than the other way around.
 
