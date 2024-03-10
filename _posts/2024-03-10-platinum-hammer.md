@@ -9,7 +9,7 @@ categories: [Management]
 
 ## Introduction to cognitive biases in decision making
 
-Most of us aim to use the right tool for the job, navigating the balance between tried and trusted methods and the allure of new solutions. This balance is often skewed by cognitive biases, leading us to favor familiar tools or be dazzled by new technology.
+Most of us aim to use the right tool for the job, navigating the balance between tried and trusted methods and the allure of new solutions. This balance is often skewed by cognitive biases, leading us to favour familiar tools or be dazzled by new technology.
 
 ## The golden hammer
 
@@ -58,7 +58,7 @@ I'll be the first to admit that it's easy to get swept along in the enthusiasm; 
 
 > How many projects have you used this on?
 
-This simple but powerful sentence packs quite a punch. There are several possible outcomes. The first is that they may in fact reveal that they've successfully used the tool, technique, or product in question on successful projects. In which case, great! It's proven. Or they may say "well, none, but...". And it this point it's up to them to convince you (or the product owner) that their recommendation is correct. The product owner may ask for alternative, proven, recommendations. On the other hand, if they're succesful, the team gets the opportunity to try the new toy. But either way, it's now with full disclosure, and the risk is out in the open for the team or product owner to accept.
+This simple but powerful sentence packs quite a punch. There are several possible outcomes. The first is that they may in fact reveal that they've successfully used the tool, technique, or product in question on successful projects. In which case, great! It's proven. Or they may say "well, none, but...". And at this point it's up to them to convince you (or the product owner) that their recommendation is correct. The product owner may ask for alternative, proven, recommendations. On the other hand, if they're succesful, the team gets the opportunity to try the new toy. But either way, it's now with full disclosure, and the risk is out in the open for the team or product owner to accept.
 
 ## Fostering mindful decision making
 
@@ -68,4 +68,4 @@ Arming youself with this knoweldge can be an invaluable tool, in work as well as
 
 ## Conclusion
 
-The golden hammer is well known, but it's just one of several cognitive biases we need to watch out for. In this post I've introduced "the platinum hammer", a commonly seen but lesser discssed counterpoint. What are your strategies for dealing with this situation? And what other cognitive biases have you learned to watch out for and counter, either in yourself or others?
+The golden hammer is well known, but it's just one of several cognitive biases we need to watch out for. In this post I've introduced "the platinum hammer", a commonly seen but lesser discussed counterpoint. What are your strategies for dealing with this situation? And what other cognitive biases have you learned to watch out for and counter, either in yourself or others?
