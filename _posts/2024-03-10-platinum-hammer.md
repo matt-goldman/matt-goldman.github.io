@@ -23,9 +23,9 @@ The phenomenon is well-known; in fact, like most cognitive biases, it's ingraine
 
 The concept of the golden hammer isn't confined to technology and engineering; it's prevalent in creative fields too. An example can be found in 'An Evening with Kevin Smith' (2002), where Smith shares his go-to recommendation for any role: Ben Affleck. Whether it’s _Daredevil_ or even _Jaws 5_, Affleck is his golden hammer.
 
-> ⚠️ **Warning:** Explicit language in clip
->
-<iframe width="560" height="315" src="https://www.youtube.com/embed/yaAPeIxsgL0?si=uwphe6ZSDkadQEcB&amp;start=151&amp;end=166" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+⚠️ **Warning:** Explicit language in clip
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yaAPeIxsgL0?si=uwphe6ZSDkadQEcB&start=151&end=166" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 _Ben Affleck is Kevin Smith's golden hammer_
 
 This phenomenon isn’t unique to Smith; many directors have their preferred actors, like Tim Burton's frequent collaborations with Michael Keaton and later Johnny Depp, or Christopher Nolan with Cillian Murphy. It highlights how comfort and familiarity can influence decision-making across different contexts.
