@@ -5,7 +5,7 @@ order: 6
 ---
 
 
-I’m excited about what I do, and what I have done, and this is where I share that excitement with you.
+I'm a Solution Architect working at SSW in Australia, and I'm excited about sharing my ideas.
 
 Over the course of my career I’ve had the privilege of working with some of the most exciting organisations in the world; a pioneering renewable energy company, a major national sports league, a world-first digital technology hospital, to name just a few. And there’s a common thread that ties all these things together: innovation.
 
@@ -20,3 +20,6 @@ Feel free to comment, share and follow. Feedback and dialogue is welcome!
 Cheers,
 
 Matt
+
+        
+<a href="https://www.buymeacoffee.com/goforgoldman" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
