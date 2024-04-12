@@ -34,7 +34,7 @@ This phenomenon isn’t unique to Smith; many directors have their preferred act
 
 The perhaps lesser-known counterpart is _the platinum hammer_. Unlike the golden hammer, which leans into comfort and familiarity, the platinum hammer is a different cognitive bias, in which we convince ourselves that the latest, greatest, shiny new thing is the solution to every problem.
 
-In 2024, we're all no doubt being subjected to daily messages from people telling us that AI, and more precisely their AI startup, is the absolute best solution to your problem. Even if your problem is unclogging cat hair from your vacuum cleaner - but they'll no doubt convince you that AI is the right tool for the job.
+In 2024, we're all no doubt being subjected to daily messages from people telling us that AI, and more precisely their AI startup, is the absolute best solution to your problem. Even if your problem is unclogging cat hair from your vacuum cleaner, they'll no doubt try to convince you that AI is the right tool for the job.
 
 As it happens, AI does actually have broad applications, and is making a significant impact in many industries. But there are still people trying to force it to solve the same problems they were trying to solve with blockchain a few short years ago.
 
