@@ -26,6 +26,7 @@ Another common approach is to [consider 'do nothing' as a default negative](http
 While this is a valuable strategy, there is a problem with this approach. I mentioned above that the Status Quo Bias is well known and understood by many people. A consequence of this is that some people can have a tendency to over-correct, favouring change as the default and dismissing the status quo as a viable option altogether. The problem here is that sometimes when we frame 'do nothing' as an active choice, we forget to frame it as a _viable_ choice.
 
 > Doing something is better than doing nothing.
+
 _An actual quote from a real executive I have worked with_
 
 There are several problems associated with this overcorrection. The most obvious is that it can lead to regression - the new solution could be worse than the status quo. This is often not the case however; more often, it leads to an outcome that is only slightly less sub-optimal than the status quo, an improvement that is also often completely disproportionate to the investment made in the change. While this is obviously inherently wasteful, it also results in greater opportunity cost.
