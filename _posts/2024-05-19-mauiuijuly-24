@@ -1,0 +1,88 @@
+---
+layout: post
+title:  ".NET MAUI UI July - 2023!"
+date:   2024-05-19 00:05:55 +0300
+image:  /images/maui-ui-july-bg.png
+tags:   mobile maui ui
+categories: [.NET, Mobile]
+---
+
+It's time for #MAUIUIJuly again!
+
+Based on an idea [originally started for Xamarin by Steven Thewissen](https://thewissen.io/introducing-xamarin-ui-july/), MAUI UI July is a month-long, community-driven event where anyone gets to share some of their enthusiasm and passion for .NET MAUI.
+
+This will be the third year running this event, and in previous years we've had fantastic contributions from the community, covering an incredible range of things to do with .NET MAUI. You can check out previous years' contributions here:
+
+[MAUI UI July (2022)](/posts/maui-ui-july)
+[MAUI UI July (2023)](/posts/maui-ui-july-23)
+
+Each day in July, we'll add a blog post or video to the calendar below, showcasing something cool you can do with .NET MAUI. Be sure to bookmark/favourite this post and check back every day for new content!
+
+And if you want to participate and contribute something, even better! Keep reading to see what's involved.
+
+## How to Get Involved
+
+MAUI UI July is open to community contributions, and is an opportunity to share your passion and knowledge with the world. All you have to do is pick a topic and create a blog post or video, and pick a day in July to release it. If you want to participate, comment below, shout out on socials using the hashtags #dotnetmaui and #MAUIUIJuly or ping me directly (I'm on Twitter/"X", LinkedIn, and Mastodon - links are in the sidebar on the left), saying which day of the month you want to release your post or video on. Once you've picked a date I'll add your name to the list below to reserve your spot.
+
+From there, just get started on your content! Keep the following in mind:
+
+1. The topic must be related to UI in .NET MAUI
+2. Your blog post or video must be in English
+3. Your content should indicate what level it is pitched at (e.g., beginner or advanced)
+4. Link back to this post in your blog post or in the description of your video
+5. Publish your blog post or video on the date according to the list below
+6. Share your video or blog post on socials, using the hashtags #dotnetmaui and #MAUIUIJuly
+
+That's it! Looking forward to seeing what you all come up with. :)
+
+## What should my content cover?
+
+Completely up to you! As long as it's related to .NET MAUI UI, feel free to be as creative as you like. Some common topics people like for this kind of thing include:
+
+* Replicate the UI of a well known app (see [this post](/posts/outlook-clone) for example)
+* Pick a fun or interesting design from [Dribbble](https://dribbble.com) and show how you can build it with .NET MAUI
+* Deep dive into a .NET MAUI UI feature
+* Build a popular UI control that doesn't come in the box (like a [bottom sheet](https://blogs.xgenoapps.com/post/2022/07/23/maui-bottom-sheet) for example)
+
+These are just examples. If you think something is interesting, there's a good chance the rest of the community will want to see you explain it.
+
+
+## .NET MAUI UI July Schedule
+
+| Date | Person       | Content |
+| ---- | ------------ | ------- |
+| 1    | Matt Goldman | TBC     |
+| 2    | Available    |         |
+| 3    | Available    |         |
+| 4    | Available    |         |
+| 5    | Available    |         |
+| 6    | Available    |         |
+| 7    | Available    |         |
+| 8    | Available    |         |
+| 9    | Available    |         |
+| 10   | Available    |         |
+| 11   | Available    |         |
+| 12   | Available    |         |
+| 13   | Available    |         |
+| 14   | Available    |         |
+| 15   | Available    |         |
+| 16   | Available    |         |
+| 17   | Available    |         |
+| 18   | Available    |         |
+| 19   | Available    |         |
+| 20   | Available    |         |
+| 21   | Available    |         |
+| 22   | Available    |         |
+| 23   | Available    |         |
+| 24   | Available    |         |
+| 25   | Available    |         |
+| 26   | Available    |         |
+| 27   | Available    |         |
+| 28   | Available    |         |
+| 29   | Available    |         |
+| 30   | Available    |         |
+| 31   | Available    |         |
+
+{: .goldie-table }
+
+I hope you enjoy .NET MAUI UI July!
