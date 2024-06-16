@@ -7,20 +7,19 @@ tags:   mobile maui ui
 categories: [.NET, Mobile, UI, UX, Parallax]
 ---
 
-Parallax is one of those effects that is dangerously easy to overuse in your apps, but equally, when done right, add an extra "wow!" factor that can elevate an otherwise flat app and give it some depth.
+Parallax is one of those effects that is dangerously easy to overuse in your apps, but equally, when done right, can add an extra "wow!" factor that elevates an otherwise flat app to give it some depth.
 
 > **What is parallax?**<br/> Parallax is the term given when things in the foreground appear to move quicker than things in the background. It was a [neat trick used in 16-bit games](https://www.youtube.com/watch?v=FIqpX4L5w2c) to give a sense of depth of a 3D environment, and has recently become a [trend in web design](https://www.wix.com/blog/what-is-parallax-scrolling-explained-with-examples). And perhaps most interestingly, it's one of the [methods used to estimate the distance of stars](https://lco.global/spacebook/distance/parallax-and-distance-measurement/) and other objects in space.
 {: .prompt-info :}
 
 ## Getting started
 
-Let's start with a basic app with a `CollectionView`, and see how we can add a parallax effect. The app we will build is a simple superheroes information app, that shows a series of cards with a picture and some text. I won't walk through the code here as it should be self-explanatory (and if not is outside the scope of this post, but if you want to learn more about this code you can check out the [official documentation](https://dotnet.microsoft.com/en-us/apps/maui) or my book [_.NET MAUI in Action_](https://www.manning.com/books/dot-net-maui-in-action?utm_source=goforgoldman&utm_medium=affiliate&utm_campaign=book_goldman_dot_5_10_22&a_aid=goforgoldman&a_bid=38933097)).
+Let's start with a basic app with a `CollectionView`. The app we will build is a simple superheroes information app, that shows a series of cards with a picture and some text. I've downloaded some images and placed them into the `Resources/Images` folder, and I've installed the [MVVM Community Toolkit](https://learn.microsoft.com/dotnet/communitytoolkit/mvvm/) and [MAUI Bindable Property Generator](https://github.com/rrmanzano/maui-bindableproperty-generator) to reduce boilerplate.
 
-Note that I've downloaded some images and placed them into the `Resources/Images` folder, and I've installed the [MVVM Community Toolkit](https://learn.microsoft.com/dotnet/communitytoolkit/mvvm/) and [MAUI Bindable Property Generator](https://github.com/rrmanzano/maui-bindableproperty-generator) to reduce boilerplate.
+The code is available on [GitHub](https://github.com/matt-goldman/parallax-collection), I won't walk through the code here as it should be self-explanatory (and if not is outside the scope of this post, but if you want to learn more about this code you can check out the [official documentation](https://dotnet.microsoft.com/en-us/apps/maui) or my book [_.NET MAUI in Action_](https://www.manning.com/books/dot-net-maui-in-action?utm_source=goforgoldman&utm_medium=affiliate&utm_campaign=book_goldman_dot_5_10_22&a_aid=goforgoldman&a_bid=38933097)). For convenience I've also added it below; it's collapsed so click on `Details` to unhide it.
 
-The code is available on GitHub, it's below too but collapsed to save space, but you can expand it to view it here too.
+<details>
 
-Adding something here to test
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -302,6 +301,9 @@ public partial class HeroCard : ContentView
 ```
 {: file="Controls/HeroCard.xaml.cs }
 
+</details>
+
+<br/>
 If you run and build the app now, you should see something like this:
 
 ![The app with a standard `CollectionView`](/images/parallax-collection-basic.gif)
@@ -309,6 +311,113 @@ _The app with the standard `CollectionView`_
 
 You can see I've added a shadow here which already adds a little depth, but we can add a bit more by adding a parallax effect.
 
-## Challenge
+## The logic
+
+Before we get into the code, let's briefly discuss the logic of how this effect will work. We're going to manipulate the position of the images relative to the card, so that as we scroll, it appears the images are moving faster than the cards. This is what is going to create the illusion of depth. To achieve this, everytime the `OnScrolled` event of the `CollectionView` is fired, we'll check the center of the image and adjust the `Y` (vertical) position. The further from the center it is, the more we'll offset it.
+
+[[[[TODO: Insert diagram!!!]]]]
+
+## Adding the controls
+
+I'm going to create two custom controls - a `ParallaxItemView`, which will expose a method that can be called when the `CollectionView` is scrolled, and a `ParallaxCollectionView`, which will call this event on its children when a scroll occurs.
+
+As the implementation of this effect is going to be different for each platform, I'm going to use partial classes, with the implementations in the relevant `Platforms` folders. For now the `ParallaxItemView` will just outline the required functionality. In a folder called `Controls`, I've added a file called `ParallaxItemView.cs`
+
+```csharp
+namespace ParallaxCollection.Controls;
+
+public abstract partial class ParallaxItemView : ContentView
+{
+    private int _y;
+    private int _denominator;
+    protected double ParallaxOffsetY;
+    private double ThisCenter;
+    private double CenterY;
+
+    public int PlatformY
+    {
+        get => _y;
+        private set
+        {
+            _y = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public ParallaxItemView()
+    {
+        ConfigurePlatform();
+    }
+
+    public virtual void OnScrolled()
+    {
+        if (Height == -1)
+            return;
+
+        CalculateCentre();
+        var diff = ThisCenter - CenterY;
+        ParallaxOffsetY = diff / _denominator;
+    }
+
+    partial void ConfigurePlatform();
+    partial void CalculateCentre();
+}
+```
+
+Let's talk through the variables in this class:
+
+* `PlatformY`: This is the main property (with a backing field) we are going to manipulate to control the vertical position of the parallax item. Based on how far an item has been scrolled, we're going to adjust this to offset the item and create the parallax effect.
+* `ParallaxOffsetY`: The is the value by which we are going to offset `PlatformY`.
+* `ThisCenter`: This is going to represent the center of the item which we are offsetting.
+* `CenterY`: This represents the center of the screen.
+
+Let's also talk about the methods (and method declarations):
+
+* `ConfigurePlatform`: This is called from the constructor and sets up the necessary platform specific pieces to make this work.
+* `CalculateCenter`: This will be called to calculate where on the screen the center of the item is, so that we know how far from the center of the screen is and consequently how much it should be offset.
+* `OnScrolled`: This will be called when the item is scrolled so that the offset can be calculated. It's `virtual` because it will need to be overridden, so that the child class can apply the `ParallelOffsetY` to whatever view it needs to after the calculations have completed.
+
+Note also the `_denominator` field. This is used as a scaling factor to control the extent of the effect. It will be set in the `ConfigurePlatform` method as it will be different on each platform, but we could make this a configurable value to make the pronouncement of the effect controllable.
+
+With the `ParallaxItemView` done, the next thing is to create the `ParallaxCollectionView`, also in the `Controls` folder:
+
+```csharp
+namespace ParallaxCollection.Controls;
+
+public class ParallaxCollectionView : CollectionView
+{
+    protected override void OnScrolled(ItemsViewScrolledEventArgs e)
+    {
+        base.OnScrolled(e);
+
+        var vte = (IVisualTreeElement)this;
+
+        var visualItems = vte.GetVisualChildren();
+
+        foreach (var item in visualItems)
+        {
+            if (item is ParallaxItemView parallaxItem)
+            {
+                parallaxItem.OnScrolled();
+            }
+        }
+    }
+}
+```
+
+This is fairly straightforward. It subclasses `CollectionView` and overrides the `OnScrolled` event. Every time the `CollectionView` is scrolled, it will cast itself to `IVisualTreeElement` so that it can get the child views. Then, each of these is checked to see if it's an instance of `ParallaxItemView`, and if so, the `OnScrolled` method is called.
+
+That's all the shared functionality complete, so with that out the way, we can take a look at the platform specifics.
+
+## Android
+
+## iOS
+
+## Result
+
+## Challenges
 
 To add an extra dimension to the depth, we could create a shadow of the image and insert it as a layer between the image and the card.
+Also  make denominator configurable
+Also add multiple layers
+Implement one of the parallax designs on dribble
