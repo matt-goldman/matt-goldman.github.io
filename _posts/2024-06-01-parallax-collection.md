@@ -313,9 +313,10 @@ You can see I've added a shadow here which already adds a little depth, but we c
 
 ## The logic
 
-Before we get into the code, let's briefly discuss the logic of how this effect will work. We're going to manipulate the position of the images relative to the card, so that as we scroll, it appears the images are moving faster than the cards. This is what is going to create the illusion of depth. To achieve this, everytime the `OnScrolled` event of the `CollectionView` is fired, we'll check the center of the image and adjust the `Y` (vertical) position. The further from the center it is, the more we'll offset it.
+Before we get into the code, let's briefly discuss the logic of how this effect will work. We're going to manipulate the position of the images relative to the card, so that as we scroll, it appears the images are moving faster than the cards. This makes the image appear closer than the backgroun, which creates the illusion of depth. To achieve this, every time the `OnScrolled` event of the `CollectionView` is fired, we'll check the center of the image and adjust the `Y` (vertical) position proportionally to the difference between the image's center and the screen's. The further from the center of the screen it is, the more we'll offset it.
 
-[[[[TODO: Insert diagram!!!]]]]
+![As the center of the view moves further from the center of the screen, the vertical position of the image is offset from the background proportionally, giving it the sense that it is moving quicker and appears closer](/images/parallax-logic-1.png)
+_As the center of the view moves further from the center of the screen, the vertical position of the image is offset from the background proportionally, giving it the sense that it is moving quicker and appears closer_
 
 ## Adding the controls
 
@@ -405,19 +406,160 @@ public class ParallaxCollectionView : CollectionView
 }
 ```
 
-This is fairly straightforward. It subclasses `CollectionView` and overrides the `OnScrolled` event. Every time the `CollectionView` is scrolled, it will cast itself to `IVisualTreeElement` so that it can get the child views. Then, each of these is checked to see if it's an instance of `ParallaxItemView`, and if so, the `OnScrolled` method is called.
+This is fairly straightforward. It subclasses `CollectionView` and overrides the `OnScrolled` event handler. Every time the `CollectionView` is scrolled, it will cast itself to `IVisualTreeElement` so that it can get the child views. Then, each of these is checked to see if it's an instance of `ParallaxItemView`, and if so, the `OnScrolled` method is called.
 
 That's all the shared functionality complete, so with that out the way, we can take a look at the platform specifics.
 
 ## Android
 
+In the `Platforms/Android` folder, create a folder called `Controls`, and in here, add the partial implementation of the `ParallaxItemView`. It's important to ensure it uses the same namespace:
+
+```csharp
+using Microsoft.Maui.Handlers;
+
+namespace ParallaxCollection.Controls;
+
+public partial class ParallaxItemView
+{
+    partial void ConfigurePlatform()
+    {
+    }
+
+    partial void CalculateCentre()
+    {
+        ThisCenter = PlatformY + (Height / 2);
+    }
+}
+```
+
+You can see here that we've started with partial implementations of the methods defined in the shared class. The `CalculateCenter` method is easy - it calculates the value for the center of the view as the `PlatformY` position plus half the height of the view. The Y position is the distance from the top of the screen to the top of the view, so adding half the height of the view gives us the center of the view.
+
+![PlatformY is the distance from the top of the screen to the top of the view, and ThisCenter (the center of the view) is calculated by adding half the height of the view](/images/parallax-android1.png){: width="300" }
+_PlatformY is the distance from the top of the screen to the top of the view, and ThisCenter (the center of the view) is calculated by adding half the height of the view_
+
+Let's start with two easy things: setting the values for `_denominator` and `CenterY`.
+
+```csharp
+partial void ConfigurePlatform()
+{
+    _denominator = 10;
+    CenterY = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density / 2;
+
+}
+```
+
+These are straightforward to understand. `_denominator` is an arbitrary value (worked out by trial and error), but could be whatever works for you on Android. We'll set a different value for iOS as it behaves differently, and talk about it a little more in the Challenges section at the end.
+
+The next line sets the `CenterY` value, which represents the center of the screen, using the cross-platform `DeviceDisplay.MainDisplayInfo` API from .NET MAUI (see [the docs](https://learn.microsoft.com/dotnet/maui/platform-integration/device/display?view=net-maui-8.0)) to get the height and density of the screen. `Height` gives the total pixels, and dividing it by the `Density` (pixels per unit), gets the height of the display in [device independent units (DIUs)](https://learn.microsoft.com/previous-versions/xamarin/xamarin-forms/creating-mobile-apps-xamarin-forms/summaries/chapter05#pixels-points-dps-dips-and-dius).
+
+The last step is to get the position of the view to set the `PlatformY` value. The view itself is derived from `ContentView`, which maps to the `View` type on Android, which gives us access to some useful platform APIs. First, we can use the [`ViewTreeObserver`](https://developer.android.com/reference/android/view/View#getViewTreeObserver()) to subscribe to the `ScrollChanged` event, and then set `PlatformY` whenever the position changes. And to get the position, we can use the [`GetLocationOnScreen`](https://developer.android.com/reference/android/view/View#getLocationOnScreen(int[])) method.
+
+`GetLocationOnScreen` returns an array of `int` with two values - one for `x` and one for `y`. So all we need to do is grab the `y` value and send it to the method. You can see the full code for the `ConfigurePlatform` method here:
+
+```csharp
+partial void ConfigurePlatform()
+{
+    _denominator = 10;
+    CenterY = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density / 2;
+
+    ContentViewHandler.Mapper.AppendToMapping("parallax", (handler, view) =>
+    {
+        if (view is ParallaxItemView pView)
+        {
+            handler.PlatformView.ViewTreeObserver!.ScrollChanged += (s, e) =>
+            {
+                int[] location = new int[2];
+                handler.PlatformView.GetLocationOnScreen(location);
+                int x = location[0];
+                int y = location[1];
+
+                pView.PlatformY = y;
+            };
+        }
+    });
+}
+```
+
+This is all the code we need on Android, so with that done we can move on to iOS.
+
 ## iOS
+
+iOS works differently than Android, but we can start the same way but adding the partial implementation to the `Platforms/iOS/Controls` folder:
+
+```csharp
+using Microsoft.Maui.Handlers;
+
+namespace ParallaxCollection.Controls;
+
+public partial class ParallaxItemView
+{
+
+    partial void ConfigurePlatform()
+    {
+        _denominator = 3;
+        CenterY = 160;
+    }
+
+    partial void CalculateCentre()
+    {
+    }
+}
+```
+
+Once again, use the same namespace. In the `ConfigurePlatform` method, we've set a value for `_denominator`, but rather than obtaining the center of the screen programatically, we're using a fixed value. For iOS, this is much easier than trying to get the value from the API, and iOS provides a fixed set of device specific resolutions (in points or DIUs). You can read more about these in the documentation, although I found [a nice writeup here](https://www.appmysite.com/blog/the-complete-guide-to-iphone-screen-resolutions-and-sizes/) too.
+
+To improve this, we would want to get the device model and set this accordingly (see Challenges section below), but for now this works for our limited use case.
+
+The next step is to obtain the position of the view. This is not as straightforward as on Android, because the position is only ever relative to the parent view, and not the screen. But we can user the [iOS API](https://learn.microsoft.com/dotnet/api/uikit.uiview.convertpointtoview?view=xamarin-ios-sdk-12) to obtain the position onscreen using the `ConvertPointToView` method. `ConvertPointToView` (on the `UIView` class) returns a `CGPoint` which contains `X` and `Y` values (`CGPoint` can be considered similar to a `Vector2` in .NET, although they serve slightly different purposes).
+
+To use this, we need to cast the view to the native `UIView`, then call the `ConvertPointToView` method, passing the view's location bounds (which is also a `CGPoint`) as a parameter. This will convert the position from the view's coordinate system to the screen's coordinate system. From here we can get the `Y` value, and divide it by the density to get the position in DIUs.
+
+The complete code for the iOS implementation is here:
+
+```csharp
+using CoreGraphics;
+using UIKit;
+
+namespace ParallaxCollection.Controls;
+
+public partial class ParallaxItemView
+{
+    private readonly double _density = DeviceDisplay.MainDisplayInfo.Density;
+    
+    partial void ConfigurePlatform()
+    {
+        _denominator = 3;
+        CenterY = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density / 2;
+    }
+
+    partial void CalculateCentre()
+    {
+        CalculatePosition();
+        ThisCenter = PlatformY + (Height / 2);
+    }
+
+    public void CalculatePosition()
+    {
+        var location = new CGPoint();
+        if (this.Handler?.PlatformView is UIView platformView)
+        {
+            location = platformView.ConvertPointToView(platformView.Bounds.Location, null);
+        }
+
+        PlatformY = (int)(location.Y / _density);
+    }
+}
+```
+
+With the iOS and Android implementations complete, we can update our UI to use the new controls.
 
 ## Result
 
 ## Challenges
 
+Other OSes
 To add an extra dimension to the depth, we could create a shadow of the image and insert it as a layer between the image and the card.
 Also  make denominator configurable
+Get iPhone model to set CenterY
 Also add multiple layers
 Implement one of the parallax designs on dribble
