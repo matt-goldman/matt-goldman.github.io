@@ -506,11 +506,11 @@ public partial class ParallaxItemView
 }
 ```
 
-Once again, use the same namespace. In the `ConfigurePlatform` method, we've set a value for `_denominator`, but rather than obtaining the center of the screen programatically, we're using a fixed value. For iOS, this is much easier than trying to get the value from the API, and iOS provides a fixed set of device specific resolutions (in points or DIUs). You can read more about these in the documentation, although I found [a nice writeup here](https://www.appmysite.com/blog/the-complete-guide-to-iphone-screen-resolutions-and-sizes/) too.
+Once again, use the same namespace. In the `ConfigurePlatform` method, we've set a value for `_denominator`, but rather than obtaining the center of the screen programmatically, we're using a fixed value. For iOS, this is much easier than trying to get the value from the API, and iOS provides a fixed set of device specific resolutions (in points or DIUs). You can read more about these in the documentation, although I found [a nice write-up here](https://www.appmysite.com/blog/the-complete-guide-to-iphone-screen-resolutions-and-sizes/) too.
 
 To improve this, we would want to get the device model and set this accordingly (see Challenges section below), but for now this works for our limited use case.
 
-The next step is to obtain the position of the view. This is not as straightforward as on Android, because the position is only ever relative to the parent view, and not the screen. But we can user the [iOS API](https://learn.microsoft.com/dotnet/api/uikit.uiview.convertpointtoview?view=xamarin-ios-sdk-12) to obtain the position onscreen using the `ConvertPointToView` method. `ConvertPointToView` (on the `UIView` class) returns a `CGPoint` which contains `X` and `Y` values (`CGPoint` can be considered similar to a `Vector2` in .NET, although they serve slightly different purposes).
+The next step is to obtain the position of the view. This is not as straightforward as on Android, because the position is only ever relative to the parent view, and not the screen. But we can user the [iOS API](https://learn.microsoft.com/dotnet/api/uikit.uiview.convertpointtoview?view=xamarin-ios-sdk-12) to obtain the position on-screen using the `ConvertPointToView` method. `ConvertPointToView` (on the `UIView` class) returns a `CGPoint` which contains `X` and `Y` values (`CGPoint` can be considered similar to a `Vector2` in .NET, although they serve slightly different purposes).
 
 To use this, we need to cast the view to the native `UIView`, then call the `ConvertPointToView` method, passing the view's location bounds (which is also a `CGPoint`) as a parameter. This will convert the position from the view's coordinate system to the screen's coordinate system. From here we can get the `Y` value, and divide it by the density to get the position in DIUs.
 
@@ -555,11 +555,78 @@ With the iOS and Android implementations complete, we can update our UI to use t
 
 ## Result
 
+Now that we've got an implementation for `ParallaxItemVeiw` on iOS and Android, we can update the hero card to inherit this instead of `ContentView` directly, and override the `OnScrolled` method to adjust the position of the image.
+
+```csharp
+using Maui.BindableProperty.Generator.Core;
+
+namespace ParallaxCollection.Controls;
+
+public partial class HeroCard : ParallaxItemView
+{
+    public HeroCard()
+    {
+        InitializeComponent();
+        BindingContext = this;
+    }
+
+    public override void OnScrolled()
+    {
+        base.OnScrolled();
+        HeroImageImage.TranslationY = ParallaxOffsetY;
+    }
+
+    /// ..
+}
+```
+
+Remember that the `ParallaxCollectionView` will check all its children to see if they are an instance of `ParallaxItemView`, and if they are will call this method. The platform implementations we've just created will set a value for `ParallaxOffsetY` when we call the `base` method, and here assign that offset to the `HeroImageImage` (note there's a `HeroLogoImage` and a `HeroImageImage` - we could apply an offset to both - see Challenges section).
+
+All that remains is to replace the `CollectionView` in `MainPage` with our new `ParallaxCollectionView`. As `ParallaxCollectionView` subclasses `CollectionView`, it's just a straight swap.
+
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ParallaxCollection.ViewModels;assembly=ParallaxCollection"
+             xmlns:controls="clr-namespace:ParallaxCollection.Controls;assembly=ParallaxCollection"
+             x:DataType="vm:MainViewModel"
+             x:Class="ParallaxCollection.MainPage">
+
+    <Grid>
+        <controls:ParallaxCollectionView ItemsSource="{Binding Heroes}"
+                                         VerticalOptions="Center"
+                                         x:Name="HeroesCollection">
+            <controls:ParallaxCollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="50"
+                                   Orientation="Vertical"></LinearItemsLayout>
+            </controls:ParallaxCollectionView.ItemsLayout>
+            <controls:ParallaxCollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:HeroCardViewModel">
+                    <controls:HeroCard Background="{Binding Background}"
+                                       HeroName="{Binding Name}"
+                                       SecretIdentity="{Binding SecretIdentity}"
+                                       HeroImage="{Binding HeroImage}"
+                                       HeroLogo="{Binding LogoImage}"/>
+                </DataTemplate>
+            </controls:ParallaxCollectionView.ItemTemplate>
+        </controls:ParallaxCollectionView>
+    </Grid>
+
+</ContentPage>
+```
+
+The only changes here are including the `controls` namespace and switching the references from `CollectionView` to `ParallaxCollectionView`. If we run the app now, we see the scrolling effect we're after.
+
+[[[TODO: Insert gif]]]
+
 ## Challenges
 
-Other OSes
-To add an extra dimension to the depth, we could create a shadow of the image and insert it as a layer between the image and the card.
-Also  make denominator configurable
-Get iPhone model to set CenterY
-Also add multiple layers
-Implement one of the parallax designs on dribble
+This is a neat effect that we can use (while being careful not to overuse) to add some depth to our apps. This is very much a demo though; if you wanted to use this in a production app, there are some improvements you should consider. If you like this and want to take it a little further, here are some challenges you can take on to take this to the next level.
+
+* **Other OSes:** This currently only works on iOS and Android. See if you can get it working on macOS and Windows.
+* **Shadows:** To add an extra dimension to the depth, we could create a shadow of the image and insert it as a layer between the image and the card.
+* **Configurable offset:** With this approach, if I wanted to adjust the offset, I would use a modifier on the `ParallaxOffsetY` (more on this below), but we could consider making denominator configurable.
+* **Multiple layers:** Right now there are two layers - the foreground and the background. We could add more - an easy way would be to add a modifier to `ParllaxOffsetY` before applying it to a view, a harder way would be to make it reusable by adding some kind of layer property to the `ParallaxItemView` which already has the modifier (although this could result in unnecessary calculations if the layers aren't in use). The biggest challenge for us though as developers is more likely keeping the effect subtle. When implementing a cool effect like this, it's tempting to make it pronounced so the whole world can see, but for something like this it's important to keep it barely noticable. If in doubt, consult with your friendly neighbourhood UI expert 😉.
+* **Better handling for `CenterY` on iPhone:** This is currently using an arbitrary value, but 
+**Find and implement your own:** Implement one of the parallax designs on dribble
