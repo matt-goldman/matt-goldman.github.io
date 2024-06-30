@@ -32,10 +32,6 @@ The code is available on [GitHub](https://github.com/matt-goldman/parallax-colle
         <CollectionView ItemsSource="{Binding Heroes}"
                                     VerticalOptions="Center"
                                     x:Name="HeroesCollection">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout ItemSpacing="50"
-                            Orientation="Vertical"></LinearItemsLayout>
-            </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="vm:HeroCardViewModel">
                     <controls:HeroCard Background="{Binding Background}"
@@ -75,32 +71,16 @@ public partial class MainPage : ContentPage
 The ViewModel contains the collection of heroes and a method to seed the collection:
 
 ```csharp
-using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
-using ParallaxCollection.Models;
+using System.Collections.ObjectModel;
 
 namespace ParallaxCollection.ViewModels;
 
 public partial class MainViewModel : ObservableObject
 {
-    public MainViewModel()
-    {
-        SeedHeroes();
-    }
-    
-    public ObservableCollection<HeroCardViewModel> Heroes { get; set; } = new();
-    
-    private void SeedHeroes()
-    {
-        foreach (var hero in _heroes)
-        {
-            Heroes.Add(new HeroCardViewModel(hero));
-        }
-    }
-    
-    private List<Hero> _heroes { get; set; } = new()
-    {
-        new Hero()
+    public ObservableCollection<HeroCardViewModel> Heroes { get; set; } =
+    [
+        new HeroCardViewModel
         {
             Name = "Superman",
             SecretIdentity = "Clark Kent",
@@ -108,7 +88,7 @@ public partial class MainViewModel : ObservableObject
             LogoImage = "superman_logo.png",
             Background = Colors.Blue
         },
-        new Hero()
+        new HeroCardViewModel
         {
             Name = "Batman",
             SecretIdentity = "Bruce Wayne",
@@ -116,7 +96,7 @@ public partial class MainViewModel : ObservableObject
             LogoImage = "batman_logo.png",
             Background = Colors.DarkGray
         },
-        new Hero()
+        new HeroCardViewModel
         {
             Name = "Wonder Woman",
             SecretIdentity = "Diana Prince",
@@ -124,7 +104,7 @@ public partial class MainViewModel : ObservableObject
             LogoImage = "wonderwoman_logo.png",
             Background = Colors.Gold
         },
-        new Hero()
+        new HeroCardViewModel
         {
             Name = "The Flash",
             SecretIdentity = "Barry Allen",
@@ -132,7 +112,7 @@ public partial class MainViewModel : ObservableObject
             LogoImage = "theflash_logo.png",
             Background = Colors.Red
         },
-        new Hero()
+        new HeroCardViewModel
         {
             Name = "Green Lantern",
             SecretIdentity = "Hal Jordan",
@@ -140,7 +120,7 @@ public partial class MainViewModel : ObservableObject
             LogoImage = "greenlantern_logo.png",
             Background = Colors.Green
         },
-        new Hero()
+        new HeroCardViewModel
         {
             Name = "Shazam",
             SecretIdentity = "Billy Batson",
@@ -148,19 +128,19 @@ public partial class MainViewModel : ObservableObject
             LogoImage = "shazam_logo.png",
             Background = Colors.Red
         }
-    };
+    ];
 }
 ```
 {: file="ViewModels/MainViewModel.cs }
 
-You can see that it's using a `HeroCardViewModel` and a `Hero` model.
+You can see that it's using a `HeroCardViewModel`.
 
 ```csharp
 using ParallaxCollection.Models;
 
 namespace ParallaxCollection.ViewModels;
 
-public class HeroCardViewModel(Hero hero)
+public class HeroCardViewModel
 {
     public string Name { get; set; } = hero.Name;
     public string SecretIdentity { get; set; } = hero.SecretIdentity;
@@ -171,21 +151,6 @@ public class HeroCardViewModel(Hero hero)
 ```
 {: file="ViewModels/HeroCardViewModel.cs }
 
-And the hero model itself.
-
-```csharp
-namespace ParallaxCollection.Models;
-
-public class Hero
-{
-    public string Name { get; set; }
-    public string SecretIdentity { get; set; }
-    public string HeroImage { get; set; }
-    public string LogoImage { get; set; }
-    public Color Background { get; set; }
-}
-```
-{: file="Models/Hero.cs }
 
 Finally the `HeroCard` view itself which is used as the data template in the collection:
 
@@ -313,7 +278,7 @@ You can see I've added a shadow here which already adds a little depth, but we c
 
 ## The logic
 
-Before we get into the code, let's briefly discuss the logic of how this effect will work. We're going to manipulate the position of the images relative to the card, so that as we scroll, it appears the images are moving faster than the cards. This makes the image appear closer than the backgroun, which creates the illusion of depth. To achieve this, every time the `OnScrolled` event of the `CollectionView` is fired, we'll check the center of the image and adjust the `Y` (vertical) position proportionally to the difference between the image's center and the screen's. The further from the center of the screen it is, the more we'll offset it.
+Before we get into the code, let's briefly discuss the logic of how this effect will work. We're going to manipulate the position of the images relative to the card, so that as we scroll, it appears the images are moving faster than the cards. This makes the image appear closer than the background, which creates the illusion of depth. To achieve this, every time the `OnScrolled` event of the `CollectionView` is fired, we'll check the center of the image and adjust the `Y` (vertical) position proportionally to the difference between the image's center and the screen's center. The further from the center of the screen it is, the more we'll offset it.
 
 ![As the center of the view moves further from the center of the screen, the vertical position of the image is offset from the background proportionally, giving it the sense that it is moving quicker and appears closer](/images/parallax-logic-1.png)
 _As the center of the view moves further from the center of the screen, the vertical position of the image is offset from the background proportionally, giving it the sense that it is moving quicker and appears closer_
@@ -329,21 +294,11 @@ namespace ParallaxCollection.Controls;
 
 public abstract partial class ParallaxItemView : ContentView
 {
-    private int _y;
+    private int _platformY;
     private int _denominator;
     protected double ParallaxOffsetY;
     private double ThisCenter;
     private double CenterY;
-
-    public int PlatformY
-    {
-        get => _y;
-        private set
-        {
-            _y = value;
-            OnPropertyChanged();
-        }
-    }
 
     public ParallaxItemView()
     {
@@ -367,16 +322,16 @@ public abstract partial class ParallaxItemView : ContentView
 
 Let's talk through the variables in this class:
 
-* `PlatformY`: This is the main property (with a backing field) we are going to manipulate to control the vertical position of the parallax item. Based on how far an item has been scrolled, we're going to adjust this to offset the item and create the parallax effect.
-* `ParallaxOffsetY`: The is the value by which we are going to offset `PlatformY`.
+* `_platformY`: This will represent the current vertical position of the view.
 * `ThisCenter`: This is going to represent the center of the item which we are offsetting.
 * `CenterY`: This represents the center of the screen.
+* `ParallaxOffsetY`: This is the main property we are going to manipulate to control the vertical position of the parallax item. Based on how far `ThisCenter` is from `CenterY`, we're going to adjust this to offset the item and create the parallax effect.
 
 Let's also talk about the methods (and method declarations):
 
-* `ConfigurePlatform`: This is called from the constructor and sets up the necessary platform specific pieces to make this work.
-* `CalculateCenter`: This will be called to calculate where on the screen the center of the item is, so that we know how far from the center of the screen is and consequently how much it should be offset.
-* `OnScrolled`: This will be called when the item is scrolled so that the offset can be calculated. It's `virtual` because it will need to be overridden, so that the child class can apply the `ParallelOffsetY` to whatever view it needs to after the calculations have completed.
+* `ConfigurePlatform`: This is called from the constructor and will set up the necessary platform specific pieces to make this work.
+* `CalculateCenter`: This will be called to calculate where on the screen the center of the item is, so that we know how far from the center of the screen it is and consequently how much it should be offset.
+* `OnScrolled`: This will be called when the item is scrolled so that the offset can be calculated. It's `virtual` because it will need to be overridden, so that the child class can apply the `ParallaxOffsetY` to whatever view it needs to after the calculations have completed.
 
 Note also the `_denominator` field. This is used as a scaling factor to control the extent of the effect. It will be set in the `ConfigurePlatform` method as it will be different on each platform, but we could make this a configurable value to make the pronouncement of the effect controllable.
 
@@ -406,13 +361,13 @@ public class ParallaxCollectionView : CollectionView
 }
 ```
 
-This is fairly straightforward. It subclasses `CollectionView` and overrides the `OnScrolled` event handler. Every time the `CollectionView` is scrolled, it will cast itself to `IVisualTreeElement` so that it can get the child views. Then, each of these is checked to see if it's an instance of `ParallaxItemView`, and if so, the `OnScrolled` method is called.
+This is fairly straightforward. It subclasses `CollectionView` and overrides the `OnScrolled` method. Every time the `CollectionView` is scrolled, it will cast itself to `IVisualTreeElement` so that it can get the child views. Then, each of these is checked to see if it's an instance of `ParallaxItemView`, and if so, the `OnScrolled` method is called.
 
 That's all the shared functionality complete, so with that out the way, we can take a look at the platform specifics.
 
 ## Android
 
-In the `Platforms/Android` folder, create a folder called `Controls`, and in here, add the partial implementation of the `ParallaxItemView`. It's important to ensure it uses the same namespace:
+In the `Platforms/Android` folder, create a folder called `Controls`, and in here, add the partial implementation of the `ParallaxItemView`. I've put mine in a file called `ParallaxItemView.Android.cs`, but it's important to ensure it uses the same class name and namespace:
 
 ```csharp
 using Microsoft.Maui.Handlers;
@@ -427,17 +382,17 @@ public partial class ParallaxItemView
 
     partial void CalculateCentre()
     {
-        ThisCenter = PlatformY + (Height / 2);
+        ThisCenter = _platformY + (Height / 2);
     }
 }
 ```
 
-You can see here that we've started with partial implementations of the methods defined in the shared class. The `CalculateCenter` method is easy - it calculates the value for the center of the view as the `PlatformY` position plus half the height of the view. The Y position is the distance from the top of the screen to the top of the view, so adding half the height of the view gives us the center of the view.
+You can see here that we've started with partial implementations of the methods defined in the shared class. The `CalculateCenter` method is easy - it calculates the value for the center of the view as the `_platformY` position plus half the height of the view. The Y position is the distance from the top of the screen to the top of the view, so adding half the height of the view gives us the center of the view.
 
-![PlatformY is the distance from the top of the screen to the top of the view, and ThisCenter (the center of the view) is calculated by adding half the height of the view](/images/parallax-android1.png){: width="300" }
-_PlatformY is the distance from the top of the screen to the top of the view, and ThisCenter (the center of the view) is calculated by adding half the height of the view_
+![platformY is the distance from the top of the screen to the top of the view, and ThisCenter (the center of the view) is calculated by adding half the height of the view](/images/parallax-android1.png){: width="300" }
+__platformY is the distance from the top of the screen to the top of the view, and ThisCenter (the center of the view) is calculated by adding half the height of the view_
 
-Let's start with two easy things: setting the values for `_denominator` and `CenterY`.
+Now we need to flesh out the `ConfigurePlatform` method, so let's start with two easy things: setting the values for `_denominator` and `CenterY`.
 
 ```csharp
 partial void ConfigurePlatform()
@@ -448,13 +403,13 @@ partial void ConfigurePlatform()
 }
 ```
 
-These are straightforward to understand. `_denominator` is an arbitrary value (worked out by trial and error), but could be whatever works for you on Android. We'll set a different value for iOS as it behaves differently, and talk about it a little more in the Challenges section at the end.
+These are straightforward - `_denominator` is an arbitrary value (worked out in my case by trial and error, but could be whatever works for you on Android). We'll set a different value for iOS as it behaves differently, and talk about it a little more in the Challenges section at the end.
 
 The next line sets the `CenterY` value, which represents the center of the screen, using the cross-platform `DeviceDisplay.MainDisplayInfo` API from .NET MAUI (see [the docs](https://learn.microsoft.com/dotnet/maui/platform-integration/device/display?view=net-maui-8.0)) to get the height and density of the screen. `Height` gives the total pixels, and dividing it by the `Density` (pixels per unit), gets the height of the display in [device independent units (DIUs)](https://learn.microsoft.com/previous-versions/xamarin/xamarin-forms/creating-mobile-apps-xamarin-forms/summaries/chapter05#pixels-points-dps-dips-and-dius).
 
-The last step is to get the position of the view to set the `PlatformY` value. The view itself is derived from `ContentView`, which maps to the `View` type on Android, which gives us access to some useful platform APIs. First, we can use the [`ViewTreeObserver`](https://developer.android.com/reference/android/view/View#getViewTreeObserver()) to subscribe to the `ScrollChanged` event, and then set `PlatformY` whenever the position changes. And to get the position, we can use the [`GetLocationOnScreen`](https://developer.android.com/reference/android/view/View#getLocationOnScreen(int[])) method.
+The last step is to get the position of the view to set the `_platformY` value. Unfortunately we can't just use the `Y` property of the view, as this will be relative to the parent (in this case the `PrallaxCollectionView`) and not the screen. But as the view is derived from `ContentView`, which maps to the `View` type on Android, there are some useful platform APIs we can use instead. First, we can use the [`GetLocationOnScreen`](https://developer.android.com/reference/android/view/View#getLocationOnScreen(int[])) method to get the view's position relative to the screen. And second, we can use the [`ViewTreeObserver`](https://developer.android.com/reference/android/view/View#getViewTreeObserver()) to subscribe to the `ScrollChanged` event, and update `_platformY` whenever the position changes.
 
-`GetLocationOnScreen` returns an array of `int` with two values - one for `x` and one for `y`. So all we need to do is grab the `y` value and send it to the method. You can see the full code for the `ConfigurePlatform` method here:
+`GetLocationOnScreen` returns an array of `int` with two values - one for `x` and one for `y`. So all we need to do is grab the `y` value and set `_platformY`. You can see the full code for the `ConfigurePlatform` method here:
 
 ```csharp
 partial void ConfigurePlatform()
@@ -470,7 +425,6 @@ partial void ConfigurePlatform()
             {
                 int[] location = new int[2];
                 handler.PlatformView.GetLocationOnScreen(location);
-                int x = location[0];
                 int y = location[1];
 
                 pView.PlatformY = y;
@@ -480,11 +434,13 @@ partial void ConfigurePlatform()
 }
 ```
 
-This is all the code we need on Android, so with that done we can move on to iOS.
+The `CalculateCenter` and `OnScrolled` methods already do the rest of the work - once we've got the correct value for `_platformY`, we call `CalculateCenter()` to get the correct value for the center. And then the rest of the `OnScrolled` method calculates and sets the `OffsetParallaxY` value.
+
+Which means that this is all the code we need on Android, so with that done we can move on to iOS.
 
 ## iOS
 
-iOS works differently than Android, but we can start the same way but adding the partial implementation to the `Platforms/iOS/Controls` folder:
+iOS works a little differently than Android, but we can start the same way but adding the partial implementation to the `Platforms/iOS/Controls` folder:
 
 ```csharp
 using Microsoft.Maui.Handlers;
@@ -506,11 +462,11 @@ public partial class ParallaxItemView
 }
 ```
 
-Once again, use the same namespace. In the `ConfigurePlatform` method, we've set a value for `_denominator`, but rather than obtaining the center of the screen programmatically, we're using a fixed value. For iOS, this is much easier than trying to get the value from the API, and iOS provides a fixed set of device specific resolutions (in points or DIUs). You can read more about these in the documentation, although I found [a nice write-up here](https://www.appmysite.com/blog/the-complete-guide-to-iphone-screen-resolutions-and-sizes/) too.
+Be sure to use the same namespace and class name. In the `ConfigurePlatform` method, we've set a value for `_denominator`, but rather than obtaining the center of the screen programmatically, we're using a fixed value. For iOS, this is much easier than trying to get the value from the API, and iOS provides a fixed set of device specific resolutions (in points or DIUs). You can read more about these in the documentation, although I found [a nice write-up here](https://www.appmysite.com/blog/the-complete-guide-to-iphone-screen-resolutions-and-sizes/) too.
 
 To improve this, we would want to get the device model and set this accordingly (see Challenges section below), but for now this works for our limited use case.
 
-The next step is to obtain the position of the view. This is not as straightforward as on Android, because the position is only ever relative to the parent view, and not the screen. But we can user the [iOS API](https://learn.microsoft.com/dotnet/api/uikit.uiview.convertpointtoview?view=xamarin-ios-sdk-12) to obtain the position on-screen using the `ConvertPointToView` method. `ConvertPointToView` (on the `UIView` class) returns a `CGPoint` which contains `X` and `Y` values (`CGPoint` can be considered similar to a `Vector2` in .NET, although they serve slightly different purposes).
+The next step is to obtain the position of the view. This is not as straightforward as on Android; on iOS, `ContentView` maps to `UIView`, and its position is only ever relative to the parent view, and not the screen. But we can use the [iOS API](https://learn.microsoft.com/dotnet/api/uikit.uiview.convertpointtoview?view=xamarin-ios-sdk-12) to obtain the position on-screen using the `ConvertPointToView` method. `ConvertPointToView` (on the `UIView` class) returns a `CGPoint` which contains `X` and `Y` values (`CGPoint` can be considered similar to a `Vector2` in .NET, although they are conceptually different).
 
 To use this, we need to cast the view to the native `UIView`, then call the `ConvertPointToView` method, passing the view's location bounds (which is also a `CGPoint`) as a parameter. This will convert the position from the view's coordinate system to the screen's coordinate system. From here we can get the `Y` value, and divide it by the density to get the position in DIUs.
 
@@ -535,10 +491,10 @@ public partial class ParallaxItemView
     partial void CalculateCentre()
     {
         CalculatePosition();
-        ThisCenter = PlatformY + (Height / 2);
+        ThisCenter = _platformY + (Height / 2);
     }
 
-    public void CalculatePosition()
+    private void CalculatePosition()
     {
         var location = new CGPoint();
         if (this.Handler?.PlatformView is UIView platformView)
@@ -546,12 +502,12 @@ public partial class ParallaxItemView
             location = platformView.ConvertPointToView(platformView.Bounds.Location, null);
         }
 
-        PlatformY = (int)(location.Y / _density);
+        _platformY = (int)(location.Y / _density);
     }
 }
 ```
 
-With the iOS and Android implementations complete, we can update our UI to use the new controls.
+This completes the implementation, so with both the iOS and Android implementations complete, we can update our UI to use the new controls.
 
 ## Result
 
@@ -597,10 +553,6 @@ All that remains is to replace the `CollectionView` in `MainPage` with our new `
         <controls:ParallaxCollectionView ItemsSource="{Binding Heroes}"
                                          VerticalOptions="Center"
                                          x:Name="HeroesCollection">
-            <controls:ParallaxCollectionView.ItemsLayout>
-                <LinearItemsLayout ItemSpacing="50"
-                                   Orientation="Vertical"></LinearItemsLayout>
-            </controls:ParallaxCollectionView.ItemsLayout>
             <controls:ParallaxCollectionView.ItemTemplate>
                 <DataTemplate x:DataType="vm:HeroCardViewModel">
                     <controls:HeroCard Background="{Binding Background}"
@@ -616,9 +568,18 @@ All that remains is to replace the `CollectionView` in `MainPage` with our new `
 </ContentPage>
 ```
 
-The only changes here are including the `controls` namespace and switching the references from `CollectionView` to `ParallaxCollectionView`. If we run the app now, we see the scrolling effect we're after.
+> **Note**<br/> It's actually not necessary to use `controls:ParallaxCollectionView` inside the view (i.e. for the `ItemTemplate` as I've done here). `CollectionView` works fine too, but I think it helps keep it more consistent to do it this way.
+{: .prompt-tip :}
 
-[[[TODO: Insert gif]]]
+The changes here are minimal - the `ParallaxItemView` and `ParallaxCollectionView` do all the heavy lifting, so all we've done here is include the `controls` namespace and switch the references from `CollectionView` to `ParallaxCollectionView` (we didn't have to change anything on `HeroCard` because we've already updated it to inherit `ParallaxItemView`).
+
+If we run the app now, we see the scrolling effect we're after:
+
+![The parallax effect on Android](/images/android-parallax.gif)
+_The parallax effect on Android_
+
+![The parallax effect on iOS](/images/ios-parallax.gif)
+_The parallax effect on iOS_
 
 ## Challenges
 
@@ -627,6 +588,6 @@ This is a neat effect that we can use (while being careful not to overuse) to ad
 * **Other OSes:** This currently only works on iOS and Android. See if you can get it working on macOS and Windows.
 * **Shadows:** To add an extra dimension to the depth, we could create a shadow of the image and insert it as a layer between the image and the card.
 * **Configurable offset:** With this approach, if I wanted to adjust the offset, I would use a modifier on the `ParallaxOffsetY` (more on this below), but we could consider making denominator configurable.
-* **Multiple layers:** Right now there are two layers - the foreground and the background. We could add more - an easy way would be to add a modifier to `ParllaxOffsetY` before applying it to a view, a harder way would be to make it reusable by adding some kind of layer property to the `ParallaxItemView` which already has the modifier (although this could result in unnecessary calculations if the layers aren't in use). The biggest challenge for us though as developers is more likely keeping the effect subtle. When implementing a cool effect like this, it's tempting to make it pronounced so the whole world can see, but for something like this it's important to keep it barely noticable. If in doubt, consult with your friendly neighbourhood UI expert 😉.
-* **Better handling for `CenterY` on iPhone:** This is currently using an arbitrary value, but 
-**Find and implement your own:** Implement one of the parallax designs on dribble
+* **Multiple layers:** Right now there are two layers - the foreground and the background. We could add more - an easy way would be to add a modifier to `ParallaxOffsetY` before applying it to a view, a harder way would be to make it reusable by adding some kind of layer property to the `ParallaxItemView` which already has the modifier. This could result in unnecessary calculations if the layers aren't in use, but the bigger challenge for us as developers is more likely keeping the effect subtle. When implementing a cool effect like this, it's tempting to make it pronounced so the whole world can see, but for something like this it's important to keep it barely noticeable. If in doubt, consult with your friendly neighbourhood UI expert 😉.
+* **Better handling for `CenterY` on iPhone:** This is currently using an arbitrary value, but we could get the device model and retrieve the center from a dictionary of known pixel heights for each device.
+* **Find and implement your own:** Find and implement a cool design on Dribble, or replicate the effect from another app you like.
