@@ -427,7 +427,7 @@ partial void ConfigurePlatform()
                 handler.PlatformView.GetLocationOnScreen(location);
                 int y = location[1];
 
-                pView.PlatformY = y;
+                pView._platformY = y;
             };
         }
     });
