@@ -121,6 +121,8 @@ paginate: 10
 
 # ------------ The following options are not recommended to be modified ------------------
 
+#markdown: CommonMarkGhPages
+
 kramdown:
   syntax_highlighter: rouge
   syntax_highlighter_opts:   # Rouge Options › https://github.com/jneen/rouge#full-options
@@ -131,6 +133,7 @@ kramdown:
     block:
       line_numbers: true
       start_line: 1
+  parse_block_html: true
 
 collections:
   tabs:
