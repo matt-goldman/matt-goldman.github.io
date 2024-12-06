@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title:  "Cosmic Aspirations: A Workaround for the Cosmos DB Emulator Explorer in Aspire"
