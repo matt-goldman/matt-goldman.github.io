@@ -5,7 +5,7 @@ order: 6
 ---
 
 
-I'm a [Solution Architect working at SSW in Australia](https://www.ssw.com.au/people/matt-goldman/), and I'm excited about sharing my ideas.
+I'm a app development and cloud consultant working in Australia, I'm an innovation and technology enthusiast, and I'm excited about sharing my ideas.
 
 Over the course of my career I’ve had the privilege of working with some of the most exciting organisations in the world; a pioneering renewable energy company, a major national sports league, a world-first digital technology hospital, to name just a few. And there’s a common thread that ties all these things together: innovation.
 
@@ -20,4 +20,3 @@ Feel free to comment, share and follow. Feedback and dialogue is welcome!
 Cheers,
 
 Matt
-
