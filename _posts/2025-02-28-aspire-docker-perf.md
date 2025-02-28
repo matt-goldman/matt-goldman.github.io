@@ -2,8 +2,8 @@
 layout: post
 title:  "Fixing Docker Performance in Aspire on Windows"
 date:   2025-02-28 00:00:01 +1000
-image:  /images/cosmic-aspirations.png
-tags:   docker aspire wsl windows performance
+image:  /images/aspire-docker-performance.png
+tags:   docker aspire wsl windows performance wsl2
 categories: [.NET, Aspire, Docker, Performance]
 ---
 
@@ -11,7 +11,7 @@ If you're building .NET Aspire projects on Windows, you might be getting frustra
 
 ## Background - are Macs just faster?
 
-This performance discrepancy between code running on macOS and code running on Windows is I've come across before, specifically in Node applications. I don't develop them, but I do run them sometimes. For example, this blog is built with Jekyll, a Ruby-based static site generator. Being able to run it locally and preview posts before I publish them is fairly important, but the performance on Windows is so bad that it makes it almost impossible. This was frustrating, especially considering how snappily it ran on my M1 MacBook. I've since upgraded to a newer machine, but I mention this to highlight that it's not just a hardware issue. My Windows machine is an i9 with 32GB of RAM, but would get smoked by my 8GB M1. I didn't think it could be purely a hardware issue, and I also figured that Node developers can't exclusively be using macOS, so I did some digging.
+Yes and no. This performance discrepancy between code running on macOS and code running on Windows is I've come across before, specifically in Node applications. I don't develop them, but I do run them sometimes. For example, this blog is built with Jekyll, a Ruby-based static site generator. Being able to run it locally and preview posts before I publish them is fairly important, but the performance on Windows is so bad that it makes it almost impossible. This was frustrating, especially considering how snappily it ran on my M1 MacBook. I've since upgraded to a newer machine, but I mention this to highlight that it's not just a hardware issue. My Windows machine is an i9 with 32GB of RAM, but would get smoked by my 8GB M1. I didn't think it could be purely a hardware issue, and I also figured that Node developers can't exclusively be using macOS, so I did some digging.
 
 While Node does feature some optimisations for ARM processors, it's not just the hardware that makes a difference, it's the OS too - lowish spec Linux machines can run Node without any trouble, in fact even a Raspberry Pi can run a Node server without breaking a sweat. (Note that I'm talking about development builds - production builds don't tend to have this problem on Windows).
 
@@ -57,7 +57,9 @@ memory=6GB    #Limits VM memory in WSL 2 to 6GB
 processors=1    #Makes the WSL 2 VM use one virtual processors
 ```
 
-I must admit I was sceptical, but it really does work. Again, I haven't done any benchmarks here, but let me give you an anecdote. A solution I am currently working on for a client involves importing documents to be used as templates for reports. In my Aspire infrastructure, I'm running the Cosmos DB emulator for persistence and Azurite for blob storage. In the UI, you can select a file for upload, and once it's uploaded it will process in the background. Once the file has been processed, the UI updates to show the ile.
+Depending on your workload you may need to adjust this. I wanted to start with these and tweak as needed, but in my case I found this worked well enough.
+
+I must admit I was sceptical, but it really does work. Again, I haven't done any benchmarks here, but let me give you an anecdote. A solution I am currently working on for a client involves importing documents to be used as templates for reports. In my Aspire infrastructure, I'm running the Cosmos DB emulator for persistence and Azurite for blob storage. In the UI, you can select a file for upload, and once it's uploaded it will process in the background. Once the file has been processed, the UI updates to show the file.
 
 On macOS, when I upload a file, it appears in the UI straight away. On Windows it would take several seconds. Since making this change, I've noticed a significant performance improvement. It's still not instant, but that's because I've introduced another step in the process (uploading to SharePoint rather than Azurite), so I will need to run it again on macOS to compare, and in this case I may need to actually run the benchmarks.
 
@@ -67,7 +69,7 @@ Even so, it's been a huge improvement and, counter-intuitive as it may be, it wo
 
 As I said, this seemed counter-intuitive. As others noted in response to that answer, the issue isn't with Windows performance, it's with container performance. I would understand if the issue was that when running Docker containers, my Windows machine was struggling to keep up, but that didn't seem to be the case.
 
-But it turns out that actually _was_ the problem. Without a `.wslconfig` file, WSL will consume all available CPU and memory (the same thing happens with SQL Server and Exchange Server, which is why they're not recommended to run on the same machine). As Docker us running on top of WSL, when the containers are running, WSL consumes all available resources and starves the OS. This leads to excessive [swapping](https://www.geeksforgeeks.org/swapping-in-operating-system/), which leads to performance degradation in the OS itself.
+But it turns out that actually _was_ the problem. Without a `.wslconfig` file, WSL will consume all available CPU and memory (the same thing happens with SQL Server and Exchange Server, which is why they're not recommended to run on the same machine). As Docker us running on top of WSL, when the containers are running, WSL consumes all available resources and starves the OS. Since WSL doesn't release memory back to Windows easily, it forces the OS to use disk-based virtual memory ([swapping](https://www.geeksforgeeks.org/swapping-in-operating-system/)), which is much slower than RAM.
 
 Where this sneaks under the radar for developers like me, is that while this is happening, you're typically debugging code running in a container. When you stop, things usually go back to normal (but not always - sometimes you have to kill WSL to get it to release the resources), and you don't notice any performance issues in your OS. This is why it _seems_ like the issue is just with Docker - and in a sense, it is, but the problem _does_ in fact impact the whole OS. I just wasn't noticing.
 
@@ -78,4 +80,3 @@ If you're running Aspire projects on Windows and you're noticing performance iss
 I'm probably quite late to the party with this one, but it made a huge difference for me, and I hope it does for you too.
 
 Do you have any other performance improvement suggestions for Aspire on Windows? Let me know in the comments below!
-
