@@ -11,31 +11,13 @@ As I prepare for my [hands-on .NET MAUI workshop for NDC](https://ndcsydney.com/
 
 To get a clearer picture, I developed a small application to monitor these events. Thankfully, the event order was consistent across all platforms, which is reassuring but not always a given.
 
-Here are the results from my experimentation:
+Here are the results from my experimentation.
 
-<div style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center;">
-    <figure style="flex: 50%; text-align: center;">
-        <!-- Image 1: Windows -->
-        <img src="/images/event-order-windows.png" alt="Event timings on Windows" style="max-width: 100%; height: auto;">
-        <figcaption>Event timings on Windows</figcaption>
-    </figure>
-    <figure style="flex: 50%; text-align: center;">
-        <!-- Image 2: macOS -->
-        <img src="/images/event-order-macos.png" alt="Event timings on macOS" style="max-width: 100%; height: auto;">
-        <figcaption>Event timings on macOS</figcaption>
-    </figure>
-    <figure style="flex: 50%; text-align: center;">
-        <!-- Image 3: Android -->
-        <img src="/images/event-order-android.png" alt="Event timings on Android" style="max-width: 100%; height: auto;">
-        <figcaption>Event timings on Android</figcaption>
-    </figure>
-    <figure style="flex: 50%; text-align: center;">
-        <!-- Image 4: iOS -->
-        <img src="/images/event-order-ios.jpeg" alt="Event timings on iOS" style="max-width: 100%; height: auto;">
-        <figcaption>Event timings on iOS</figcaption>
-    </figure>
-</div>
-
+| ![Windows](/images/event-order-windows.png) | ![macOS](/images/event-order-macos.png) |
+|:--:|:--:|
+| Event timings on Windows | Event timings on macOS |
+| ![Android](/images/event-order-android.png) | ![iOS](/images/event-order-ios.jpeg) |
+| Event timings on Android | Event timings on iOS |
 
 ## Deciphering the Event Order
 
