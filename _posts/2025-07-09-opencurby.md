@@ -74,3 +74,16 @@ But...it's in NextJs.
 ## Version 4
 
 I could at this stage ask ChatGPT to translate the app for me into .NET MAUI, but I know from experience that while it can do it, the results aren't perfect. Instead I wanted to do this one myself.
+
+
+---notes----
+
+1. HSL to Hex from global CSS
+ - Works!!!
+
+2. Gradient colours from tailwind config
+   - Works - took me waaaaaaay longer than it would have to just type it all out, but I can reuse this process.
+
+-----
+
+Probably enough boilerplate. Gonna start building the pages now.
