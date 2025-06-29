@@ -55,7 +55,7 @@ We already know the "from" - that won't change - so we need a way to figure out 
 
 ## Picturing the Dial as Triangles
 
-To determine the `x` and `y` coordinates for the end of the pointer, we can imagine a right-angle triangle, with the point at the origin, and an imaginary vertical line from the bottom of the gauge to the end pf the pointer. The pointer itself forms the hypotenuse, as in the following diagram:
+To determine the `x` and `y` coordinates for the end of the pointer, we can imagine a right-angle triangle, with the point at the origin, and an imaginary vertical line from the bottom of the gauge to the end of the pointer. The pointer itself forms the hypotenuse, as in the following diagram:
 
 ![If we project an imaginary vertical line connecting the tip of the pointer to the base of the gauge, the base, line, and pointer form a right-angle triangle, with the pointer as the hypotenuse](/images/batmobile-dial-triangle1.png)
 
