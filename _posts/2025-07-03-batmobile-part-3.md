@@ -162,7 +162,7 @@ And that's it! We're finally ready to draw the line.
 
 ## Putting it All Together
 
-As we saw in part.2 yesterday, calculating all this is the responsibility of the `Dashboard`. It calculates the _endX_ and _endY_ values any time the RPM changes, and sends those to the pointer to be redrawn.
+As we saw in Part 2 yesterday, calculating all this is the responsibility of the `Dashboard`. It calculates the _endX_ and _endY_ values any time the RPM changes, and sends those to the pointer to be redrawn.
 
 As we've been through the steps here, I'll just show the code rather than stepping through it, with some comments to help tie it to what we've already seen.
 
