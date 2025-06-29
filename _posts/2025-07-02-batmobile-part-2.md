@@ -7,7 +7,7 @@ tags: [mobile, maui, ui]
 categories: [.NET, Mobile, UI, Batman]
 ---
 
-Welcome back to MAUI UI July 2025. In [Part 1](/2025/07/01/batmobile-throttle-ui-with-mauigraphics), we built a custom throttle control for the Batmobile. Today, we’re heading into the Batcave to build a live RPM dashboard that visualises the data stream in real time.
+Welcome back to MAUI UI July 2025. In [Part 1](/posts/batmobile), we built a custom throttle control for the Batmobile. Today, we’re heading into the Batcave to build a live RPM dashboard that visualises the data stream in real time.
 
 ## Dashboard Overview
 
