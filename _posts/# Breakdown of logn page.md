@@ -1,4 +1,4 @@
-# Breakdown of logn page
+# Breakdown of login page
 
 ```js
     <div className="flex flex-col items-center justify-center min-h-screen p-6 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-900 dark:to-gray-800">
@@ -6,6 +6,21 @@
 Easy enough. This is a div using utlitiy classes from Tailwind to create a flexbox. That's really all for layout. And we can see it's got a background gradient. We can define a brush for that.
 
 Step 1: create the gradient brushes
+
+```xml
+<LinearGradientBrush x:Key="BackgroundGradient"
+                         StartPoint="1,0.5"
+                         EndPoint="0,0.5">
+        <GradientStop Color="{AppThemeBinding
+                                Default={StaticResource Green50},
+                                Dark={StaticResource Gray900}}"
+                      Offset="0"/>
+        <GradientStop Color="{AppThemeBinding
+                                Default={StaticResource Emerald50},
+                                Dark={StaticResource Gray600}}"
+                      Offset="1" />
+    </LinearGradientBrush>
+```
 
 Step 2: ~~create a control template for the pages~~
 Nah easier to just set it as the background on each page
@@ -44,7 +59,7 @@ This is the page header. It contains the recycle logo. This comes from a custom 
 
 Step 4 - VerticalStackLayout within a VerticalStackLayout? Or change top level to FlexLayout?
 
-Change - let's align with the code from v0.
+Change - let's align with the code from v0. Use FlexLayout for the main layout and VerticalStackLayout for the header.
 
 Ok - Recycle comes from Lucide React, it's not a custom component. Mark this as todo, screenshot and image for now.
 
@@ -56,7 +71,7 @@ Ok - Recycle comes from Lucide React, it's not a custom component. Mark this as 
             <CardDescription className="text-center">Enter your credentials to continue</CardDescription>
           </CardHeader>
 ```
-This is a card control. We can inspect the componet to see how that's build. the border here is interesting, the classes are defined here instead of in the control.
+This is a card control. We can inspect the component to see how that's built. The border here is interesting, the classes are defined here instead of in the control.
 
 ```js
           <CardContent>
@@ -98,7 +113,7 @@ This is a card control. We can inspect the componet to see how that's build. the
                 </Label>
               </div>
 ```
-Labels and inputs. Simple.
+Labels, inputs, and checkboxes. Simple.
 
 ```js
               <Button
@@ -124,4 +139,6 @@ Labels and inputs. Simple.
 
 The last part uses a custom button component. It's got some flexibility in that it allows different styling based on type. We'll just use explicit styles.
 
-First he layout then the controls
+First he layout then the controls.
+
+Let's do the entry control - bring in the Handlers package - ok scrapped that because I didn't like that it applied to all Entry instances rather than a subclass, even though I'm not using any non-custom Entry instances. Just didn't like that.

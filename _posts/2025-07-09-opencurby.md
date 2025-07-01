@@ -36,7 +36,7 @@ At first I decided to stick with ChatGPT. I gave it the context and my notes abo
 
 One of the first questions it asked was whether I wanted to use the default .NET MAUI colours. I said now and gave it a very open-ended brief that the app should be beautiful and simple for anyone to use.
 
-There was a little back-and-forth: not much, mostly sensible follow-up questions, although I did have to ask it for app-wide stlyes and colours rather than hard-coded values. It built the UI for me, and it was actually pretty good.
+There was a little back-and-forth: not much, mostly sensible follow-up questions, although I did have to ask it for app-wide styles and colours rather than hard-coded values. It built the UI for me, and it was actually pretty good.
 
 It still used `Frame` which is deprecated; in the last post I got it to change this to `Border` but this time I did it myself. It also added a `CornerRadius` property to the `Entry` controls, and later styles. Frankly I think that actually seems sensible, but it's not currently valid.
 
@@ -44,15 +44,15 @@ I removed that with a note to re-add it via a custom control later, but for now 
 
 And it looks pretty good!
 
-I haven't shown the scan page because it's the same style just with a button that launches a QR code scanner (using ZXing). It also gave nme what looks like it would be a nice scan result card control, but I didn't get as far as implementing the scanner to test it.
+I haven't shown the scan page because it's the same style just with a button that launches a QR code scanner (using ZXing). It also gave ne what looks like it would be a nice scan result card control, but I didn't get as far as implementing the scanner to test it.
 
 Instead I decided to try a different approach.
 
 ## Version 2
 
-Instead of continuing to use ChatGPT to generate code, wihch I think we've already seen it has strengths and weaknesses for, I wanted to try a more specialised tool - in this case, V0. I have dabbled with V0 in the past and have gotten mixed results, so this time I wanted to try combining the strengths of these tools.
+Instead of continuing to use ChatGPT to generate code, which I think we've already seen it has strengths and weaknesses for, I wanted to try a more specialised tool - in this case, V0. I have dabbled with V0 in the past and have gotten mixed results, so this time I wanted to try combining the strengths of these tools.
 
-I asked ChatGPT to act as a consultant; instead of asking it to generate code, I asked it to consider the goals of being simple, beautiful, and accessible, and what deisgn principles we should consider or follow with that in mind.
+I asked ChatGPT to act as a consultant; instead of asking it to generate code, I asked it to consider the goals of being simple, beautiful, and accessible, and what design principles we should consider or follow with that in mind.
 
 Than, I asked to consider different categories in the Apple and Google design awards, and which categories would be most relevant to this app, based on what it understands about my goals. And then to pick some recent winners of those categories for inspiration.
 
@@ -62,9 +62,9 @@ Apple: Delight and Fun, Interaction, and Inclusivity
 
 Google: Best Motion, Best Accessibility
 
-After a bit more back and forth, and giving it some designs I found on Dribbble too for further investigation, I asked it to generate a deisgn brief for a UX and UI designer I could pass it on to. Importantly, I was prioritising UX here, not just UI.
+After a bit more back and forth, and giving it some designs I found on Dribbble too for further investigation, I asked it to generate a design brief for a UX and UI designer I could pass it on to. Importantly, I was prioritising UX here, not just UI.
 
-with prompt in hand I wnet over to V0 and asked it to build something.
+with prompt in hand I went over to V0 and asked it to build something.
 
 Franky, I think the results are stunning.
 
