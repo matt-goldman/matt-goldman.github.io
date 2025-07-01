@@ -3,7 +3,7 @@
 layout: post
 title: "Holy MauiGraphics Batman! Part 3: Clayface-Level Batmaths"
 date: 2025-07-03 00:00:01 +1000
-image: /images/maui-ui-july-bg.png
+image: /images/batmobile-cover-part-3.png
 tags: [mobile, maui, ui]
 categories: [.NET, Mobile, UI, Batman]
 ---
