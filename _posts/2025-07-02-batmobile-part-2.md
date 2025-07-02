@@ -38,7 +38,7 @@ canvas.FillPath(path);
 {: File="Controls/RpmGauge.cs" :}
 
 > Note: The duplicate line (`path.MoveTo(305,155`) is not a mistake. This is a workaround for an [open issue](https://github.com/dotnet/maui/issues/5691).
-{: .prompt_info :}
+{: .prompt-info :}
 
 Most of this code is similar to what we've already seen.
 
