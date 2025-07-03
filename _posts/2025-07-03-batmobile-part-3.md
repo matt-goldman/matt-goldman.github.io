@@ -35,7 +35,7 @@ Whether using rotation or redrawing the line, the first thing to determine is th
 private const float rpmDegrees = 84;
 ```
 
-Now any time the control receives a new RPM angle, the angle the gauge needs to be rotated to or pointed at is just the RPM divided by this constant:
+Now any time the control receives a new RPM value, the angle the gauge needs to be rotated to or pointed at is just the RPM divided by this constant:
 
 ```csharp
 var degrees = Rpm / rpmDegrees;
@@ -54,7 +54,7 @@ We already know the "from" - that won't change - so we need a way to figure out 
 
 ## Picturing the Dial as Triangles
 
-To determine the `x` and `y` coordinates for the end of the pointer, we can imagine a right-angle triangle, with the point at the origin, and an imaginary vertical line from the bottom of the gauge to the end of the pointer. The pointer itself forms the hypotenuse, as in the following diagram:
+To determine the `x` and `y` coordinates for the end of the pointer, we can imagine a right-angle triangle, with the pivot point at the origin, and an imaginary vertical line from the bottom of the gauge to the end of the pointer. The pointer itself forms the hypotenuse, as in the following diagram:
 
 ![If we project an imaginary vertical line connecting the tip of the pointer to the base of the gauge, the base, line, and pointer form a right-angle triangle, with the pointer as the hypotenuse](/images/batmobile-dial-triangle1.png)
 
@@ -130,8 +130,8 @@ $$
 A = \cos \theta \times H
 $$
 
-> We can do the same for TOA as well, but that's particularly useful in our case, given it depends on the two sides we're trying to find.
-{: prompt-info :}
+> We can do the same for TOA as well, but that's not particularly useful in our case, given it depends on the two sides we're trying to find.
+{: .prompt-info :}
 
 Now that we know how to get the lengths of the other two sides, we're finally ready to use these to figure out the _x_ and _y_ coordinates we need for the end of our pointer.
 
@@ -254,6 +254,6 @@ This brings us to the end of the MAUI UI July Batmobile series. There's one more
 
 In the meantime, there's one last UI challenge to take away. One last feature I've always wanted to add to this is audio - I'd love to have a throaty engine noise with a pitch that changes relative to the RPM. I've got a few ideas about how to implement that - none of them particularly easy - but all very doable.
 
-Is that something you think you could take on? What other feature would you like to see (or do you think. Batman needs)? And, perhaps most importantly of all, do you suddenly care about maths again?
+Is that something you think you could take on? What other feature would you like to see (or do you think Batman needs)? And, perhaps most importantly of all, do you suddenly care about maths again?
 
 Stay tuned for the rest of MAUI UI July 2025, we've got some great content coming!
