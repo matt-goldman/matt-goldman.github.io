@@ -77,14 +77,19 @@ The side that does not form part of the right-angle is always called the hypoten
 The SOHCAHTOA formulas let you calculate θ using only the lengths of two of the other sides. As a recap, the formulas are:
 
 * **S**in(θ) = **O**pposite / **H**ypotenuse
+
 $$
 \sin \theta = \frac{O}{H}
 $$
+
 * **C**os(θ) = **A**djacent / **H**ypotenuse
+
 $$
 \cos \theta = \frac{A}{H}
 $$
+
 * **T**an(θ) = **O**pposite / **A**djacent
+
 $$
 \tan \theta = \frac{O}{A}
 $$
