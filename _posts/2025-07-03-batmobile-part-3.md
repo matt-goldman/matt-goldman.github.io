@@ -1,4 +1,3 @@
-
 ---
 layout: post
 title: "Holy MauiGraphics Batman! Part 3: Clayface-Level Batmaths"
