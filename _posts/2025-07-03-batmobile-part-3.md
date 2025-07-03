@@ -8,7 +8,7 @@ tags: [mobile, maui, ui]
 categories: [.NET, Mobile, UI, Batman]
 ---
 
-Welcome back to MAUI UI July 2025! If you’ve read [Part 1](/posts/batmobile) and [Part 2](/posts/batmobile-part-2), you’ve seen the Batmobile throttle and dashboard controls in action.
+Welcome back to MAUI UI July 2025! If you’ve read [Part 1](/posts/batmobile-part-1) and [Part 2](/posts/batmobile-part-2), you’ve seen the Batmobile throttle and dashboard controls in action.
 
 Yesterday we saw that we can give the pointer in the RPM gauge `endX` and `endY` values to enable it to point to a position on the gauge. In part 3 today we're going to explore the maths behind calculating those values.
 
