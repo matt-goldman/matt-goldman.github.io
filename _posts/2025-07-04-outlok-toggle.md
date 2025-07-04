@@ -62,7 +62,7 @@ In a nutshell, the control performs the following steps. I won't go through all 
 ### 1. Get the properties of the canvas and define `SkiaPaint` instances for all the components
 
 ```csharp
-//  The control cubclasses SKCanvasView, which provides this
+//  The control subclasses SKCanvasView, which provides this
 //  method for defining what to paint.
 protected override void OnPaintSurface(SKPaintSurfaceEventArgs e)
 {
