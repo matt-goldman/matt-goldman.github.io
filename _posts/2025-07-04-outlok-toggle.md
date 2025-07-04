@@ -253,7 +253,7 @@ In a nutshell, this code defines an `animationProgress` variable (which also per
 We then `Commit` (run) that animation, telling it to update the value every 16 milliseconds, over a total duration of 200 milliseconds. The easing makes it speed up at the start and slow down at the finish which gives it a smoother, more natural, feel than something that instantly moves at a single speed.
 
 > Note: we could make the duration a bindable property too if we wanted to slow things down a bit. I would derive the rate value from this, with a fixed target FPS, rather than making it a bindable property as well.
-{: prompt-info :}
+{: .prompt-info :}
 
 The `AnimateToggle` method defines and commits the animation. In the control's constructor, we add it as a delegate to the touch event on the canvas, with a quick check to ensure the event is of the correct type:
 
