@@ -342,4 +342,4 @@ Fancy taking up the challenge of animating the collection of messages as well as
 Will you use this in any projects? Would you want this in a Nuget package? Let me know!
 
 ## Grab the code
-[Link to repo on Github](https://github.com/matt-goldman/outlook)
+[Link to repo on GitHub](https://github.com/matt-goldman/outlook)
