@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Replicating the Outlook Mobile "Focused/Other" Switch in .NET MAUI"
+title: "Replicating the Outlook Mobile 'Focused/Other' Switch in .NET MAUI"
 date: 2025-07-04 00:00:01 +1000
-image: /images/batmobile-cover-part-3.png
+image: /images/outlook-toggle-cover.png
 tags: [mobile, maui, ui, outlook]
 categories: [.NET, Mobile, UI, Outlook]
 ---
