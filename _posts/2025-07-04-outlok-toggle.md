@@ -227,7 +227,7 @@ private void AnimateToggle(bool newState)
     var end = newState ? 1f : 0f;
 
     // define an instance of the Animation class
-    // The callback casts the falue to a float and
+    // The callback casts the value to a float and
     // assigns it to animationProgress, then calls
     // InvalidateSurface, which triggers a redraw
     // of the canvas
