@@ -45,7 +45,7 @@ As a minimum, we need to include some visual cues that indicate the state of epi
 ![Episode Download State](/images/bdd-level-0.png){: width="800" }
 _This is the most basic implementation, but it does the job of indicating the download state of each episode. The dimmed thumbnail and download icon provide a clear visual cue that the episode is not yet downloaded, while the full-color thumbnail and green icon, and the presence of the trashcan icon, indicate that the episode is ready for offline listening._
 
-This establishes a decent UX language, so we can keep these indicators of downloaded state. But we also need a way to avoid teh frustration of not knowing that a download is in progress, so, we need to add some kind of download progress indicator.
+This establishes a decent UX language, so we can keep these indicators of downloaded state. But we also need a way to avoid the frustration of not knowing that a download is in progress, so, we need to add some kind of download progress indicator.
 
 The most simple approach is something I'm sure we've all done in many apps: a blocking modal overlay with an activity indicator and a label that says "Downloading...". This is achieved with a simple `BoxView` that covers the entire screen (with `Opacity` at `0.25`), with a `Border` in the middle (I didn't want to implement a popup just for this) surrounding an activity indicator in the center and a label below it. Here's what it looks like:
 
