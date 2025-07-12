@@ -49,7 +49,7 @@ This establishes a decent UX language, so we can keep these indicators of downlo
 
 The most simple approach is something I'm sure we've all done in many apps: a blocking modal overlay with an activity indicator and a label that says "Downloading...". This is achieved with a simple `BoxView` that covers the entire screen (with `Opacity` at `0.25`), with a `Border` in the middle (I didn't want to implement a popup just for this) surrounding an activity indicator in the center and a label below it. Here's what it looks like:
 
-{% include embed/video.html src='{/images/bdd-level-0.mp4}' %}
+{% include embed/video.html src='/images/bdd-level-0.mp4' %}
 _Showing a modal overlay with an activity indicator lets the user know that a download is in progress. The label below the activity indicator provides additional context, but it doesn't give any information about the download progress itself._
 
 This is the most basic implementation, but it does the job of letting the user know that something is happening. However, it also blocks the UI and prevents any interaction until the download is complete, which can be frustrating if the download takes a while.
@@ -58,7 +58,7 @@ This is the most basic implementation, but it does the job of letting the user k
 
 The first improvement we can make is to not block the whole UI just because one episode is downloading. Instead of a modal, we can change the download button to an `ActivityIndicator` that shows the download progress as a percentage. This way, the user can still interact with the app while the download is in progress.
 
-{% include embed/video.html src='{/images/bdd-level-1.mp4}' %}
+{% include embed/video.html src='/images/bdd-level-1.mp4' %}
 _An `ActivityIndicator` replaces the download button while it's in progress, allowing the user to continue interacting with the app._
 
 This is a bit better, as it doesn't block the whole app, but there are still a few problems. First, you may have noticed that _all_ download buttons are disabled while a download is in progress. The `IsEnabled` property of the button is bound to the `IsDownloaded` property of the episode (using the `InvertedBoolConverter` from the MAUI Community Toolkit), so you may not expect this to happen. However, the `Command` is bound to a `DownloadEpisodeCommand` in the ViewModel. This is generated using the `[RelayCommand]` attribute from the MVVM Community Toolkit, which handily generates the command fro the method; but by default it doesn't allow concurrent execution of async methods, so the `CanExecute` method returns `false` while the command is executing, and this supersedes the `IsEnabled` property. This means that while one episode is downloading, all other download buttons are disabled, which is not ideal.
@@ -79,7 +79,7 @@ The next step is to allow concurrent downloads, so that the user can start downl
 
 Using `AllowConcurrentExecution` also gives us a `CancellationToken` parameter in the command method, which we can use to cancel the download if the user changes their mind. We can add a cancel button to the download overlay that allows the user to cancel the download if they choose to do so. The episode ViewModel has an `IsDownloading` property that indicates whether the episode is currently being downloaded, and we can simply show and hide the download and cancel buttons based on this property.
 
-{% include embed/video.html src='{/images/bdd-level-2.mp4}' %}
+{% include embed/video.html src='/images/bdd-level-2.mp4' %}
 _The download button now shows an `ActivityIndicator` while the episode is downloading, and a cancel button that allows the user to stop the download if they change their mind. The user can now start downloading multiple episodes at once, and cancel any download in progress._
 
 This is already a big step-up in UX, as it allows the user to see that a download is in progress, and gives them the option to cancel it if they choose to do so. But to take it to the next level, we need to show the user the current download progress. This is where the fun begins.
@@ -164,7 +164,7 @@ The `BoxView` uses a custom `ProgressToWidth` converter to calculate the width b
 
 Here it is in action:
 
-{% include embed/video.html src='{/images/bdd-level-3.mp4}' %}
+{% include embed/video.html src='/images/bdd-level-3.mp4' %}
 _The download progress overlay fills the thumbnail based on the download progress, and the percentage label shows the current progress. This provides a clear visual indication of how much of the episode has been downloaded._
 
 This is a huge improvement in UX: it allows the user to see how much of the episode has been downloaded (and estimate how long it will take to complete). The overlay fills the thumbnail, providing a spatially meaningful representation of the download progress, and the percentage label gives the user a clear indication of how much has been downloaded.
@@ -310,7 +310,7 @@ This sets up a bubble emitter that emits bubbles from the bottom of the screen, 
 
 Want to see what this looks like? Here's a video of the final result in action:
 
-{% include embed/video.html src='{/images/bdd-level-4_1.mp4}' %}
+{% include embed/video.html src='/images/bdd-level-4_1.mp4' %}
 _The beer glass fills up as the download progresses, and bubbles rise to the top, creating a fun and engaging download progress microinteraction. The bubbles rise from the bottom of the glass, creating a realistic beer effect._
 
 Note that the download is quite slow, so I skipped ahead a couple of times in the video so you can see the progress at different stages.
@@ -394,7 +394,7 @@ private async void BeerProgressOverlayView_AnimationCompleted(object sender, Eve
 
 And without further ado, here's the final result in action:
 
-{% include embed/video.html src='{/images/bdd-level-4_2.mp4}' %}
+{% include embed/video.html src='/images/bdd-level-4_2.mp4' %}
 _The beer glass fills up as the download progresses, and bubbles rise to the top. When the download reaches 100%, the glass overflows with foam, and the foam bubbles burst away to reveal the full episode thumbnail underneath._
 
 This is the final level of the download progress microinteraction, and it's definitely the most fun. It takes the concept of a progress bar to a whole new level, and it's a great example of how you can use microinteractions to create a fun and engaging user experience. The foam is...a work in progress, but it's already pretty cool, and will be even better with a few refinements.
