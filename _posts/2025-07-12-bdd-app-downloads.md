@@ -18,9 +18,9 @@ categories: [.NET, Mobile, UI, UX, Microinteractions]
 
 Microinteractions have become a huge UI trend in 2025, and for good reason. They're not just fancy visual flourishes; they enhance usability, communicate state, and make experiences more human. I recently encountered a scenario in a client project that needed exactly this: a way to show download progress for content in an expressive and meaningful way.
 
-This app features a content library where users can access issues of a journal, as well as podcast episodes. They can download content for offline access, but these downloads occur silently in the background. This leads to some important UX problems - specifically, as the user has no visibility into the download state of any content (is it downloading? is it done? can I cancel it?), they can be left confused and frustrated. When they tap a download button and see no immediate feedback, it can feel like nothing is happening.
+The app is a content library (podcasts and journals) that users can access online, but can also download content for offline use. Downloads happen silently in the background, which is problematic for a few reasons, so I've been thinking about better ways to handle this.
 
-This is on the backlog for this particular app (we've got a prioritised roadmap), but this is actually something I've wanted to explore for a while. And, as it happens, I've got another app that also handles podcast episode downloads I've been wanting to build for a while: the [Beer Driven Devs](https://www.beerdriven.dev) mobile app. So, despite [Liam](https://www.beerdriven.dev/hosts#Liam%20Elliott)'s misgivings (he doesn't really approve of the app idea), I decided to take the idea beyond the drawing board. The Beer Driven Devs app offers the perfect playground for this exploration, as it has a fun, lighthearted theme that allows for some creative freedom in how we present download progress.
+It's on the backlog for this particular app (we've got a prioritised roadmap), but this is actually something I've wanted to explore for a while. And, as it happens, I've got another app that also handles podcast episode downloads I've been wanting to build for a while: the [Beer Driven Devs](https://www.beerdriven.dev) mobile app. So, despite [Liam](https://www.beerdriven.dev/hosts#Liam%20Elliott)'s misgivings (he doesn't really approve of the app idea), I decided to take the idea beyond the drawing board. The Beer Driven Devs app offers the perfect playground for this exploration, as it has a fun, lighthearted theme that allows for some creative freedom in how we present download progress.
 
 Let's take a look at how we can implement some fun and engaging download progress microinteractions in .NET MAUI, using the Beer Driven Devs app as our example.
 
@@ -35,6 +35,8 @@ The full source code is available on GitHub - see the link at the bottom of this
 The Beer Driven Devs website has an RSS feed that's consumed by Apple and Spotify to host the episodes, so the app simply pulls that feed to get all the episode data. So no dedicated backend required - yet! (I'll need to add that later, as well as auth, for the community features, but that's another story.)
 
 The app will allow streaming episodes (using the `MediaElement` control in the MAUI Community Toolkit), but I also want to allow users to download episodes for offline listening. This is where the download progress microinteractions come in. Let's explore how we can implement these in a fun and engaging way.
+
+Throughout all levels, the core download state visuals remain: dimmed thumbnails and gray icons before download; full-color thumbnails, green icons, and a trash icon once downloaded. These small touches ensure users always know what’s ready offline.
 
 ## Level 0: The Classic Modal
 
@@ -89,7 +91,7 @@ On the web, we refer to progress indicators as "deterministic" or "indeterminate
 > Note: I actually could absolutely have used a `ProgressBar` here, but I wanted to explore some more creative options that fit the theme of the app.
 {: .prompt-info }
 
-In order to show the progress, though, we need to know how much of the download has been completed. The `HttpClient` class in .NET allows us to download files asynchronously, and we can use the `HttpCompletionOption.ResponseHeadersRead` option to read the response headers and get the total size of the file before the download starts. We can then continually check the `HttpResponseMessage` for the `Content-Length` header to get the total size of the file, and use the `HttpContent.ReadAsStreamAsync()` method to read the content as a stream. This allows us to track the progress of the download and update the UI accordingly.
+In order to show the progress, though, we need to know how much of the download has been completed. The `HttpClient` class in .NET allows us to download files asynchronously, and we can use the `HttpCompletionOption.ResponseHeadersRead` option to read the response headers and get the total size of the file before the download starts. It also lets you stream progressively, rather than buffering the whole response before you can write to disk (or access the stream). We can then continually check the `response.Content.Headers.ContentLength` to get the total size of the file, and use the `HttpContent.ReadAsStreamAsync()` method to read the content as a stream. This allows us to track the progress of the download and update the UI accordingly.
 
 To handle this, I created a `FileDownloadService` class that takes care of downloading files and reporting progress. Here's a simplified version of the code:
 
@@ -407,7 +409,7 @@ Each branch (level-0 through main) represents one stage of the progression. Chec
 
 I've always considered myself a poor designer, so I keep my finger on the pulse of UI trends as much as I can. It's an area where I'm always looking to improve. This means that I often hear about the latest or predicted UI trends, and to be honest, half the time I groan and roll my eyes. Granted, the problem here is inevitably me, but sometimes I can immediately see the value, either aesthetically or functionally, and on very rare occasions, I can see both. This is one of those times.
 
-Microinteractions are a great way to enhance the user experience, and they can be used to create fun and engaging UI elements that fit the theme of your app. The Beer Driven Devs app is a perfect example of how you can use microinteractions to create a fun and engaging user experience, while also providing functional benefits. And when it comes to design, I can definitely see myself approaching the Peak of Mount Stupid on the Dunning-Kruger curve. But I'm gaining confidence, and when it comes to using beer to represent download progress, I've realised with absolute certainty that it doesn't matter what anyone else thinks: this is objectively awesome, and I love it. I hope you do too!
+MMicrointeractions are a powerful way to make your app more fun, more human, and more memorable, and they can still be deeply functional. The Beer Driven Devs app is proof that you can embrace ridiculous ideas and still deliver a great UX. When it comes to design, I’m probably perched somewhere around the Peak of Mount Stupid on the Dunning-Kruger curve. But I'm gaining confidence, and when it comes to using beer to represent download progress, I've realised with absolute certainty that it is objectively awesome, and I love it. I hope you do too!
 
 What microinteractions will you implement to makes your users' lives easier and more fun? Let me know! In the meantime, I'm off to crack open a cold one.
 
