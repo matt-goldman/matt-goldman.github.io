@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Download Progress Microinteractions in .NET MAUI"
+title: "Beer-Driven Downloads & Microinteractions in .NET MAUI"
 date: 2025-07-12 00:00:01 +1000
-image: /images/outlook-toggle-cover.png
+image: /images/bdd-downloads-cover.png
 tags: [mobile, maui, ui, ux, microinteractions]
 categories: [.NET, Mobile, UI, UX, Microinteractions]
 ---
