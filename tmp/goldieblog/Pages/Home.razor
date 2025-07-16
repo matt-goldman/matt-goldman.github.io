@@ -2,6 +2,51 @@
 
 <PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Hero Section -->
+  <section className="mb-16">
+    <div className="max-w-3xl">
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+        Technical insights for modern developers
+      </h1>
+      <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+        In-depth articles on cloud architecture, mobile and web development, plus thoughtful commentary on tech
+        industry trends and engineering leadership.
+      </p>
+      <div className="flex flex-wrap gap-2 mb-8">
+        @foreach (var category in Categories)
+        {
+          <Badge key=@category variant="secondary" className="text-sm">
+            @category
+          </Badge>
+        }
+      </div>
+    </div>
+  </section>
 
-Welcome to your new app.
+  <!-- Recent Posts -->
+  <section>
+    <div className="flex items-center justify-between mb-8">
+      <h2 className="text-3xl font-bold">Recent Posts</h2>
+      <Button variant="ghost" asChild>
+        <a href="/archive" className="flex items-center gap-2">
+          View all posts
+          @* <ArrowRight className="h-4 w-4" /> *@
+          <Blazicon Svg="Lucide.ArrowRight"></Blazicon>
+        </a>
+      </Button>
+    </div>
+
+    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {featuredPosts.map((post) => (
+      <PostCard key={post.id} post={post} />
+      ))}
+    </div>
+  </section>
+</div>
+
+@code {
+
+  private static readonly List<string> Categories = ["Cloud Architecture", "Mobile Development", "Web Development", "Leadership", "Industry Trends"];
+
+}
