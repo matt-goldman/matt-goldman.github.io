@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "First things first"
-date:   2025-08-08 00:00:01 +1000
+date:   2025-08-06 00:00:01 +1000
 image:  /images/ftf.png
 tags:   productivity, scrum, agile, meetings
 categories: [productivity, scrum, agile, career]
