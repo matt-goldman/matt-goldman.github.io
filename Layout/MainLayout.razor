@@ -42,11 +42,19 @@
     {
         var baseUrl = $"{Nav.BaseUri}";
 
+        var imageUrl = string.Empty;
+
         if (_currentPage?.Image is not null)
         {
-            return $"{baseUrl}{_currentPage.Image}";
+            imageUrl = $"{baseUrl}{_currentPage.Image}";
+        }
+        else
+        {
+            imageUrl = $"{baseUrl}/images/default.png";
         }
 
-        return $"{baseUrl}/images/default.png";
+        // remove double slashes before returning
+        imageUrl = imageUrl.Replace("//", "/");
+        return imageUrl;
     }
 }
