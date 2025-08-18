@@ -1,18 +1,30 @@
 name: Deploy to GitHub Pages
-
-# Adapted from: https://github.com/TenaciousDev/BlazorGitHubPagesDemo
-
-# Run workflow on every push to the main branch
 on:
-  # push:
-  #   branches: [main]
+  push:
+    branches:
+      - main
+      - master
+    paths-ignore:
+      - .gitignore
+      - README.md
+      - LICENSE
+
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+# Adapted from: https://github.com/TenaciousDev/BlazorGitHubPagesDemo
 
 jobs:
-  deploy-to-github-pages:
+  build:
     # use ubuntu-latest image to run steps on
     runs-on: ubuntu-latest
     steps:
@@ -53,9 +65,24 @@ jobs:
         run: touch release/wwwroot/.nojekyll
 
       # publishes wwwroot directory to GitHub Pages
-      - name: Commit wwwroot to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      # - name: Commit wwwroot to GitHub Pages
+      #   uses: JamesIves/github-pages-deploy-action@v4
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: gh-pages # The branch the action should deploy to.
+      #     folder: release/wwwroot # The folder the action should deploy.
+      - name: Upload release/wwwroot to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages # The branch the action should deploy to.
-          folder: release/wwwroot # The folder the action should deploy.
+          path: release/wwwroot
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
