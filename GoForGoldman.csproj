@@ -18,6 +18,9 @@
   <Target Name="EnsureNodeModules" BeforeTargets="Build">
     <Exec Command="npm ci" Condition="!Exists('node_modules')" />
   </Target>
+  <Target Name="NpmInstall" BeforeTargets="BuildTailwind">
+    <Exec Command="npm install" />
+  </Target>
   <Target Name="BuildTailwind" BeforeTargets="Publish">
     <Exec Command="npm run build:css" />
   </Target>

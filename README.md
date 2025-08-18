@@ -23,7 +23,8 @@ Remaining tasks should be completed before publishing the new version of the blo
 Police Line
 ---
 
-- [ ] Reduce image sizes in Outlook post
 - [ ] Add dark mode
+- [ ] Add mobile responsive layout
+- [ ] Reduce image sizes in Outlook post
 - [ ] Fix YouTube video heights
 - [ ] Consider next and previous buttons on posts

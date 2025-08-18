@@ -11,6 +11,7 @@ public static class TagToColor
             "python" => "blue",
             "html" => "orange",
             "css" => "pink",
+            "mobile" => "teal",
             "java" => "green",
             "ruby" => "red",
             "news" => "gray",
@@ -24,6 +25,7 @@ public static class TagToColor
             "career" => "emerald",
             "life" => "rose",
             "misc" => "slate",
+            "ui" => "cyan",
             _ => "gray"
         };
     }
