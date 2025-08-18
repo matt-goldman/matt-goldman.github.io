@@ -910,6 +910,9 @@
   .mt-16 {
     margin-top: calc(var(--spacing) * 16);
   }
+  .mr-2 {
+    margin-right: calc(var(--spacing) * 2);
+  }
   .mr-3 {
     margin-right: calc(var(--spacing) * 3);
   }
@@ -970,6 +973,9 @@
   }
   .h-6 {
     height: calc(var(--spacing) * 6);
+  }
+  .h-8 {
+    height: calc(var(--spacing) * 8);
   }
   .h-10 {
     height: calc(var(--spacing) * 10);
@@ -1411,6 +1417,14 @@
   .ring-yellow-300 {
     --tw-ring-color: var(--color-yellow-300);
   }
+  .outline-hidden {
+    --tw-outline-style: none;
+    outline-style: none;
+    @media (forced-colors: active) {
+      outline: 2px solid transparent;
+      outline-offset: 2px;
+    }
+  }
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
@@ -1584,29 +1598,18 @@
   height: 8rem;
   margin: 20vh auto 1rem auto;
 }
-.loading-progress circle {
-  fill: none;
-  stroke: #e0e0e0;
-  stroke-width: 0.6rem;
-  transform-origin: 50% 50%;
-  transform: rotate(-90deg);
+.loader {
+  width: 60px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  -webkit-mask: linear-gradient(0deg,#000 55%,#0000 0) bottom/100% 18.18%;
+  background: linear-gradient(#f03355 0 0) bottom/100% 0% no-repeat #ddd;
+  animation: l8 2s infinite steps(7);
 }
-.loading-progress circle:last-child {
-  stroke: #1b6ec2;
-  stroke-dasharray: calc(3.141 * var(--blazor-load-percentage, 0%) * 0.8), 500%;
-  transition: stroke-dasharray 0.05s ease-in-out;
-}
-.loading-progress-text {
-  position: absolute;
-  text-align: center;
-  font-weight: bold;
-  inset: calc(20vh + 3.25rem) 0 auto 0.2rem;
-}
-.loading-progress-text:after {
-  content: var(--blazor-load-percentage-text, "Loading");
-}
-code {
-  color: #c02d76;
+@keyframes l8 {
+  100% {
+    background-size: 100% 115%;
+  }
 }
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
   color: var(--bs-secondary-color);

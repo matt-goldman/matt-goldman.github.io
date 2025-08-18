@@ -2,9 +2,15 @@
 
 WIP - blog content migrated to Blake for Goforgoldman.
 
-## TODO:
+## TODO
 
-Remaining tasks should be completed before publishing the new version of the blog:
+- [ ] Add dark mode
+- [ ] Add mobile responsive layout
+- [ ] Reduce image sizes in Outlook post
+- [ ] Fix YouTube video heights
+- [ ] Consider next and previous buttons on posts
+
+## DONE
 
 - [x] Review the width of post content
 - [x] See if we can improve code formatting
@@ -19,11 +25,3 @@ Remaining tasks should be completed before publishing the new version of the blo
 - [x] Add social previews
 - [x] Add RSS feed
 - [x] Update favicons
-
-Police Line
----
-
-- [ ] Reduce image sizes in Outlook post
-- [ ] Add dark mode
-- [ ] Fix YouTube video heights
-- [ ] Consider next and previous buttons on posts
