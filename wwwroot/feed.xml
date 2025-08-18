@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>GoForGoldman</title>
+    <link>https://goforgoldman.com</link>
+    <description>A blog about mobile dev, .NET, VR, motorcycles, science, Superman and homebrewing</description>
+    <lastBuildDate>Mon, 18 Aug 2025 12:41:32 GMT</lastBuildDate>
+<item>
+        <title>Passthrough Behavior: Attaching things where they don't belong</title>
+        <link>https://goforgoldman.com/posts/passthrough-behavior</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/passthrough-behavior</guid>
+        <pubDate>Mon, 01 Jul 2024 00:00:01 GMT</pubDate>
+        <description><![CDATA[Implementing a passthrough behavior pattern in .NET MAUI to attach validation functionality to custom controls that wrap Entry and Editor elements.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+      </item>
+<item>
+        <title>Book review: The Phoenix Project</title>
+        <link>https://goforgoldman.com/posts/phoenix-review</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/phoenix-review</guid>
+        <pubDate>Mon, 18 Sep 2023 00:00:01 GMT</pubDate>
+        <description><![CDATA[Book review of The Phoenix Project exploring DevOps principles and management theory applied to IT organizations, with lessons on reducing friction and increasing value delivery.]]></description>
+        <category>management</category>
+        <category>leadership</category>
+        <category>devops</category>
+      </item>
+<item>
+        <title>.NET MAUI UI July: Outlook Clone</title>
+        <link>https://goforgoldman.com/posts/outlook-clone</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/outlook-clone</guid>
+        <pubDate>Fri, 01 Jul 2022 00:00:00 GMT</pubDate>
+        <description><![CDATA[Step-by-step tutorial for recreating the Microsoft Outlook mobile app UI using .NET MAUI layouts and controls, demonstrating practical UI building techniques.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+        <category>outlook</category>
+      </item>
+<item>
+        <title>Fixing Docker Performance in Aspire on Windows</title>
+        <link>https://goforgoldman.com/posts/aspire-docker-perf</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/aspire-docker-perf</guid>
+        <pubDate>Fri, 28 Feb 2025 01:00:01 GMT</pubDate>
+        <description><![CDATA[Improving Docker container performance in .NET Aspire on Windows by leveraging WSL 2 for better filesystem access and overall container efficiency.]]></description>
+        <category>docker</category>
+        <category>aspire</category>
+        <category>wsl</category>
+        <category>windows</category>
+        <category>performance</category>
+        <category>wsl2</category>
+      </item>
+<item>
+        <title>Holy MauiGraphics Batman! Part 1: Batmobile Throttle Control</title>
+        <link>https://goforgoldman.com/posts/batmobile-part-1</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/batmobile-part-1</guid>
+        <pubDate>Tue, 01 Jul 2025 00:00:01 GMT</pubDate>
+        <description><![CDATA[Building a custom Batmobile throttle control using .NET MAUI Graphics and IDrawable to create retro-futuristic UI elements with interactive touch controls.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+      </item>
+<item>
+        <title>Page Resolver and Navigation Extension for MAUI</title>
+        <link>https://goforgoldman.com/posts/maui-page-resolver</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/maui-page-resolver</guid>
+        <pubDate>Thu, 17 Jun 2021 07:05:55 GMT</pubDate>
+        <description><![CDATA[Introducing the MAUI Page Resolver library, providing dependency injection and navigation extensions for .NET MAUI apps with fully resolved dependencies.]]></description>
+        <category>dotnet</category>
+        <category>maui</category>
+        <category>mobile</category>
+        <category>di</category>
+      </item>
+<item>
+        <title>Deploying your .NET MAUI apps to production - Part 1: Android</title>
+        <link>https://goforgoldman.com/posts/maui-app-deploy</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/maui-app-deploy</guid>
+        <pubDate>Sat, 14 Jan 2023 01:00:00 GMT</pubDate>
+        <description><![CDATA[Complete guide to deploying .NET MAUI apps to production on Android, covering the Google Play Store submission process with practical tips and hard-won insights.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+        <category>deploying</category>
+        <category>production</category>
+      </item>
+<item>
+        <title>.NET MAUI UI July - 2023!</title>
+        <link>https://goforgoldman.com/posts/maui-ui-july-23</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/maui-ui-july-23</guid>
+        <pubDate>Wed, 07 Jun 2023 15:05:55 GMT</pubDate>
+        <description><![CDATA[Announcing .NET MAUI UI July 2023, the second year of this popular community event featuring daily contributions showcasing creative .NET MAUI UI implementations.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+      </item>
+<item>
+        <title>.NET MAUI UI July - 2024</title>
+        <link>https://goforgoldman.com/posts/mauiuijuly-24</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/mauiuijuly-24</guid>
+        <pubDate>Sun, 19 May 2024 00:00:01 GMT</pubDate>
+        <description><![CDATA[Announcing .NET MAUI UI July 2024, the third year of this community-driven event where developers share their passion for building beautiful .NET MAUI user interfaces.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+      </item>
+<item>
+        <title>Where to put your .NET MAUI Handler Mappings</title>
+        <link>https://goforgoldman.com/posts/handler-mappings</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/handler-mappings</guid>
+        <pubDate>Sat, 01 Jul 2023 00:00:00 GMT</pubDate>
+        <description><![CDATA[Comprehensive guide to organizing and implementing .NET MAUI handler mappings effectively, with best practices for customizing native platform controls.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+      </item>
+<item>
+        <title>.NET MAUI UI July - 2025</title>
+        <link>https://goforgoldman.com/posts/mauiuijuly-25</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/mauiuijuly-25</guid>
+        <pubDate>Thu, 01 May 2025 00:00:01 GMT</pubDate>
+        <description><![CDATA[Announcing .NET MAUI UI July 2025, a month-long community-driven event where developers share their passion and expertise for building beautiful .NET MAUI user interfaces.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+      </item>
+<item>
+        <title>Remembering Mike</title>
+        <link>https://goforgoldman.com/posts/remembering-mike</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/remembering-mike</guid>
+        <pubDate>Fri, 03 Nov 2023 01:00:01 GMT</pubDate>
+        <description><![CDATA[Personal tribute to a dear friend Mike, sharing memories and celebrating his unique logic and personality on what would have been his 50th birthday.]]></description>
+        
+      </item>
+<item>
+        <title>Understanding .NET MAUI Page and Navigation Lifecycle Event Order</title>
+        <link>https://goforgoldman.com/posts/maui-eventorder</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/maui-eventorder</guid>
+        <pubDate>Wed, 22 Nov 2023 01:00:01 GMT</pubDate>
+        <description><![CDATA[Investigation into .NET MAUI page and navigation lifecycle event order across different platforms, revealing timing insights for effective page initialization.]]></description>
+        <category>dotnet</category>
+        <category>dotnetmaui</category>
+      </item>
+<item>
+        <title>Introducing .NET MAUI UI July</title>
+        <link>https://goforgoldman.com/posts/maui-ui-july</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/maui-ui-july</guid>
+        <pubDate>Fri, 20 May 2022 01:05:55 GMT</pubDate>
+        <description><![CDATA[Announcing the first .NET MAUI UI July event, a month-long community-driven initiative featuring daily blog posts and videos showcasing .NET MAUI UI techniques.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+      </item>
+<item>
+        <title>PageResolver Updates – The Missing Piece of .NET MAUI, Now Ready for .NET 9!</title>
+        <link>https://goforgoldman.com/posts/page-resolver-updates</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/page-resolver-updates</guid>
+        <pubDate>Mon, 11 Nov 2024 01:00:01 GMT</pubDate>
+        <description><![CDATA[Latest improvements to PageResolver for .NET MAUI, making MVVM setup easier with automatic view and ViewModel resolution through dependency injection.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+        <category>di</category>
+      </item>
+<item>
+        <title>Sending Email via Office365 Exchange Online with Fluent Email</title>
+        <link>https://goforgoldman.com/posts/fluent-email</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/fluent-email</guid>
+        <pubDate>Sun, 14 Feb 2021 08:05:55 GMT</pubDate>
+        <description><![CDATA[Complete guide to sending email via Office 365 Exchange Online using FluentEmail library, leveraging Microsoft Graph API for modern email delivery.]]></description>
+        <category>email</category>
+        <category>dotnet</category>
+        <category>dotnet-core</category>
+        <category>office-365</category>
+      </item>
+<item>
+        <title>HTTP Status Codes in your APIs</title>
+        <link>https://goforgoldman.com/posts/http--api-status-codes</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/http--api-status-codes</guid>
+        <pubDate>Mon, 18 Nov 2019 02:05:55 GMT</pubDate>
+        <description><![CDATA[Exploring whether APIs need to be HTTP standards-compliant and the practical considerations for using HTTP status codes effectively in mobile app development.]]></description>
+        <category>http</category>
+      </item>
+<item>
+        <title>Deploying your .NET MAUI apps to production -  Part 3: Windows</title>
+        <link>https://goforgoldman.com/posts/maui-app-deploy-3</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/maui-app-deploy-3</guid>
+        <pubDate>Sun, 05 Feb 2023 01:00:00 GMT</pubDate>
+        <description><![CDATA[Part 3 of the .NET MAUI deployment series, providing a comprehensive guide for deploying Windows apps to the Microsoft Store with packaging and submission details.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+        <category>deploying</category>
+        <category>production</category>
+      </item>
+<item>
+        <title>The Status Quo Bias and Overcorrection</title>
+        <link>https://goforgoldman.com/posts/status-quo-overcorrection</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/status-quo-overcorrection</guid>
+        <pubDate>Sat, 13 Apr 2024 00:00:01 GMT</pubDate>
+        <description><![CDATA[Exploring the status quo bias in decision-making and the risks of overcorrection when trying to avoid this cognitive bias in business and technology choices.]]></description>
+        <category>management</category>
+        <category>leadership</category>
+        <category>architecture</category>
+        <category>design</category>
+      </item>
+<item>
+        <title>Differentiating device idiom dependencies in .NET MAUI</title>
+        <link>https://goforgoldman.com/posts/idiom-dependencies</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/idiom-dependencies</guid>
+        <pubDate>Fri, 09 Feb 2024 01:00:01 GMT</pubDate>
+        <description><![CDATA[Managing different dependencies for different device idioms in .NET MAUI apps using dependency injection to support mobile, tablet, and desktop layouts.]]></description>
+        <category>dotnet</category>
+        <category>dotnetmaui</category>
+        <category>di</category>
+        <category>dependency-injection</category>
+      </item>
+<item>
+        <title>Deploying your .NET MAUI apps to production - Part 2: iOS</title>
+        <link>https://goforgoldman.com/posts/maui-app-deploy-2</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/maui-app-deploy-2</guid>
+        <pubDate>Sun, 22 Jan 2023 01:00:00 GMT</pubDate>
+        <description><![CDATA[Part 2 of the .NET MAUI deployment series, covering the complete process for deploying iOS apps to the Apple App Store with signing and distribution guidance.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+        <category>deploying</category>
+        <category>production</category>
+      </item>
+<item>
+        <title>The Right Tool for the Job: Beyond the Golden Hammer</title>
+        <link>https://goforgoldman.com/posts/platinum-hammer</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/platinum-hammer</guid>
+        <pubDate>Sun, 10 Mar 2024 01:00:01 GMT</pubDate>
+        <description><![CDATA[Exploring cognitive biases in technology decision-making, from the golden hammer problem to the allure of new solutions and finding the right balance.]]></description>
+        <category>management</category>
+        <category>leadership</category>
+        <category>architecture</category>
+        <category>design</category>
+      </item>
+<item>
+        <title>Understanding Interfaces and Dependency Inversion</title>
+        <link>https://goforgoldman.com/posts/interfaces</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/interfaces</guid>
+        <pubDate>Mon, 12 Apr 2021 07:05:55 GMT</pubDate>
+        <description><![CDATA[Understanding interfaces and dependency inversion principles in .NET, explaining how to properly define abstractions where you consume them rather than implement them.]]></description>
+        
+      </item>
+<item>
+        <title>Holy MauiGraphics Batman! Part 2: The RPM Gauge</title>
+        <link>https://goforgoldman.com/posts/batmobile-part-2</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/batmobile-part-2</guid>
+        <pubDate>Wed, 02 Jul 2025 00:00:01 GMT</pubDate>
+        <description><![CDATA[Creating a real-time RPM dashboard for the Batcave using .NET MAUI Graphics with custom gauge backgrounds, moving dials, and telemetry data visualization.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+      </item>
+<item>
+        <title>Automagic Tenant Config for Mobile Apps</title>
+        <link>https://goforgoldman.com/posts/automagic-mobile-config</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/automagic-mobile-config</guid>
+        <pubDate>Fri, 05 Feb 2021 02:05:55 GMT</pubDate>
+        <description><![CDATA[Exploring various methods for automating tenant configuration in mobile apps, from QR codes to email-based setup, making multi-tenant deployment seamless.]]></description>
+        <category>mobile</category>
+        <category>xamarin</category>
+        <category>configuration</category>
+        <category>tenant-config</category>
+        <category>multitenancy</category>
+      </item>
+<item>
+        <title>First things first</title>
+        <link>https://goforgoldman.com/posts/first-things-first</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/first-things-first</guid>
+        <pubDate>Wed, 06 Aug 2025 00:00:01 GMT</pubDate>
+        <description><![CDATA[Thoughts on optimizing morning productivity by rethinking meeting schedules and the timing of daily standups to protect deep work time.]]></description>
+        <category>productivity</category>
+        <category>scrum</category>
+        <category>agile</category>
+        <category>meetings</category>
+      </item>
+<item>
+        <title>Unexpected Exceptions in EF Core 7+ Migrations</title>
+        <link>https://goforgoldman.com/posts/ef-gotcha</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/ef-gotcha</guid>
+        <pubDate>Mon, 23 Oct 2023 01:00:01 GMT</pubDate>
+        <description><![CDATA[Understanding unexpected exceptions in EF Core 7+ migrations caused by the CLI's intentional host abortion and how to handle them in your application's exception handling.]]></description>
+        <category>dotnet</category>
+        <category>efcore</category>
+      </item>
+<item>
+        <title>Testing Sign-in with Apple in your local development environment</title>
+        <link>https://goforgoldman.com/posts/local-apple-signin</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/local-apple-signin</guid>
+        <pubDate>Tue, 01 Aug 2023 00:00:01 GMT</pubDate>
+        <description><![CDATA[How to test Sign-in with Apple in your local development environment by working around Apple's localhost restrictions with DNS and host file configurations.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+      </item>
+<item>
+        <title>Replicating the Outlook Mobile 'Focused/Other' Switch in .NET MAUI</title>
+        <link>https://goforgoldman.com/posts/outlook-toggle</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/outlook-toggle</guid>
+        <pubDate>Fri, 04 Jul 2025 00:00:01 GMT</pubDate>
+        <description><![CDATA[Recreating Outlook mobile's sophisticated Focused/Other toggle switch in .NET MAUI using SkiaSharp for custom animated UI with sliding highlights and dynamic text colors.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+        <category>outlook</category>
+      </item>
+<item>
+        <title>Cosmic Aspirations: A Workaround for the Cosmos DB Emulator Explorer in Aspire</title>
+        <link>https://goforgoldman.com/posts/cosmos-aspire-workaround</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/cosmos-aspire-workaround</guid>
+        <pubDate>Fri, 06 Dec 2024 01:00:01 GMT</pubDate>
+        <description><![CDATA[Workaround for the Cosmos DB Emulator Explorer dashboard bug in Aspire by using the vnext-preview image tag until the fix is promoted to latest.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+        <category>di</category>
+      </item>
+<item>
+        <title>Holy MauiGraphics Batman! Part 3: Clayface-Level Batmaths</title>
+        <link>https://goforgoldman.com/posts/batmobile-part-3</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/batmobile-part-3</guid>
+        <pubDate>Thu, 03 Jul 2025 00:00:01 GMT</pubDate>
+        <description><![CDATA[Exploring the mathematics behind calculating pointer positions for custom gauges in .NET MAUI, using basic trigonometry to create precise dial movements.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+      </item>
+<item>
+        <title>Beer-Driven Downloads & Microinteractions in .NET MAUI</title>
+        <link>https://goforgoldman.com/posts/bdd-app-downloads</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/bdd-app-downloads</guid>
+        <pubDate>Sat, 12 Jul 2025 00:00:01 GMT</pubDate>
+        <description><![CDATA[Exploring creative download progress microinteractions in .NET MAUI, from basic modals to engaging beer-fill animations that enhance user experience.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+        <category>ux</category>
+        <category>microinteractions</category>
+      </item>
+<item>
+        <title>Parallax CollectionView in .NET MAUI</title>
+        <link>https://goforgoldman.com/posts/parallax-collection</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/parallax-collection</guid>
+        <pubDate>Mon, 01 Jul 2024 00:00:01 GMT</pubDate>
+        <description><![CDATA[Step-by-step tutorial for creating an engaging parallax scrolling effect in .NET MAUI CollectionView to add visual depth to your mobile app interfaces.]]></description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+      </item>
+<item>
+        <title>Orientation state changes on iPad in .NET MAUI</title>
+        <link>https://goforgoldman.com/posts/ipad-orientation</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/ipad-orientation</guid>
+        <pubDate>Tue, 20 Feb 2024 01:00:01 GMT</pubDate>
+        <description><![CDATA[Understanding orientation state changes on iPad in .NET MAUI and why OrientationStateTrigger behaves differently due to iPad's multitasking capabilities.]]></description>
+        <category>dotnet</category>
+        <category>dotnetmaui</category>
+        <category>responsive</category>
+        <category>ipad</category>
+      </item>
+</channel>
+</rss>

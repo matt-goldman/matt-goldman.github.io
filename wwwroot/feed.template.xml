@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>GoForGoldman</title>
+    <link>https://goforgoldman.com</link>
+    <description>A blog about mobile dev, .NET, VR, motorcycles, science, Superman and homebrewing</description>
+    <lastBuildDate>{{LastBuildDate}}</lastBuildDate>
+
+    <Items>
+      <item>
+        <title>{{Item.Title}}</title>
+        <link>{{Item.Link}}</link>
+        <guid isPermaLink="true">{{Item.Guid}}</guid>
+        <pubDate>{{Item.PubDate}}</pubDate>
+        <description><![CDATA[{{Item.Description}}]]></description>
+        {{Item.CategoriesXml}}
+      </item>
+    </Items>
+  </channel>
+</rss>
