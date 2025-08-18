@@ -1,0 +1,93 @@
+---
+description: "Announcing .NET MAUI UI July 2025, a month-long community-driven event where developers share their passion and expertise for building beautiful .NET MAUI user interfaces."
+title:  ".NET MAUI UI July - 2025"
+date:   2025-05-01 00:00:01 +1000
+image:  /images/posts//maui-ui-july-bg.png
+tags:   [mobile, maui, ui]
+categories: [.NET, Mobile]
+pin: true
+author: Matt Goldman
+authorTitle: Owner
+avatar: "/images/authors/mattg.png"
+---
+
+It's time for #MAUIUIJuly again!
+
+Based on an idea [originally started for Xamarin by Steven Thewissen](https://thewissen.io/introducing-xamarin-ui-july/), MAUI UI July is a month-long, community-driven event where anyone gets to share some of their enthusiasm and passion for .NET MAUI.
+
+This will be the fourth year running this event, and in previous years we've had fantastic contributions from the community, covering an incredible range of things to do with .NET MAUI. You can check out previous years' contributions here:
+
+* [MAUI UI July (2022)](/posts/maui-ui-july)
+* [MAUI UI July (2023)](/posts/maui-ui-july-23)
+* [MAUI UI July (2024)](/posts/mauiuijuly-24/)
+
+Each day in July, we'll add a blog post or video to the calendar below, showcasing something cool you can do with .NET MAUI. Be sure to bookmark/favourite this post and check back every day for new content!
+
+And if you want to participate and contribute something, even better! Keep reading to see what's involved.
+
+## How to Get Involved
+
+MAUI UI July is open to community contributions, and is an opportunity to share your passion and knowledge with the world. All you have to do is pick a topic and create a blog post or video, and pick a day in July to release it. If you want to participate, comment below, shout out on socials using the hashtags #dotnetmaui and #MAUIUIJuly or ping me directly (I'm on Twitter/"X", LinkedIn, and Mastodon - links are in the sidebar on the left), saying which day of the month you want to release your post or video on. Once you've picked a date I'll add your name to the list below to reserve your spot.
+
+From there, just get started on your content! Keep the following in mind:
+
+1. The topic must be related to UI in .NET MAUI
+2. Your blog must have an English version (if you want to do a non-English version, that's great, but it must be in addition to the English version), if you're doing a video it must be in English or have English subtitles
+3. Your content should indicate what level it is pitched at (e.g., beginner or advanced)
+4. Link back to this post in your blog post or in the description of your video
+5. Publish your blog post or video on the date according to the list below
+6. Share your video or blog post on socials, using the hashtags #dotnetmaui and #MAUIUIJuly
+
+That's it! Looking forward to seeing what you all come up with. :)
+
+## What should my content cover?
+
+Completely up to you! As long as it's related to .NET MAUI UI, feel free to be as creative as you like. Some common topics people like for this kind of thing include:
+
+* Replicate the UI of a well known app (see [this post](/posts/outlook-clone) for example)
+* Pick a fun or interesting design from [Dribbble](https://dribbble.com) and show how you can build it with .NET MAUI
+* Deep dive into a .NET MAUI UI feature
+* Build a popular UI control that doesn't come in the box (like a [bottom sheet](https://blogs.xgenoapps.com/post/2022/07/23/maui-bottom-sheet) for example)
+
+These are just examples. If you think something is interesting, there's a good chance the rest of the community will want to see you explain it.
+
+
+## .NET MAUI UI July Schedule
+
+| Date | Person                      | Content                                                                                                                                                                                                   |
+| ---- | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | Matt Goldman                | [Holy MauiGraphics Batman! Part 1: Batmobile Throttle Control](/posts/batmobile-part-1/)                                                                                                                  |
+| 2    | Matt Goldman                | [Holy MauiGraphics Batman! Part 2: Batcave RPM Gauge](/posts/batmobile-part-2)                                                                                                                            |
+| 3    | Matt Goldman                | [Holy MauiGraphics Batman! Part 3: Clayface Level Trigonometry](/posts/batmobile-part-3)                                                                                                                  |
+| 4    | Matt Goldman                | [Replicating Outlook's 'Focused/Other' toggle in .NET MAUI](/posts/outlook-toggle)                                                                                                                        |
+| 5    | Ed Schimmel                 | [Managing Screen Sizes](https://byte217.com/net-maui-managing-screen-sizes/)                                                                                                                              |
+| 6    | Ed Schimmel                 | [Scrolling Text Display](https://byte217.com/net-maui-scrolling-text-display/)                                                                                                                            |
+| 7    | Ed Schimmel                 | [Custom Tab Control](https://byte217.com/net-maui-tab-control-with-underlinement/)                                                                                                                        |
+| 8    | François Raminosona         | [Sensors in .NET MAUI](https://blog.francois.raminosona.com/sensors-in-net-maui-mauiuijuly/)                                                                                                              |
+| 9    | François Raminosona         | [Gyroscope Parallax](https://blog.francois.raminosona.com/sensor-based-parallax-in-net-maui-using-the-gyroscope-mauiuijuly/)                                                                              |
+| 10   | Almir Vuk                   | TBC                                                                                                                                                                                                       |
+| 11   | Ali Raza                    | [Milestone Journey Tracker](https://mauiwithali.hashnode.dev/building-a-dynamic-milestone-journey-tracker-with-skiasharp-in-net-maui)                                                                     |
+| 12   | Matt Goldman                | [Beer-Driven Downloads & Microinteractions in .NET MAUI](/posts/bdd-app-downloads)                                                                                                                        |
+| 13   | Adolfo Marinucci            | [Introduction to Reactor Theme](https://github.com/adospace/reactor-theme/blob/main/net_maui_july2025_article.md)                                                                                         |
+| 14   | John Bijsterbosch           | [Creating your first .NET MAUI SkiaSharp Component](https://blog.johndotnet.nl/creating-your-very-first-net-maui-skiasharp-component-step-by-step/)                                                       |
+| 15   | Nick Alonge                 | [Introduction to Reusable Views and Controls ](https://dev.to/nick_alonge/reusable-views-in-net-maui-4n3c)                                                                                                |
+| 16   | Sebastian Jensen            | [Building an Animated Countdown Control in .NET MAUI](https://medium.com/@@tsjdevapps/building-an-animated-countdown-control-in-net-maui-0b1faff7ed76)                                                     |
+| 17   | Calin Ciurariu              | [Scrolling Label](https://medium.com/@@clinciurariu/calin-ciurariu-c153c8ceb9dd)                                                                                                                           |
+| 18   | Farshad Momtaz              | TBC                                                                                                                                                                                                       |
+| 19   | Leomaris Reyes              | TBC                                                                                                                                                                                                       |
+| 20   | Vladislav Antonyuk          | [Turn any phone into an IP Camera in 30 minutes using .NET MAUI](https://vladislavantonyuk.github.io/articles/Turn-any-phone-into-an-IP-Camera-in-30-Minutes-using-.NET-MAUI/)                            |
+| 21   | Shaun Lawrence              | [Create a Wheel of Names clone](https://blog.bijington.com/2025/07/21/wheel-of-names.html)                                                                                                                |
+| 22   | Héctor Uriel Pérez Rojas    | [Create Viral Videos with SORA in .NET MAUI](https://devs.school/create-viral-videos-with-sora-in-net-maui/)                                                                                              |
+| 23   | David Nsai                  | [Building a pedometer fitness tracker](https://medium.com/@@nsaidave/building-a-pedometer-fitness-tracker-using-net-maui-8723ad041c1d)                                                                     |
+| 24   | Luis Antonio Beltran Prieto | [Joystick Navigation in .NET MAUI](https://dev.to/icebeam7/joystick-navigation-ui-in-net-maui-5974)                                                                                                       |
+| 25   | Nick Kovalsky               | [Build Cross-Platform Games in .NET MAUI with DrawnUI](https://taublast.github.io/posts/Breakout/)                                                                                                        |
+| 26   | Johan Smarius               | [Exploring the Syncfusion .NET MAUI Toolkit](https://www.youtube.com/watch?v=T69XFmhjdzQ)                                                                                                                 |
+| 27   | Steven Thewissen            | [The Crosswind Experiment](https://thewissen.io/maui-ui-july-crosswind-experiment/)                                                                                                                       |
+| 28   | Gulam Ali H.                | [Coach Marks, but Beautiful in .NET MAUI](https://medium.com/@@freakyali/coach-marks-but-beautiful-in-net-maui-7cd861dc1058)                                                                               |
+| 29   | Ed Gomez                    | [Why your .NET MAUI App Should Absolutely Support Desktop](https://www.linkedin.com/pulse/why-your-net-maui-app-should-absolutely-support-desktop-ed-gomez-jaekf)                                         |
+| 30   | David Ortinau               | [My top 5 UI Moments of 2025 (So Far)](https://dev.to/davidortinau/my-top-5-ui-moments-of-2025-so-far-1h14)                                                                                               |
+| 31   | Roman Jasek                 | [Accessibility in .NET MAUI - Chapter 1 - Introduction & Motivation](https://www.riganti.cz/en/blog/maui-managing-accessibility-chapter-01) (note remaining chapters are online and linked from the post) |
+
+
+
+I hope you enjoy .NET MAUI UI July!

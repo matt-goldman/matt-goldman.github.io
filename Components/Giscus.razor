@@ -1,0 +1,83 @@
+@inject IJSRuntime JS
+@inject NavigationManager Nav
+@implements IAsyncDisposable
+
+<div @ref="_host"></div>
+
+@code {
+    ElementReference _host;
+    IJSObjectReference? _mod;
+    string? _lastPath;
+    bool _mounted;
+    bool _disposed;
+
+    [Parameter, EditorRequired] public string Repo { get; set; } = default!;
+    [Parameter, EditorRequired] public string RepoId { get; set; } = default!;
+    [Parameter, EditorRequired] public string Category { get; set; } = default!;
+    [Parameter, EditorRequired] public string CategoryId { get; set; } = default!;
+    [Parameter] public string Mapping { get; set; } = "pathname";
+    [Parameter] public string? Term { get; set; }
+    [Parameter] public string Theme { get; set; } = "light";
+    [Parameter] public string Lang { get; set; } = "en";
+    [Parameter] public string InputPosition { get; set; } = "bottom";
+    [Parameter] public string ReactionsEnabled { get; set; } = "1";
+    [Parameter] public string EmitMetadata { get; set; } = "0";
+    [Parameter] public string Strict { get; set; } = "0";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+        _mod = await JS.InvokeAsync<IJSObjectReference>("import", "/js/giscus.js");
+        Nav.LocationChanged += OnLocationChanged;
+        await MountForCurrentRoute();   // first mount
+        _mounted = true;
+    }
+
+    async void OnLocationChanged(object? s, Microsoft.AspNetCore.Components.Routing.LocationChangedEventArgs e)
+    {
+        // Ensure we’re back on the UI thread and not disposed
+        if (_disposed) return;
+        await InvokeAsync(async () =>
+        {
+            if (_disposed) return;
+            await MountForCurrentRoute();
+        });
+    }
+
+    async Task MountForCurrentRoute()
+    {
+        if (_disposed || _mod is null) return;
+
+        var path = new Uri(Nav.Uri).AbsolutePath;
+        if (Mapping != "specific" && path == _lastPath) return;
+        _lastPath = path;
+
+        // Clean then mount (idempotent)
+        try { await _mod.InvokeVoidAsync("unmount", _host); } catch { /* ignore */ }
+
+        await _mod.InvokeVoidAsync("mount", _host, new {
+            repo = Repo,
+            repoId = RepoId,
+            category = Category,
+            categoryId = CategoryId,
+            mapping = Mapping,
+            term = Mapping == "specific" ? Term : null,
+            theme = Theme, lang = Lang,
+            inputPosition = InputPosition,
+            reactionsEnabled = ReactionsEnabled,
+            emitMetadata = EmitMetadata,
+            strict = Strict
+        });
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        _disposed = true;
+        Nav.LocationChanged -= OnLocationChanged;
+        if (_mod is not null)
+        {
+            try { await _mod.InvokeVoidAsync("unmount", _host); } catch { }
+            try { await _mod.DisposeAsync(); } catch { }
+        }
+    }
+}

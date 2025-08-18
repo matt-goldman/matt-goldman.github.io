@@ -1,0 +1,207 @@
+﻿@page "/"
+@inject IJSRuntime JS
+
+<PageTitle>GoForGoldman - Home</PageTitle>
+
+<!-- Hero Section -->
+<header class="bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Hi, I'm Matt</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Mobile dev, .NET, VR, motorcycles, homebrewing, Superman, science, and sometimes other things.</p>
+        </div>
+    </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Featured Post -->
+    @if (_featuredPost is not null)
+    {
+        <section class="mb-12">
+            <h3 class="text-2xl font-bold text-gray-900 mb-6">Featured Post</h3>
+            <article class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/3">
+                        <img src="@(string.IsNullOrEmpty(_featuredPost.Image) ? "https://placeholder.pics/svg/400x300/DFEEF6-B6BEC3/000000" : _featuredPost.Image)" alt="Featured post image" class="w-full h-48 md:h-full object-cover">
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">@(_featuredPost.Tags.FirstOrDefault() ?? string.Empty)</span>
+                            <span class="text-gray-500 text-sm ml-3">@($"{_featuredPost.Date:MMM dd, yyyy}")</span>
+                        </div>
+                        <h4 class="text-2xl font-bold text-gray-900 mb-3">
+                            <a href="@_featuredPost.Slug" class="hover:text-blue-600 transition-colors">@_featuredPost.Title</a>
+                        </h4>
+                        <p class="text-gray-600 mb-4">@_featuredPost.Description</p>
+                        <Author Page=@_featuredPost />
+                    </div>
+                </div>
+            </article>
+        </section>
+    }
+
+    <!-- Recent Posts -->
+    <section>
+        <h3 class="text-2xl font-bold text-gray-900 mb-6">Recent Posts</h3>
+        <div class="viewport">
+            <div class="rail @(_isAnimating ? "anim" : null)" style="transform: translateX(@_railX%)">
+                <div class="pane">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        @foreach (var post in _recentPosts)
+                        {
+                            <PostCard Page="@post"/>
+                        }
+                    </div>
+                </div>
+                <div class="pane">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        @foreach (var post in _incomingPosts)
+                        {
+                            <PostCard Page="@post"/>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pagination -->
+    @if (_pages.Count > 0)
+    {
+        <div class="flex justify-center mt-12">
+            <div class="flex space-x-1">
+                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50" @onclick=PreviousPage>Previous</button>
+                @foreach (var item in _pages)
+                {
+                    <button class="px-3 py-2 text-sm font-medium @(item == _currentPage ? "text-white bg-blue-600 border-blue-600" : "text-gray-700 bg-white border-gray-300 hover:bg-gray-50")"
+                       @onclick="() => PageSelected(item)">@item</button>
+                }
+                <button class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50" @onclick=NextPage>Next</button>
+            </div>
+        </div>
+    }
+</main>
+
+<!-- Footer -->
+<Footer></Footer>
+
+@code {
+
+    [SupplyParameterFromQuery]
+    private int? Page { get; set; } = 1;
+
+    private PageModel? _featuredPost;
+
+    private List<PageModel> _recentPosts = [];
+
+    private List<PageModel> _incomingPosts = [];
+
+    private List<int> _pages = [];
+
+    private int _currentPage = 1;
+
+    bool _isAnimating;
+    int _railX; // 0 or -100 (or +100 for prev)
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        if (GeneratedContentIndex.GetPages().Count > 0)
+        {
+            var pages = GeneratedContentIndex.GetPages()
+                .OrderByDescending(p => p.Date)
+                .ToList();
+
+            _featuredPost = pages.FirstOrDefault(p => p.Metadata.ContainsKey("featured")) ?? pages.FirstOrDefault();
+
+            _recentPosts = pages
+                .Where(p => p != _featuredPost && !p.Draft)
+                .Take(6)
+                .ToList();
+
+            if (pages.Count > 6)
+            {
+                _pages = Enumerable.Range(1, (int)Math.Ceiling((double)(pages.Count - 1) / 6)).ToList();
+            }
+        }
+
+        if (Page is > 1)
+        {
+            _currentPage = Page.Value;
+            SetRecentPostsAsync(_currentPage);
+        }
+    }
+
+
+    private async Task NextPage()
+    {
+        if (_currentPage < _pages.Count)
+        {
+            await PageSelected(_currentPage + 1);
+        }
+    }
+
+    private async Task PreviousPage()
+    {
+        if (_currentPage > 1)
+        {
+            await PageSelected(_currentPage - 1);
+        }
+    }
+
+    private async Task PageSelected(int pageNumber)
+    {
+        if (pageNumber > _currentPage - 1 || pageNumber < _currentPage + 1)
+        {
+            await SetIncomingPostsAsync(pageNumber);
+        }
+        else
+        {
+            SetRecentPostsAsync(pageNumber);
+        }
+    }
+
+    private async Task SetIncomingPostsAsync(int pageId)
+    {
+        if (pageId == _currentPage || _isAnimating) return;
+
+        _incomingPosts = GeneratedContentIndex.GetPages()
+                    .Where(p => !p.Draft && p.Slug.Contains("/posts/", StringComparison.OrdinalIgnoreCase))
+                    .OrderByDescending(p => p.Date)
+                    .Skip((pageId - 1) * 6)
+                    .Take(6)
+                    .ToList();
+
+        _isAnimating = true;
+        _railX = pageId > _currentPage ? -100 : 100; // slide direction
+        StateHasChanged();
+
+        await Task.Delay(250); // match CSS
+        _currentPage = pageId;
+        _recentPosts = _incomingPosts;
+        _incomingPosts = [];
+        _railX = 0; _isAnimating = false;
+        await SetRecentPostsAsync(_currentPage); // update URL
+    }
+
+    private async Task SetRecentPostsAsync(int pageId)
+    {
+        _recentPosts = GeneratedContentIndex.GetPages()
+                    .Where(p => !p.Draft && p.Slug.Contains("/posts/", StringComparison.OrdinalIgnoreCase))
+                    .OrderByDescending(p => p.Date)
+                    .Skip((pageId - 1) * 6)
+                    .Take(6)
+                    .ToList();
+
+        _isAnimating = false;
+        _railX = 0;
+
+        await SetQuery(pageId);
+    }
+
+    private async Task SetQuery(int page)
+    {
+        await JS.InvokeVoidAsync("setPageQuery", page - 1, false);
+    }
+}
