@@ -2,7 +2,7 @@
 description: "Improving Docker container performance in .NET Aspire on Windows by leveraging WSL 2 for better filesystem access and overall container efficiency."
 title:  "Fixing Docker Performance in Aspire on Windows"
 date:   2025-02-28 00:00:01 +1000
-image:  /images/posts//aspire-docker-performance.png
+image:  /images/posts/aspire-docker-performance.png
 tags:   [docker, aspire, wsl, windows, performance, wsl2]
 categories: [.NET, Aspire, Docker, Performance]
 author: Matt Goldman

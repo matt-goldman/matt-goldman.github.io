@@ -2,7 +2,7 @@
 description: "Managing different dependencies for different device idioms in .NET MAUI apps using dependency injection to support mobile, tablet, and desktop layouts."
 title:  "Differentiating device idiom dependencies in .NET MAUI"
 date:   2024-02-09 00:00:01 +1000
-image:  /images/posts//idiom-dependencies.png
+image:  /images/posts/idiom-dependencies.png
 tags:   [dotnet, dotnetmaui, di, dependency-injection]
 categories: [.NET]
 author: Matt Goldman
@@ -16,7 +16,7 @@ On mobile, it shows page content with navigation tabs at the bottom. Most of the
 
 On desktop the layout is different - it will have navigation tabs on the left, and to the right have the list/detail combination. You can see this approach in Microsoft Teams.
 
-![On desktop, the navigation tabs are on the left, followed by a list. The detail for the selected list item is displayed on the right. On mobile, the navigation tabs are at the bottom, and only the list (or detail) is shown.](/images/posts//teams-desktop-mobile.png)
+![On desktop, the navigation tabs are on the left, followed by a list. The detail for the selected list item is displayed on the right. On mobile, the navigation tabs are at the bottom, and only the list (or detail) is shown.](/images/posts/teams-desktop-mobile.png)
 _On desktop, the navigation tabs are on the left, followed by a list. The detail for the selected list item is displayed on the right. On mobile, the navigation tabs are at the bottom, and only the list (or detail) is shown._
 
 ## The requirements

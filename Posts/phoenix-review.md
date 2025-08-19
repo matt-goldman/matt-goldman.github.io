@@ -2,7 +2,7 @@
 description: "Book review of The Phoenix Project exploring DevOps principles and management theory applied to IT organizations, with lessons on reducing friction and increasing value delivery."
 title:  "Book review: The Phoenix Project"
 date:   2023-09-18 00:00:01 +1000
-image:  /images/posts//phoenix-project.png
+image:  /images/posts/phoenix-project.png
 tags:   [management, leadership, devops]
 categories: [Management]
 author: Matt Goldman

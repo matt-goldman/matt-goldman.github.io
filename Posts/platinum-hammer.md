@@ -2,7 +2,7 @@
 description: "Exploring cognitive biases in technology decision-making, from the golden hammer problem to the allure of new solutions and finding the right balance."
 title:  "The Right Tool for the Job: Beyond the Golden Hammer"
 date:   2024-03-10 00:00:01 +1000
-image:  /images/posts//platinum-hammer.png
+image:  /images/posts/platinum-hammer.png
 tags:   [management, leadership, architecture, design]
 categories: [Management]
 author: Matt Goldman

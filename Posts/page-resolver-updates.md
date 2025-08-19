@@ -2,7 +2,7 @@
 description: "Latest improvements to PageResolver for .NET MAUI, making MVVM setup easier with automatic view and ViewModel resolution through dependency injection."
 title:  "PageResolver Updates – The Missing Piece of .NET MAUI, Now Ready for .NET 9!"
 date:   2024-11-11 00:00:01 +1000
-image:  /images/posts//page-resolver-updates.png
+image:  /images/posts/page-resolver-updates.png
 tags:   [mobile, maui, ui, di]
 categories: [.NET, Mobile, UI, UX, DI]
 author: Matt Goldman

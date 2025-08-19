@@ -2,7 +2,7 @@
 description: "Exploring whether APIs need to be HTTP standards-compliant and the practical considerations for using HTTP status codes effectively in mobile app development."
 title:  "HTTP Status Codes in your APIs"
 date:   2019-11-17 18:05:55 +0300
-image:  /images/posts//http-codes-image.jpg
+image:  /images/posts/http-codes-image.jpg
 tags:   [http]
 categories: [Web]
 author: Matt Goldman
@@ -44,7 +44,7 @@ When I started raising this discussion with my colleagues, I discovered somethin
 
 In fact, while researching an unrelated issue ([API versioning](https://www.troyhunt.com/your-api-versioning-is-wrong-which-is/)), I came across this cartoon on [Troy Hunt](https://www.troyhunt.com/)'s blog:
 
-![](/images/posts//robin-rest.png)
+![](/images/posts/robin-rest.png)
 *Thanks Troy!"*
 
 To clarify, I’m Robin in this picture. Maybe it’s because of my background in health, where standards compliance is paramount, or because of my previous work consulting on [GRC](https://en.wikipedia.org/wiki/Governance,_risk_management,_and_compliance), but to me standards are important. But in the real world, I’m just an irritating jerk (something my incredibly patient partner would have no hesitation in confirming!).

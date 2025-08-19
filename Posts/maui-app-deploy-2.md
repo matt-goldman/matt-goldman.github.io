@@ -2,7 +2,7 @@
 description: "Part 2 of the .NET MAUI deployment series, covering the complete process for deploying iOS apps to the Apple App Store with signing and distribution guidance."
 title:  "Deploying your .NET MAUI apps to production - Part 2: iOS"
 date:   2023-01-22 0:00:00 +1000
-image:  /images/posts//maui-deploying-image-2.png
+image:  /images/posts/maui-deploying-image-2.png
 tags:   [mobile, maui, ui, deploying, production]
 categories: [.NET, Mobile]
 author: Matt Goldman
@@ -44,7 +44,7 @@ To enroll in the Apple developer program, go to https://developer.apple.com/prog
 
 To develop and distribute apps via Apple’s App Stores, you need to create _provisioning profiles_ in the Apple developer portal. Provisioning profiles come in two flavors: development profiles and distribution profiles. Development profiles consist of one or more device IDs, a certificate, and an app identifier, as shown in the figure below.
 
-![A development profile is used to run apps on Apple devices during the development stage, and is comprised of one or more device IDs, a development certificate, and an app identifier](/images/posts//apple-dev-profile.png)
+![A development profile is used to run apps on Apple devices during the development stage, and is comprised of one or more device IDs, a development certificate, and an app identifier](/images/posts/apple-dev-profile.png)
 
 :::info
 It’s possible to develop apps using physical devices without a paid Apple developer program membership. You can find out more about free provisioning here: https://learn.microsoft.com/xamarin/ios/get-started/installation/device-provisioning/free-provisioning. This may be useful while you’re learning, but it is not suitable for use in a team (see _Automatic provisioning_ below) and cannot be used for distribution. As a professional app developer, you will need an Apple developer program membership.
@@ -111,7 +111,7 @@ Note that if you are using iOS 16 or later, you also need to enable developer mo
 ## Bundle Signing
 Now that we’ve created a development profile, we can debug our app on a physical iOS device, but we still need to create a distribution profile so that we can deploy it. Distribution profiles are similar to development profiles; they’re comprised of a development certificate and an app ID (as shown in the figure below) and the process to create them is similar.
 
-![A distribution profile is constructed from a distribution certificate and an app identifier. As it’s for distribution rather than development, it’s not tied to any devices, so no device IDs are required](/images/posts//apple-distribution-profile.png)
+![A distribution profile is constructed from a distribution certificate and an app identifier. As it’s for distribution rather than development, it’s not tied to any devices, so no device IDs are required](/images/posts/apple-distribution-profile.png)
 
 
 To create a distribution profile, follow these steps:
@@ -126,7 +126,7 @@ This will create a distribution profile you can use. For good measure, ensure th
 ## Deploying to the store
 Whereas the Google Developer console is an all-in-one resource for managing all aspects of your app, the Apple Developer website is only used for managing the development aspects (certificate, profiles, devices, and app identifiers). You manage the distribution side using [App Store Connect](https://appstoreconnect.apple.com). App Store Connect is where you manage all the commercial aspects of your app, including the various Apple agreements you need to accept, sales, reports and analytics, users, and the apps themselves. The figure below shows how the three resources you will use work together.
 
-![A distribution profile is constructed from a distribution certificate and an app identifier. As it’s for distribution rather than development, it’s not tied to any devices, so no device IDs are required](/images/posts//apple-ecosystem.png)
+![A distribution profile is constructed from a distribution certificate and an app identifier. As it’s for distribution rather than development, it’s not tied to any devices, so no device IDs are required](/images/posts/apple-ecosystem.png)
 
 Let’s set up the app registration:
 1.	Go to App Store Connect and sign in with your Apple ID.

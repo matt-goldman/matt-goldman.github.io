@@ -2,7 +2,7 @@
 description: "Announcing the first .NET MAUI UI July event, a month-long community-driven initiative featuring daily blog posts and videos showcasing .NET MAUI UI techniques."
 title:  "Introducing .NET MAUI UI July"
 date:   2022-05-19 18:05:55 +0300
-image:  /images/posts//maui-ui-july-bg.png
+image:  /images/posts/maui-ui-july-bg.png
 tags:   [mobile, maui, ui]
 categories: [.NET, Mobile]
 redirect_from:

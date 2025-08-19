@@ -2,7 +2,7 @@
 description: "Personal tribute to a dear friend Mike, sharing memories and celebrating his unique logic and personality on what would have been his 50th birthday."
 title:  "Remembering Mike"
 date:   2023-11-03 00:00:01 +1000
-image:  /images/posts//troops.jpg
+image:  /images/posts/troops.jpg
 tags: []
 categories: []
 author: Matt Goldman
@@ -14,7 +14,7 @@ This post is a bit different to my usual content, and a bit longer too. For anyo
 
 Four and a half years ago, on 19th March 2019, my best friend Mike passed away. He was 45 at the time, and today would've been his 50th birthday.
 
-![Mike, as I will always remember him](/images/posts//mike.jpg)
+![Mike, as I will always remember him](/images/posts/mike.jpg)
 
 I'm quite a few years younger than Mike, and I remember when he had his 25th birthday at his uni bar, there was a fair bit of teasing about hitting the quarter century mark. 25 seems so young now - but it's funny, today 45 seems somehow even younger.
 
@@ -58,20 +58,20 @@ But off the court was a completely different story. Lisa is beyond any shadow of
 
 Lisa changed Mike. Over the years, Mike's hard edges softened, and this changed my relationship with him too. We became true friends, and all of this led to one of the highest honours I've ever received in my life. Mike and Lisa asked me to be godfather to their firstborn son Chase.
 
-!['Aren't you a little short to be a Storm Trooper?' Me and Mike rocking the helmets Lisa surprised us with](/images/posts//troops.jpg)
+!['Aren't you a little short to be a Storm Trooper?' Me and Mike rocking the helmets Lisa surprised us with](/images/posts/troops.jpg)
 
 
 I'll never forget the day of the christening. Mike and Lisa, both Catholic, had explained to the priest that one of the godfathers (Lisa's brother and father were godfathers too) would be Jewish. The priest gave a long speech about the spiritual responsibilities of a godparent, about how their role is to guide the child in the ways of Christ, and stared daggers at me for emphasis every few words. Well, fortunately I wasn't struck by lightning as I entered the church, and my fingers didn't sizzle when I dipped them in the font of holy water. As I reached over to draw the cross ✝️ on Chase's forehead, I looked up and saw Mike's shoulders shaking as he fought to contain his laughter - he was sure I was about to draw a Star of David ✡️. Of course I didn't do this - I respected the honour that I had been given - but I'd be lying if I said I hadn't had the same thought too!
 
-![Me, Mike, and Chase embroiled in an epic lightsabre battle](/images/posts//lightsabers.jpg)
+![Me, Mike, and Chase embroiled in an epic lightsabre battle](/images/posts/lightsabers.jpg)
 
 10 years later came another huge honour. Mike and Lisa got married, and asked me to be the best man. By this time I had moved to Australia, and this was actually my first trip back. The wedding was spectacular - not in a lavish, ostentatious way, but in the fun way you would expect no less of from Mike and Lisa. They had Han and Leia figurines on the wedding cake, and small Star Wars easter eggs peppered throughout the event. Chase and I were co-best-men, and Mike had ordered custom made lightsaber hilts for the three of us, which we wore hanging from our belts under our tuxedoes. Connor, their other son, was a baby, and therefore a little too young for best man duties, but you could tell he had as much fun at the wedding as everyone else!
 
-![Me and Mike at his Stag](/images/posts//stag.jpg)
+![Me and Mike at his Stag](/images/posts/stag.jpg)
 
 In Jersey, Mike found the dream life he'd been chasing. It was a struggle at first - the four of them were living with Lisa's parents, which was definitely a strain, but also brought them all so close together. Mike was already a part of the family; Lisa's family are some of the most welcoming people I've ever met, and have always made me feel like a part of their family too (in fact, I'm sure if you asked them, they would say that they consider me family without a second thought). But this time certainly helped strengthen that bond.
 
-![Me with Mike, Lisa, Chase, Connor, and Lisa's parents](/images/posts//jersey-pub.jpg)
+![Me with Mike, Lisa, Chase, Connor, and Lisa's parents](/images/posts/jersey-pub.jpg)
 
 Quite literally the last thing Mike ever did was to make John, Lisa's dad, proud. On the day that he died, he was installing a wall-mounted TV bracket, and he'd placed a spirit level on top. He wanted to show John what a good job he'd done.
 
@@ -105,4 +105,4 @@ Today, I'm remembering Mike. And I'm not mourning him, I'm thinking about how lu
 
 Happy birthday, big brother. I miss you.
 
-![Mike with the autographed photo of Carrie Fisher (made out to his personal Storm Trooper designation) that I got him for his 40th birthday, 10 years ago](/images/posts//carrie.jpg)
+![Mike with the autographed photo of Carrie Fisher (made out to his personal Storm Trooper designation) that I got him for his 40th birthday, 10 years ago](/images/posts/carrie.jpg)

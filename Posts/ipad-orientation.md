@@ -2,7 +2,7 @@
 description: "Understanding orientation state changes on iPad in .NET MAUI and why OrientationStateTrigger behaves differently due to iPad's multitasking capabilities."
 title:  "Orientation state changes on iPad in .NET MAUI"
 date:   2024-02-20 00:00:01 +1000
-image:  /images/posts//ipad-responsove-gotcha.png
+image:  /images/posts/ipad-responsove-gotcha.png
 tags:   [dotnet, dotnetmaui, responsive, ipad]
 categories: [.NET]
 author: Matt Goldman
@@ -18,7 +18,7 @@ I was working recently on an app that would have different layouts on mobile and
 
 On tablets, I wanted a responsive layout, so that in portrait mode it behaves like a phone, and in landscape it behaves like a desktop.
 
-![On iPad, in landscape orientation, the list and the detail are both show. In portrait, only one is shown and the user navigates between the two.](/images/posts//ipad-landscape-portrait.png)
+![On iPad, in landscape orientation, the list and the detail are both show. In portrait, only one is shown and the user navigates between the two.](/images/posts/ipad-landscape-portrait.png)
 _On iPad, in landscape orientation, the list and the detail are both show. In portrait, only one is shown and the user navigates between the two._
 
 According to the Microsoft documentation, this is achievable with [`OrientationStateTrigger`](https://learn.microsoft.com/dotnet/maui/fundamentals/triggers?view=net-maui-8.0#orientation-state-trigger). Using this, you can set [custom visual states](https://learn.microsoft.com/dotnet/maui/user-interface/visual-states?view=net-maui-8.0#define-custom-visual-states) for portrait and landscape and control aspects of your layouts accordingly. This works well on phones and Android tablets, but it didn't work at all on iPad.

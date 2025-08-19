@@ -173,7 +173,7 @@
     {
         var currentUrl = NavigationManager.Uri;
 
-        var encodedUrl = Uri.EscapeDataString(currentUrl);
+        var encodedUrl = Uri.EscapeDataString(currentUrl).TrimEnd('/') + "/";
 
         _blueskyLink += $"Check out @Title: {encodedUrl}";
         _linkedinLink += encodedUrl;

@@ -2,7 +2,7 @@
 description: "Part 3 of the .NET MAUI deployment series, providing a comprehensive guide for deploying Windows apps to the Microsoft Store with packaging and submission details."
 title:  "Deploying your .NET MAUI apps to production -  Part 3: Windows"
 date:   2023-02-05 0:00:00 +1000
-image:  /images/posts//maui-deploying-image-3.png
+image:  /images/posts/maui-deploying-image-3.png
 tags:   [mobile, maui, ui, deploying, production]
 categories: [.NET, Mobile]
 author: Matt Goldman
@@ -78,7 +78,7 @@ You can work through all of the remaining steps without a production release, bu
 
 Microsoft Partner Center works with Azure Active Directory (AAD) and Visual Studio; an app registration is created in AAD that provides credentials that can be used in Visual Studio (note this is an AAD app registration, not a Microsoft Store app registration). Visual Studio calls the Microsoft Partner Center API using these credentials, which are validated against AAD. This process is summarized in the figure below.
 
-![Use Microsoft Partner Center to create the app registration in AAD. Generate a key, and use the tenant ID, app ID and key in Visual Studio to deploy to Microsoft Partner Center, which validates the credentials against AAD](/images/posts//microsoft-store.drawio.png)
+![Use Microsoft Partner Center to create the app registration in AAD. Generate a key, and use the tenant ID, app ID and key in Visual Studio to deploy to Microsoft Partner Center, which validates the credentials against AAD](/images/posts/microsoft-store.drawio.png)
 
 Some understanding of AAD will be beneficial for this process, as it will help you to troubleshoot any problems you encounter but is not strictly necessary as the entire process can be managed by Microsoft Partner Center. Follow these steps to connect Microsoft Partner Center to AAD and create an app registration:
 1.	In the Microsoft Partner Center, navigate to **Tenants**. Access this by clicking on the  cog in the top-right, then selecting **Account Settings**, then Tenants under the **Organization profile** sub-heading from the left-hand menu.

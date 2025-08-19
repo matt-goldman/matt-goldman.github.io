@@ -2,7 +2,7 @@
 description: "Announcing .NET MAUI UI July 2023, the second year of this popular community event featuring daily contributions showcasing creative .NET MAUI UI implementations."
 title:  ".NET MAUI UI July - 2023!"
 date:   2023-06-07 08:05:55 +0300
-image:  /images/posts//maui-ui-july-bg.png
+image:  /images/posts/maui-ui-july-bg.png
 tags:   [mobile, maui, ui]
 categories: [.NET, Mobile]
 author: Matt Goldman

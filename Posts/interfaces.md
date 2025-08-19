@@ -2,7 +2,7 @@
 description: "Understanding interfaces and dependency inversion principles in .NET, explaining how to properly define abstractions where you consume them rather than implement them."
 title:  "Understanding Interfaces and Dependency Inversion"
 date:   2021-04-12 00:05:55 +0300
-image:  /images/posts//pexels-brett-sayles-4373998.jpg
+image:  /images/posts/pexels-brett-sayles-4373998.jpg
 tags:   interfaces oop ioc di SOLID
 categories: [.NET]
 redirect_from:

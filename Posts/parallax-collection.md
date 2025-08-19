@@ -2,7 +2,7 @@
 description: "Step-by-step tutorial for creating an engaging parallax scrolling effect in .NET MAUI CollectionView to add visual depth to your mobile app interfaces."
 title:  "Parallax CollectionView in .NET MAUI"
 date:   2024-07-01 00:00:01 +1000
-image:  /images/posts//parallax-collection.png
+image:  /images/posts/parallax-collection.png
 tags:   [mobile, maui, ui]
 categories: [.NET, Mobile, UI, UX, Parallax]
 author: Matt Goldman
@@ -275,7 +275,7 @@ file="Controls/HeroCard.xaml.cs
 <br/>
 If you run and build the app now, you should see something like this:
 
-![The app with a standard `CollectionView`](/images/posts//parallax-collection-basic.gif)
+![The app with a standard `CollectionView`](/images/posts/parallax-collection-basic.gif)
 _The app with the standard `CollectionView`_
 
 You can see I've added a shadow here which already adds a little depth, but we can add a bit more by adding a parallax effect.
@@ -284,7 +284,7 @@ You can see I've added a shadow here which already adds a little depth, but we c
 
 Before we get into the code, let's briefly discuss the logic of how this effect will work. We're going to manipulate the position of the images relative to the card, so that as we scroll, it appears the images are moving faster than the cards. This makes the image appear closer than the background, which creates the illusion of depth. To achieve this, every time the `OnScrolled` event of the `CollectionView` is fired, we'll check the center of the image and adjust the `Y` (vertical) position proportionally to the difference between the image's center and the screen's center. The further from the center of the screen it is, the more we'll offset it.
 
-![As the center of the view moves further from the center of the screen, the vertical position of the image is offset from the background proportionally, giving it the sense that it is moving quicker and appears closer](/images/posts//parallax-logic-1.png)
+![As the center of the view moves further from the center of the screen, the vertical position of the image is offset from the background proportionally, giving it the sense that it is moving quicker and appears closer](/images/posts/parallax-logic-1.png)
 _As the center of the view moves further from the center of the screen, the vertical position of the image is offset from the background proportionally, giving it the sense that it is moving quicker and appears closer_
 
 ## Adding the controls
@@ -393,7 +393,7 @@ public partial class ParallaxItemView
 
 You can see here that we've started with partial implementations of the methods defined in the shared class. The `CalculateCenter` method is easy - it calculates the value for the center of the view as the `_platformY` position plus half the height of the view. The Y position is the distance from the top of the screen to the top of the view, so adding half the height of the view gives us the center of the view.
 
-![platformY is the distance from the top of the screen to the top of the view, and ThisCenter (the center of the view) is calculated by adding half the height of the view](/images/posts//parallax-android1.png)
+![platformY is the distance from the top of the screen to the top of the view, and ThisCenter (the center of the view) is calculated by adding half the height of the view](/images/posts/parallax-android1.png)
 __platformY is the distance from the top of the screen to the top of the view, and ThisCenter (the center of the view) is calculated by adding half the height of the view_
 
 Now we need to flesh out the `ConfigurePlatform` method, so let's start with two easy things: setting the values for `_denominator` and `CenterY`.
@@ -580,10 +580,10 @@ The changes here are minimal - the `ParallaxItemView` and `ParallaxCollectionVie
 
 If we run the app now, we see the scrolling effect we're after:
 
-![The parallax effect on Android](/images/posts//android-parallax.gif)
+![The parallax effect on Android](/images/posts/android-parallax.gif)
 _The parallax effect on Android_
 
-![The parallax effect on iOS](/images/posts//ios-parallax.gif)
+![The parallax effect on iOS](/images/posts/ios-parallax.gif)
 _The parallax effect on iOS_
 
 ## Challenges

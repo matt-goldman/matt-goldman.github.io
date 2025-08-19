@@ -2,7 +2,7 @@
 description: "Thoughts on optimizing morning productivity by rethinking meeting schedules and the timing of daily standups to protect deep work time."
 title:  "First things first"
 date:   2025-08-06 00:00:01 +1000
-image:  /images/posts//ftf.png
+image:  /images/posts/ftf.png
 tags:   [productivity, scrum, agile, meetings]
 author: Matt Goldman
 authorTitle: Owner

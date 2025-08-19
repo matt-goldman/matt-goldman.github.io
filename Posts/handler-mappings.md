@@ -2,7 +2,7 @@
 description: "Comprehensive guide to organizing and implementing .NET MAUI handler mappings effectively, with best practices for customizing native platform controls."
 title:  "Where to put your .NET MAUI Handler Mappings"
 date:   2023-07-01 00:00:00 +1000
-image:  /images/posts//switchboard.jpg
+image:  /images/posts/switchboard.jpg
 tags:   [mobile, maui, ui]
 categories: [.NET, Mobile]
 author: Matt Goldman
@@ -19,7 +19,7 @@ In .NET MAUI, the handler architecture provides a way for developers to access p
 # Understanding handlers
 .NET MAUI is more than a UI; it's a collection of loosely coupled abstractions spanning the UI layer all the way down to platform runtime level. If you wanted, you could implement your own UI layer using the abstractions .NET MAUI provides (in fact, there are [some frameworks](https://github.com/unoplatform/uno) that do [exactly this](https://github.com/AvaloniaUI/Avalonia)), but .NET MAUI already provides a UI layer using these abstractions, and it's handlers that map these abstractions to platform implementations. The following figure shows a simplified view of this architecture fore a `Button` control.
 
-![](/images/posts//maui-handlers.png)
+![](/images/posts/maui-handlers.png)
 _A `Button` in .NET MAUI is a virtual view that implements the `IButton` interface. Handlers map that abstraction to specific platform implementations._
 
 The handlers give you access to the native platform views, and you can use them to customise the controls provided by .NET MAUI, or implement your own. By exposing .NET abstractions of the native platform view APIs, handlers provide an easy, discoverable way (through Intellisense) go beyond the (in fairness, quite extensive) styling options offered by .NET MAUI.
@@ -31,7 +31,7 @@ It's unlikely you will ever need to use prepend or modify, so the rest of this p
 
 Let's consider the following example:
 
-![](/images/posts//handlers-page-arch-1.png)
+![](/images/posts/handlers-page-arch-1.png)
 _An app consisting of a main page and two sub-pages. One of the sub-pages has a customised `Entry` control._
 
 Page A has a customised `Entry` control that implements one of the Material styles. We could build out all of the styling for the custom `Entry` using pure .NET MAUI, but first we would have to get rid of the border and background of the default control. We could do this with a handler mapping:
@@ -62,12 +62,12 @@ Where we put this code matters; your code path has to actually reach this code i
 
 But there's another important concept here - once a handler modification is executed, it will apply to _all_ instances of the control throughout your running app. Let's consider another example:
 
-![](/images/posts//handlers-page-arch-2.png)
+![](/images/posts/handlers-page-arch-2.png)
 _An app consisting of a main page and two sub-pages. One of the sub-pages has a default `Entry` control, and the other has two customised `Entry` controls._
 
 In this example, Page A has a default `Entry` control, and Page B has two customised `Entry` controls, each implementing a different Material style. In this case, we could still put the handler modification in Page B's constructor; however, once the user navigates to Page B, _all_ entry controls throughout the app will lose their borders, so if the user then navigates back to Page A, they see a weird borderless control without our other customisations (note these other customisations are not shown here, but they would be wrapped in a different .NET MAUI view - you can see more about this approach in [my video here](https://youtu.be/UiCz3DTPzjw)).
 
-![](/images/posts//handlers-page-arch-3.png)
+![](/images/posts/handlers-page-arch-3.png)
 _Once the handler modification is executed, all instances of the control are affected._
 
 There is a relatively simple way to deal with this, if you don't want your customisation to apply to all instances of a control, and that is to sub-class the control and only apply the modifications to instances of the sub-class:
