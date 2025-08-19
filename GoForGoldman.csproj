@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BlakePlugin.OpenGraph" Version="1.0.1-preview2" />
     <PackageReference Include="BlakePlugin.RSS" Version="1.0.3" />
     <PackageReference Include="Blazicons.Bootstrap" Version="2.3.40" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.6" />

@@ -2,7 +2,7 @@
 description: "Understanding unexpected exceptions in EF Core 7+ migrations caused by the CLI's intentional host abortion and how to handle them in your application's exception handling."
 title:  "Unexpected Exceptions in EF Core 7+ Migrations"
 date:   2023-10-23 00:00:01 +1000
-image:  /images/posts//ef-core.png
+image:  /images/posts/ef-core.png
 tags:   [dotnet, efcore]
 categories: [.NET]
 author: Matt Goldman

@@ -2,7 +2,7 @@
 description: "Announcing .NET MAUI UI July 2025, a month-long community-driven event where developers share their passion and expertise for building beautiful .NET MAUI user interfaces."
 title:  ".NET MAUI UI July - 2025"
 date:   2025-05-01 00:00:01 +1000
-image:  /images/posts//maui-ui-july-bg.png
+image:  /images/posts/maui-ui-july-bg.png
 tags:   [mobile, maui, ui]
 categories: [.NET, Mobile]
 pin: true

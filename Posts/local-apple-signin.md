@@ -2,7 +2,7 @@
 description: "How to test Sign-in with Apple in your local development environment by working around Apple's localhost restrictions with DNS and host file configurations."
 title:  "Testing Sign-in with Apple in your local development environment"
 date:   2023-08-01 00:00:01 +1000
-image:  /images/posts//pexels-elvis-2528118.jpg
+image:  /images/posts/pexels-elvis-2528118.jpg
 tags:   [mobile, maui, ui]
 categories: [.NET, Auth, Apple, Authentication, iOS, iPadOS, macOS, Mobile, DNS, openssl, OIDC, OAuth]
 author: Matt Goldman

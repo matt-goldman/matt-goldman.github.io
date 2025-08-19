@@ -2,7 +2,7 @@
 description: "Exploring various methods for automating tenant configuration in mobile apps, from QR codes to email-based setup, making multi-tenant deployment seamless."
 title:  "Automagic Tenant Config for Mobile Apps"
 date:   2021-02-04 18:05:55 +0300
-image:  /images/posts//is-this-your-card.png
+image:  /images/posts/is-this-your-card.png
 tags:   [mobile, xamarin, configuration, tenant-config, multitenancy]
 categories: [.NET, Mobile]
 author: Matt Goldman
@@ -30,7 +30,7 @@ With consumer apps (and some Enterprise apps), there's usually only one config a
 
 For instance, your mobile app may need to connect to a different back end or tennant for each organisation that's using your app. For example, let's take a look at the difference between how a consumer app like WhatsApp works, and how a consumer *or* Enterprise app like Outlook works.
 
-![WhatsApp vs Outlook (Note: Oversimplified for demonstration purposes)](/images/posts//whatsapp-vs-outlook.png)
+![WhatsApp vs Outlook (Note: Oversimplified for demonstration purposes)](/images/posts/whatsapp-vs-outlook.png)
 
 In this example, any user can install WhatsApp, and they're up and running straight away. There's one back end service that everyone connects too, and all other configuration is the same.
 
@@ -59,7 +59,7 @@ Let's take a look at some ways we can get this config to your users.
 # Option A - Manual Configuration
 One way to get tenant-specific config into your users' mobile apps is manually. Provide them with the config, and get them to put it in.
 
-![Manual configuration entry form](/images/posts//tenant-config-manual.png)
+![Manual configuration entry form](/images/posts/tenant-config-manual.png)
 
 In this example, the user is presented with a form which tells them to enter the configuration provided to them by their sysadmin (just like the old days with Outlook on desktop). Their sysadmin presumably sends them an email or directs them to an intranet resource where their config is documented.
 
@@ -165,7 +165,7 @@ If they’ve already got access to the web app then they already have access to 
 
 One way to do that is by encoding the configuration into a QR code and scanning that on the mobile device.
 
-![Automagic config with a QR code](/images/posts//qr-config.png)
+![Automagic config with a QR code](/images/posts/qr-config.png)
 
 In this approach, when the user opens their app, they are directed to find a QR code in the desktop app and scan it to retrieve the config. The desktop app (Angular in this example) grabs the config from the back end as a JSON string, then Base64 encodes that, and then displays the Base64 endoded string as a QR code.
 
@@ -242,7 +242,7 @@ Using this QR code approach is certainly viable (in fact I have this in producti
 # Option C - Automagic Config from a URL
 In the above example, the Angular application retrieves the config from the back end, before encoding it into a QR code to display to the user. So, why not cut out the middle-man, and just give the user the URL so their app can pick up the config directly?
 
-![Automagic config from a URL](/images/posts//automagic-url-config.png)
+![Automagic config from a URL](/images/posts/automagic-url-config.png)
 
 
 In this case, the user enters a URL. This would presumably be provided to them by their sysadmin, or it could be displayed from their desktop app or could even simply be the URL of the desktop app. In this case, this replaces scanning the QR code - the app downloads the JSON directly from the URL, deserializes it to a config object, then saves the values to Secure Storage.
@@ -259,7 +259,7 @@ This option definitely passes the Gregory Benford test. Yes, it requires a manua
 ## Using a Config Broker
 To pull off this config sleight-of-hand, let's assume that any user with the same SMTP domain (the bit after the '@@' in your email address) will be part of the same tenant, and will therefore need the same config; just like with Microsoft Exchange or Exchange Online/Office365. One way you can do this is with a config broker service, that might look something like this.
 
-![Automagic config with a config broker](/images/posts//email-config-broker.png)
+![Automagic config with a config broker](/images/posts/email-config-broker.png)
 
 Let's break down what's happening here:
 
@@ -274,17 +274,17 @@ This is a viable approach and can work well. But there *are* some problems. Firs
 ## Using DNS
 Rather than reinventing the wheel, a far better approach is to replicate what Microsoft have done with Outlook.
 
-![The Outlook mobile app just asks users for their email address](/images/posts//outlook-mobile.jpg)
+![The Outlook mobile app just asks users for their email address](/images/posts/outlook-mobile.jpg)
 
 How does Microsoft pull off this trick? The answer is surprisingly simple - with DNS records.
 
 The administrator of any domain that an Outlook client is expected to connect to, whether on desktop or mobile, creates an *autodiscover* record for that domain. So, if I want to set up Outlook to use my email address (matt@@goforgoldman.com), I just enter this into Outlook. Outlook then extracts the SMTP domain (goforgoldman.com) and looks up an *autodiscover* record for that domain - autodiscover.goforgoldman.com.
 
-![Outlook can now automatically configure itself just from your email address](/images/posts//autodiscover.png)
+![Outlook can now automatically configure itself just from your email address](/images/posts/autodiscover.png)
 
 This is a tried and tested approach that has been working for a long time. If we want to replicate this, we can do so easily. We can't use autodiscover - that's already taken by Outlook - but we can create a unique discovery record for our app that any domain administrator can easily create. In the case of our sample app - MedMan - we create a record called *discovermedman*.
 
-![The final version of our app just asks for the user's email address](/images/posts//medman-email.png)
+![The final version of our app just asks for the user's email address](/images/posts/medman-email.png)
 
 ```xml
 <StackLayout Margin="30"
@@ -396,14 +396,14 @@ App.Constants.UserEmail = UserEmail;
 *We get the user's domain from their email address, then use it to fetch the config. Then save as normal.*
 
 
-![All required config can now be retrieved using an autodiscover record](/images/posts//discover-medman.png)
+![All required config can now be retrieved using an autodiscover record](/images/posts/discover-medman.png)
 
 This is a much better approach than using a config broker, because the responsibility for maintaining this is with the administrator of the SMTP domain for the tenant. It's true that some may not do it or do it wrong, but in this case it affects one subset of your users, rather than your whole user base.
 
 ## One last trick...
 This is great so far. The user has given us their email address so we can get the config, but we also need their email address for the login. To maintain the illusion, they shouldn't have to enter it again. Instead, it should automagically flow through to the login screen.
 
-![Animation showing email address captured and passed through to OAuth login page](/images/posts//medman-auto-email.gif)
+![Animation showing email address captured and passed through to OAuth login page](/images/posts/medman-auto-email.gif)
 
 This is achieved through use of the 'Login Hint' parameter. This parameter is not strictly defined as part of the OAuth standard, but nearly all OAuth compliant identity providers - and certainly all the major ones - support it. In this example we're using [Azure AD B2C](https://docs.microsoft.com/en-us/azure/active-directory-b2c/overview) as the IDP and the [Microsoft Authentication Library (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) in the client to authenticate against it.
 

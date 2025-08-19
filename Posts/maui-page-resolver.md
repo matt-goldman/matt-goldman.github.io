@@ -2,7 +2,7 @@
 description: "Introducing the MAUI Page Resolver library, providing dependency injection and navigation extensions for .NET MAUI apps with fully resolved dependencies."
 title:  "Page Resolver and Navigation Extension for MAUI"
 date:   2021-06-17 00:05:55 +0300
-image:  /images/posts//maui.png
+image:  /images/posts/maui.png
 tags:   [dotnet, maui, mobile, di]
 categories: [.NET, Mobile]
 redirect_from:

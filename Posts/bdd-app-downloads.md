@@ -2,7 +2,7 @@
 description: "Exploring creative download progress microinteractions in .NET MAUI, from basic modals to engaging beer-fill animations that enhance user experience."
 title: "Beer-Driven Downloads & Microinteractions in .NET MAUI"
 date: 2025-07-12 00:00:01 +1000
-image: /images/posts//bdd-downloads-cover.png
+image: /images/posts/bdd-downloads-cover.png
 tags: [mobile, maui, ui, ux, microinteractions]
 categories: [.NET, Mobile, UI, UX, Microinteractions]
 author: Matt Goldman
@@ -49,7 +49,7 @@ Throughout all levels, the core download state visuals remain: dimmed thumbnails
 
 As a minimum, we need to include some visual cues that indicate the state of episodes to the user: thumbnails are dimmed and the download icon uses the app's secondary colour before download. Once downloaded, the thumbnail switches to full color, the download icon turns green, and a delete icon appears to let you remove the episode. The following screenshot shows what this looks like in the app:
 
-![Episode Download State](/images/posts//bdd-level-0.png)
+![Episode Download State](/images/posts/bdd-level-0.png)
 _This is the most basic implementation, but it does the job of indicating the download state of each episode. The dimmed thumbnail and download icon provide a clear visual cue that the episode is not yet downloaded, while the full-color thumbnail and green icon, and the presence of the trashcan icon, indicate that the episode is ready for offline listening._
 
 This establishes a decent UX language, so we can keep these indicators of downloaded state. But we also need a way to avoid the frustration of not knowing that a download is in progress, so, we need to add some kind of download progress indicator.

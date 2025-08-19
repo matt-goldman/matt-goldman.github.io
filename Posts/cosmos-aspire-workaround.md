@@ -2,7 +2,7 @@
 description: "Workaround for the Cosmos DB Emulator Explorer dashboard bug in Aspire by using the vnext-preview image tag until the fix is promoted to latest."
 title:  "Cosmic Aspirations: A Workaround for the Cosmos DB Emulator Explorer in Aspire"
 date:   2024-12-06 00:00:01 +1000
-image:  /images/posts//cosmic-aspirations.png
+image:  /images/posts/cosmic-aspirations.png
 tags:   [mobile, maui, ui, di]
 categories: [.NET, Aspire, Cosmos DB, Azure]
 author: Matt Goldman
@@ -53,7 +53,7 @@ The `RunAsEmulator` configuration lets us specify the `vnext-preview` image tag,
 
 Et voila!
 
-![The Cosmos DB Emulator explorer dashboard running in Aspire](/images/posts//aspire-cosmos-screenshot.png)
+![The Cosmos DB Emulator explorer dashboard running in Aspire](/images/posts/aspire-cosmos-screenshot.png)
 _The Cosmos DB Emulator explorer dashboard running in Aspire_
 
 ## Why This Matters

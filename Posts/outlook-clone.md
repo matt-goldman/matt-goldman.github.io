@@ -2,7 +2,7 @@
 description: "Step-by-step tutorial for recreating the Microsoft Outlook mobile app UI using .NET MAUI layouts and controls, demonstrating practical UI building techniques."
 title:  ".NET MAUI UI July: Outlook Clone"
 date:   2022-07-01 0:00:00 +1000
-image:  /images/posts//maui-ui-july-bg.png
+image:  /images/posts/maui-ui-july-bg.png
 tags:   [mobile, maui, ui, outlook]
 categories: [.NET, Mobile]
 redirect_from:
@@ -20,7 +20,7 @@ In this post for [.NET MAUI UI July](https://goforgoldman.com/2022/05/19/maui-ui
 
 Figure 1 shows Outlook running on iOS.
 
-![The Outlook mobile UI](/images/posts//outlook.png)
+![The Outlook mobile UI](/images/posts/outlook.png)
 **Figure 1 Microsoft Outlook running on iOS.**
 
 We’re going to recreate this UI using .NET MAUI. We’re not going to build any of the functionality Outlook provides, we’re just going to recreate the UI of the Inbox screen to exercise our skills in building UIs with .NET MAUI.
@@ -81,7 +81,7 @@ Now that we’ve got the fonts registered, let’s register the colours (I used 
 ## The top-level Grid
 At the top level, we can break the UI down into four rows. It’s tempting to combine the top two rows, and break them down internally, but I’ve chosen to make them individual rows in the top-level grid to give more control in relation to the page’s size as a whole.
 
-![The Outlook Inbox UI broken down as rows in a Grid. We’ve ignored the status bar and safe area. Using this approach, we can see that we have four rows. The top row has the title and search, the next row which has the focused inbox switch and the filter button. At the bottom we can see the tab bar, and between the second and fourth rows is the list of messages, which takes up all the remaining space.](/images/posts//outlook-toplevel-grid.png)
+![The Outlook Inbox UI broken down as rows in a Grid. We’ve ignored the status bar and safe area. Using this approach, we can see that we have four rows. The top row has the title and search, the next row which has the focused inbox switch and the filter button. At the bottom we can see the tab bar, and between the second and fourth rows is the list of messages, which takes up all the remaining space.](/images/posts/outlook-toplevel-grid.png)
 
 Next, we have the list of messages, and at the bottom we have the tab bar. In a real-world app, we would use `Shell` or a `TabbedPage` to provide these tabs (or import or build a tab bar) but we’re just replicating the UI here, so we’ll build the tabs.
 
@@ -102,7 +102,7 @@ Looking at this top-level `Grid`, I can see that the top row (row 0) is slightly
 
 We’ll use a `FlexLayout` for the top row of the `Grid`, which will let us easily position the child items at the start and end using `SpaceBetween`. Inside this `FlexLayout` we can use `HorizontalStackLayout` to position the icon and title at the start, and a `Label` to position the icon at the end.
 
-![We can use a FlexLayout to arrange the top row, using SpaceBetween to position the child views on either side. On the left we can use a HorizontalStackLayout with two Labels (one for the icon and one for the title), and a Label for the search icon on the right.](/images/posts//outlook-row-0.png)
+![We can use a FlexLayout to arrange the top row, using SpaceBetween to position the child views on either side. On the left we can use a HorizontalStackLayout with two Labels (one for the icon and one for the title), and a Label for the search icon on the right.](/images/posts/outlook-row-0.png)
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -167,7 +167,7 @@ We’ll use a `FlexLayout` for the top row of the `Grid`, which will let us easi
 ## The second row
 We’ll use a `FlexLayout` for the second row too. Building the focused inbox switch is outside the scope of this exercise (building custom controls is covered in _.NET MAUI in Action_), so we’ll use some artistic license and replace it with a standard `Switch` and a `Label`. We’ll place these inside a `HorizontalStackLayout` and use a second `HorizontalStackLayout` at the end of the `FlexLayout` for the filter icon and label.
 
-![4 We can use a FlexLayout to arrange the second row, using SpaceBetween to position the child views on either side. On the left is the focused inbox switch control, and on the right is a HorizontalStackLayout with two child Labels: one for the icon and the second for the word ‘Filter’.](/images/posts//outlook-row-1.png)
+![4 We can use a FlexLayout to arrange the second row, using SpaceBetween to position the child views on either side. On the left is the focused inbox switch control, and on the right is a HorizontalStackLayout with two child Labels: one for the icon and the second for the word ‘Filter’.](/images/posts/outlook-row-1.png)
 
 
 ```xml
@@ -226,12 +226,12 @@ We’ll use a `FlexLayout` for the second row too. Building the focused inbox sw
 ## The main section
 The main section of the page is row 2, the messages. `CollectionView` lends itself to this kind of control. We can also see there’s a floating action button (FAB) in the corner.
 
-![Using CollectionView for the third row is a no-brainer, but we can see there’s a floating action button in the bottom right-hand corner too. This can be in the same row (there’s only one column) and we can use HorizontalOptions and VerticalOptions to position it at the end.](/images/posts//outlook-row-2.png)
+![Using CollectionView for the third row is a no-brainer, but we can see there’s a floating action button in the bottom right-hand corner too. This can be in the same row (there’s only one column) and we can use HorizontalOptions and VerticalOptions to position it at the end.](/images/posts/outlook-row-2.png)
 
 
 We can use a `Grid` for the messages in the collection, with three columns and three rows.
 
-![The message template for the Inbox can be laid out as a Grid, with three columns and three rows. The avatar will reside in the first column and row and will have a row span of 3 (there’s nothing else in the first column). The sender’s name will go into the first row, second column. The subject will go into the second row, second column, and the message body preview will go into the third row, second column, and will span into the third column too. The time or day when the message was sent will go into the first row, third column.](/images/posts//outlook-message-template.png)
+![The message template for the Inbox can be laid out as a Grid, with three columns and three rows. The avatar will reside in the first column and row and will have a row span of 3 (there’s nothing else in the first column). The sender’s name will go into the first row, second column. The subject will go into the second row, second column, and the message body preview will go into the third row, second column, and will span into the third column too. The time or day when the message was sent will go into the first row, third column.](/images/posts/outlook-message-template.png)
 
 I’m using an [API that generates random quotes from The Simpsons](https://thesimpsonsquoteapi.glitch.me) to populate my dummy message list, so knowing the structure of the class I’m using, I can use properties of that class for the bindings in the template.
 
@@ -380,7 +380,7 @@ I’d also like to add an `ActivityIndicator` to show while the data is loading.
 ## The tab bar
 To build the tab bar, we’ll add a `Grid` to the fourth row (row 3) of the page’s top-level `Grid`. It will have three columns, one for each tab, and within each column will be a `VerticalStackLayout` to arrange the tab’s icon and label.
 
-![The last row is the tab bar. We’ll use another Grid for this part, with three columns. In each column we’ll use a VerticalStackLayout with two Labels as child items; one for the tab icon and one for the tab label.](/images/posts//outlook-row-3.png)
+![The last row is the tab bar. We’ll use another Grid for this part, with three columns. In each column we’ll use a VerticalStackLayout with two Labels as child items; one for the tab icon and one for the tab label.](/images/posts/outlook-row-3.png)
 
 Let’s start by adding the `Grid`. Listing 9 shows the code for `MainPage.xaml` with the tab bar `Grid` added in bold. Most of the remaining code has been omitted for brevity.
 
@@ -489,7 +489,7 @@ Let’s start by adding the `Grid`. Listing 9 shows the code for `MainPage.xaml`
 
 That completes the UI for the Outlook clone! There’s some additional code needed to get the quotes from the API, which you can see in the full example code repository (linked below). If we run it now, we can see our Outlook clone in action:
 
-![The completed Outlook replica UI](/images/posts//OutlookClone.gif)
+![The completed Outlook replica UI](/images/posts/OutlookClone.gif)
 
 And that’s it! You can see how easy it is to build a UI in .NET MAUI. I’d love to see your own UI challenges; what cool apps will you build? There’s also heaps of tweaks you could make to this one; for example, adding `SwipeView` to the messages, or building the focused inbox switch.
 

@@ -2,7 +2,7 @@
 description: "Creating a real-time RPM dashboard for the Batcave using .NET MAUI Graphics with custom gauge backgrounds, moving dials, and telemetry data visualization."
 title: "Holy MauiGraphics Batman! Part 2: The RPM Gauge"
 date: 2025-07-02 00:00:01 +1000
-image: /images/posts//batmobile-cover-part-2.png
+image: /images/posts/batmobile-cover-part-2.png
 tags: [mobile, maui, ui]
 categories: [.NET, Mobile, UI, Batman]
 author: Matt Goldman
@@ -64,7 +64,7 @@ Finally, we define the `Closed` property as false; if we made it `true`, it woul
 
 This gives us the top arc and red-zone wedge for the gauge:
 
-![The completed gauge arc and red-zone](/images/posts//batcave-gauge.png)
+![The completed gauge arc and red-zone](/images/posts/batcave-gauge.png)
 
 ## Drawing the Pointer
 
@@ -80,7 +80,7 @@ canvas.DrawLine(155, 155, endX, endY);
 
 This does couple it to the gauge/dial, but that's the intent here so that's ok. We will look at some alternative approaches later, but this is suitable for our needs. We've also defined the line cap as round rather than square, which works a bit better for the pointer.
 
-![The simple pointer from the Batcave's RPM gauge is just a line with a round cap](/images/posts//batcave-pointer.png)
+![The simple pointer from the Batcave's RPM gauge is just a line with a round cap](/images/posts/batcave-pointer.png)
 
 The challenging part is calculating what the `endX` and `endY` values should be - but that's not a concern of this control. That's handled in the `Dashboard` `ContentView`, which assembles the two `IDrawables` as well.
 
@@ -214,7 +214,7 @@ And this gives us the completed BatComputer!
 
 And there you have it — a retro-futuristic RPM gauge using nothing but .NET MAUI and a little bit of maths. It’s performant, responsive, and really satisfying to see it animate live.
 
-![The finished RPM dashboard in the Batcave](/images/posts//batcave-finished-screen.jpeg)
+![The finished RPM dashboard in the Batcave](/images/posts/batcave-finished-screen.jpeg)
 
 If you haven’t yet, check out Part 1 for the throttle. The full source is also on [GitHub](https://github.com/matt-goldman/MauiBatmobile). Feel free to run it yourself, or make some changes (I cover some potential improvements in the last part of this series).
 

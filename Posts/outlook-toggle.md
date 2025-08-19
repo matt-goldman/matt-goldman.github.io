@@ -2,7 +2,7 @@
 description: "Recreating Outlook mobile's sophisticated Focused/Other toggle switch in .NET MAUI using SkiaSharp for custom animated UI with sliding highlights and dynamic text colors."
 title: "Replicating the Outlook Mobile 'Focused/Other' Switch in .NET MAUI"
 date: 2025-07-04 00:00:01 +1000
-image: /images/posts//outlook-toggle-cover.png
+image: /images/posts/outlook-toggle-cover.png
 tags: [mobile, maui, ui, outlook]
 categories: [.NET, Mobile, UI, Outlook]
 author: Matt Goldman
@@ -16,7 +16,7 @@ A few years ago, I shared a sample [replicating the Outlook mobile UI in .NET MA
 
 The following screenshot shows what the original looks like in the Outlook app, compared to what we ended up with.
 
-![The original Outlook mobile app compared with the simplified version we created in my previous post](/images/posts//outlookv2-ogvsfinal.png)
+![The original Outlook mobile app compared with the simplified version we created in my previous post](/images/posts/outlookv2-ogvsfinal.png)
 
 For this year's [MAUI UI July](/posts/mauiuijuly-25), I decided to finally do it properly.
 
@@ -30,7 +30,7 @@ The Outlook switch isn’t just a simple toggle. It has two words ("Focused" and
 
 But there's another subtle detail -  as the pill animates, the text color changes exactly where it overlaps. You can actually see this if you slow it down in the Outlook app.
 
-![The Focused switch in Outlook has a cool effect with masking against the text underneath](/images/posts//outlook-toggle.gif)
+![The Focused switch in Outlook has a cool effect with masking against the text underneath](/images/posts/outlook-toggle.gif)
 
 ## Why Not Use a Default Switch?
 
@@ -317,7 +317,7 @@ canvas.DrawRoundRect(activeRect, pillPaint);
 
 You can see how the whole thing hangs together by checking out the `OutlookToggle.cs` file, in the `Controls` folder of the updated Outlook Clone (link to the repo is below). This gives us a final result that's pretty close to the original:
 
-![Out Outlook clone, now incorporating the animated toggle, is almost indistinguishable from the original](/images/posts//outlook-clone-with-toggle.gif)
+![Out Outlook clone, now incorporating the animated toggle, is almost indistinguishable from the original](/images/posts/outlook-clone-with-toggle.gif)
 
 It's almost pixel perfect, and to take it the rest of the way, we would just need to add the right typeface and tweak the padding.
 

@@ -2,7 +2,7 @@
 description: "Investigation into .NET MAUI page and navigation lifecycle event order across different platforms, revealing timing insights for effective page initialization."
 title:  "Understanding .NET MAUI Page and Navigation Lifecycle Event Order"
 date:   2023-11-22 00:00:01 +1000
-image:  /images/posts//nav-event-cover.png
+image:  /images/posts/nav-event-cover.png
 tags:   [dotnet, dotnetmaui]
 categories: [.NET]
 author: Matt Goldman
@@ -16,10 +16,10 @@ To get a clearer picture, I developed a small application to monitor these event
 
 Here are the results from my experimentation.
 
-| ![Windows](/images/posts//event-order-windows.png) | ![macOS](/images/posts//event-order-macos.png) |
+| ![Windows](/images/posts/event-order-windows.png) | ![macOS](/images/posts/event-order-macos.png) |
 |:--:|:--:|
 | Event timings on Windows | Event timings on macOS |
-| ![Android](/images/posts//event-order-android.png) | ![iOS](/images/posts//event-order-ios.jpeg) |
+| ![Android](/images/posts/event-order-android.png) | ![iOS](/images/posts/event-order-ios.jpeg) |
 | Event timings on Android | Event timings on iOS |
 
 ## Deciphering the Event Order

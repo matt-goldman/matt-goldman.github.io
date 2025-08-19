@@ -2,7 +2,7 @@
 description: "Complete guide to deploying .NET MAUI apps to production on Android, covering the Google Play Store submission process with practical tips and hard-won insights."
 title:  "Deploying your .NET MAUI apps to production - Part 1: Android"
 date:   2023-01-14 0:00:00 +1000
-image:  /images/posts//maui-deploying-image.png
+image:  /images/posts/maui-deploying-image.png
 tags:   [mobile, maui, ui, deploying, production]
 categories: [.NET, Mobile]
 author: Matt Goldman
@@ -65,7 +65,7 @@ With the app metadata now set up in the Google Play developer console, we’re r
 ## Bundle Signing
 In this section, we’ll see how you can sign your app bundles so that Google Play can verify that they have come from the original publisher. The process is summarized in this figure:
 
-![You can build an app package from your code, and then create an app bundle that you sign with your unique key. Google Play will use this key to verify that you are the rightful publisher of the app, and then use their own key to sign the packages that they distribute to users](/images/posts//google-signing.png)
+![You can build an app package from your code, and then create an app bundle that you sign with your unique key. Google Play will use this key to verify that you are the rightful publisher of the app, and then use their own key to sign the packages that they distribute to users](/images/posts/google-signing.png)
 
 Apps for Android are packaged as Android Package Kit (APK) files, and you can sign and distribute APK files through an MDM, or even just side-load them (meaning to copy the APK file directly onto the device, rather than installing via the Google Play store). However, to distribute your app via the Google Play store, it must be packaged in Android app bundle (AAB) format.
 
@@ -106,7 +106,7 @@ You can deploy directly to the Google Play store from Visual Studio (for macOS o
 
 In this section, we’re going to upload the bundle to the Internal Testing track and select testers to roll out the build to. A summary is shown in the figure below. After that, we’ll configure Visual Studio to upload the signed bundles directly.
 
-![After creating a signed app bundle, we upload it via a web browser to the Google Play Developer Console. We can then create a release in the internal testing track and assign the bundle to it. We also create a list of email addresses for valid testers and assign that list to the release. Then we can provide testers with a link to install the build](/images/posts//google-testing-track.png)
+![After creating a signed app bundle, we upload it via a web browser to the Google Play Developer Console. We can then create a release in the internal testing track and assign the bundle to it. We also create a list of email addresses for valid testers and assign that list to the release. Then we can provide testers with a link to install the build](/images/posts/google-testing-track.png)
 
 Let’s upload our bundle:
 1.	Log in to the Google Play developer console and select your app from the list.
@@ -135,7 +135,7 @@ In the Testers tab, underneath the email lists, is the heading **How your tester
 ## Deploying from Visual Studio
 Once you’ve uploaded your initial build, you can sign and distribute your AAB directly from Visual Studio, without having to manually upload it, as shown in the figure below.
 
-![Once we have manually uploaded at lease least one build, we can then deploy directly from Visual Studio. An app registration needs to be created in Google Cloud platform to generate OAuth credentials that will allow Visual Studio to call the publish API in Google Play and upload the signed AAB](/images/posts//google-visual-studio.png)
+![Once we have manually uploaded at lease least one build, we can then deploy directly from Visual Studio. An app registration needs to be created in Google Cloud platform to generate OAuth credentials that will allow Visual Studio to call the publish API in Google Play and upload the signed AAB](/images/posts/google-visual-studio.png)
 
 The first thing we need to do to enable this is set up API access for your Google Play developer console. Go back to the console and ensure you’re on the **All apps** screen (rather than in the MauiStockTake app). From here:
 1.	Expand the **Setup** menu and click on **API access**.
@@ -155,7 +155,7 @@ You’ll be prompted to enter your client ID and client secret; these are the va
 ## Releasing to Production
 Once you’ve got test builds in the Google Play developer console, provided that all the steps up until now have been completed and your app metadata is ready, releasing to production is a simple step, summarized in the figure below.
 
-![To release an app to production, create a new release in the Production track. Select an app bundle from your library (you can upload a new bundle, if necessary, e.g., if changing API URLs from testing to production), and select the countries the app should be released to. Once reviewed by Google, your app will be available to download via the store](/images/posts//google-production-track.png)
+![To release an app to production, create a new release in the Production track. Select an app bundle from your library (you can upload a new bundle, if necessary, e.g., if changing API URLs from testing to production), and select the countries the app should be released to. Once reviewed by Google, your app will be available to download via the store](/images/posts/google-production-track.png)
 
 Simply choose the *Production* release from the menu (above the *Testing* expandable menu section), and in here, choose an app bundle by selecting *Add from library*. Choose the build that has been successfully tested.
 

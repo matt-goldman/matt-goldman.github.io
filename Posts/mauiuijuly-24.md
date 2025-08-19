@@ -2,7 +2,7 @@
 description: "Announcing .NET MAUI UI July 2024, the third year of this community-driven event where developers share their passion for building beautiful .NET MAUI user interfaces."
 title:  ".NET MAUI UI July - 2024"
 date:   2024-05-19 00:00:01 +1000
-image:  /images/posts//maui-ui-july-bg.png
+image:  /images/posts/maui-ui-july-bg.png
 tags:   [mobile, maui, ui]
 categories: [.NET, Mobile]
 author: Matt Goldman

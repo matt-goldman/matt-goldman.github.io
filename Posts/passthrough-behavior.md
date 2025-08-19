@@ -2,7 +2,7 @@
 description: "Implementing a passthrough behavior pattern in .NET MAUI to attach validation functionality to custom controls that wrap Entry and Editor elements."
 title:  "Passthrough Behavior: Attaching things where they don't belong"
 date:   2024-07-01 00:00:01 +1000
-image:  /images/posts//passthrough-behavior.jpeg
+image:  /images/posts/passthrough-behavior.jpeg
 tags:   [mobile, maui, ui]
 categories: [.NET, Mobile, UI, UX]
 author: Matt Goldman
@@ -215,7 +215,7 @@ You can see here I have brought in namespaces for my control and for the communi
 
 Easy right? Let's take a look at the result:
 
-![The passthrough behavior in action on Windows](/images/posts//passthrough-behavior.gif)
+![The passthrough behavior in action on Windows](/images/posts/passthrough-behavior.gif)
 _The passthrough behavior in action on Windows_
 
 You can see here that this is using a custom `Entry` control - it has a rounded gold border, and email validation is working, relying on the functionality from the community toolkit with barely any extra effort. And of course this is reusable and can be used with any instance of the custom entry control and any behavior.

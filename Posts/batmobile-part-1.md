@@ -2,7 +2,7 @@
 description: "Building a custom Batmobile throttle control using .NET MAUI Graphics and IDrawable to create retro-futuristic UI elements with interactive touch controls."
 title: "Holy MauiGraphics Batman! Part 1: Batmobile Throttle Control"
 date: 2025-07-01 00:00:01 +1000
-image: /images/posts//batmobile-cover-part-1.png
+image: /images/posts/batmobile-cover-part-1.png
 tags: [mobile, maui, ui]
 categories: [.NET, Mobile, UI, Batman]
 author: Matt Goldman
@@ -12,7 +12,7 @@ avatar: "/images/authors/mattg.png"
 
 **Here's what we'll build**
 
-![Here's what we're going to build](/images/posts//batmobile-muij2025.gif)
+![Here's what we're going to build](/images/posts/batmobile-muij2025.gif)
 
 Welcome to [MAUI UI July 2025](https://goforgoldman.com/posts/mauiuijuly-25/)! In this post, we're building a custom throttle control using .NET MAUI and `IDrawable` from MauiGraphics. This is part of a retro-futuristic Batmobile telemetry system that includes both input (throttle) and output (RPM dashboard), connected over gRPC. In part 1 we'll focus the input side: the throttle UI Batman uses to control the beast. Tomorrow we'll dive into the output side: an RPM gauge rendered on the BatComputer.
 
@@ -83,7 +83,7 @@ canvas.DrawPath(path);
 
 This draws two rectangles:
 
-![The paths we've defined create two vertically oriented rectangles](/images/posts//batmobile-throttle-rails.png)
+![The paths we've defined create two vertically oriented rectangles](/images/posts/batmobile-throttle-rails.png)
 
 If you think of it like a robot holding a pen, `MoveTo` is used to move the pen to a position without drawing anything. This is how we're able to use the same `path` object for two disconnected rails. Note also that `LineTo` (and other methods that create drawn geometry) don't actually render on the canvas; the whole `path` object only _describes_ the geometry while the `ICanvas` renders it itself.
 
@@ -155,7 +155,7 @@ canvas.SetShadow(new SizeF(10, -10), 4, Colors.Grey);
 
 We also set a small shadow which helps the handle appear to be above the rails. This gives us the final result for the handle:
 
-![The throttle handle is an elongated capsule shape with an outline and gradient filling and a thick black outline](/images/posts//batmobile-throttle-handle.png)
+![The throttle handle is an elongated capsule shape with an outline and gradient filling and a thick black outline](/images/posts/batmobile-throttle-handle.png)
 
 ### Layout and Gesture
 
@@ -222,7 +222,7 @@ We calculate the RPM by mapping the Y translation directly to a value between 0 
 
 The throttle control is added to the main page, along with some other controls for enabling and disabling the gRPC stream (the 'ignition') and displaying information about the app (the title label) and the current RPM. The final result looks like this:
 
-![Batmobile final layout](/images/posts//batmobile-final-layout.png)
+![Batmobile final layout](/images/posts/batmobile-final-layout.png)
 
 The full code is in the repo, but it's fairly vanilla - just standard .NET MAUI layouts and controls, with the `Throttle` control added to a `VerticalStackLayout`.
 

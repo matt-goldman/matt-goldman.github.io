@@ -2,7 +2,7 @@
 description: "Exploring the mathematics behind calculating pointer positions for custom gauges in .NET MAUI, using basic trigonometry to create precise dial movements."
 title: "Holy MauiGraphics Batman! Part 3: Clayface-Level Batmaths"
 date: 2025-07-03 00:00:01 +1000
-image: /images/posts//batmobile-cover-part-3.png
+image: /images/posts/batmobile-cover-part-3.png
 tags: [mobile, maui, ui]
 categories: [.NET, Mobile, UI, Batman]
 author: Matt Goldman
@@ -24,7 +24,7 @@ If like me you haven't thought about any of this since school, you might find it
 
 Initially I had intended to use rotation to control movement of the dial. This would have been better than the current approach for several reasons — chiefly, it would allow us to use animation and easings, which we'll touch on later. But conceptually, I had a problem. Take a look at the following diagram:
 
-![The dial pointer pivots from a point at the end of the line, rather than in the center](/images/posts//batmobile-dial-pivot-1.png)
+![The dial pointer pivots from a point at the end of the line, rather than in the center](/images/posts/batmobile-dial-pivot-1.png)
 
 Adjusting the rotation of a view in .NET MAUI is as simple as setting the `RotationX` or `RotationY` properties, or using animation which is also straightforward (and even simpler with the [AlohaKit animations library](https://github.com/jsuarezruiz/AlohaKit.Animations)). But I couldn't quite grasp how to rotate a view around a specific pivot point, rather than the center.
 
@@ -62,7 +62,7 @@ We already know the "from" - that won't change - so we need a way to figure out 
 
 To determine the `x` and `y` coordinates for the end of the pointer, we can imagine a right-angle triangle, with the pivot point at the origin, and an imaginary vertical line from the bottom of the gauge to the end of the pointer. The pointer itself forms the hypotenuse, as in the following diagram:
 
-![If we project an imaginary vertical line connecting the tip of the pointer to the base of the gauge, the base, line, and pointer form a right-angle triangle, with the pointer as the hypotenuse](/images/posts//batmobile-dial-triangle1.png)
+![If we project an imaginary vertical line connecting the tip of the pointer to the base of the gauge, the base, line, and pointer form a right-angle triangle, with the pointer as the hypotenuse](/images/posts/batmobile-dial-triangle1.png)
 
 Fortunately, this simplifies things for our use case. Calculating lengths and angles in triangles is an entire field within geometry; namely trigonometry, so making the cognitive leap to picture this as a triangle means that working out the coordinates we need is a solved problem (one that was solved thousands of years ago, in fact).
 
@@ -76,7 +76,7 @@ For a right-angle triangle, SOHCAHTOA are formulas we can use to calculate the o
 
 As a quick recap, there are specific names given to the sides in a right-angle triangle, relative to the angle you are trying to calculate, as shown in the following diagram.
 
-![A right-angle triangle, with the opposite, adjacent, and hypotenuse labelled, as well as the the angle being calculated - theta (θ)](/images/posts//batmobile-maths-sohcachtoa-triangle.png)
+![A right-angle triangle, with the opposite, adjacent, and hypotenuse labelled, as well as the the angle being calculated - theta (θ)](/images/posts/batmobile-maths-sohcachtoa-triangle.png)
 
 The side that does not form part of the right-angle is always called the hypotenuse; the side touching the angle you want to calculate is called the adjacent, and the side not touching it is called the opposite. The angle you are trying to calculate is denoted by the Greek letter theta(θ).
 
@@ -84,15 +84,15 @@ The SOHCAHTOA formulas let you calculate θ using only the lengths of two of the
 
 * **S**in(θ) = **O**pposite / **H**ypotenuse
 
-![sine theta equals opposite over hypotenuse](/images/posts//batmobile-maths-soh.png)
+![sine theta equals opposite over hypotenuse](/images/posts/batmobile-maths-soh.png)
 
 * **C**os(θ) = **A**djacent / **H**ypotenuse
 
-![cosine theta equals adjacent over hypotenuse](/images/posts//batmobile-maths-cah.png)
+![cosine theta equals adjacent over hypotenuse](/images/posts/batmobile-maths-cah.png)
 
 * **T**an(θ) = **O**pposite / **A**djacent
 
-![tangent theta equals opposite over adjacent](/images/posts//batmobile-maths-toa.png)
+![tangent theta equals opposite over adjacent](/images/posts/batmobile-maths-toa.png)
 
 Sine, cosine, and tangent are logarithmic functions, meaning they are calculated using values in a table. That's outside of scope of this post, but any basic scientific calculator has buttons for them, so you don't need to know how to derive them. More importantly for us, the .NET BCL has them built in too, and we'll see how to use them shortly.
 
@@ -111,23 +111,23 @@ Now that we've got the angle and the hypotenuse, we can calculate the lengths of
 
 One easy way to do this is to use a formula triangle. You may have seen these for _speed_ = _distance_ x _time_, or _V_ = _I_ x _R_. For the SOHCAHTOA formulas they look like this:
 
-![The formula triangle for SOH](/images/posts//triangle-soh.png)
+![The formula triangle for SOH](/images/posts/triangle-soh.png)
 
 From here, we can easily see that the formula we already have for deriving θ can be rearranged to find the hypotenuse from θ and the opposite:
 
-![Hypotenuse equals opposite divided by sine theta](/images/posts//batmobile-maths-host.png)
+![Hypotenuse equals opposite divided by sine theta](/images/posts/batmobile-maths-host.png)
 
 Or more importantly, in our case, to find the opposite from θ and the hypotenuse:
 
-![Opposite equals sine theta times hypotenuse](/images/posts//batmobile-maths-osth.png)
+![Opposite equals sine theta times hypotenuse](/images/posts/batmobile-maths-osth.png)
 
 We can do the same thing with cosine to find the adjacent:
 
-![The formula triangle for CAH](/images/posts//triangle-cah.png)
+![The formula triangle for CAH](/images/posts/triangle-cah.png)
 
 Which easily lets us see:
 
-![Adjacent equals cosine theta times hypotenuse](/images/posts//batmobile-maths-acosth.png)
+![Adjacent equals cosine theta times hypotenuse](/images/posts/batmobile-maths-acosth.png)
 
 :::info
 We can do the same for TOA as well, but that's not particularly useful in our case, given it depends on the two sides we're trying to find.
@@ -139,21 +139,21 @@ Now that we know how to get the lengths of the other two sides, we're finally re
 
 The length of the hypotenuse is fixed, we know the angle, so using SOHCAHTOA (well, SOHCAH to be precise) we can find the length of the opposite and adjacent sides:
 
-![The lengths of the opposite and adjacent sides can be calculated using the hypotenuse, which is fixed, and the angle, which is derived from the RPM](/images/posts//batmobile-length-of-sides.png)
+![The lengths of the opposite and adjacent sides can be calculated using the hypotenuse, which is fixed, and the angle, which is derived from the RPM](/images/posts/batmobile-length-of-sides.png)
 
 These are relative to the pointer's origin though, which is not the canvas' origin. The canvas starts at _0,0_, in the top left, and the pointer starts at _155,155_. We've got _x_ and _y_ relative to the pointer's origin, so to find the end of the pointer relative to the canvas, we can simply subtract _x_ and _y_ from _155_.
 
-![The x and y values we have are relative to the pointer's origin, which at 155,155, so we subtract x and y from 155 to get the position relative to the canvas](/images/posts//batmobile-mathsendxy.png)
+![The x and y values we have are relative to the pointer's origin, which at 155,155, so we subtract x and y from 155 to get the position relative to the canvas](/images/posts/batmobile-mathsendxy.png)
 
 With these, we can now draw our pointer, but there's a catch: this will _only_ work if the RPM is less than _7,500_. To form an acute angle (less than 90 degrees), the pointer must remain on the left side of the gauge.
 
-![With an angle greater than 90 degrees, we don't form a right-angle](/images/posts//batmobile-no-rightangle.png)
+![With an angle greater than 90 degrees, we don't form a right-angle](/images/posts/batmobile-no-rightangle.png)
 
 Fortunately, unit circle mathematics and the rules for sine, cosine, and tangent work in full 360 degrees. SOHCAHTOA works for right-angle triangles, but there are other arrangements that work the whole way around.
 
 But, even more fortunately, we can avoid all that by flipping the triangle (conceptually) and calculating the angles from the other side:
 
-![Just flip the triangle to the other side and we get our right-angle back](/images/posts//batmobile-dial-triangle2.png)
+![Just flip the triangle to the other side and we get our right-angle back](/images/posts/batmobile-dial-triangle2.png)
 
 We can subtract the angle calculated with the RPM from 180 to get the angle for this portion of the gauge, which means we're always working with a right-angle triangle. This means the formulas don't change, the _endY_ position doesn't change, and for _endX_ we can just add it to 155 instead of subtracting it. No need to dig out our school textbooks (or, realistically, Google) to remind ourselves how to work with oblique triangles (and totally remember that they are called oblique triangles without having to look it up).
 
@@ -240,7 +240,7 @@ I've mentioned this a few times across these posts, but if I were building a gau
 
 You can only rotate around the center point, which is what tripped me up initially, but that's actually not a problem. Simply render the pointer on only one half of your `IDrawable` - and it turns out this is in fact the actual approach to this, and another common hack I rediscovered.
 
-![By drawing the pointer from the center of the view, we can still rotate the whole view by the required angle, and keep the pointer pivoting around the correct point](/images/posts//batmobile-maths-PIVOT.png)
+![By drawing the pointer from the center of the view, we can still rotate the whole view by the required angle, and keep the pointer pivoting around the correct point](/images/posts/batmobile-maths-PIVOT.png)
 
 This is the best approach:
 

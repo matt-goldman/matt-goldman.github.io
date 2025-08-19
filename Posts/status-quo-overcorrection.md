@@ -2,7 +2,7 @@
 description: "Exploring the status quo bias in decision-making and the risks of overcorrection when trying to avoid this cognitive bias in business and technology choices."
 title:  "The Status Quo Bias and Overcorrection"
 date:   2024-04-13 00:00:01 +1000
-image:  /images/posts//the-status-quo-bias.png
+image:  /images/posts/the-status-quo-bias.png
 tags:   [management, leadership, architecture, design]
 categories: [Management]
 author: Matt Goldman
