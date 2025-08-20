@@ -71,3 +71,23 @@ There has to be a better way. In fact, it was while pushing those very commits y
 
 So I scoured the depths of my brain for how to run my blog. It had been a while, but I remembered that I have to basically just run `jekyll serve`. So I opened my terminal and navigated to my blog folder and ran it.
 
+![Running jekyll serve just errors and says the term 'jekyll' is not recognised](/images/posts/jekyll-serve-nope.png)
+
+Uh, nope. I guess that's not it. A quick check of [the docs](https://jekyllrb.com/docs/usage/) though tells me that, actually, that _is_ correct. Well, better go back to the [quick start](https://jekyllrb.com/docs/) and check I've got everything set up then...ah, wait, yeah that's right, I have to run `bundle exec jekyll serve` (whatever the heck that means). Ok let's try that...
+
+...you know what? I'm not going to bore you with the details. But needless to say, after at least a couple of hours of crawling through Ruby rabbit holes (again, I'm sure people love Ruby, but I don't use it for anything else), gem version conflicts, and god knows what else, I eventually _finally_ got it running in a container. Let me just say that again - I had to use docker to get my blog to run. So, back to my question:
+
+> Why the heck am I not just running this locally before publishing it?
+
+Oh, yeah. That's why.
+
+I knew there was something wrong about committing and pushing to main. I knew there was something wrong about not previewing before publishing. But I'd obviously forgotten about the hassle of literally just running the thing, and no doubt I'll file that memory away somewhere until I hit this problem again another year from now. (That won't happen now, thankfully, which is the point of this post).
+
+## What about other SSGs?
+
+//// REMAINING TO DO IN THIS POST:
+
+* Preview/draft/timed releases
+* Templating, config, layouts, partials, etc.
+* And obviously, Blake.
+
