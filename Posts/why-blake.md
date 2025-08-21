@@ -2,7 +2,7 @@
 description: "Why I switched my blog to Blake, and why you should too."
 title:  "The world's most boring static site generator"
 date:   2025-08-21 00:00:01 +1000
-image:  /images/posts/troops.jpg
+image:  /images/posts/blake.png
 tags: [web, blogs, blake, static site generators]
 categories: [web development]
 author: Matt Goldman
@@ -14,7 +14,7 @@ I love learning new things. Every day is a struggle to not dive deep into some c
 
 And that's the problem. I have to be brutally honest with myself - I'm _never_ going to get through my backlog of side projects. Not in one lifetime anyway (should I add fixing that to my backlog? Nah...) That means that my time is my most precious resource. It's the ultimate non-renewable, and that means I protect it more fiercely than any other.
 
-This can often leave me feeling frustrated - while I do love learning new things, when having to learn something new becomes a barrier to accomplishing something else, that's often just part of life (and part of the fun). But at other times, it can become a source of rage inducing frustration, and long term source of this, for me, has been static site generators.
+This can often leave me feeling frustrated - while I do love learning new things, when having to learn something new becomes a barrier to accomplishing something else, that's often just part of life (and part of the fun). But at other times, it can become a source of rage inducing frustration, and a long term source of this, for me, has been static site generators.
 
 ## What's your problem with SSGs?
 
@@ -97,13 +97,13 @@ Those other SSGs are awesome. Until they're not. And yes, that's not a problem w
 
 And that's not even counting the other major problem I have with static site generators, and that's timed releases.
 
-One thing you have to accept with a static site, when compared to a served site with a CMS, is that, once you publish it, that's it. There it is. That's a trade-off, and a more than acceptable one, but it does mean you can't do things like schedule a post to go live. It's not really that big a deal, it's a minor inconvenience - a papercut - but it's one that, when it happens frequently, is annoying enough to matter.
+One thing you have to accept with a static site, when compared to a served site with a CMS, is that, once you publish it, that's it. There it is. That's a trade-off, and a more than acceptable one, but it does mean you can't do things like schedule a post to go live. It's not really that big a deal, it's a minor inconvenience - a papercut - but it's one that, when it happens frequently, is annoying enough to matter. And it's a problem I no longer have.
 
 ## And that's why I built the world's most boring static site generator
 
 Right now, you're reading a site that was built with [Blake](https://github.com/matt-goldman/blake), the world's most boring SSG. And, yes, I built it. And, yes, I spent a fair bit more time on it than I would have spent solving those other annoying issues.
 
-But the value of building something new far outweighs the value of solving problems in something old. Especially when the knowledge you gain from fixing those problems serves no other purpose. And non-reinforced skills are perishable, so I don't really learn anything. I have to re-learn (most of) it every time.
+But the value of building something new far outweighs the value of solving problems that have no intrinsic knowledge-gaining value. And non-reinforced skills are perishable, so I don't really learn anything anyway. I have to re-learn (most of) it every time.
 
 Blake is built in .NET and is fundamentally a Blazor based tool. Is it better than other SSGs? That depends on your perspective. And the answer is, unquestionably, no. But also, unquestionably, yes.
 
@@ -117,7 +117,7 @@ No.
 
 Thankfully, beautifully, _mercifully_, no.
 
-Blake is fundamentally nothing more than Markdown to Razor parser (built around a [Markdig](https://github.com/xoofx/markdig) pipeline).
+Blake is fundamentally nothing more than a Markdown to Razor parser (built around a [Markdig](https://github.com/xoofx/markdig) pipeline).
 
 ## Sounds terrible. How does it work then?
 
@@ -244,6 +244,6 @@ Have a poke around. It doesn't bite. But if you want it to, you could write a pl
 
 Blake isn’t finished, and I don’t know if it ever will be. There are rough edges, things I want to polish, and some cool stuff I'm keen to introduce - some for me, some for if anyone else ever decides to use it. So check it out and let me know what you think. And if you have comments, suggestions, general feedback, or even want to contribute in some way, well obviously I would love that.
 
-But, most importantly, if you’re interested or curious, or even slightly annoyed by other SSGs, just take a look. It might be a fit for you, it might not. But, _please_, stop sinking your time into unimportant things. I won't lie and say I build Blake in a weekend. My days of having weekends free for working on something like that are far behind me. _Could I_ have? Maybe. But that's not really the point. The point is, I wasn't happy with the options I had available, and I decided not to just accept what was out there already.
+But, most importantly, if you’re interested or curious, or even slightly annoyed by other SSGs, just take a look. It might be a fit for you, it might not. But, _please_, stop sinking your time into unimportant things. I won't lie and say I built Blake in a weekend. My days of having weekends free for working on something like that are far behind me. _Could_ I have? Maybe. But that's not really the point. The point is, I wasn't happy with the options I had available, and I decided to not just accept what was out there already.
 
 And you don't have to either.
