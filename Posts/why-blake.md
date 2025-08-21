@@ -43,7 +43,7 @@ So what went wrong here? Well, it depends. I get this wrong _every_ time, one wa
 
 Who knows?
 
-More importantly, who the fuck cares?
+More importantly, who _cares_?
 
 And, honestly, this is just scratching the surface. What if I want multi-line callouts? Or what if I want callouts partway through numbered lists? These are not hypotheticals, these are real things that have happened (among many more) that have broken my blog and cost me hours. _Hours_.
 
@@ -63,7 +63,7 @@ Seriously, look at this:
 
 ![Screenshots of multiple rapid pushes direct to main, fixing frustrating minor rendering problems](/images/posts/fix-prompts-commits.png)
 
-I'm not kidding, the number of times I have rapidly fired off multiple commits directly to main, because I've had to let my workflow publish the site, then I frantically force refresh to make sure it's rendering properly now. Oh, it's not? FML, ok tweak that or whatever, push again, FML! Rinse, repeat, oh, wow, _finally_.
+I'm not kidding, the number of times I have rapidly fired off multiple commits directly to main, because I've had to let my workflow publish the site, then I frantically force refresh to make sure it's rendering properly now. Oh, it's not? Ok, pour a scotch, tweak that or whatever, push again, still not working...question life choices, pour another scotch, rinse and repeat ad nauseam... oh, wow, _finally!_
 
 There has to be a better way. In fact, it was while pushing those very commits you see above that I asked myself that same question. Why the heck am I not just running this locally before publishing it?
 
@@ -239,3 +239,11 @@ blake new --includeSampleContent
 ```
 
 Have a poke around. It doesn't bite. But if you want it to, you could write a plugin for that.
+
+## Still a work in progress
+
+Blake isn’t finished, and I don’t know if it ever will be. There are rough edges, things I want to polish, and some cool stuff I'm keen to introduce - some for me, some for if anyone else ever decides to use it. So check it out and let me know what you think. And if you have comments, suggestions, general feedback, or even want to contribute in some way, well obviously I would love that.
+
+But, most importantly, if you’re interested or curious, or even slightly annoyed by other SSGs, just take a look. It might be a fit for you, it might not. But, _please_, stop sinking your time into unimportant things. I won't lie and say I build Blake in a weekend. My days of having weekends free for working on something like that are far behind me. _Could I_ have? Maybe. But that's not really the point. The point is, I wasn't happy with the options I had available, and I decided not to just accept what was out there already.
+
+And you don't have to either.
