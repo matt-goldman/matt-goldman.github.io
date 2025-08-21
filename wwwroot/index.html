@@ -51,12 +51,22 @@
     <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="goforgoldman" data-description="Support me on Buy me a coffee!" data-message="Hope you're enjoying my content! 😊" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 
     <script>
-        // TEMP: register cleanup SW to evict old Jekyll SW and caches
         if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/sw.js', { scope: '/' })
-            .catch(() => {/* ignore */});
+        // Ensure the browser fetches the new cleanup worker
+        navigator.serviceWorker.register('/sw.js', { scope: '/' }).then(reg => {
+            // When the cleanup SW tells us it’s ready, unregister & reload
+            navigator.serviceWorker.addEventListener('message', (e) => {
+            if (e.data && e.data.type === 'FORCE_RELOAD') {
+                reg.unregister().finally(() => {
+                // A controlled page may keep the old SW until reload
+                window.location.reload();
+                });
+            }
+            });
+        }).catch(() => { /* ignore */ });
         }
     </script>
+
 
 </body>
 

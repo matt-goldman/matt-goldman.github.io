@@ -1,18 +1,21 @@
-// sw.js — one-time cleanup worker
+// One-time cleanup service worker
 self.addEventListener('install', () => self.skipWaiting());
 
 self.addEventListener('activate', async () => {
   try {
-    // Delete ALL caches
+    // Purge ALL caches
     const keys = await caches.keys();
     await Promise.all(keys.map(k => caches.delete(k)));
-    // Unregister this SW
-    await self.registration.unregister();
   } finally {
-    // Take control of open pages
+    // Take control of any open pages
     await self.clients.claim();
-    // Tell pages to reload (best effort)
-    const all = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
-    for (const client of all) client.navigate(client.url);
+
+    // Tell pages to unregister+reload themselves
+    const clients = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    for (const client of clients) {
+      client.postMessage({ type: 'FORCE_RELOAD' });
+    }
   }
 });
+
+// No fetch handler: everything falls through to network (fresh Blake site)
