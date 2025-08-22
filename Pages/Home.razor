@@ -6,14 +6,35 @@
 <!-- Hero Section -->
 <header class="bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="text-center">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">Hi, I'm Matt</h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Mobile dev, .NET, VR, motorcycles, homebrewing, Superman, science, and sometimes other things.</p>
+        <div class="flex flex-row items-center justify-center gap-5">
+            <img src="/images/default.png" alt="Default Image" class="rounded-full">
+            <div>
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">GoForGoldman</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Hi, I'm Matt. I talk about mobile dev, .NET, VR, motorcycles, homebrewing, Superman, science, and sometimes other things.</p>
+            </div>
         </div>
     </div>
 </header>
 
-<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Trending Topics Section -->
+<section class="mb-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Trending Topics</h3>
+        <div class="flex flex-wrap gap-3">
+            @foreach (var topic in _trendingTopics)
+            {
+                var color = topic.Topic.GetChipColor();
+                var topicClass = $"bg-{color}-100 dark:bg-{color}-900 text-{color}-800 dark:text-{color}-200 hover:bg-{color}-200 dark:hover:bg-{color}-800";
+                <a href="@topic.Slug" class="@topicClass px-4 py-2 rounded-full text-sm font-medium transition-colors">
+                    @topic.Topic
+                    <span class="ml-1 text-xs opacity-75">(@topic.Count)</span>
+                </a>
+            }
+        </div>
+    </div>
+</section>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Featured Post -->
     @if (_featuredPost is not null)
     {
@@ -41,45 +62,8 @@
     }
 
     <!-- Recent Posts -->
-    <section>
-        <h3 class="text-2xl font-bold text-gray-900 mb-6">Recent Posts</h3>
-        <div class="viewport">
-            <div class="rail @(_isAnimating ? "anim" : null)" style="transform: translateX(@_railX%)">
-                <div class="pane">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        @foreach (var post in _recentPosts)
-                        {
-                            <PostCard Page="@post"/>
-                        }
-                    </div>
-                </div>
-                <div class="pane">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        @foreach (var post in _incomingPosts)
-                        {
-                            <PostCard Page="@post"/>
-                        }
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <PostGroup Title="Recent Posts" Posts="_allPosts" Page="@Page" PageChanged="SetQuery"></PostGroup>
 
-    <!-- Pagination -->
-    @if (_pages.Count > 0)
-    {
-        <div class="flex justify-center mt-12">
-            <div class="flex space-x-1">
-                <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50" @onclick=PreviousPage>Previous</button>
-                @foreach (var item in _pages)
-                {
-                    <button class="px-3 py-2 text-sm font-medium @(item == _currentPage ? "text-white bg-blue-600 border-blue-600" : "text-gray-700 bg-white border-gray-300 hover:bg-gray-50")"
-                       @onclick="() => PageSelected(item)">@item</button>
-                }
-                <button class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50" @onclick=NextPage>Next</button>
-            </div>
-        </div>
-    }
 </main>
 
 <!-- Footer -->
@@ -92,16 +76,9 @@
 
     private PageModel? _featuredPost;
 
-    private List<PageModel> _recentPosts = [];
+    private List<PageModel> _allPosts = [];
 
-    private List<PageModel> _incomingPosts = [];
-
-    private List<int> _pages = [];
-
-    private int _currentPage = 1;
-
-    bool _isAnimating;
-    int _railX; // 0 or -100 (or +100 for prev)
+    private List<TrendingTopic> _trendingTopics = [];
 
     protected override void OnInitialized()
     {
@@ -109,99 +86,28 @@
 
         if (GeneratedContentIndex.GetPages().Count > 0)
         {
-            var pages = GeneratedContentIndex.GetPages()
+            _allPosts = GeneratedContentIndex.GetPages()
                 .OrderByDescending(p => p.Date)
                 .ToList();
 
-            _featuredPost = pages.FirstOrDefault(p => p.Metadata.ContainsKey("featured")) ?? pages.FirstOrDefault();
+            _featuredPost = _allPosts.FirstOrDefault(p => p.Metadata.ContainsKey("featured")) ?? _allPosts.FirstOrDefault();
 
-            _recentPosts = pages
-                .Where(p => p != _featuredPost && !p.Draft)
-                .Take(6)
+            var topics = _allPosts
+                .SelectMany(p => p.Tags)
+                .GroupBy(t => t.Trim())
+                .Select(g => new TrendingTopic(g.Key, g.Count(), $"/tags/{g.Key.Replace(" ", "-").ToLower()}"))
+                .OrderByDescending(t => t.Count)
+                .Take(8)
                 .ToList();
 
-            if (pages.Count > 6)
-            {
-                _pages = Enumerable.Range(1, (int)Math.Ceiling((double)(pages.Count - 1) / 6)).ToList();
-            }
+            _trendingTopics = topics;
         }
-
-        if (Page is > 1)
-        {
-            _currentPage = Page.Value;
-            SetRecentPostsAsync(_currentPage);
-        }
-    }
-
-
-    private async Task NextPage()
-    {
-        if (_currentPage < _pages.Count)
-        {
-            await PageSelected(_currentPage + 1);
-        }
-    }
-
-    private async Task PreviousPage()
-    {
-        if (_currentPage > 1)
-        {
-            await PageSelected(_currentPage - 1);
-        }
-    }
-
-    private async Task PageSelected(int pageNumber)
-    {
-        if (pageNumber > _currentPage - 1 || pageNumber < _currentPage + 1)
-        {
-            await SetIncomingPostsAsync(pageNumber);
-        }
-        else
-        {
-            SetRecentPostsAsync(pageNumber);
-        }
-    }
-
-    private async Task SetIncomingPostsAsync(int pageId)
-    {
-        if (pageId == _currentPage || _isAnimating) return;
-
-        _incomingPosts = GeneratedContentIndex.GetPages()
-                    .Where(p => !p.Draft && p.Slug.Contains("/posts/", StringComparison.OrdinalIgnoreCase))
-                    .OrderByDescending(p => p.Date)
-                    .Skip((pageId - 1) * 6)
-                    .Take(6)
-                    .ToList();
-
-        _isAnimating = true;
-        _railX = pageId > _currentPage ? -100 : 100; // slide direction
-        StateHasChanged();
-
-        await Task.Delay(250); // match CSS
-        _currentPage = pageId;
-        _recentPosts = _incomingPosts;
-        _incomingPosts = [];
-        _railX = 0; _isAnimating = false;
-        await SetRecentPostsAsync(_currentPage); // update URL
-    }
-
-    private async Task SetRecentPostsAsync(int pageId)
-    {
-        _recentPosts = GeneratedContentIndex.GetPages()
-                    .Where(p => !p.Draft && p.Slug.Contains("/posts/", StringComparison.OrdinalIgnoreCase))
-                    .OrderByDescending(p => p.Date)
-                    .Skip((pageId - 1) * 6)
-                    .Take(6)
-                    .ToList();
-
-        _isAnimating = false;
-        _railX = 0;
-
-        await SetQuery(pageId);
     }
 
     private async Task SetQuery(int page)
     {
         await JS.InvokeVoidAsync("setPageQuery", page - 1, false);
     }
+
+    private record TrendingTopic(string Topic, int Count, string Slug);
 }

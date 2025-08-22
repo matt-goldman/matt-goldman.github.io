@@ -4,13 +4,21 @@
     <title>GoForGoldman</title>
     <link>https://goforgoldman.com</link>
     <description>A blog about mobile dev, .NET, VR, motorcycles, science, Superman and homebrewing</description>
-    <lastBuildDate>Thu, 21 Aug 2025 07:58:55 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 22 Aug 2025 22:17:21 GMT</lastBuildDate>
+    <image>
+      <url>https://goforgoldman.com/image/default.png</url>
+      <title>GoForGoldman Home Page</title>
+      <link>https://goforgoldman.com</link>
+    </image>
 <item>
         <title>The world&#39;s most boring static site generator</title>
         <link>https://goforgoldman.com/posts/why-blake</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/why-blake</guid>
         <pubDate>Thu, 21 Aug 2025 00:00:01 GMT</pubDate>
-        <description><![CDATA[Why I switched my blog to Blake, and why you should too.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/blake.png" alt="The world&#39;s most boring static site generator" />
+          The world didn&#39;t need a new static site generator, but I did. This post is a candid reflection on my frustrations and the motivation behind building Blake, a deliberately simple, boring, and personal SSG that just works. No arcane syntax, no wasted time, just Markdown and Razor.]]>
+        </description>
         <category>web</category>
         <category>blogs</category>
         <category>blake</category>
@@ -21,7 +29,10 @@
         <link>https://goforgoldman.com/posts/first-things-first</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/first-things-first</guid>
         <pubDate>Wed, 06 Aug 2025 00:00:01 GMT</pubDate>
-        <description><![CDATA[Thoughts on optimizing morning productivity by rethinking meeting schedules and the timing of daily standups to protect deep work time.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/ftf.png" alt="First things first" />
+          Thoughts on optimizing morning productivity by rethinking meeting schedules and the timing of daily standups to protect deep work time.]]>
+        </description>
         <category>productivity</category>
         <category>scrum</category>
         <category>agile</category>
@@ -32,7 +43,10 @@
         <link>https://goforgoldman.com/posts/bdd-app-downloads</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/bdd-app-downloads</guid>
         <pubDate>Sat, 12 Jul 2025 00:00:01 GMT</pubDate>
-        <description><![CDATA[Exploring creative download progress microinteractions in .NET MAUI, from basic modals to engaging beer-fill animations that enhance user experience.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/bdd-downloads-cover.png" alt="Beer-Driven Downloads &amp; Microinteractions in .NET MAUI" />
+          Exploring creative download progress microinteractions in .NET MAUI, from basic modals to engaging beer-fill animations that enhance user experience.]]>
+        </description>
         <category>mobile</category>
         <category>maui</category>
         <category>ui</category>
@@ -44,7 +58,10 @@
         <link>https://goforgoldman.com/posts/outlook-toggle</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/outlook-toggle</guid>
         <pubDate>Fri, 04 Jul 2025 00:00:01 GMT</pubDate>
-        <description><![CDATA[Recreating Outlook mobile&#39;s sophisticated Focused/Other toggle switch in .NET MAUI using SkiaSharp for custom animated UI with sliding highlights and dynamic text colors.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/outlook-toggle-cover.png" alt="Replicating the Outlook Mobile &#39;Focused/Other&#39; Switch in .NET MAUI" />
+          Recreating Outlook mobile&#39;s sophisticated Focused/Other toggle switch in .NET MAUI using SkiaSharp for custom animated UI with sliding highlights and dynamic text colors.]]>
+        </description>
         <category>mobile</category>
         <category>maui</category>
         <category>ui</category>
@@ -55,7 +72,10 @@
         <link>https://goforgoldman.com/posts/batmobile-part-3</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/batmobile-part-3</guid>
         <pubDate>Thu, 03 Jul 2025 00:00:01 GMT</pubDate>
-        <description><![CDATA[Exploring the mathematics behind calculating pointer positions for custom gauges in .NET MAUI, using basic trigonometry to create precise dial movements.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/batmobile-cover-part-3.png" alt="Holy MauiGraphics Batman! Part 3: Clayface-Level Batmaths" />
+          Exploring the mathematics behind calculating pointer positions for custom gauges in .NET MAUI, using basic trigonometry to create precise dial movements.]]>
+        </description>
         <category>mobile</category>
         <category>maui</category>
         <category>ui</category>
@@ -65,7 +85,10 @@
         <link>https://goforgoldman.com/posts/batmobile-part-2</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/batmobile-part-2</guid>
         <pubDate>Wed, 02 Jul 2025 00:00:01 GMT</pubDate>
-        <description><![CDATA[Creating a real-time RPM dashboard for the Batcave using .NET MAUI Graphics with custom gauge backgrounds, moving dials, and telemetry data visualization.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/batmobile-cover-part-2.png" alt="Holy MauiGraphics Batman! Part 2: The RPM Gauge" />
+          Creating a real-time RPM dashboard for the Batcave using .NET MAUI Graphics with custom gauge backgrounds, moving dials, and telemetry data visualization.]]>
+        </description>
         <category>mobile</category>
         <category>maui</category>
         <category>ui</category>
@@ -75,7 +98,10 @@
         <link>https://goforgoldman.com/posts/batmobile-part-1</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/batmobile-part-1</guid>
         <pubDate>Tue, 01 Jul 2025 00:00:01 GMT</pubDate>
-        <description><![CDATA[Building a custom Batmobile throttle control using .NET MAUI Graphics and IDrawable to create retro-futuristic UI elements with interactive touch controls.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/batmobile-cover-part-1.png" alt="Holy MauiGraphics Batman! Part 1: Batmobile Throttle Control" />
+          Building a custom Batmobile throttle control using .NET MAUI Graphics and IDrawable to create retro-futuristic UI elements with interactive touch controls.]]>
+        </description>
         <category>mobile</category>
         <category>maui</category>
         <category>ui</category>
@@ -85,7 +111,10 @@
         <link>https://goforgoldman.com/posts/mauiuijuly-25</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/mauiuijuly-25</guid>
         <pubDate>Thu, 01 May 2025 00:00:01 GMT</pubDate>
-        <description><![CDATA[Announcing .NET MAUI UI July 2025, a month-long community-driven event where developers share their passion and expertise for building beautiful .NET MAUI user interfaces.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/maui-ui-july-bg.png" alt=".NET MAUI UI July - 2025" />
+          Announcing .NET MAUI UI July 2025, a month-long community-driven event where developers share their passion and expertise for building beautiful .NET MAUI user interfaces.]]>
+        </description>
         <category>mobile</category>
         <category>maui</category>
         <category>ui</category>
@@ -95,7 +124,10 @@
         <link>https://goforgoldman.com/posts/aspire-docker-perf</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/aspire-docker-perf</guid>
         <pubDate>Fri, 28 Feb 2025 01:00:01 GMT</pubDate>
-        <description><![CDATA[Improving Docker container performance in .NET Aspire on Windows by leveraging WSL 2 for better filesystem access and overall container efficiency.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/aspire-docker-performance.png" alt="Fixing Docker Performance in Aspire on Windows" />
+          Improving Docker container performance in .NET Aspire on Windows by leveraging WSL 2 for better filesystem access and overall container efficiency.]]>
+        </description>
         <category>docker</category>
         <category>aspire</category>
         <category>wsl</category>
@@ -108,7 +140,10 @@
         <link>https://goforgoldman.com/posts/cosmos-aspire-workaround</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/cosmos-aspire-workaround</guid>
         <pubDate>Fri, 06 Dec 2024 01:00:01 GMT</pubDate>
-        <description><![CDATA[Workaround for the Cosmos DB Emulator Explorer dashboard bug in Aspire by using the vnext-preview image tag until the fix is promoted to latest.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/cosmic-aspirations.png" alt="Cosmic Aspirations: A Workaround for the Cosmos DB Emulator Explorer in Aspire" />
+          Workaround for the Cosmos DB Emulator Explorer dashboard bug in Aspire by using the vnext-preview image tag until the fix is promoted to latest.]]>
+        </description>
         <category>mobile</category>
         <category>maui</category>
         <category>ui</category>
@@ -119,7 +154,10 @@
         <link>https://goforgoldman.com/posts/page-resolver-updates</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/page-resolver-updates</guid>
         <pubDate>Mon, 11 Nov 2024 01:00:01 GMT</pubDate>
-        <description><![CDATA[Latest improvements to PageResolver for .NET MAUI, making MVVM setup easier with automatic view and ViewModel resolution through dependency injection.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/page-resolver-updates.png" alt="PageResolver Updates – The Missing Piece of .NET MAUI, Now Ready for .NET 9!" />
+          Latest improvements to PageResolver for .NET MAUI, making MVVM setup easier with automatic view and ViewModel resolution through dependency injection.]]>
+        </description>
         <category>mobile</category>
         <category>maui</category>
         <category>ui</category>
@@ -130,7 +168,10 @@
         <link>https://goforgoldman.com/posts/parallax-collection</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/parallax-collection</guid>
         <pubDate>Mon, 01 Jul 2024 00:00:01 GMT</pubDate>
-        <description><![CDATA[Step-by-step tutorial for creating an engaging parallax scrolling effect in .NET MAUI CollectionView to add visual depth to your mobile app interfaces.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/parallax-collection.png" alt="Parallax CollectionView in .NET MAUI" />
+          Step-by-step tutorial for creating an engaging parallax scrolling effect in .NET MAUI CollectionView to add visual depth to your mobile app interfaces.]]>
+        </description>
         <category>mobile</category>
         <category>maui</category>
         <category>ui</category>
@@ -140,7 +181,10 @@
         <link>https://goforgoldman.com/posts/passthrough-behavior</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/passthrough-behavior</guid>
         <pubDate>Mon, 01 Jul 2024 00:00:01 GMT</pubDate>
-        <description><![CDATA[Implementing a passthrough behavior pattern in .NET MAUI to attach validation functionality to custom controls that wrap Entry and Editor elements.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/passthrough-behavior.jpeg" alt="Passthrough Behavior: Attaching things where they don&#39;t belong" />
+          Implementing a passthrough behavior pattern in .NET MAUI to attach validation functionality to custom controls that wrap Entry and Editor elements.]]>
+        </description>
         <category>mobile</category>
         <category>maui</category>
         <category>ui</category>
@@ -150,7 +194,10 @@
         <link>https://goforgoldman.com/posts/mauiuijuly-24</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/mauiuijuly-24</guid>
         <pubDate>Sun, 19 May 2024 00:00:01 GMT</pubDate>
-        <description><![CDATA[Announcing .NET MAUI UI July 2024, the third year of this community-driven event where developers share their passion for building beautiful .NET MAUI user interfaces.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/maui-ui-july-bg.png" alt=".NET MAUI UI July - 2024" />
+          Announcing .NET MAUI UI July 2024, the third year of this community-driven event where developers share their passion for building beautiful .NET MAUI user interfaces.]]>
+        </description>
         <category>mobile</category>
         <category>maui</category>
         <category>ui</category>
@@ -160,7 +207,10 @@
         <link>https://goforgoldman.com/posts/status-quo-overcorrection</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/status-quo-overcorrection</guid>
         <pubDate>Sat, 13 Apr 2024 00:00:01 GMT</pubDate>
-        <description><![CDATA[Exploring the status quo bias in decision-making and the risks of overcorrection when trying to avoid this cognitive bias in business and technology choices.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/the-status-quo-bias.png" alt="The Status Quo Bias and Overcorrection" />
+          Exploring the status quo bias in decision-making and the risks of overcorrection when trying to avoid this cognitive bias in business and technology choices.]]>
+        </description>
         <category>management</category>
         <category>leadership</category>
         <category>architecture</category>
@@ -171,7 +221,10 @@
         <link>https://goforgoldman.com/posts/platinum-hammer</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/platinum-hammer</guid>
         <pubDate>Sun, 10 Mar 2024 01:00:01 GMT</pubDate>
-        <description><![CDATA[Exploring cognitive biases in technology decision-making, from the golden hammer problem to the allure of new solutions and finding the right balance.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/platinum-hammer.png" alt="The Right Tool for the Job: Beyond the Golden Hammer" />
+          Exploring cognitive biases in technology decision-making, from the golden hammer problem to the allure of new solutions and finding the right balance.]]>
+        </description>
         <category>management</category>
         <category>leadership</category>
         <category>architecture</category>
@@ -182,7 +235,10 @@
         <link>https://goforgoldman.com/posts/ipad-orientation</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/ipad-orientation</guid>
         <pubDate>Tue, 20 Feb 2024 01:00:01 GMT</pubDate>
-        <description><![CDATA[Understanding orientation state changes on iPad in .NET MAUI and why OrientationStateTrigger behaves differently due to iPad&#39;s multitasking capabilities.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/ipad-responsove-gotcha.png" alt="Orientation state changes on iPad in .NET MAUI" />
+          Understanding orientation state changes on iPad in .NET MAUI and why OrientationStateTrigger behaves differently due to iPad&#39;s multitasking capabilities.]]>
+        </description>
         <category>dotnet</category>
         <category>dotnetmaui</category>
         <category>responsive</category>
@@ -193,7 +249,10 @@
         <link>https://goforgoldman.com/posts/idiom-dependencies</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/idiom-dependencies</guid>
         <pubDate>Fri, 09 Feb 2024 01:00:01 GMT</pubDate>
-        <description><![CDATA[Managing different dependencies for different device idioms in .NET MAUI apps using dependency injection to support mobile, tablet, and desktop layouts.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/idiom-dependencies.png" alt="Differentiating device idiom dependencies in .NET MAUI" />
+          Managing different dependencies for different device idioms in .NET MAUI apps using dependency injection to support mobile, tablet, and desktop layouts.]]>
+        </description>
         <category>dotnet</category>
         <category>dotnetmaui</category>
         <category>di</category>
@@ -204,7 +263,10 @@
         <link>https://goforgoldman.com/posts/maui-eventorder</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/maui-eventorder</guid>
         <pubDate>Wed, 22 Nov 2023 01:00:01 GMT</pubDate>
-        <description><![CDATA[Investigation into .NET MAUI page and navigation lifecycle event order across different platforms, revealing timing insights for effective page initialization.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/nav-event-cover.png" alt="Understanding .NET MAUI Page and Navigation Lifecycle Event Order" />
+          Investigation into .NET MAUI page and navigation lifecycle event order across different platforms, revealing timing insights for effective page initialization.]]>
+        </description>
         <category>dotnet</category>
         <category>dotnetmaui</category>
       </item>
@@ -213,7 +275,10 @@
         <link>https://goforgoldman.com/posts/remembering-mike</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/remembering-mike</guid>
         <pubDate>Fri, 03 Nov 2023 01:00:01 GMT</pubDate>
-        <description><![CDATA[Personal tribute to a dear friend Mike, sharing memories and celebrating his unique logic and personality on what would have been his 50th birthday.]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/troops.jpg" alt="Remembering Mike" />
+          Personal tribute to a dear friend Mike, sharing memories and celebrating his unique logic and personality on what would have been his 50th birthday.]]>
+        </description>
         
       </item>
 </channel>

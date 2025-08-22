@@ -1,5 +1,5 @@
 ---
-description: "Why I switched my blog to Blake, and why you should too."
+description: "The world didn't need a new static site generator, but I did. This post is a candid reflection on my frustrations and the motivation behind building Blake, a deliberately simple, boring, and personal SSG that just works. No arcane syntax, no wasted time, just Markdown and Razor."
 title:  "The world's most boring static site generator"
 date:   2025-08-21 00:00:01 +1000
 image:  /images/posts/blake.png
@@ -213,7 +213,7 @@ This is a callout
 
 In Blake, _that's_ how you do it. Is it better? Arguably, but that's not the point. The point is, I'm writing Markdown, Markdown has a way of doing it, therefore, as a Markdown tool, Blake expects you to do it that way. Not a bespoke, custom, arcane syntax.
 
-::: info title="Default Renderers"
+::: tip title="Default Renderers"
 Granted, you still have to provide a way to render that in your template. That's no different in Blake than it is in other SSGs, but Blake _does_ include "default renderers". These are container renderers for the common "callouts" (as I've referred to them) that you might want to include (like `tip`, `info`, etc.). These use standard Bootstrap alerts, because Bootstrap is the default CSS framework that you get with the Blazor WASM template. But you can turn these off easily if you want to provide your own (that's what I do on this site). You can see more [here](https://blake-ssg.org/2%20using%20blake/components#default-container-renderers) in the docs.
 :::
 
