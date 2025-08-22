@@ -1,0 +1,175 @@
+<section>
+    <div class="flex flex-row justify-between items-center mb-6">
+        <h3 class="text-2xl font-bold text-gray-900">@Title</h3>
+        <!-- Pagination -->
+        @if (_pages.Count > 0)
+        {
+            <div class="flex justify-center">
+                <div class="flex space-x-1">
+                    <button class="px-3 py-2 text-sm font-medium @(_prevDisabled ? "text-gray-400" : "text-gray-700") hover:bg-gray-200" @onclick=PreviousPage disabled="@_prevDisabled">Previous</button>
+                    @foreach (var item in _pages)
+                    {
+                        <button class="px-3 py-2 text-sm font-medium w-8 h-8 @(item == _currentPage ? "bg-gray-400 text-white rounded-full" : "text-gray-700 hover:bg-gray-50")"
+                            @onclick="() => PageSelected(item)">@item</button>
+                    }
+                    <button class="px-3 py-2 text-sm font-medium @(_nextDisabled ? "text-gray-400" : "text-gray-700") hover:bg-gray-200" @onclick=NextPage disabled="@_nextDisabled">Next</button>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="viewport pb-6">
+        <div class="rail @(_isAnimating ? "anim" : null)" style="transform: translateX(@_railX%)">
+            <div class="pane">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    @foreach (var post in _recentPosts)
+                    {
+                        <PostCard Page="@post"/>
+                    }
+                </div>
+            </div>
+            <div class="pane">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    @foreach (var post in _incomingPosts)
+                    {
+                        <PostCard Page="@post"/>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="h-1"></div>
+    </div>
+</section>
+
+
+@code {
+
+    [Parameter]
+    public int? Page { get; set; } = 1;
+
+    [Parameter]
+    public EventCallback<int> PageChanged { get; set; }
+
+    [Parameter]
+    public List<PageModel> Posts { get; set; } = [];
+
+    [Parameter]
+    public string Title { get; set; } = "Posts";
+
+    private List<int> _pages = [];
+
+    private int _currentPage = 1;
+
+    bool _isAnimating;
+    int _railX; // 0 or -100 (or +100 for prev)
+
+    private List<PageModel> _recentPosts = [];
+
+    private List<PageModel> _incomingPosts = [];
+
+    private bool _isInitialized = false;
+
+    private bool _nextDisabled = false;
+    private bool _prevDisabled = false;
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+
+        if (!_isInitialized)
+        {
+            _recentPosts = Posts
+                .Where(p => !p.Draft)
+                .Take(6)
+                .ToList();
+
+            if (Posts.Count > 6)
+            {
+                _pages = Enumerable.Range(1, (int)Math.Ceiling((double)(Posts.Count - 1) / 6)).ToList();
+            }
+
+            if (Page is > 1)
+            {
+                _currentPage = Page.Value;
+                _ = SetRecentPostsAsync(_currentPage);
+            }
+
+            _isInitialized = true;
+        }
+
+        SetButtonState();
+    }
+
+    private async Task NextPage()
+    {
+        if (_currentPage < _pages.Count)
+        {
+            await PageSelected(_currentPage + 1);
+        }
+    }
+
+    private async Task PreviousPage()
+    {
+        if (_currentPage > 1)
+        {
+            await PageSelected(_currentPage - 1);
+        }
+    }
+
+    private async Task PageSelected(int pageNumber)
+    {
+        SetButtonState();
+
+        if (pageNumber > _currentPage - 1 || pageNumber < _currentPage + 1)
+        {
+            await SetIncomingPostsAsync(pageNumber);
+        }
+        else
+        {
+            _ = SetRecentPostsAsync(pageNumber);
+        }
+    }
+
+    private async Task SetIncomingPostsAsync(int pageId)
+    {
+        if (pageId == _currentPage || _isAnimating) return;
+
+        _incomingPosts = Posts
+                    .Where(p => !p.Draft && p.Slug.Contains("/posts/", StringComparison.OrdinalIgnoreCase))
+                    .OrderByDescending(p => p.Date)
+                    .Skip((pageId - 1) * 6)
+                    .Take(6)
+                    .ToList();
+
+        _isAnimating = true;
+        _railX = pageId > _currentPage ? -100 : 100; // slide direction
+        StateHasChanged();
+
+        await Task.Delay(250); // match CSS
+        _currentPage = pageId;
+        _recentPosts = _incomingPosts;
+        _incomingPosts = [];
+        _railX = 0; _isAnimating = false;
+        await SetRecentPostsAsync(_currentPage); // update URL
+    }
+
+    private async Task SetRecentPostsAsync(int pageId)
+    {
+        _recentPosts = Posts
+                    .Where(p => !p.Draft && p.Slug.Contains("/posts/", StringComparison.OrdinalIgnoreCase))
+                    .OrderByDescending(p => p.Date)
+                    .Skip((pageId - 1) * 6)
+                    .Take(6)
+                    .ToList();
+
+        _isAnimating = false;
+        _railX = 0;
+
+        await PageChanged.InvokeAsync(pageId);
+    }
+
+    private void SetButtonState()
+    {
+        _nextDisabled = _currentPage >= _pages.Count;
+        _prevDisabled = _currentPage <= 1;
+    }
+}
