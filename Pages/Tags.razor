@@ -1,0 +1,45 @@
+@page "/tags/{tag}"
+
+<PageTitle>GoForGoldman - @Tag</PageTitle>
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Page Header -->
+    <header class="mb-8">
+        <div class="flex items-center mb-4">
+            <span class="@_chipClass">@Tag</span>
+            <span class="text-gray-600 dark:text-gray-300">@($"{_posts.Count} posts")</span>
+        </div>
+        <h1 class="text-3xl font-bold text-gray-900 mb-4">Posts tagged with "@Tag"</h1>
+        <p class="text-lg text-gray-600 dark:text-gray-300">Discover articles, tutorials, and insights about @Tag.</p>
+    </header>
+    <main>
+        <PostGroup Title="@(string.Empty)" Posts="_posts" />
+    </main>
+</div>
+<!-- Footer -->
+<Footer></Footer>
+@code {
+    [Parameter]
+    public string Tag { get; set; } = string.Empty;
+
+    private List<PageModel> _posts = new();
+
+    private string _chipClass = string.Empty;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        if (GeneratedContentIndex.GetPages().Count > 0)
+        {
+            _posts = GeneratedContentIndex.GetPages()
+                .Where(p => p.Tags.Contains(Tag, StringComparer.OrdinalIgnoreCase))
+                .OrderByDescending(p => p.Date)
+                .ToList();
+        }
+
+        var _tagColor = Tag.GetChipColor();
+
+        _chipClass = $"bg-{_tagColor}-100 dark:bg-{_tagColor}-900 text-{_tagColor}-800 dark:text-{_tagColor}-200 px-4 py-2 rounded-full text-lg font-medium mr-4";
+    }
+}
