@@ -5,6 +5,11 @@
     <link>https://goforgoldman.com</link>
     <description>A blog about mobile dev, .NET, VR, motorcycles, science, Superman and homebrewing</description>
     <lastBuildDate>{{LastBuildDate}}</lastBuildDate>
+    <image>
+      <url>https://goforgoldman.com/image/default.png</url>
+      <title>GoForGoldman Home Page</title>
+      <link>https://goforgoldman.com</link>
+    </image>
 
     <Items>
       <item>
@@ -12,7 +17,10 @@
         <link>{{Item.Link}}</link>
         <guid isPermaLink="true">{{Item.Guid}}</guid>
         <pubDate>{{Item.PubDate}}</pubDate>
-        <description><![CDATA[{{Item.Description}}]]></description>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="{{Item.baseurl}}{{Item.Image}}" alt="{{Item.Title}}" />
+          {{Item.Description}}]]>
+        </description>
         {{Item.CategoriesXml}}
       </item>
     </Items>
