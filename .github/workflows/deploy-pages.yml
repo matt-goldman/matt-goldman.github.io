@@ -43,7 +43,7 @@ jobs:
 
       # bake static content
       - name: Run blake bake
-        run: blake bake -cl -dr --rss:ignore-path="/pages" --social:base-url="https://goforgoldman.com"
+        run: blake bake -cl -dr --rss:ignore-path="/pages" --social:base-url="https://goforgoldman.com" --rss:baseurl="https://goforgoldman.com"
 
       # publishes the Blake static site to the release folder
       - name: Publish .NET Project

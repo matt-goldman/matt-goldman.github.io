@@ -18,7 +18,7 @@
         <guid isPermaLink="true">{{Item.Guid}}</guid>
         <pubDate>{{Item.PubDate}}</pubDate>
         <description>
-          <![CDATA[<img align="left" hspace="5" src="{{social:base-url}}{{Item.Image}}" alt="{{Item.Title}}" />
+          <![CDATA[<img align="left" hspace="5" src="{{Item.baseurl}}{{Item.Image}}" alt="{{Item.Title}}" />
           {{Item.Description}}]]>
         </description>
         {{Item.CategoriesXml}}

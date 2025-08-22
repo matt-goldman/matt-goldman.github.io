@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="BlakePlugin.ReadTime" Version="1.0.0" />
-    <PackageReference Include="BlakePlugin.RSS" Version="1.0.5" />
+    <PackageReference Include="BlakePlugin.RSS" Version="1.0.6" />
     <PackageReference Include="Blazicons.Bootstrap" Version="2.3.40" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.6" PrivateAssets="all" />
