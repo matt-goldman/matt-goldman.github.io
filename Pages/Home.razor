@@ -6,14 +6,35 @@
 <!-- Hero Section -->
 <header class="bg-white">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="text-center">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">Hi, I'm Matt</h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Mobile dev, .NET, VR, motorcycles, homebrewing, Superman, science, and sometimes other things.</p>
+        <div class="flex flex-row items-center justify-center gap-5">
+            <img src="/images/default.png" alt="Default Image" class="rounded-full">
+            <div>
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">GoForGoldman</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Hi, I'm Matt. I talk about mobile dev, .NET, VR, motorcycles, homebrewing, Superman, science, and sometimes other things.</p>
+            </div>
         </div>
     </div>
 </header>
 
-<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<!-- Trending Topics Section -->
+<section class="mb-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">Trending Topics</h3>
+        <div class="flex flex-wrap gap-3">
+            @foreach (var topic in _trendingTopics)
+            {
+                var color = topic.Topic.GetChipColor();
+                var topicClass = $"bg-{color}-100 dark:bg-{color}-900 text-{color}-800 dark:text-{color}-200 hover:bg-{color}-200 dark:hover:bg-{color}-800";
+                <a href="@topic.Slug" class="@topicClass px-4 py-2 rounded-full text-sm font-medium transition-colors">
+                    @topic.Topic
+                    <span class="ml-1 text-xs opacity-75">(@topic.Count)</span>
+                </a>
+            }
+        </div>
+    </div>
+</section>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Featured Post -->
     @if (_featuredPost is not null)
     {
@@ -42,7 +63,7 @@
 
     <!-- Recent Posts -->
     <section>
-        <h3 class="text-2xl font-bold text-gray-900 mb-6">Recent Posts</h3>
+        <h3 class="text-2xl font-bold text-gray-900 mb-6">All Posts</h3>
         <div class="viewport">
             <div class="rail @(_isAnimating ? "anim" : null)" style="transform: translateX(@_railX%)">
                 <div class="pane">
@@ -96,6 +117,8 @@
 
     private List<PageModel> _incomingPosts = [];
 
+    private List<TrendingTopic> _trendingTopics = [];
+
     private List<int> _pages = [];
 
     private int _currentPage = 1;
@@ -124,6 +147,16 @@
             {
                 _pages = Enumerable.Range(1, (int)Math.Ceiling((double)(pages.Count - 1) / 6)).ToList();
             }
+
+            var topics = pages
+                .SelectMany(p => p.Tags)
+                .GroupBy(t => t.Trim())
+                .Select(g => new TrendingTopic(g.Key, g.Count(), $"/tags/{g.Key.Replace(" ", "-").ToLower()}"))
+                .OrderByDescending(t => t.Count)
+                .Take(8)
+                .ToList();
+
+            _trendingTopics = topics;
         }
 
         if (Page is > 1)
@@ -204,4 +237,6 @@
     {
         await JS.InvokeVoidAsync("setPageQuery", page - 1, false);
     }
+
+    private record TrendingTopic(string Topic, int Count, string Slug);
 }

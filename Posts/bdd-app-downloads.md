@@ -12,12 +12,12 @@ avatar: "/images/authors/mattg.png"
 
 ## Intro
 
-:::info
-**Note:** This post is part of the [MAUI UI July](/posts/mauiuijuly-25) event, where community members share their passion for .NET MAUI UI. Check out the link for more great content!
+:::note
+This post is part of the [MAUI UI July](/posts/mauiuijuly-25) event, where community members share their passion for .NET MAUI UI. Check out the link for more great content!
 :::
 
-:::info
-**Note 2:** I wouldn't normally suggest this, but just scroll to the end and watch the video (the last one). Then come back and read the post. It's a lot more fun that way, trust me!
+:::note title="Note 2"
+I wouldn't normally suggest this, but just scroll to the end and watch the video (the last one). Then come back and read the post. It's a lot more fun that way, trust me!
 :::
 
 
@@ -99,7 +99,7 @@ This is already a big step-up in UX, as it allows the user to see that a downloa
 On the web, we refer to progress indicators as "deterministic" or "indeterminate". A deterministic progress indicator shows the user how much of the task is complete, while an indeterminate progress indicator simply shows that a task is in progress without indicating how much has been completed. So far, we've been using an indeterminate progress indicator (the `ActivityIndicator`); .NET MAUI provides a `ProgressBar` control that we can use to show deterministic progress, but it doesn't really fit the theme of the Beer Driven Devs app. So, let's get creative!
 
 :::info
-Note: I actually could absolutely have used a `ProgressBar` here, but I wanted to explore some more creative options that fit the theme of the app.
+I actually could absolutely have used a `ProgressBar` here, but I wanted to explore some more creative options that fit the theme of the app.
 :::
 
 In order to show the progress, though, we need to know how much of the download has been completed. The `HttpClient` class in .NET allows us to download files asynchronously, and we can use the `HttpCompletionOption.ResponseHeadersRead` option to read the response headers and get the total size of the file before the download starts. It also lets you stream progressively, rather than buffering the whole response before you can write to disk (or access the stream). We can then continually check the `response.Content.Headers.ContentLength` to get the total size of the file, and use the `HttpContent.ReadAsStreamAsync()` method to read the content as a stream. This allows us to track the progress of the download and update the UI accordingly.
@@ -196,7 +196,7 @@ There are probably a handful of ways to implement this, but I think the simplest
 The `SKCanvasView` replaces the `BoxView` that was used to dim the thumbnail. But, as the progress increases, instead of drawing the translucent gray overlay across the whole thumbnail, we draw it from the top of the thumbnail (`y = 0`) to `y - progress`, where `progress` is the current download progress as a percentage, and from `y = progress` to the bottom of the thumbnail (`y = 1`), we draw the beer glass.
 
 :::info
-Note: The coordinates for the `SKCanvasView` work similar to a `Brush` in .NET MAUI, where `0,0` is the top-left and `1,1` is the bottom-right.
+The coordinates for the `SKCanvasView` work similar to a `Brush` in .NET MAUI, where `0,0` is the top-left and `1,1` is the bottom-right.
 :::
 
 The beer glass is a gradient from `amber400` to `yellow300` (taken from the [Tailwind CSS palette](https://tailwindcss.com/docs/customizing-colors#default-color-palette)), and as the progress increases, the beer 'fills the glass'.
