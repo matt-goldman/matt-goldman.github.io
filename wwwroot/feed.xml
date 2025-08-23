@@ -4,7 +4,7 @@
     <title>GoForGoldman</title>
     <link>https://goforgoldman.com</link>
     <description>A blog about mobile dev, .NET, VR, motorcycles, science, Superman and homebrewing</description>
-    <lastBuildDate>Fri, 22 Aug 2025 22:17:21 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 23 Aug 2025 01:14:44 GMT</lastBuildDate>
     <image>
       <url>https://goforgoldman.com/image/default.png</url>
       <title>GoForGoldman Home Page</title>
@@ -164,19 +164,6 @@
         <category>di</category>
       </item>
 <item>
-        <title>Parallax CollectionView in .NET MAUI</title>
-        <link>https://goforgoldman.com/posts/parallax-collection</link>
-        <guid isPermaLink="true">https://goforgoldman.com/posts/parallax-collection</guid>
-        <pubDate>Mon, 01 Jul 2024 00:00:01 GMT</pubDate>
-        <description>
-          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/parallax-collection.png" alt="Parallax CollectionView in .NET MAUI" />
-          Step-by-step tutorial for creating an engaging parallax scrolling effect in .NET MAUI CollectionView to add visual depth to your mobile app interfaces.]]>
-        </description>
-        <category>mobile</category>
-        <category>maui</category>
-        <category>ui</category>
-      </item>
-<item>
         <title>Passthrough Behavior: Attaching things where they don&#39;t belong</title>
         <link>https://goforgoldman.com/posts/passthrough-behavior</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/passthrough-behavior</guid>
@@ -184,6 +171,19 @@
         <description>
           <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/passthrough-behavior.jpeg" alt="Passthrough Behavior: Attaching things where they don&#39;t belong" />
           Implementing a passthrough behavior pattern in .NET MAUI to attach validation functionality to custom controls that wrap Entry and Editor elements.]]>
+        </description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+      </item>
+<item>
+        <title>Parallax CollectionView in .NET MAUI</title>
+        <link>https://goforgoldman.com/posts/parallax-collection</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/parallax-collection</guid>
+        <pubDate>Mon, 01 Jul 2024 00:00:01 GMT</pubDate>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/parallax-collection.png" alt="Parallax CollectionView in .NET MAUI" />
+          Step-by-step tutorial for creating an engaging parallax scrolling effect in .NET MAUI CollectionView to add visual depth to your mobile app interfaces.]]>
         </description>
         <category>mobile</category>
         <category>maui</category>
