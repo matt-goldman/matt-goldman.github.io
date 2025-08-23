@@ -7,7 +7,7 @@ This is a Blazor WebAssembly blog built with Blake - a custom static site genera
 ## Working Effectively
 
 ### Prerequisites and Environment Setup
-- Install .NET 9.0 SDK (required for Blake CLI and project compilation)
+- **REQUIRED:** Install .NET 9.0 SDK (minimum dependency - ALWAYS use .NET 9 for any work or testing)
 - Install Node.js v20+ and npm (required for Tailwind CSS processing)
 - Install Blake CLI as global dotnet tool: `dotnet tool install -g Blake.CLI`
 
@@ -174,3 +174,20 @@ The following directories are build artifacts and should NOT be committed:
 - `/obj/` and `/bin/` - .NET build artifacts
 
 Always use `.gitignore` to exclude these directories from version control.
+
+## Code Standards and Formatting
+
+### Development Guidelines
+**Always search Microsoft documentation (MS Learn) when working with .NET, Windows, or Microsoft features, or APIs.** Use the `microsoft_docs_search` tool to find the most current information about capabilities, best practices, and implementation patterns before making changes.
+
+### Formatting Preservation
+- **DO NOT change any code formatting unless explicitly stated otherwise**
+- Preserve existing indentation, spacing, and line breaks in all files
+- Do not reformat code to match personal or tool preferences
+- Only make formatting changes when specifically requested in the task requirements
+
+### Commit Guidelines
+- **Files with formatting-only changes MUST NOT be included in commits**
+- Only commit files that contain meaningful functional changes
+- If a file shows changes but they are purely formatting (whitespace, indentation, etc.), exclude it from the commit
+- Use `git diff` to verify that committed changes contain actual code modifications, not just formatting differences
