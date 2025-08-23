@@ -4,7 +4,7 @@
         <!-- Pagination -->
         @if (_pages.Count > 0)
         {
-            <div class="flex justify-center">
+            <div class="flex justify-center hidden md:block">
                 <div class="flex space-x-1">
                     <button class="px-3 py-2 text-sm font-medium @(_prevDisabled ? "text-gray-400" : "text-gray-700") hover:bg-gray-200" @onclick=PreviousPage disabled="@_prevDisabled">Previous</button>
                     @foreach (var item in _pages)
@@ -36,7 +36,21 @@
                 </div>
             </div>
         </div>
-        <div class="h-1"></div>
+        <div class="h-1 sm:hidden"></div>
+        @if (_pages.Count > 0)
+        {
+            <div class="flex justify-center sm:block md:hidden mt-4">
+                <div class="flex space-x-1">
+                    <button class="px-3 py-2 text-sm font-medium @(_prevDisabled ? "text-gray-400" : "text-gray-700") hover:bg-gray-200" @onclick=PreviousPage disabled="@_prevDisabled">Previous</button>
+                    @foreach (var item in _pages)
+                    {
+                        <button class="px-3 py-2 text-sm font-medium w-8 h-8 @(item == _currentPage ? "bg-gray-400 text-white rounded-full" : "text-gray-700 hover:bg-gray-50")"
+                            @onclick="() => PageSelected(item)">@item</button>
+                    }
+                    <button class="px-3 py-2 text-sm font-medium @(_nextDisabled ? "text-gray-400" : "text-gray-700") hover:bg-gray-200" @onclick=NextPage disabled="@_nextDisabled">Next</button>
+                </div>
+            </div>
+        }
     </div>
 </section>
 
