@@ -1034,14 +1034,14 @@
   .w-10 {
     width: calc(var(--spacing) * 10);
   }
+  .w-30 {
+    width: calc(var(--spacing) * 30);
+  }
   .w-75 {
     width: calc(var(--spacing) * 75);
   }
   .w-full {
     width: 100%;
-  }
-  .w-sm {
-    width: var(--container-sm);
   }
   .max-w-2xl {
     max-width: var(--container-2xl);
