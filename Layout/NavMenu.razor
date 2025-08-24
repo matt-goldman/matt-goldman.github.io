@@ -1,15 +1,15 @@
-﻿<nav class="bg-white shadow-sm sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+<nav class="bg-white dark:bg-gray-800 shadow-sm sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-700 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-colors">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
             <div class="flex items-center">
                 <img src="icon-192.png" alt="GoForGoldman" class="h-8 mr-2 rounded-full" />
-                <h1 class="text-xl font-bold text-gray-900 outline-hidden">GoForGoldman</h1>
+                <h1 class="text-xl font-bold text-gray-900 dark:text-white outline-hidden transition-colors">GoForGoldman</h1>
             </div>
-            <div class="hidden md:block">
+            <div class="hidden md:flex items-center justify-between flex-1">
                 <div class="ml-10 flex items-baseline space-x-4">
                     <NavLink href="/"
                              Match="NavLinkMatch.All"
-                             class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                             class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
                              activeClass="text-blue-600 border-b-2 border-blue-600">
                         <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
                     </NavLink>
@@ -18,17 +18,20 @@
                     @foreach (var contentPage in GeneratedContentIndex.GetPages().Where(p => p.Slug.Contains("/pages/", StringComparison.InvariantCultureIgnoreCase)))
                     {
                         <NavLink href="@contentPage.Slug"
-                                class="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                                class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
                                 activeClass="text-blue-600 border-b-2 border-blue-600">
                             <span class="bi @contentPage.IconIdentifier-nav-menu" aria-hidden="true"></span> @contentPage.Title
                         </NavLink>
                     }
 
                 </div>
+                
+                <!-- Theme toggle for desktop -->
+                <ThemeToggle IsDesktop="true" />
             </div>
             <!-- Mobile menu button -->
             <div class="md:hidden">
-                <button @onclick="ToggleMobileMenu" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                <button @onclick="ToggleMobileMenu" class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white focus:outline-none transition-colors">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -39,11 +42,11 @@
 
     <!-- Mobile menu -->
     <div class="md:hidden @(isMobileMenuOpen ? "" : "hidden")">
-        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200 animate-slideDown z-100">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-600 animate-slideDown z-100 transition-colors">
             <NavLink href="/"
                      Match="NavLinkMatch.All"
-                     class="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
-                     activeClass="text-blue-600 bg-blue-50"
+                     class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                     activeClass="text-blue-600 bg-blue-50 dark:bg-blue-900"
                      @onclick="CloseMobileMenu">
                 <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
             </NavLink>
@@ -51,12 +54,15 @@
             @foreach (var contentPage in GeneratedContentIndex.GetPages().Where(p => p.Slug.Contains("/pages/", StringComparison.InvariantCultureIgnoreCase)))
             {
                 <NavLink href="@contentPage.Slug"
-                        class="text-gray-600 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
-                        activeClass="text-blue-600 bg-blue-50"
+                        class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                        activeClass="text-blue-600 bg-blue-50 dark:bg-blue-900"
                         @onclick="CloseMobileMenu">
                     <span class="bi @contentPage.IconIdentifier-nav-menu" aria-hidden="true"></span> @contentPage.Title
                 </NavLink>
             }
+            
+            <!-- Theme toggle for mobile -->
+            <ThemeToggle IsDesktop="false" />
         </div>
     </div>
 </nav>
