@@ -4,27 +4,27 @@
 <PageTitle>GoForGoldman - Home</PageTitle>
 
 <!-- Hero Section -->
-<header class="bg-white">
+<header class="bg-white dark:bg-gray-900">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="flex flex-col md:flex-row items-center justify-center gap-5">
             <img src="/images/default.png" alt="Default Image" class="rounded-full w-30 md:w-3xs">
             <div>
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">GoForGoldman</h2>
-                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Hi, I'm Matt. I talk about mobile dev, .NET, VR, motorcycles, homebrewing, Superman, science, and sometimes other things.</p>
+                <h2 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">GoForGoldman</h2>
+                <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">Hi, I'm Matt. I talk about mobile dev, .NET, VR, motorcycles, homebrewing, Superman, science, and sometimes other things.</p>
             </div>
         </div>
     </div>
 </header>
 
 <!-- Trending Topics Section -->
-<section class="mb-12">
+<section class="mb-12 bg-white dark:bg-gray-900">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h3 class="text-2xl font-bold text-gray-900 mb-4">Trending Topics</h3>
+        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">Trending Topics</h3>
         <div class="flex flex-wrap gap-3">
             @foreach (var topic in _trendingTopics)
             {
                 var color = topic.Topic.GetChipColor();
-                var topicClass = $"bg-{color}-100 dark:bg-{color}-900 text-{color}-800 dark:text-{color}-200 hover:bg-{color}-200 dark:hover:bg-{color}-800";
+                var topicClass = $"bg-{color}-100 dark:bg-{color}-800 text-{color}-800 dark:text-{color}-100 hover:bg-{color}-200 dark:hover:bg-{color}-700";
                 <a href="@topic.Slug" class="@topicClass px-4 py-2 rounded-full text-sm font-medium transition-colors">
                     @topic.Topic
                     <span class="ml-1 text-xs opacity-75">(@topic.Count)</span>
@@ -34,26 +34,26 @@
     </div>
 </section>
 
-<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900">
     <!-- Featured Post -->
     @if (_featuredPost is not null)
     {
         <section class="mb-12">
-            <h3 class="text-2xl font-bold text-gray-900 mb-6">Featured Post</h3>
-            <article class="bg-white rounded-lg shadow-md overflow-hidden">
+            <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Featured Post</h3>
+            <article class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
                 <div class="md:flex">
                     <div class="md:w-1/3">
                         <img src="@(string.IsNullOrEmpty(_featuredPost.Image) ? "https://placeholder.pics/svg/400x300/DFEEF6-B6BEC3/000000" : _featuredPost.Image)" alt="Featured post image" class="w-full h-48 md:h-full object-cover">
                     </div>
                     <div class="md:w-2/3 p-6">
                         <div class="flex items-center mb-2">
-                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">@(_featuredPost.Tags.FirstOrDefault() ?? string.Empty)</span>
-                            <span class="text-gray-500 text-sm ml-3">@($"{_featuredPost.Date:MMM dd, yyyy}")</span>
+                            <span class="bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-100 text-xs font-medium px-2.5 py-0.5 rounded">@(_featuredPost.Tags.FirstOrDefault() ?? string.Empty)</span>
+                            <span class="text-gray-500 dark:text-gray-400 text-sm ml-3">@($"{_featuredPost.Date:MMM dd, yyyy}")</span>
                         </div>
-                        <h4 class="text-2xl font-bold text-gray-900 mb-3">
-                            <a href="@_featuredPost.Slug" class="hover:text-blue-600 transition-colors">@_featuredPost.Title</a>
+                        <h4 class="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+                            <a href="@_featuredPost.Slug" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">@_featuredPost.Title</a>
                         </h4>
-                        <p class="text-gray-600 mb-4">@_featuredPost.Description</p>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">@_featuredPost.Description</p>
                         <Author Page=@_featuredPost />
                     </div>
                 </div>
