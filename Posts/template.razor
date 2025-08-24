@@ -3,7 +3,7 @@
 
 <PageTitle>@Title</PageTitle>
 
-<main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 bg-white dark:bg-gray-900">
     <!-- Breadcrumb -->
     <nav class="mb-8">
         <ol class="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
@@ -44,7 +44,7 @@
     </div>
 
     <!-- Article Content -->
-    <article class="prose prose-lg max-w-none">
+    <article class="prose prose-lg max-w-none dark:prose-invert">
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-8">
             @Body
         </div>
@@ -68,7 +68,7 @@
                     <span class="text-gray-600 dark:text-gray-300">Tags:</span>
                     @foreach (var tag in _page.Tags.Where(t => t != _primaryTag))
                     {
-                        <span class="bg-@(tag.GetChipColor())-100 dark:bg-@(tag.GetChipColor())-800 text-@(tag.GetChipColor())-800 dark:text-@(tag.GetChipColor())-200 text-sm px-2 py-1 rounded">@tag</span>
+                        <span class="bg-@(tag.GetChipColor())-100 dark:bg-@(tag.GetChipColor())-800 text-@(tag.GetChipColor())-800 dark:text-@(tag.GetChipColor())-100 text-sm px-2 py-1 rounded">@tag</span>
                     }
                 </div>
             }
@@ -153,7 +153,7 @@
             _chipBgColor = $"bg-{_primaryTag.GetChipColor()}-100";
             _chipTextColor = $"text-{_primaryTag.GetChipColor()}-800";
             _chipDarkBgColor = $"dark:bg-{_primaryTag.GetChipColor()}-800";
-            _chipDarkTextColor = $"dark:text-{_primaryTag.GetChipColor()}-200";
+            _chipDarkTextColor = $"dark:text-{_primaryTag.GetChipColor()}-100";
         }
 
         if (!string.IsNullOrEmpty(_page.Image))
@@ -186,7 +186,7 @@
         try
         {
             var currentTheme = await JSRuntime.InvokeAsync<string>("eval", "window.themeManager?.getCurrentTheme() || 'system'");
-            var effectiveTheme = await JSRuntime.InvokeAsync<string>("eval", "window.themeManager?.getEffectiveTheme() || 'light'");
+            var effectiveTheme = await JSRuntime.InvokeAsync<string>("eval", "window.themeManager?.getResolvedCurrentTheme() || 'light'");
             
             _giscusTheme = effectiveTheme == "dark" ? "dark" : "light";
             StateHasChanged();
