@@ -1,6 +1,12 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-secondary: #6b7280;
+}
+
+@variant dark (.dark &);
 
 /*
 Force Tailwind to include all dark mode classes used in the application
