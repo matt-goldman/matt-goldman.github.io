@@ -5,7 +5,7 @@
     }
     else if (!string.IsNullOrEmpty(_authorInitials))
     {
-        <div class="w-10 h-10 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center mr-3">
+        <div class="w-10 h-10 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-full flex items-center justify-center mr-3">
             <span class="text-sm font-medium">@_authorInitials</span>
         </div>
     }
@@ -14,10 +14,10 @@
         <img src="https://placeholder.pics/svg/40/DFEEF6-B6BEC3/000000" alt="Author avatar" class="w-10 h-10 rounded-full mr-3">
     }
     <div>
-        <p class="text-sm font-medium text-gray-900">@_authorName</p>
+        <p class="text-sm font-medium text-gray-900 dark:text-gray-100">@_authorName</p>
         @if (ShowTitle)
         {
-            <p class="text-sm text-gray-600">@_authorTitle</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">@_authorTitle</p>
         }
     </div>
 </div>
