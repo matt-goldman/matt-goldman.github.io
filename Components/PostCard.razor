@@ -1,15 +1,15 @@
-﻿<article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow hover:bg-gray-100 transition-colors">
+﻿<article class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
     <a href="@Page.Slug">
         <img loading="lazy" decoding="async" src="@(_imageUrl)" alt="Post image" class="w-full h-48 object-cover">
         <div class="p-6">
             <div class="flex items-center mb-2">
-                <span class="@_chipBgColor @_chipTextColor text-xs font-medium px-2.5 py-0.5 rounded">@_keyTag</span>
-                <span class="text-gray-500 text-sm ml-3">@($"{Page.Date:MMM dd, yyyy}")</span>
+                <span class="@_chipBgColor @_chipTextColor @_chipDarkBgColor @_chipDarkTextColor text-xs font-medium px-2.5 py-0.5 rounded">@_keyTag</span>
+                <span class="text-gray-500 dark:text-gray-400 text-sm ml-3">@($"{Page.Date:MMM dd, yyyy}")</span>
             </div>
-            <h4 class="text-xl font-bold text-gray-900 mb-3">
+            <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
                 @Page.Title
             </h4>
-            <p class="text-gray-600 mb-4">@Page.Description</p>
+            <p class="text-gray-600 dark:text-gray-300 mb-4">@Page.Description</p>
             <Author Page="@Page" ShowTitle="false" ShowAvatar="true" />
         </div>
     </a>
@@ -23,6 +23,8 @@
 
     private string _chipBgColor = "bg-gray-100";
     private string _chipTextColor = "text-gray-800";
+    private string _chipDarkBgColor = "dark:bg-gray-600";
+    private string _chipDarkTextColor = "dark:text-gray-200";
 
     private string _imageUrl = "https://placeholder.pics/svg/300x192/DFEEF6-B6BEC3/000000";
 
@@ -37,6 +39,8 @@
                 _keyTag = firstTag;
                 _chipBgColor = $"bg-{firstTag.GetChipColor()}-100";
                 _chipTextColor = $"text-{firstTag.GetChipColor()}-800";
+                _chipDarkBgColor = $"dark:bg-{firstTag.GetChipColor()}-800";
+                _chipDarkTextColor = $"dark:text-{firstTag.GetChipColor()}-200";
             }
 
             if (!string.IsNullOrEmpty(Page.Image))
