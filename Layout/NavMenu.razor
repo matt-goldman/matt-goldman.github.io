@@ -11,7 +11,7 @@
                              Match="NavLinkMatch.All"
                              class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
                              activeClass="text-blue-600 border-b-2 border-blue-600">
-                        <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+                        @* <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span>*@ Home
                     </NavLink>
 
 
@@ -20,7 +20,7 @@
                         <NavLink href="@contentPage.Slug"
                                 class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
                                 activeClass="text-blue-600 border-b-2 border-blue-600">
-                            <span class="bi @contentPage.IconIdentifier-nav-menu" aria-hidden="true"></span> @contentPage.Title
+                            @*<span class="bi @contentPage.IconIdentifier-nav-menu" aria-hidden="true"></span>*@ @contentPage.Title
                         </NavLink>
                     }
 
@@ -48,7 +48,7 @@
                      class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
                      activeClass="text-blue-600 bg-blue-50 dark:bg-blue-900"
                      @onclick="CloseMobileMenu">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+                @* <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span>*@ Home
             </NavLink>
 
             @foreach (var contentPage in GeneratedContentIndex.GetPages().Where(p => p.Slug.Contains("/pages/", StringComparison.InvariantCultureIgnoreCase)))
@@ -57,7 +57,7 @@
                         class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors"
                         activeClass="text-blue-600 bg-blue-50 dark:bg-blue-900"
                         @onclick="CloseMobileMenu">
-                    <span class="bi @contentPage.IconIdentifier-nav-menu" aria-hidden="true"></span> @contentPage.Title
+                    @*<span class="bi @contentPage.IconIdentifier-nav-menu" aria-hidden="true"></span>*@ @contentPage.Title
                 </NavLink>
             }
             
