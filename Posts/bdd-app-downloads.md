@@ -90,6 +90,7 @@ The next step is to allow concurrent downloads, so that the user can start downl
 Using `AllowConcurrentExecution` also gives us a `CancellationToken` parameter in the command method, which we can use to cancel the download if the user changes their mind. We can add a cancel button to the download overlay that allows the user to cancel the download if they choose to do so. The episode ViewModel has an `IsDownloading` property that indicates whether the episode is currently being downloaded, and we can simply show and hide the download and cancel buttons based on this property.
 
 :::video Source=SourceType.File FilePath='/images/posts/bdd-level-2.mp4' Width='400px' Caption='Download button shows an ActivityIndicator and a cancel button while downloading'
+:::
 _The download button now shows an `ActivityIndicator` while the episode is downloading, and a cancel button that allows the user to stop the download if they change their mind. The user can now start downloading multiple episodes at once, and cancel any download in progress._
 
 This is already a big step-up in UX, as it allows the user to see that a download is in progress, and gives them the option to cancel it if they choose to do so. But to take it to the next level, we need to show the user the current download progress. This is where the fun begins.
