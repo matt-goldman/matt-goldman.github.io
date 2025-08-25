@@ -13,9 +13,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.8" PrivateAssets="all" />
     <PackageReference Include="Blake.Types" Version="1.0.20" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(Configuration)' == 'Release'">
     <PackageReference Include="BlakePlugin.OpenGraph" Version="1.0.0" />
   </ItemGroup>
 
