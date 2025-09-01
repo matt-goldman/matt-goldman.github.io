@@ -1,9 +1,9 @@
 ---
-description: "The world didn't need a new static site generator, but I did. This post is a candid reflection on my frustrations and the motivation behind building Blake, a deliberately simple, boring, and personal SSG that just works. No arcane syntax, no wasted time, just Markdown and Razor."
+description: "The world didn't need a new static site generator, but I did. This post is a candid reflection on my frustrations and the motivation behind building Blake, a deliberately simple, boring, and personal Blazor-based SSG that just works. No arcane syntax, no wasted time, just Markdown and Razor."
 title:  "The world's most boring static site generator"
 date:   2025-08-21 00:00:01 +1000
 image:  /images/posts/blake.png
-tags: [web, blogs, blake, static site generators]
+tags: [web, blogs, blake, static site generators, ssg, blazor, .net]
 categories: [web development]
 author: Matt Goldman
 authorTitle: Owner
