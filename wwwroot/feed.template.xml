@@ -22,6 +22,7 @@
           {{Item.Description}}]]>
         </description>
         {{Item.CategoriesXml}}
+        {{Item.ContentEncoded}}
       </item>
     </Items>
   </channel>
