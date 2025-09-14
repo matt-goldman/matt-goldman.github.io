@@ -1,10 +1,13 @@
 ---
-layout: post
-title:  "Visual Studio’s Future: It’s Time to Move Beyond .NET Framework"
-date:   2025-09-14 00:00:01 +1000
-image:  /images/posts/jurassic-studio.png
-tags:   dotnet .net visualstudio
-categories: [dotnet]
+description: "Visual Studio is getting its first major update in four years - but it's still anchored to the past."
+title: "Visual Studio’s Future: It’s Time to Move Beyond .NET Framework"
+date: 2025-09-14 00:00:01 +1000
+image: /images/posts/jurassic-studio.png
+tags: [.NET, dotnet, Visual Studio, Modernisation]
+categories: [.NET]
+author: Matt Goldman
+authorTitle: Owner
+avatar: "/images/authors/mattg.png"
 ---
 
 ## Introduction
