@@ -3,7 +3,7 @@ title: "The Specialist Myth: How We Gaslight Expertise"
 tags: ["leadership", "career", "culture", "software-engineering", "management"]
 description: "How the tech industry learned to glorify ignorance, why the myth of the 'incomplete specialist' still lingers, and why real leadership means learning both sides of the craft."
 date:   2025-11-04 00:00:01 +1000
-image:  /images/posts/maui-ui-july-bg.png
+image:  /images/posts/the-specialist-myth.jpg
 categories: [Career, Leadership, Culture]
 pin: true
 author: Matt Goldman
@@ -27,7 +27,7 @@ I've thought many times over the years about talking about this myth, but as I m
 
 Let's examine why these myths so stubbornly resist their consignment to history. Is it because they describe reality, or is it because they provide comfort to those who feel threatened by that reality?
 
-## “I’m not a technie”
+## “I’m not a techie”
 
 About twenty years ago, I was acting IT manager at a small company. It was a hands-on role, a tiny team, limited resources, the usual chaos. I was young, relatively inexperienced, but capable, communicative, and ambitious.
 
@@ -35,11 +35,11 @@ When the permanent role was advertised, we received quite a few applicants, and 
 
 One in particular, who the HR manager had taken a liking to, proudly declared during her interview:
 
-> “I’m not a technie.”
+> I’m not a techie.
 
 I asked - reasonably, in my opinion - how she planned to make decisions about the department without understanding the technology. Her response was that she'd be relying on me for that information.
 
-I'll admit I actually really liked her, and in other circumstances would have been happy to work with her. But in that moment, two thoughts flashed instantly:
+I'll admit I actually liked her, and in other circumstances would have been happy to work with her. But in that moment, two thoughts flashed instantly:
 
 The first was, then why do we need you?
 And the second was, so what you're effectively saying is you’re going to take credit for my successes and blame me for your failures.
@@ -58,7 +58,7 @@ It seems hard to imagine someone working in any other field proudly declaring ig
 
 He said it often, proudly:
 
-> “I don’t know, and I don’t want to know.”
+> I don’t know, and I don’t want to know.
 
 He wore it like a badge of honour, as if ignorance were a leadership style. The idea was that he “focused on delivery” while the rest of us worried about “details.”
 
@@ -86,19 +86,17 @@ This was a problem. The social hierarchy was out of balance, and that could not 
 
 Almost overnight, a new mythology formed: the visionary non-technical founder, the “idea guy,” the business mind who made the magic happen while the geeks tinkered in the basement.
 
-:::sidebar
-The most exemplary figurehead of this archetype is probably Steve Jobs.
+:::sidenote
+The most emblematic figurehead of this archetype is probably Steve Jobs.
 
-People _love_ to talk about the delicate balance between Jobs and Wozniak, but the problem is, even those who acknlowledge the importance of both sides of that coin still get it wrong. They fail to recognise that Steve Jobs _did_ have _profound_ technical expertise. Even though he wasn't the one writing the code, he understood the technology deeply enough to guide its development, challenge assumptions, and push boundaries.
+People love to talk about the delicate balance between Jobs and Wozniak, but even those who acknowledge the importance of both sides often get it wrong. They fail to recognise that Steve Jobs _did_ have _profound_ technical understanding. Even though he wasn't the one writing the code, he understood the technology deeply enough to guide its development, challenge assumptions, and push boundaries.
 
 Yes, Jobs brought an aspect to Apple's leadership that it needed, but he wouldn't have been able to do that without understanding the technology at a fundamental level. I'll touch on this more at the end.
 :::
 
-[Editorial note: are my statements about Jobs here fair?]
-
 I remember being in a computer shop, about 20 or so years ago, probably looking for an IDE cable or a new mouse or something. A well-dressed man (read: suit) in his late 50s walked in and was approached by the shaggy looking IT nerd manning the floor. When asked if he needed help, he said:
 
-> “Yes, we’re starting an e-business. What software do I need?”
+> Yes, we’re starting an e-business. What software do I need?
 
 It seems innocent enough, but coded in that one sentence is a whole layer cake of assumptions we can unpack:
 
@@ -106,7 +104,7 @@ It seems innocent enough, but coded in that one sentence is a whole layer cake o
 * He believed that the _technical capability_ to deliver such a business was something he could walk into a shop and buy off the shelf
 * He believed that the ability to _execute_ on this must be something that eludes the nerds working in such a shop, requiring a true leader, like himself, to capitalise upon.
 
-Of course, the cherry on top of that layer cake is my own assumptions - I don't any of those things to be true. Nevertheless, that line has lived rent-free in my head ever since.
+Of course, the cherry on top of that layer cake is my own assumptions - I don't if any of those things are true. Nevertheless, that line has lived rent-free in my head ever since.
 
 Still, I remember being acutely impressed by the "nerd's" handling of that situation. He calmly, professionally, answered all of that man's questions, with grace, humility, and most importantly, respect. Because odds are, he was a successful small business owner, doing what any businessman would do in that situation - talking with a customer, speaking _their_ language, helping them identify their needs, and ultimately, if appropriate, selling them a solution.
 
@@ -140,7 +138,7 @@ When organisations separate understanding from decision-making, everyone loses. 
 
 Competence and communication aren’t opposites, they’re the same thing. The best leaders I’ve known are translators: people who grasp the complexity, then simplify it without diminishing it.
 
-:::sidebar
+:::sidenote
 This also works both ways, and I've had to learn this lesson myself. I remember one discussion with HR about a problematic employee, who I described at being good at his job, but couldn't start his shifts reliably. She said to me, quite rightly, that this does not sound like the description of someone who is good at their job.
 :::
 
@@ -148,7 +146,7 @@ Failure to recognise this bias is twofold. It can hold you back from using your 
 
 Spoiler: that gap widens when those customers ask for references.
 
-The second factor is that it costs you at the top line too. Are service delivery managers still a thing? I don't know, I haven't worked in that space for a long time. But I _have_ seen several (this is not an exageration) client relationships salvaged by taking them out of the picture.
+The second factor is that it costs you at the top line too. Are service delivery managers still a thing? I don't know, I haven't worked in that space for a long time. But I _have_ seen several (this is not an exaggeration) client relationships salvaged by taking them out of the picture.
 
 Real results come from letting all the best people work together - technical experts, domain experts, stakeholders. This is how you deliver results, _this_ is what DDD has been telling us for decades, and the evidence speaks for itself.
 
@@ -162,10 +160,9 @@ If you're a technical expert or a highly specialised _doer_ and you want to lead
 
 Respect cuts both ways. The best teams are built on humility, not hierarchy, where those who _know_ teach those who lead, and those who lead never stop learning.
 
-But the specialist myth? Let's not revive that. It needs to stay dead and buried. At the risk of oversimplifying, you've probably got some incredible, unique, valuable skills, _whoever_ you are. Let's focus on evangalising those, without disparaging the skills of others.
+But the specialist myth? Let's not revive that. It needs to stay dead and buried. At the risk of oversimplifying, whoever you are, you've probably got some incredible, unique, valuable skills. Let's focus on evangelising those, without disparaging the skills of others.
 
 *References and further reading:*
-- [Camille Fournier – *The Manager’s Path*](#)
-- [Tanya Reilly – *Being Glue*](#)
-- [Lara Hogan – *Resilient Management*](#)
-- [Charity Majors – “The Glue Work”](#)
+- [Camille Fournier – *The Manager’s Path*](https://www.goodreads.com/book/show/33369254-the-manager-s-path)
+- [Tanya Reilly – *Being Glue*](https://www.noidea.dog/glue)
+- [Lara Hogan – *Resilient Management*](https://resilient-management.com/)
