@@ -5,7 +5,6 @@ date:   2025-05-01 00:00:01 +1000
 image:  /images/posts/maui-ui-july-bg.png
 tags:   [mobile, maui, ui]
 categories: [.NET, Mobile]
-pin: true
 author: Matt Goldman
 authorTitle: Owner
 avatar: "/images/authors/mattg.png"
