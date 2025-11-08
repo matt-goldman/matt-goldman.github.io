@@ -19,7 +19,7 @@ Today, I’m happy to announce the new home of the project:
 
 **Plugin.Maui.SmartNavigation**
 
-NuGet: `Plugin.Maui.SmartNavigation`
+NuGet: `Plugin.Maui.SmartNavigation`    
 Repo: [https://github.com/matt-goldman/Plugin.Maui.SmartNavigation](https://github.com/matt-goldman/Plugin.Maui.SmartNavigation)
 
 ## Why the rename?

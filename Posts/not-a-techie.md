@@ -35,7 +35,7 @@ When the permanent role was advertised, we received quite a few applicants, and 
 
 One in particular, who the HR manager had taken a liking to, proudly declared during her interview:
 
-> "I’m not a techie."
+> I’m not a techie.
 
 I asked - reasonably, in my opinion - how she planned to make decisions about the department without understanding the technology. Her response was that she'd be relying on me for that information.
 
