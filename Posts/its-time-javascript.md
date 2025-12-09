@@ -1,6 +1,17 @@
-# It's Time To Let JavaScript Go
+---
+description: ""
+title:  "It's time to let JavaScript Go"
+date:   2025-12-12 00:00:01 +1000
+image:  /images/posts/js-tired-boss.png
+tags:   [javascript, security, web]
+categories: [web]
+author: Matt Goldman
+authorTitle: Owner
+avatar: "/images/authors/mattg.png"
+draft: true
+---
 
-[Sha1-Hulud popped up again this week](https://blog.checkpoint.com/research/shai-hulud-2-0-inside-the-second-coming-the-most-aggressive-npm-supply-chain-attack-of-2025/). Another poisoned npm wave. Hundreds of packages compromised. Tens of thousands of repositories (potentially millions) affected. Another security blog cycle. Another industry-wide sigh.
+[Sha1-Hulud popped up again last month](https://blog.checkpoint.com/research/shai-hulud-2-0-inside-the-second-coming-the-most-aggressive-npm-supply-chain-attack-of-2025/). Another poisoned npm wave. Hundreds of packages compromised. Tens of thousands of repositories (potentially millions) affected. Another security blog cycle. Another industry-wide sigh.
 
 There's nothing new in the news. It's the same story and same advice - audit your dependencies, enforce MFA, do all the things you're already doing - and the same chorus of "we need stronger governance" and "supply chain hygiene matters," as though the problem is that we didn't wash our hands before dinner.
 
@@ -13,6 +24,10 @@ It's time to take JavaScript out behind the shed, level the shotgun, wipe away t
 This isn't just about a rant, a personal distaste for JavaScript and the culture that glorifies its shortcomings. It's the silent horror at all the "governance" and "risk management" around the single greatest vulnerability we've ever known. And it's everywhere.
 
 This is about the fact that modern civilisation runs on an ecosystem that cannot be secured, cannot be governed, and cannot be fixed.
+
+## The latest reminder that we're out of time
+
+Almost immediately afterward, we saw this [critical vulnerability affecting NextJs](https://nextjs.org/blog/CVE-2025-66478) (technically in React, but it impacts NextJs in a meaningful way), arguably the most JavaScript based UI framework in use today. This wasn't a design flaw, or a coding error. This was an architectural level vulnerability, and it was of the highest severity and in the most widely used frontend frameowrk in existence.
 
 ## Why npm Is Uniquely Vulnerable
 
@@ -68,7 +83,7 @@ By the time people realised the risks, the ecosystem had scaled to millions of p
 
 ## Other Ecosystems Aren't Perfect, But They Aren't This
 
-No package ecosystem is flawless, but many have structural safeguards that npm simply never had.
+[No package ecosystem is flawless](https://socket.dev/blog/category/research), but many have structural safeguards that npm simply never had.
 
 **NuGet** has binary packages, deterministic restore, signing support, namespace ownership, and no arbitrary install scripts. It strongly encourages signing, enforces API key scopes, has much slower ecosystem turnover, and has fewer single-maintainer micro-packages.
 
@@ -100,7 +115,7 @@ The moment they touch npm, _even once_, they inherit all of npm’s problems. An
 
 For example, a NuGet package can legally include:
 
-* a package.json
+* a `package.json`
 * a targets file
 * an MSBuild hook that runs npm install
 
@@ -172,17 +187,17 @@ Every modern feature that people praise — flexibility, dynamic typing, living 
 It's not despite its strengths that JavaScript is a mess. It's _because_ of them.
 
 :::sidenote title="You don't have to take my word for it"
-Sonatype’s annual State of the Software Supply Chain report has been warning about JavaScript’s dependency bloat for years. In their latest edition, they found that the JavaScript ecosystem grows faster, forks faster, and abandons packages faster than any other ecosystem they measured. That’s the soil everything else grows in. [URL]
+Sonatype’s annual [State of the Software Supply Chain](https://www.sonatype.com/state-of-the-software-supply-chain/Introduction) report has been warning about JavaScript’s dependency bloat for years. In their latest edition, they found that the JavaScript ecosystem grows faster, forks faster, and abandons packages faster than any other ecosystem they measured. That’s the soil everything else grows in.
 
-Snyk’s State of JavaScript Security research shows the same problem from another angle: most of the ecosystem is built on shallow ownership, deep transitive chains, and packages that have been unmaintained for years. That’s not moral failure. That’s architecture. [URL]
+Snyk’s State of JavaScript Security research shows the same problem from another angle: most of the ecosystem is built on shallow ownership, deep transitive chains, and packages that have been unmaintained for years. That’s not moral failure. That’s architecture. (Their research is behind an authenticated call, you can see more [here](https://snyk.io/platform/snyk-javascript-security/))
 
-Socket’s analysis of npm install scripts shows that more than half of the high‑impact malware waves on npm involve install scripts. Why wouldn’t they? They’re arbitrary shell commands that run on your machine just because you typed `npm install`. [URL]
+[Socket’s analysis](https://socket.dev/blog/category/research) of npm install scripts shows that more than half of the high‑impact malware waves on npm involve install scripts. Why wouldn’t they? They’re arbitrary shell commands that run on your machine just because you typed `npm install`.
 
-ReversingLabs has documented wave after wave of npm malware, from dependency‑confusion attacks to hijacked maintainer accounts. None of it requires brilliance. None of it requires sophistication. It just requires that the ecosystem works exactly the way it was designed. [URL]
+[ReversingLabs has documented](https://www.reversinglabs.com/blog/malicious-npm-patch-delivers-reverse-shell) wave after wave of npm malware, from dependency‑confusion attacks to hijacked maintainer accounts. None of it requires brilliance. None of it requires sophistication. It just requires that the ecosystem works exactly the way it was designed.
 
-Even GitHub’s own advisory database reads like a running commentary on structural weakness. Over and over, the root cause isn’t a bug. It’s the model.
+Even [GitHub’s own advisory database](https://github.com/advisories) reads like a running commentary on structural weakness. Over and over, the root cause isn’t a bug. It’s the model.
 
-CISA and the NSA have both released guidance warning that modern software supply chains are brittle by design. We just don’t treat it like a crisis because JavaScript feels familiar. [URL]
+[CISA](https://www.cisa.gov/resources-tools/resources/securing-software-supply-chain-recommended-practices-guide-suppliers-and) and [the NSA](https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/3617462/nsa-releases-recommendations-to-mitigate-software-supply-chain-risks/) have both released guidance warning that modern software supply chains are brittle by design. We just don’t treat it like a crisis because JavaScript feels familiar.
 
 While I was writing this, I realised I had designed a viable supply-chain attack in about thirty seconds without meaning to. Not because I am especially clever, but because the path is obvious. The ecosystem makes it obvious. If a tired engineer can sketch out an attack over coffee, imagine what a motivated attacker with time, money, and intent can do. I don’t need to implement it to make the point. The fact that it practically designs itself is the point.
 :::
