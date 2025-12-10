@@ -42,7 +42,7 @@ Here's why:
 
 npm's model encourages micro-packages and extremely deep dependency trees. It's normal for a single project to transitively pull in hundreds to thousands of packages, many of them single-file utilities maintained by one person, not version-pinned, and unreviewed by anyone upstream.
 
-![The famous XKCD cartoon (#2347). It's precisely because it's true that it's _not_ funny.](https://imgs.xkcd.com/comics/dependency.png)
+![The famous XKCD cartoon (#2347). It's precisely because it's true that it's not funny.](https://imgs.xkcd.com/comics/dependency.png)
 
 This makes npm uniquely fragile. A single compromised tiny package cascades into millions of downstream repos without anyone noticing. NuGet and other ecosystems simply don't have this extreme level of fragmentation.
 
