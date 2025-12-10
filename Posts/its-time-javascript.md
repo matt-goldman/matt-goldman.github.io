@@ -8,7 +8,6 @@ categories: [web]
 author: Matt Goldman
 authorTitle: Owner
 avatar: "/images/authors/mattg.png"
-draft: true
 ---
 
 [Sha1-Hulud popped up again last month](https://blog.checkpoint.com/research/shai-hulud-2-0-inside-the-second-coming-the-most-aggressive-npm-supply-chain-attack-of-2025/). Another poisoned npm wave. Hundreds of packages compromised. Tens of thousands of repositories (potentially millions) affected. Another security blog cycle. Another industry-wide sigh.
@@ -43,7 +42,7 @@ Here's why:
 
 npm's model encourages micro-packages and extremely deep dependency trees. It's normal for a single project to transitively pull in hundreds to thousands of packages, many of them single-file utilities maintained by one person, not version-pinned, and unreviewed by anyone upstream.
 
-![The famous XKCD #2347 dependency stack. It's precisely because it's true that it's _not_ funny.](https://imgs.xkcd.com/comics/dependency.png)
+![The famous XKCD cartoon (#2347). It's precisely because it's true that it's _not_ funny.](https://imgs.xkcd.com/comics/dependency.png)
 
 This makes npm uniquely fragile. A single compromised tiny package cascades into millions of downstream repos without anyone noticing. NuGet and other ecosystems simply don't have this extreme level of fragmentation.
 
@@ -127,7 +126,7 @@ dotnet build
 
 And when they do, that MSBuild target fires, npm runs, lifecycle scripts run, and then we have exactly the same problems: unsigned code, deep transitive chains, abandoned authors, typosquatting, stale dependencies four thousand layers down.
 
-This isn't hypothetical either, this _literally_ happened, today, with this very same exploit, and not by accident, nor by deliberate malicious intent. It happened via zoonotic spillover. In just a couple of days, [Sha1-Hulud 2.0 made the jump from npm to Maven](https://thehackernews.com/2025/11/shai-hulud-v2-campaign-spreads-from-npm.html?m=1).
+This isn't hypothetical either, this _literally_ happened, last month, with this very same exploit, and not by accident, nor by deliberate malicious intent. It happened via zoonotic spillover. In just a couple of days, [Sha1-Hulud 2.0 made the jump from npm to Maven](https://thehackernews.com/2025/11/shai-hulud-v2-campaign-spreads-from-npm.html?m=1).
 
 ## The Governance Illusion
 
@@ -135,7 +134,7 @@ Our financial institutions, government systems, defence agencies, and healthcare
 
 * packages are unsigned
 * scripts run pre, during, and post install
-* anyone could originally publish a higher version of someone else's package
+* anyone could originally publish a higher version of someone else's package (this _really_ happened, and was _an actual vector for a real compromise_)
 * maintainers can be compromised silently
 * dependencies are unbounded in depth
 * and MFA is… "encouraged"
@@ -232,7 +231,7 @@ I have _no doubt_ that there will be a flood of people lining up to tell me why 
 
 Go grab a drink. I'll be right back, I'm off to write my new SAP competitor in batch scripts.
 
-!['This is fine' meme with a dog sitting in a burning room.](/images/posts/this-is-fine.jpg)
+![The modern world runs on a scripting engine designed for convenience. 'This is fine'.](/images/posts/this-is-fine.jpg)
 
 When we talked about this on Beer Driven Devs, I said JavaScript feels like Jeff Goldblum at the end of The Fly: the product of brilliance and accident merged into something that can't be unmerged, something suffering under its own design, something quietly asking to be put down.
 
@@ -242,7 +241,7 @@ The more I look at the state of our global software infrastructure, the more I t
 
 ## The WASM Escape Hatch (And Why Necromancy Shouldn't Happen)
 
-I mentioned above that believe WASM is what's next for the web. I do, and I'm not going to elaborate here on why because it's been covered a lot already. You can listen to [Liam and I talking about it on the BDD podcast](https://www.beerdriven.dev/episodes/37/), or look up any number of opinion articles and videos on the topic. It's clear that the consensus is not aligned with my view, and I'm fine with that. And to be clear, I don't think JavaScript will _ever_ disappear completely, and to be even more clear, I don't think WASM will displace JavaScript as the dominant framework. Instead, it opens up the option of _no_ dominant framework at all, because you can run literally anything on it (and that's not the risk you think it is - but, again, that's another discussion).
+I mentioned above that I believe WASM is what's next for the web. I do, and I'm not going to elaborate here on why because it's been covered a lot already. You can listen to [Liam and I talking about it on the BDD podcast](https://www.beerdriven.dev/episodes/37/), or look up any number of opinion articles and videos on the topic. It's clear that the consensus is not aligned with my view, and I'm fine with that. And to be clear, I don't think JavaScript will _ever_ disappear completely, and to be even more clear, I don't think WASM will displace JavaScript as the dominant framework. Instead, it opens up the option of _no_ dominant framework at all, because you can run literally anything on it (and that's not the risk you think it is - but, again, that's another discussion).
 
 Most of the discussion at the moment tends to focus on the past, or at best, the present. Most opinions believe that JavaScript is here to stay, forever, and that WASM won't ever replace it. But the truth is, these opinions are not based on fact. WASM won't displace JavaScript overnight (JavaScript will die a slow, agonising death, rather than the dignified sendoff it deserves). Not because it _can't_, nor because it _shouldn't_, but because of the cultural inertia described above.
 
