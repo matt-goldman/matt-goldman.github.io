@@ -11,6 +11,11 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      drafts:
+        description: "Include draft posts in the build"
+        required: false
+        default: "false"
 
 permissions:
   contents: read
@@ -43,7 +48,7 @@ jobs:
 
       # bake static content
       - name: Run blake bake
-        run: blake bake -cl -dr --rss:ignore-path="/pages" --social:baseurl="https://goforgoldman.com" --rss:baseurl="https://goforgoldman.com" --readtime:wpm=500
+        run: blake bake -cl -dr --rss:ignore-path="/pages" --social:baseurl="https://goforgoldman.com" --rss:baseurl="https://goforgoldman.com" --readtime:wpm=500 ${{ github.event.inputs.drafts == 'true' && '--includeDrafts' || '' }} 
 
       # publishes the Blake static site to the release folder
       - name: Publish .NET Project
