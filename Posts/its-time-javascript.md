@@ -1,5 +1,5 @@
 ---
-description: ""
+description: "JavaScript has served us well. It got us to where we are today and is the cornerstone of not just the internet, but most of the modern world. But it's old, it's tired. And it wants to rest. And we should let it."
 title:  "It's time to let JavaScript Go"
 date:   2025-12-12 00:00:01 +1000
 image:  /images/posts/js-tired-boss.png
@@ -232,7 +232,7 @@ I have _no doubt_ that there will be a flood of people lining up to tell me why 
 
 Go grab a drink. I'll be right back, I'm off to write my new SAP competitor in batch scripts.
 
-!["This is fine" meme with a dog sitting in a burning room.](/images/posts/this-is-fine.jpg)
+!['This is fine' meme with a dog sitting in a burning room.](/images/posts/this-is-fine.jpg)
 
 When we talked about this on Beer Driven Devs, I said JavaScript feels like Jeff Goldblum at the end of The Fly: the product of brilliance and accident merged into something that can't be unmerged, something suffering under its own design, something quietly asking to be put down.
 
