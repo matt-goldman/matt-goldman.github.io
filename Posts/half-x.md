@@ -16,7 +16,7 @@ Today I was thinking about a minor injury I'm dealing with (just something very 
 
 It's something I've thought too many times to count, and I'm sure many of you have too. This time, though, I reflected on it, and it bothers me that we've normalised this.
 
-I recently read a blog post arguing that the "10x developer" myth is now real, and that with AI we all need to "get our heads in the game" and become 10x workers.
+I recently read [a blog post](https://ulyssesmaclaren.com/2025/12/11/get-your-head-in-the-game-the-rise-of-the-10x-employee/) arguing that the "10x developer" myth is now real, and that with AI we all need to "get our heads in the game" and become 10x workers. I’m pulling on just one thread here, but Uly (the author) makes some thoughtful points, and his post is well worth a read. But I'm going to linger on the 10x part.
 
 I'm sure most of us feel this, even get a thrill out of it. I know I do. I'm way more productive now than I was 2 years ago, and I won't deny that I love it. But we're so caught up in the race to capitalise on this new technology that we rarely pause to ask whether we're even asking the right questions.
 
