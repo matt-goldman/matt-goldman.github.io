@@ -37,11 +37,11 @@ I'm not saying everyone should do that, I'm just concerned that it barely even e
 
 Maciejewska made a great point, but I'm talking about something even more fundamental. We already know this pattern well. We are culturally neglecting our health in the pursuit of profit, then acting surprised at the outcomes, talking about an "obesity pandemic" as if it appeared out of nowhere. We keep treating health as "extra", something you do outside work, after work, when you're lucky enough to have time and energy, not just after work but after all the other necessary things that consume our daily lives.
 
-But we need to stop treating it like an optional extra, because it's not. It's infrastructure. I don't think this position needs defending, but if you want to look at it through a business lens, consider this: healthy, happy, focused people are more productive. That's not an opinion, that's an empirically established fact.
+We need to stop treating it like an optional extra, because it's not. It's infrastructure. I don't think this position needs defending, but if you want to look at it through a business lens, consider this: healthy, happy, focused people are more productive. That's not an opinion, that's an empirically established fact.
 
 But even setting business value aside for a second, there's a more basic question here about decency.
 
-It's nearly 2026. We live in a world of unprecedented wealth and technological capability, yet in the wealthiest nation on Earth, more than a tenth of the population lives below the poverty line, and people  still die from preventable and treatable conditions because they cannot afford to live. Somehow this is normal.
+It's nearly 2026. We live in a world of unprecedented wealth and technological capability, yet in the wealthiest nation on Earth, more than one in 10 people lives below the poverty line, and people still die from preventable and curable conditions because they cannot afford the treatment. Brings a whole new meaning to the term "cost of living crisis"; yet somehow this is normal.
 
 Every major technological shift becomes an opportunity to squeeze more out of workers, not to give anything back. But this isn't the 19th century, it's the 21st. AI isn't the first industrial revolution, it's the fourth. People in the past didn't have the benefit of hindsight. We do.
 
