@@ -12,7 +12,7 @@ avatar: "/images/authors/mattg.png"
 ---
 
 
-I gave a talk at MAUIDay recently called *Opinionated by Necessity*, where I shared some lessons around building enterprise apps that scale; not in terms of concurrent users (that's largely a solved problem, and an easy one to band-aid with a SKU bump), but in terms of *teams*.
+I gave a talk at [MAUIDay](https://mauiday.net/) recently called *Opinionated by Necessity*, where I shared some lessons around building enterprise apps that scale; not in terms of concurrent users (that's largely a solved problem, and an easy one to band-aid with a SKU bump), but in terms of *teams*.
 
 I define apps that scale not as:
 
@@ -22,7 +22,7 @@ but:
 
 > Systems that don't fall over when the person who wrote the code is no longer around
 
-Never have I seen this better articulated than when Jimmy Bogard said:
+Never have I seen this better articulated than when [Jimmy Bogard](https://www.jimmybogard.com/) said:
 
 > Consistency >>>>>> your opinion
 
