@@ -91,7 +91,7 @@ One SAP implementation I was involved in was preceded by months of business proc
 
 That's insane.
 
-In fairness, sometimes many businesses _do_ have messy processes that should be simplified.But often "best practice" is just "what this product can do without expensive custom work".
+In fairness, sometimes many businesses _do_ have messy processes that should be simplified. But often "best practice" is just "what this product can do without expensive custom work".
 
 Those are not the same thing.
 
