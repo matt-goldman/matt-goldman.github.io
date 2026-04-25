@@ -73,7 +73,13 @@ A COTS platform often looks cheaper at the point of purchase, then gets expensiv
 
 I've seen this more times than I can count. The software licence is just the ticket price, but the ride includes consultants, customisation, retraining teams around the product's assumptions, and the long tail of workarounds for things your business does that the platform doesn't value.
 
-This isn't a niche concern, but the ERP world is where it's been measured most thoroughly. [Panorama Consulting's 2025 ERP Report](https://www.panorama-consulting.com/resource-center/erp-report/), based on independent surveys of recent implementations, consistently finds that a substantial proportion of ERP projects exceed budget, run over schedule, or fail to deliver expected benefits. Industry estimates of ERP implementation failure rates (projects that fail to meet their original objectives) commonly land in the 55–75% range. So when someone tells you bespoke is the risky option, ask them what their reference class for "safe" actually looks like.
+There's a specific mechanism worth naming, because it's the most common source of frustration I've seen in COTS implementations: the capability-vs-bundled gap. The sales pitch tells you everything the product can do and how it solves all your problems. You do your diligence. You ask all the right questions: _"can it do this?"_, _"does it meet that requirement?"_. You get told, with certainty and confidence, that yes, it's a perfect fit for your RFP. Then you sign the contract, and after the ink dries the truth comes out. Oh, yes, it has that feature, but that's an add-on, not standard, and it bumps the price by 25%. Oh, _that_ requirement, well, it does _this_ which is close enough.
+
+This is a sales-motion problem, not a delivery problem, which is why bespoke doesn't have an equivalent. There's no spec sheet to oversell against, no add-on tier to retroactively unbundle features into, no "yes it does that, but…" reveal after the contract is signed. Bespoke can fail in plenty of other ways, but not this way.
+
+If you're evaluating COTS, get it in writing: confirmation of exactly how the solution addresses each of your requirements, at the cost specified. If a vendor won't put their RFP answers in the contract, that tells you something.
+
+This is, again, particularly prominent in ERP implementations, but it's not a niche concern; the ERP world is just where it's been measured most thoroughly. [Panorama Consulting's 2025 ERP Report](https://www.panorama-consulting.com/resource-center/erp-report/), based on independent surveys of recent implementations, consistently finds that a substantial proportion of ERP projects exceed budget, run over schedule, or fail to deliver expected benefits. Industry estimates of ERP implementation failure rates (projects that fail to meet their original objectives) commonly land in the 55–75% range. So when someone tells you bespoke is the risky option, ask them what their reference class for "safe" actually looks like.
 
 ## "Best practice" is often just someone else's compromise
 
@@ -162,14 +168,6 @@ Go bespoke when the capability is differentiating, highly specific, or central t
 And in either case, do a serious cost/risk comparison over 3-5 years, not just year one.
 
 If you only compare licence cost to build quote, you're not doing due diligence. You're shopping.
-
-:::tip title=One last gotcha
-One of the most common sources of frustration I've seen in COTS implementations is the capability vs bundled gap. What I mean is this: the sales pitch tells you everything the product can do, and how it can solve all your problems. You do your diligence - you ask all the right questions, "can it to _this?_", "does it meet _that_ requirement?". You get told with certainty and confidence that, yes, it's a perfect fit for your RFP. Then you sign the contract, and after the ink dries, the truth comes out. Oh, yes, it has that feature, but that's an add-on, that's not standard. That bumps the price by 25%. Oh, _that_ requirement, well, it does _this_ which is close enough.
-
-The problem applies to both bespoke and COTS, but the gap is much wider. With bespoke, you get to change direction when you see fit, and even if there's a misalignment between budget and scope, you can at least prioritise the most important features.
-
-In both cases, make sure you get, in writing, confirmation of exactly how the solution addresses your requirements, at the cost specified.
-:::
 
 ## Conclusion
 
