@@ -47,38 +47,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 
 ## .NET MAUI UI July Schedule
 
-| Date | Person             | Content                                                                                                       |
-| ---- | ------------------ | ------------------------------------------------------------------------------------------------------------- |
-| 1    | **Matt Goldman**          |   📰 [How to organise your handlers](/posts/handler-mappings/)                       |
-| 2    | Available          |                                                                                                               |
-| 3    | Available          |                                                                                                               |
-| 4    | Available          |                                                                                                               |
-| 5    | Available          |                                                                                                               |
-| 6    | Available          |                                                                                                               |
-| 7    | Available          |                                                                                                               |
-| 8    | **Sebastian Jensen**          | 📰 [Create a credit card view in .NET MAUI](https://medium.com/@@tsjdevapps/create-a-credit-card-view-in-net-maui-df74c20f11e0)                                                                                                              |
-| 9    | Available          |                                                                                                               |
-| 10   | **Andreas Nesheim**          |     📰 [Replicating Wolt app (Norwegian food delivery app) in .NET MAUI](https://www.andreasnesheim.no/maui-ui-july-2023-replicating-wolt-app/)                                                                                                          |
-| 12   | Available          |                                                                                                               |
-| 12   | Available          |                                                                                                               |
-| 14   | Available          |                                                                                                               |
-| 15   | Available          |                                                                                                               |
-| 16   | **Roman Jašek**          |     📺 [MAUI Form-factor customizations](https://www.youtube.com/watch?v=YdjOx6SmKco)                                                                                                          |
-| 17   | **Leomaris Reyes**          | 📰 Replicating Uber Delivery UI in .NET MAUI [English](https://askxammy.com/replicating-uber-delivery-ui-in-net-maui/)   [Spanish](https://es.askxammy.com/replicando-ui-de-entrega-de-pedidos-de-uber-en-net-maui/)                                                                                                              |
-| 18   | **Vladislav Antonyuk**          |  [Adding a custom action button to Shell tab bar](https://vladislavantonyuk.github.io/articles/Adding-custom-action-button-to-.NET-MAUI-Shell-TabBar/)                                                                                                             |
-| 19   | **Sam Basu**          |    [Going Native with Blazor](https://www.telerik.com/blogs/going-native-blazor)                                                                                                          |
-| 20   | **Almir Vuk**          |      📰 [Let's play with CollectionView](https://almirvuk.com/lets-play-with-collectionview-layouts-in-net-maui/)                                                                                                         |
-| 21   | **Shaun Lawrence**          |    📰 [Building a sliding puzzle game in .NET MAUI - Parts 1 - 5](https://blog.bijington.com/2023/07/20/building-a-sliding-puzzle-in-dotnet-maui-part-0.html)                                                                                                           |
-| 22   | Available          |                                                                                                    |
-| 23   | **Luis Beltran**          |      📰 [Drawing Xmas Shapes in .NET MAUI](https://dev.to/icebeam7/drawing-x-mas-controls-in-net-maui-3342)                                                                                                         |
-| 24   | **Héctor Pérez Rojas**          |         📺 .NET MAUI UI Challenge - Coffee Shop App [English](https://www.youtube.com/watch?v=soz4o0zKars)  [Spanish](https://www.youtube.com/watch?v=z2Eti_JYbkw)                                                                                                     |
-| 25   | **Mark Allibone**          |        Coming soon!                                                                                                       |
-| 26   | Available          |                                                                                                               |
-| 27   | **Flavio Gonclaves**          |    📰 [Responsive Layouts in .NET MAUI with OnOrientationExtension](https://www.cayas.de/de/blog/responsive-layouts-for-dotnet-maui)                                                                                                           |
-| 28   | **Smartman Apps**          |   📰 [Creating MAUI UIs in C#](https://dev.to/smartmanapps/creating-maui-uis-in-c-1adf)                                                                                                            |
-| 29   | **Matt Lacey**          |      📰 [Why does writing XAML have to be so slow?](https://www.mrlacey.com/2023/07/why-does-writing-xaml-have-to-be-so-slow.html)                                                                                                   |
-| 30   | **Shaun Lawrence**          | 📰 [Building a sliding puzzle game in .NET MAUI - Part 6](https://blog.bijington.com/2023/07/29/building-a-sliding-puzzle-in-dotnet-maui-part-6.html)     📰 [Part 7](https://blog.bijington.com/2023/07/29/building-a-sliding-puzzle-in-dotnet-maui-part-7.html)                                                                                                                 |
-| 31   | **Daniel Monetelli**          | 📰 .NET MAUI UI/UX Challenge - Planetanaka - Part 1 [English](https://danielmonettelli.github.io/posts/net-maui-challenge-planetanaka-part-1/)  [Spanish](https://blogdedanielmonettelli.github.io/posts/net-maui-challenge-planetanaka-parte-1/)                                                                                                              |
-
+:::calendar SourceUrl=https://raw.githubusercontent.com/matt-goldman/matt-goldman.github.io/refs/heads/main/data/mauiuijuly-2023.csv Year=2023
+:::
 
 I hope you enjoy .NET MAUI UI July!

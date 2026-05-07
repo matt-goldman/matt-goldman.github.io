@@ -7,3 +7,11 @@ function setPageQuery(pageIndexZeroBased, replace) {
     history.pushState(history.state, '', url);
   }
 }
+
+// Returns true if the given CSS media query currently matches.
+// Used by Blazor components that need a one-off viewport check.
+function mediaMatches(query) {
+  return typeof window !== 'undefined'
+    && typeof window.matchMedia === 'function'
+    && window.matchMedia(query).matches;
+}

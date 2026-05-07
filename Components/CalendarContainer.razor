@@ -1,0 +1,409 @@
+@inject HttpClient Http
+@inject IJSRuntime JS
+
+<div class="mx-auto w-full max-w-5xl mb-6">
+    <div class="flex items-center justify-between mb-4 gap-2 flex-wrap">
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100">
+            .NET MAUI UI July @_resolvedYear
+        </h2>
+        <div class="inline-flex rounded-md border border-gray-200 dark:border-gray-600 overflow-hidden text-sm" role="group">
+            <button type="button"
+                    @onclick="ShowCalendar"
+                    class="@GetToggleClass(_showCalendar)">
+                Calendar
+            </button>
+            <button type="button"
+                    @onclick="ShowList"
+                    class="@GetToggleClass(!_showCalendar)">
+                List
+            </button>
+        </div>
+    </div>
+
+    @if (_errorOccurred)
+    {
+        <div class="border-t-4 bg-red-50 dark:bg-red-200 p-4 border-red-400 dark:border-red-600 text-sm text-red-700 dark:text-red-900">
+            @_errorMessage
+        </div>
+    }
+    else if (_showCalendar)
+    {
+        <!-- Calendar / grid layout -->
+        <div class="grid grid-cols-7 gap-1 sm:gap-2">
+            @foreach (var day in _weekdays)
+            {
+                <div class="text-center text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-300 py-1">
+                    <span class="hidden sm:inline">@day.Full</span>
+                    <span class="sm:hidden">@day.Initial</span>
+                </div>
+            }
+
+            @for (var i = 0; i < _leadingBlanks; i++)
+            {
+                <div class="aspect-square"></div>
+            }
+
+            @foreach (var entry in _calendarEntries)
+            {
+                var isToday = IsToday(entry);
+                <div class="@GetCellClass(isToday)">
+                    <div class="flex items-start justify-between gap-1">
+                        <div class="text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-200">@entry.DayOfMonth</div>
+                        @if (isToday)
+                        {
+                            <span class="shrink-0 inline-flex items-center rounded-full bg-blue-600 text-white text-[8px] sm:text-[10px] font-semibold uppercase tracking-wide px-1.5 py-0.5">New!</span>
+                        }
+                    </div>
+                    @if (_isLoading)
+                    {
+                        <div class="flex-1 mt-1 space-y-1 animate-pulse">
+                            <div class="h-2 sm:h-3 bg-gray-200 dark:bg-gray-700 rounded w-3/4"></div>
+                            <div class="h-2 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="flex-1 mt-1 min-w-0">
+                            @if (HasLink(entry))
+                            {
+                                <a href="@entry.ContentUrl" target="_blank" rel="noopener"
+                                   class="block text-[10px] sm:text-xs leading-tight text-blue-600 dark:text-blue-300 hover:underline line-clamp-2 sm:line-clamp-3">
+                                    @entry.ContentName
+                                </a>
+                                @if (HasSecondary(entry))
+                                {
+                                    <a href="@entry.SecondaryUrl" target="_blank" rel="noopener"
+                                       class="hidden sm:inline-block mt-1 text-[10px] text-blue-500 dark:text-blue-400 hover:underline">
+                                        @GetSecondaryLabel(entry)
+                                    </a>
+                                }
+                            }
+                            else
+                            {
+                                <div class="text-[10px] sm:text-xs leading-tight text-gray-500 dark:text-gray-400 line-clamp-2 sm:line-clamp-3">
+                                    @entry.ContentName
+                                </div>
+                            }
+                            <div class="hidden sm:block text-[10px] text-gray-500 dark:text-gray-400 truncate mt-1">@entry.Person</div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <!-- List layout -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse">
+                <thead>
+                    <tr class="border-b border-gray-200 dark:border-gray-700 text-left text-gray-700 dark:text-gray-200">
+                        <th class="py-2 px-2 font-semibold w-16">Day</th>
+                        <th class="py-2 px-2 font-semibold">Person</th>
+                        <th class="py-2 px-2 font-semibold">Content</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var entry in _calendarEntries)
+                    {
+                        var isToday = IsToday(entry);
+                        <tr class="@GetRowClass(isToday)">
+                            <td class="py-2 px-2 align-top font-mono text-gray-700 dark:text-gray-300">
+                                <div class="flex items-center gap-2">
+                                    <span>@entry.DayOfMonth</span>
+                                    @if (isToday)
+                                    {
+                                        <span class="inline-flex items-center rounded-full bg-blue-600 text-white text-[10px] font-semibold uppercase tracking-wide px-1.5 py-0.5">New!</span>
+                                    }
+                                </div>
+                            </td>
+                            @if (_isLoading)
+                            {
+                                <td class="py-2 px-2"><div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-32 animate-pulse"></div></td>
+                                <td class="py-2 px-2"><div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-64 animate-pulse"></div></td>
+                            }
+                            else
+                            {
+                                <td class="py-2 px-2 align-top text-gray-700 dark:text-gray-300">@entry.Person</td>
+                                <td class="py-2 px-2 align-top">
+                                    @if (HasLink(entry))
+                                    {
+                                        <a href="@entry.ContentUrl" target="_blank" rel="noopener"
+                                           class="text-blue-600 dark:text-blue-300 hover:underline">@entry.ContentName</a>
+                                        @if (HasSecondary(entry))
+                                        {
+                                            <span class="text-gray-400 dark:text-gray-500"> &middot; </span>
+                                            <a href="@entry.SecondaryUrl" target="_blank" rel="noopener"
+                                               class="text-blue-500 dark:text-blue-400 hover:underline text-xs">@GetSecondaryLabel(entry)</a>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="text-gray-500 dark:text-gray-400">@entry.ContentName</span>
+                                    }
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public required string SourceUrl { get; set; }
+
+    [Parameter]
+    public int? Year { get; set; }
+
+    private int _resolvedYear;
+    private bool _showCalendar = true;
+    private bool _viewportChecked;
+    private bool _isLoading = true;
+    private bool _errorOccurred;
+    private string _errorMessage = string.Empty;
+    private int _leadingBlanks;
+
+    private List<CalendarEntry> _calendarEntries = new();
+
+    private static readonly (string Full, string Initial)[] _weekdays = new[]
+    {
+        ("Monday", "M"),
+        ("Tuesday", "T"),
+        ("Wednesday", "W"),
+        ("Thursday", "T"),
+        ("Friday", "F"),
+        ("Saturday", "S"),
+        ("Sunday", "S"),
+    };
+
+    private void ShowCalendar()
+    {
+        _showCalendar = true;
+        _viewportChecked = true; // user choice wins; don't override later
+    }
+
+    private void ShowList()
+    {
+        _showCalendar = false;
+        _viewportChecked = true;
+    }
+
+    private bool IsToday(CalendarEntry entry)
+    {
+        var today = DateTime.Now.Date;
+        return today.Year == _resolvedYear
+            && today.Month == 7
+            && today.Day == entry.DayOfMonth
+            && HasLink(entry);
+    }
+
+    private static string GetCellClass(bool isToday) =>
+        isToday
+            ? "aspect-square border-2 border-blue-500 dark:border-blue-400 ring-2 ring-blue-200 dark:ring-blue-900 rounded-md p-1 sm:p-2 flex flex-col bg-white dark:bg-gray-800 overflow-hidden"
+            : "aspect-square border border-gray-200 dark:border-gray-700 rounded-md p-1 sm:p-2 flex flex-col bg-white dark:bg-gray-800 overflow-hidden";
+
+    private static string GetRowClass(bool isToday) =>
+        isToday
+            ? "border-b border-gray-100 dark:border-gray-800 bg-blue-50 dark:bg-blue-950"
+            : "border-b border-gray-100 dark:border-gray-800";
+
+    private string GetToggleClass(bool active) =>
+        active
+            ? "px-3 py-1.5 bg-blue-600 text-white font-medium"
+            : "px-3 py-1.5 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700";
+
+    private static bool HasLink(CalendarEntry entry) =>
+        IsSafeLinkTarget(entry.ContentUrl);
+
+    private static bool HasSecondary(CalendarEntry entry) =>
+        IsSafeLinkTarget(entry.SecondaryUrl);
+
+    private static bool IsSafeLinkTarget(string? url)
+    {
+        if (string.IsNullOrWhiteSpace(url))
+        {
+            return false;
+        }
+
+        if (url.StartsWith('/') && !url.StartsWith("//"))
+        {
+            return true;
+        }
+
+        return Uri.TryCreate(url, UriKind.Absolute, out var uri)
+            && (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps);
+    }
+
+    private static string GetSecondaryLabel(CalendarEntry entry) =>
+        string.IsNullOrWhiteSpace(entry.SecondaryLabel) ? "Alt" : entry.SecondaryLabel;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        _isLoading = true;
+        _errorOccurred = false;
+        _errorMessage = string.Empty;
+
+        _resolvedYear = Year ?? DateTime.Now.Year;
+
+        // Compute leading blanks so day 1 lines up under the correct weekday
+        // (Monday-first week: Mon=0 ... Sun=6)
+        var firstOfJuly = new DateTime(_resolvedYear, 7, 1);
+        _leadingBlanks = ((int)firstOfJuly.DayOfWeek + 6) % 7;
+
+        // Seed placeholder entries so the shimmer always renders 31 cells
+        _calendarEntries = Enumerable.Range(1, 31)
+            .Select(d => new CalendarEntry(d, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty))
+            .ToList();
+
+        if (!Uri.TryCreate(SourceUrl, UriKind.Absolute, out var uri)
+            || (uri.Scheme != Uri.UriSchemeHttp && uri.Scheme != Uri.UriSchemeHttps))
+        {
+            SetError("Invalid SourceUrl. Must be an absolute http(s) URL.");
+            return;
+        }
+
+        try
+        {
+            var content = await Http.GetStringAsync(uri);
+            var entries = ParseCsv(content);
+
+            if (entries.Count != 31)
+            {
+                SetError($"Calendar CSV must contain exactly 31 entries (one per day). Found {entries.Count}.");
+                return;
+            }
+
+            for (var d = 1; d <= 31; d++)
+            {
+                if (entries.All(e => e.DayOfMonth != d))
+                {
+                    SetError($"Calendar CSV is missing an entry for day {d}.");
+                    return;
+                }
+            }
+
+            _calendarEntries = entries.OrderBy(e => e.DayOfMonth).ToList();
+            _isLoading = false;
+        }
+        catch (Exception ex)
+        {
+            SetError($"Failed to load calendar data: {ex.Message}");
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender || _viewportChecked)
+        {
+            return;
+        }
+
+        _viewportChecked = true;
+
+        try
+        {
+            // Tailwind's `lg` breakpoint is 1024px. Below that, default to list view.
+            var isLargeViewport = await JS.InvokeAsync<bool>("mediaMatches", "(min-width: 1024px)");
+            if (!isLargeViewport && _showCalendar)
+            {
+                _showCalendar = false;
+                StateHasChanged();
+            }
+        }
+        catch
+        {
+            // If JS interop isn't available (e.g. prerender), fall back to the calendar default.
+        }
+    }
+
+    private void SetError(string message)
+    {
+        _errorOccurred = true;
+        _errorMessage = message;
+        _isLoading = false;
+    }
+
+    private static List<CalendarEntry> ParseCsv(string content)
+    {
+        var lines = content.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+        var entries = new List<CalendarEntry>();
+
+        foreach (var line in lines.Skip(1))
+        {
+            var parts = SplitCsvLine(line);
+            if (parts.Count < 4) continue;
+            if (!int.TryParse(parts[0].Trim(), out var day)) continue;
+
+            entries.Add(new CalendarEntry(
+                day,
+                parts[1].Trim(),
+                parts[2].Trim(),
+                parts[3].Trim(),
+                parts.Count > 4 ? parts[4].Trim() : string.Empty,
+                parts.Count > 5 ? parts[5].Trim() : string.Empty));
+        }
+
+        return entries;
+    }
+
+    // Minimal CSV splitter that supports quoted fields containing commas.
+    private static List<string> SplitCsvLine(string line)
+    {
+        var result = new List<string>();
+        var sb = new System.Text.StringBuilder();
+        var inQuotes = false;
+
+        for (var i = 0; i < line.Length; i++)
+        {
+            var c = line[i];
+            if (inQuotes)
+            {
+                if (c == '"')
+                {
+                    if (i + 1 < line.Length && line[i + 1] == '"')
+                    {
+                        sb.Append('"');
+                        i++;
+                    }
+                    else
+                    {
+                        inQuotes = false;
+                    }
+                }
+                else
+                {
+                    sb.Append(c);
+                }
+            }
+            else
+            {
+                if (c == ',')
+                {
+                    result.Add(sb.ToString());
+                    sb.Clear();
+                }
+                else if (c == '"')
+                {
+                    inQuotes = true;
+                }
+                else
+                {
+                    sb.Append(c);
+                }
+            }
+        }
+        result.Add(sb.ToString());
+        return result;
+    }
+
+    private record CalendarEntry(
+        int DayOfMonth,
+        string Person,
+        string ContentName,
+        string ContentUrl,
+        string SecondaryUrl,
+        string SecondaryLabel);
+}

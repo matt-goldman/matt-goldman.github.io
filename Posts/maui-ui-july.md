@@ -45,39 +45,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 
 ## .NET MAUI UI July Schedule
 
-| Date | Person             | Content                                                                                                       |
-| ---- | ------------------ | ------------------------------------------------------------------------------------------------------------- |
-| 1    | **Matt Goldman**       | [.NET MAUI UI July: Outlook Clone (goforgoldman.com)](https://goforgoldman.com/2022/06/30/outlook-clone.html) |
-| 2    | **Gerald Versluis**    | [Snnpts](https://www.snppts.dev/)                                                                           |
-| 3    | **Naweed Akram**          |     [Building a Rating Control for .NET MAUI](https://blogs.xgenoapps.com/post/2022/07/03/rating-view-maui)                   |
-| 4    | **Andreas Nesheim**    | [F1TV app in .NET MAUI](https://www.andreasnesheim.no/maui-ui-july-replicating-f1tv-app/)       |
-| 5    | **Vladislav Antonyuk**          |   [Replicate a bank application UI using .NET MAUI](https://vladislavantonyuk.azurewebsites.net/articles/Replicate-a-bank-application-UI-using-.NET-MAUI) |
-| 6    | **Leomaris Reyes**     | [Replicating Pet Adoption UI in .NET MAUI](https://askxammy.com/replicating-pet-adoption-ui-in-net-maui/)             |
-| 7    | **Luis Beltran**       | [Creating a TreeView in .NET MAUI](https://dev.to/icebeam7/creating-a-treeview-control-in-net-maui-49mp)      |
-| 8    | Available          |                                                                                                               |
-| 9    | **Naweed Akram**          | [MAUI Planets Part 1](https://blogs.xgenoapps.com/post/2022/07/08/maui-planets)   |
-| 10   | Available          |                                                                                                               |
-| 11   | Available          |                                                                                                               |
-| 12   | **Csaba Huszár**       | [Binding Lottie in MAUI](https://dev.to/csaba8472/binding-lottie-or-any-other-swift-framework-with-ui-in-maui-543m)            |
-| 13   | **Flavio Gonclaves**   | [Combining Lottie Animations with Gestures and Scrolling](https://www.cayas.de/blog/lottie-animations-gestures-and-scrolling)                |
-| 14   | **S Ravi Kumar**       | Coming soon!                |
-| 15   | **Naweed Akram**          | [MAUI Planets Part 2](https://blogs.xgenoapps.com/post/2022/07/15/maui-planets-part-2)                            |
-| 16   | **Sam Basu**           | [Catering to Desktop and Mobile with .NET MAUI](https://t.co/cQ6vEUYBn0)                |
-| 17   | **Tylah Kapa**        | [Discord UI in .NET MAUI](https://kapa.dev/blog/discord-ui-in-net-maui)                |
-| 18   | **Michael Ridland**    | Coming soon!                |
-| 19   | **Matt Johnson-Pint**  | [Making a Time Zone Picker Control for .NET MAUI](https://blog.sentry.io/2022/07/19/making-a-time-zone-picker-control-for-net-maui)                |
-| 20   | **Mark Allibone**      | [Creating a countdown button for .NET MAUI](https://mallibone.com/post/dotnetmaui-countdown-button)               |
-| 21   | **Shaun Lawrence**     | [Building a Draw Something clone in .NET MAUI](https://blog.bijington.com/2022/07/20/draw-something-clone.html)                |
-| 22   | **Kym Phillpotts**     | Coming soon!                |
-| 23   | **Lachlan Gordon**     | Coming soon!                |
-| 24   | **Brady Stroud**        | [MAUI vs Flutter](https://medium.com/@@bradystroud/maui-vs-flutter-multi-platform-frameworks-showdown-2d215a9a86f2)                |
-| 25   | **Sebastian Jensen**   | [Create a Simple Rating Control](https://medium.com/@@tsjdevapps/net-maui-create-a-simple-rating-control-560566fa5014)                |
-| 26   | **Naweed Akram**       | [Bottom Sheet Control in .NET MAUI](https://blogs.xgenoapps.com/post/2022/07/23/maui-bottom-sheet)                |
-| 27   | **Jean-Marie Alfonsi** | [MetroLog.Maui](https://www.sharpnado.com/metrolog-maui/)                |
-| 28   | **Diego Rivero**       | [Using MAUI.Graphics to build charts](https://grialkit.com/blog/using-maui-graphics-to-build-charts)                |
-| 29   | **Brady Stroud**       | [MAUI Blazor Template](https://medium.com/@@bradystroud/maui-blazor-template-84cb6b8db97)                |
-| 30   | **Liam Elliott**       | [.NET MAUI Community Toolkit](https://liamelliott.me/coding/maui-community-toolkit/)                |
-| 31   | **Carl Sargunar**      | Coming soon!                |
-
+:::calendar SourceUrl=https://raw.githubusercontent.com/matt-goldman/matt-goldman.github.io/refs/heads/main/data/mauiuijuly-2022.csv Year=2022
+:::
 
 I hope you enjoy .NET MAUI UI July!
