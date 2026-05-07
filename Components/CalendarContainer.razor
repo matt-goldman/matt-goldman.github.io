@@ -228,6 +228,10 @@
 
     protected override async Task OnParametersSetAsync()
     {
+        _isLoading = true;
+        _errorOccurred = false;
+        _errorMessage = string.Empty;
+
         _resolvedYear = Year ?? DateTime.Now.Year;
 
         // Compute leading blanks so day 1 lines up under the correct weekday
