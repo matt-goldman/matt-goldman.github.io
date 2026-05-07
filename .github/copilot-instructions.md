@@ -17,7 +17,7 @@ This is a Blazor WebAssembly blog built with Blake - a custom static site genera
    - Alternative: `npm install` for fresh dependency resolution
 
 2. **Generate static content from Markdown:**
-   - `blake bake -cl -dr --rss:ignore-path="/pages" --social:base-url="https://goforgoldman.com" --rss:baseurl="https://goforgoldman.com" --readtime:wpm=500`
+   - `blake bake -cl -dr --rss:ignore-path="/pages" --social:baseurl="https://goforgoldman.com" --rss:baseurl="https://goforgoldman.com" --readtime:wpm=500`
    - Takes ~7 seconds. NEVER CANCEL.
    - `-cl` cleans the .generated folder before regenerating
    - `-dr` disables default Bootstrap container renderers
@@ -60,7 +60,7 @@ After making changes to the codebase:
 
 1. **ALWAYS run the complete build sequence:**
    ```bash
-   blake bake -cl -dr --rss:ignore-path="/pages" --social:base-url="https://goforgoldman.com" --rss:baseurl="https://goforgoldman.com" --readtime:wpm=500
+   blake bake -cl -dr --rss:ignore-path="/pages" --social:baseurl="https://goforgoldman.com" --rss:baseurl="https://goforgoldman.com" --readtime:wpm=500
    npm run build:css
    dotnet publish -c Release -o release --nologo
    ```
