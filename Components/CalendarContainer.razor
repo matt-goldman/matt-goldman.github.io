@@ -1,0 +1,138 @@
+<!-- Grid / calendar layout -->
+@if(_showCalendar)
+{
+    <div>
+        <h2>Calendar View for @Year</h2>
+        <div class="calendar-grid">
+            @foreach (var entry in _calendarEntries)
+            {
+                <div class="calendar-entry">
+                    @if (_isLoading)
+                    {
+                        <p>Loading...</p>
+                    }
+                    else if (_errorOccurred)
+                    {
+                        <p class="error">@_errorMessage</p>
+                    }
+                    else
+                    {
+                        <a href="@entry.ContentUrl" target="_blank">@entry.ContentName</a>
+                        <p>@entry.Person - Day @entry.DayOfMonth</p>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+}
+
+<!-- List layout -->
+@if(_showList)
+{
+    <div>
+        <h2>List View for @Year</h2>
+        <ul class="calendar-list">
+            @foreach (var entry in _calendarEntries)
+            {
+                <li class="calendar-list-entry">
+                    @if (_isLoading)
+                    {
+                        <p>Loading...</p>
+                    }
+                    else if (_errorOccurred)
+                    {
+                        <p class="error">@_errorMessage</p>
+                    }
+                    else
+                    {
+                        <a href="@entry.ContentUrl" target="_blank">@entry.ContentName</a>
+                        <p>@entry.Person - Day @entry.DayOfMonth</p>
+                    }
+                </li>
+            }
+        </ul>
+    </div>
+}
+
+@code {
+    [Parameter]
+    [EditorRequired]
+    public required string SourceUrl { get; set; }
+    
+    [Parameter]
+    public int? Year { get; set; }
+
+    private bool _showCalendar = true;
+    private bool _showList = false;
+
+    private bool _isLoading = true;
+    
+    private bool _errorOccurred = false;
+    private string _errorMessage = string.Empty;
+
+    private List<CalendarEntry> _calendarEntries = [];
+    
+    public void ToggleDisplay()
+    {
+        // Logic to toggle the display of the calendar
+        _showList = !_showList;
+        _showCalendar = !_showCalendar;
+        StateHasChanged();
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await base.OnParametersSetAsync();
+        
+        // Set year to current if not provided
+        Year ??= DateTime.Now.Year;
+        
+        // get CSV file form URL
+        
+        // 1. Validate the SourceURL property
+        if (Uri.TryCreate(SourceUrl, UriKind.Absolute, out var uriResult)
+            && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps))
+        {
+            // 2. Retrieve from URL
+            try
+            {
+                using var client = new HttpClient();
+                var fileContent = await client.GetStringAsync(SourceUrl);
+                
+                // 3. Deserialize CSV to List<CalendarEntry>
+                    var lines = fileContent.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries);
+                    _calendarEntries = lines.Skip(1) // Skip header
+                        .Select(line =>
+                        {
+                            var parts = line.Split(',');
+                            return new CalendarEntry(
+                                int.Parse(parts[0]), // DayOfMonth
+                                parts[1],          // Person
+                                parts[2],          // ContentName
+                                parts[3]           // ContentUrl
+                            );
+                        })
+                        .ToList();
+                    
+                    _isLoading = false;
+            }
+            catch (Exception e)
+            {
+                _errorOccurred = true;
+                _errorMessage = $"An error occurred while fetching the calendar data: {e.Message}";
+                _isLoading = false;
+            }
+        }
+        else
+        {
+            _errorOccurred = true;
+            _errorMessage = "Invalid URL provided. Please ensure the URL is well-formed and uses HTTP or HTTPS.";
+            _isLoading = false;
+        }
+        
+        StateHasChanged();
+        
+    }
+
+    private record CalendarEntry(int DayOfMonth, string Person, string ContentName, string ContentUrl);
+}
