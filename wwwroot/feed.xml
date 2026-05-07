@@ -4,12 +4,300 @@
     <title>GoForGoldman</title>
     <link>https://goforgoldman.com</link>
     <description>A blog about mobile dev, .NET, VR, motorcycles, science, Superman and homebrewing</description>
-    <lastBuildDate>Thu, 18 Dec 2025 22:16:14 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 07 May 2026 06:50:47 GMT</lastBuildDate>
     <image>
       <url>https://goforgoldman.com/image/default.png</url>
       <title>GoForGoldman Home Page</title>
       <link>https://goforgoldman.com</link>
     </image>
+<item>
+        <title>.NET MAUI UI July - 2026</title>
+        <link>https://goforgoldman.com/posts/mauiuijuly-26</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/mauiuijuly-26</guid>
+        <pubDate>Thu, 07 May 2026 00:00:01 GMT</pubDate>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/maui-ui-july-bg.png" alt=".NET MAUI UI July - 2026" />
+          Announcing .NET MAUI UI July 2026, a month-long community-driven event where developers share their passion and expertise for building beautiful .NET MAUI user interfaces.]]>
+        </description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+        <content:encoded><![CDATA[<p>It's time for #MAUIUIJuly again!</p>
+<p>Based on an idea <a href="https://thewissen.io/introducing-xamarin-ui-july/">originally started for Xamarin by Steven Thewissen</a>, MAUI UI July is a month-long, community-driven event where anyone gets to share some of their enthusiasm and passion for .NET MAUI.</p>
+<p>This will be the fourth year running this event, and in previous years we've had fantastic contributions from the community, covering an incredible range of things to do with .NET MAUI. You can check out previous years' contributions here:</p>
+<ul>
+<li><a href="/posts/maui-ui-july">MAUI UI July (2022)</a></li>
+<li><a href="/posts/maui-ui-july-23">MAUI UI July (2023)</a></li>
+<li><a href="/posts/mauiuijuly-24/">MAUI UI July (2024)</a></li>
+<li><a href="/posts/mauiuijuly-25/">MAUI UI July (2025)</a></li>
+</ul>
+<p>Each day in July, we'll add a blog post or video to the calendar below, showcasing something cool you can do with .NET MAUI. Be sure to bookmark/favourite this post and check back every day for new content!</p>
+<p>And if you want to participate and contribute something, even better! Keep reading to see what's involved.</p>
+<h2 id="how-to-get-involved">How to Get Involved</h2>
+<p>MAUI UI July is open to community contributions, and is an opportunity to share your passion and knowledge with the world. All you have to do is pick a topic and create a blog post or video, and pick a day in July to release it. If you want to participate, comment below, shout out on socials using the hashtags #dotnetmaui and #MAUIUIJuly or ping me directly (I'm on Twitter/&quot;X&quot;, LinkedIn, and Mastodon - links are in the sidebar on the left), saying which day of the month you want to release your post or video on. Once you've picked a date I'll add your name to the list below to reserve your spot.</p>
+<p>From there, just get started on your content! Keep the following in mind:</p>
+<ol>
+<li>The topic must be related to UI in .NET MAUI</li>
+<li>Your blog must have an English version (if you want to do a non-English version, that's great, but it must be in addition to the English version), if you're doing a video it must be in English or have English subtitles</li>
+<li>Your content should indicate what level it is pitched at (e.g., beginner or advanced)</li>
+<li>Link back to this post in your blog post or in the description of your video</li>
+<li>Publish your blog post or video on the date according to the list below</li>
+<li>Share your video or blog post on socials, using the hashtags #dotnetmaui and #MAUIUIJuly</li>
+</ol>
+<p>That's it! Looking forward to seeing what you all come up with. :)</p>
+<h2 id="what-should-my-content-cover">What should my content cover?</h2>
+<p>Completely up to you! As long as it's related to .NET MAUI UI, feel free to be as creative as you like. Some common topics people like for this kind of thing include:</p>
+<ul>
+<li>Replicate the UI of a well known app (see <a href="/posts/outlook-clone">this post</a> for example)</li>
+<li>Pick a fun or interesting design from <a href="https://dribbble.com">Dribbble</a> and show how you can build it with .NET MAUI</li>
+<li>Deep dive into a .NET MAUI UI feature</li>
+<li>Build a popular UI control that doesn't come in the box (like a <a href="https://blogs.xgenoapps.com/post/2022/07/23/maui-bottom-sheet">bottom sheet</a> for example)</li>
+</ul>
+<p>These are just examples. If you think something is interesting, there's a good chance the rest of the community will want to see you explain it.</p>
+<h2 id="net-maui-ui-july-schedule">.NET MAUI UI July Schedule</h2>
+<CalendarContainer SourceUrl=https://raw.githubusercontent.com/matt-goldman/matt-goldman.github.io/refs/heads/main/data/mauiuijuly-2026.csv Year=2026>
+</CalendarContainer>
+<p>I hope you enjoy .NET MAUI UI July!</p>
+]]></content:encoded>
+      </item>
+<item>
+        <title>The Bespoke Software Myth</title>
+        <link>https://goforgoldman.com/posts/bespoke-software-myth</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/bespoke-software-myth</guid>
+        <pubDate>Fri, 24 Apr 2026 00:00:01 GMT</pubDate>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/bespoke-software-myth.png" alt="The Bespoke Software Myth" />
+          Small businesses are often told bespoke software is expensive and risky. In many cases, the opposite is true: the risk is often higher when you rent your core capability from someone else.]]>
+        </description>
+        <category>management</category>
+        <category>leadership</category>
+        <category>architecture</category>
+        <category>business</category>
+        <content:encoded><![CDATA[<p><a href="https://www.linkedin.com/in/liamelliott/">Liam Elliott</a>, my friend and Beer Driven Devs co-host, recently posted something on LinkedIn that's bothered both of us for years: the way small businesses are told that custom software is a big company luxury, with off-the-shelf platforms positioned as the safe, responsible default.</p>
+<p>He's right that the framing is wrong, and I'd go one step further.</p>
+<p>For many SMBs, the risk is inverted. And the SMBs aren't the only ones being misled they're just at the sharp end of it. Mid-market and enterprise organisations get sold a different version of the same story: not &quot;you can't afford bespoke&quot;, but &quot;you shouldn't go bespoke, that's reinventing the wheel&quot;. Both narratives push toward the same conclusion, both ignore the question that actually matters, and the underlying mechanism that makes the standard advice wrong applies regardless of company size; it's just that SMBs have the least leverage to push back when the sales motion arrives.</p>
+<p>The prevailing narrative says bespoke software is the risky, expensive option, while buying an off-the-shelf platform (especially a full ERP) is the safe, responsible one. In practice, that's often backwards, and the inversion gets lost in the sales pitch, because the sales pitch is built around it.</p>
+<h2 id="core-vs-commodity-is-the-question-that-matters">Core vs commodity is the question that matters</h2>
+<p>Before anything else, the real question is this: which capabilities are strategic and differentiating for this business, and which are commodity?</p>
+<p>This isn't a new framing. <a href="https://www.joelonsoftware.com/2001/10/14/in-defense-of-not-invented-here-syndrome/">Joel Spolsky put it cleanly back in 2001</a>: <em>&quot;If it's a core business function — do it yourself, no matter what.&quot;</em> Outsource the cafeteria. Outsource CD-ROM duplication. Don't outsource the thing you actually do.</p>
+<p>Email is a good example of commodity. It's critical, but for most companies it's not differentiating. You don't run your own mail server unless email infrastructure is your business.</p>
+<p>Payroll is similar. Most businesses depend on it, but very few should build and maintain their own payroll engine.</p>
+<p>The same logic applies outside software. An accounting firm usually doesn't outsource accounting, but it may outsource HR or facilities. A law firm doesn't outsource legal advice, but may outsource IT support or cleaning. A hairdressing franchise might outsource cleaning, but not haircuts.</p>
+<p>Software decisions should mirror that reality:</p>
+<ul>
+<li>Should you rebuild Excel? Obviously not.</li>
+<li>Should you build bespoke software for your proprietary auditing or reconciliation workflow? Maybe.</li>
+<li>Should you use off-the-shelf case management? If it supports your process well, yes.</li>
+<li>Should you contort a proprietary process until your edge disappears just to fit a product? No.</li>
+</ul>
+<p>That's the most important distinction, and the only one that really matters.</p>
+<h2 id="the-erp-playbook-was-built-for-a-different-game">The ERP playbook was built for a different game</h2>
+<p>A lot of this post talks about ERP, and I want to be honest about why: ERP established the model for enterprise software. The playbook the rest of the industry runs - vendor-led process mapping, &quot;best practice&quot; reference architectures, multi-year implementations, deep platform dependency - all of it traces back to how big ERP rolled out from the 80s and 90s onwards. Even when you're not buying ERP, the COTS (commercial off-the-shelf software) sales motion you're being subjected to was shaped by it.</p>
+<p>Don't believe me? Look at the language. Bills of materials, work orders, routings, MRP runs, inventory turns, lead times, capacity planning, resource levelling. This is manufacturing vocabulary, and it's everywhere: in CRMs, in project management tools, in HR systems, in software sold to consultancies and law firms and creative agencies that have never produced a physical thing in their lives. The terminology is so embedded in how we talk about enterprise software that we've stopped noticing it's there. But it tells you exactly where the model came from and what it was originally built for.</p>
+<p>And that's something worth noticing: what that playbook was originally built <em>for</em>. ERP grew up in manufacturing, and in manufacturing, process standardisation across the back office is usually fine, because the differentiator sits somewhere else — the product, the formulation, the design, the brand, the supply chain, the plant itself. Two pharmaceutical companies running the same ERP still compete on the molecules, two automotive OEMs still compete on the vehicles. The barriers to competition in manufacturing are physical and capital-intensive: you need plant, you need inventory, you need scale. Standardising the office processes that surround all of that doesn't usually erode what makes the business win, because what makes the business win is mostly upstream.</p>
+<p>In knowledge work, this is not true. The process <em>is</em> the business.</p>
+<p>A consulting engagement, a legal opinion, an architecture review, a research report, a piece of software; these are processes that produce documents, but the value is overwhelmingly in the process, not the document. The document is a residue. If your process is identical to your competitor's, your output is functionally identical too, notwithstanding brand and individual talent. There is no upstream artefact, no plant, no patent on the molecule. The way you do the work <em>is</em> what you sell.</p>
+<p>This means the COTS-driven process homogenisation that's mostly harmless in manufacturing is directly value-destroying in knowledge work. You're not standardising the back office while preserving the differentiator, you're standardising the differentiator itself. And because the harm is invisible (you can't see the deals you didn't win against the competitor running the same platform with the same default workflow) it's almost impossible to attribute the loss to the cause.</p>
+<p>Worth noting: this distinction is dissolving even in manufacturing as fabrication itself becomes a commodity service, pushing more traditionally industrial businesses toward the same &quot;process and brand are the differentiator&quot; pattern. The trend is in one direction, and it's not toward the world the ERP playbook was designed for.</p>
+<h2 id="the-risk-inversion-the-sales-pitch-needs-you-to-miss">The risk inversion the sales pitch needs you to miss</h2>
+<p>When people compare bespoke vs COTS, they usually compare only one number: build cost.</p>
+<p>But that's not the real equation.</p>
+<p>The real equation is:</p>
+<ul>
+<li>Upfront and ongoing cost</li>
+<li>Implementation and change-management cost</li>
+<li>Fit-to-process cost</li>
+<li>Opportunity cost</li>
+<li>Vendor dependency risk</li>
+</ul>
+<p>A COTS platform often looks cheaper at the point of purchase, then gets expensive in all the places that don't appear on the first quote.</p>
+<p>I've seen this more times than I can count. The software licence is just the ticket price, but the ride includes consultants, customisation, retraining teams around the product's assumptions, and the long tail of workarounds for things your business does that the platform doesn't value.</p>
+<p>There's a specific mechanism worth naming, because it's the most common source of frustration I've seen in COTS implementations: the capability-vs-bundled gap. The sales pitch tells you everything the product can do and how it solves all your problems. You do your diligence. You ask all the right questions: <em>&quot;can it do this?&quot;</em>, <em>&quot;does it meet that requirement?&quot;</em>. You get told, with certainty and confidence, that yes, it's a perfect fit for your RFP. Then you sign the contract, and after the ink dries the truth comes out. Oh, yes, it has that feature, but that's an add-on, not standard, and it bumps the price by 25%. Oh, <em>that</em> requirement, well, it does <em>this</em> which is close enough.</p>
+<p>This is a sales-motion problem, not a delivery problem, which is why bespoke doesn't have an equivalent. There's no spec sheet to oversell against, no add-on tier to retroactively unbundle features into, no &quot;yes it does that, but…&quot; reveal after the contract is signed. Bespoke can fail in plenty of other ways, but not this way.</p>
+<p>If you're evaluating COTS, get it in writing: confirmation of exactly how the solution addresses each of your requirements, at the cost specified. If a vendor won't put their RFP answers in the contract, that tells you something.</p>
+<p>This is, again, particularly prominent in ERP implementations, but it's not a niche concern; the ERP world is just where it's been measured most thoroughly. <a href="https://www.panorama-consulting.com/resource-center/erp-report/">Panorama Consulting's 2025 ERP Report</a>, based on independent surveys of recent implementations, consistently finds that a substantial proportion of ERP projects exceed budget, run over schedule, or fail to deliver expected benefits. Industry estimates of ERP implementation failure rates (projects that fail to meet their original objectives) commonly land in the 55–75% range. So when someone tells you bespoke is the risky option, ask them what their reference class for &quot;safe&quot; actually looks like.</p>
+<h2 id="best-practice-is-often-just-someone-elses-compromise">&quot;Best practice&quot; is often just someone else's compromise</h2>
+<p>One of the most common sales narratives is that you should change your business process to match the product because that's &quot;industry best practice&quot;.</p>
+<p>I once heard someone joke that SAP stands for &quot;Should've Altered Processes&quot;. I can't verify where that came from, but the point behind it is real.</p>
+<p>One SAP implementation I was involved in was preceded by months of business process mapping; not because, as we assumed, that would enable them to tailor the solution to our business, but rather it enabled them to instruct us on how to adapt our business to the new product.</p>
+<p>That's insane.</p>
+<p>In fairness, sometimes many businesses <em>do</em> have messy processes that should be simplified. But often &quot;best practice&quot; is just &quot;what this product can do without expensive custom work&quot;.</p>
+<p>Those are not the same thing.</p>
+<h2 id="how-unique-businesses-become-commoditised">How unique businesses become commoditised</h2>
+<p>If a process is genuinely part of your competitive edge, flattening it into the same shape as everyone else is self-sabotage.</p>
+<p>This is the mechanism by which differentiated businesses become commoditised, and it's worth being explicit about. You start with a real edge, some way of doing the work that's faster, cleaner, more thoughtful, or more aligned to a particular kind of customer than the competition. You adopt a platform that doesn't model your edge, because the platform was built for the median customer in your category. You bend your process to fit the platform. Six months later, your process looks like everyone else's, because you're all running the same software with the same defaults.</p>
+<p>The platform didn't steal your edge; you handed it over in exchange for a smoother implementation.</p>
+<p>This is fine if your edge wasn't real to begin with, or if it was in something other than the process the platform replaced. But if you adopted a platform <em>because</em> it would let you do what you do at scale, and the price of that scale is that you now do what everyone else does, you should at least be honest about the trade.</p>
+<h2 id="you-do-not-need-an-internal-dev-team-to-own-custom-software">You do not need an internal dev team to own custom software</h2>
+<p>Another myth that refuses to die: &quot;If you get custom software, you'll need developers forever.&quot;</p>
+<p>No, you won't. Not as a prerequisite.</p>
+<p>What you do need is ownership.</p>
+<p>If you're paying for bespoke software, you own the code, deployment assets, documentation, and credentials.</p>
+<NoteContainer >
+<p>For bespoke delivery, if a developer won't give you ownership of what you paid them to build, find another developer.</p>
+</NoteContainer>
+<p>In COTS, you don't get that ownership. That's the model. You get access to the product, not ownership of the internals.</p>
+<p>That's exactly why COTS can be fine for commodity capability, but risky for core capability.</p>
+<p>With ownership, your risk profile changes dramatically:</p>
+<ul>
+<li>If one supplier disappears, another can take over.</li>
+<li>Your roadmap remains your roadmap.</li>
+<li>Changes are negotiated on your terms, not bundled into someone else's product strategy.</li>
+</ul>
+<p>With COTS, you can absolutely get value, but you are renting strategic control. That can be fine for commodity functions, but it's dangerous for core capability.</p>
+<p>And renting is exactly the right mental model. If the landlord changes the rules, or decides your category is no longer welcome, you're suddenly exposed to decisions you don't control.</p>
+<h2 id="vendor-lock-in-is-still-lock-in-even-in-the-cloud-era">Vendor lock-in is still lock-in, even in the cloud era</h2>
+<p>We've become very good at pretending lock-in doesn't exist anymore because everything is &quot;as-a-service&quot;.</p>
+<p>But switching costs are still real, and they are often massive. Data migration, retraining, re-integration, contract constraints, process redesign, and productivity dips during transition all add up quickly. <a href="https://link.springer.com/article/10.1186/s13677-016-0054-z">Peer-reviewed research on cloud and SaaS migration</a> makes the point bluntly: the complexity and cost of switching providers is consistently under-appreciated until you're in the middle of trying to do it.</p>
+<p>Lock-in risk is not just technical, it's commercial and operational.</p>
+<p>And for SMBs, where cash and runway are tighter, these costs bite harder.</p>
+<p>A concrete example: in June 2025, Etsy <a href="https://www.cindylouwho2.com/blog/2025/6/16/">updated its Creativity Standards without prior notice</a>, narrowing what could be sold under several categories and immediately taking down listings that had been compliant the day before. Entire categories of seller — shops using purchased 3D printer or Cricut templates, sellers of resold gemstones and crystals, certain digital download shops — found themselves out of compliance overnight. Whatever you think of the merits of the policy itself, the lesson for any business depending on a platform is the same: when the rules change, you don't get a vote, and you don't get a transition window. You either rebuild your business inside the new rules or you start over somewhere else.</p>
+<p>That's the real meaning of platform dependency risk.</p>
+<h2 id="but-bespoke-fails-all-the-time">&quot;But bespoke fails all the time&quot;</h2>
+<p>Sure. So does packaged software implementation; and the data on that is, if anything, much harsher than the data on bespoke.</p>
+<p>As we saw above, <a href="https://www.panorama-consulting.com/resource-center/erp-report/">Panorama Consulting's longitudinal data</a> shows that close to half of ERP implementations exceed their budgets, and a substantial share fail to deliver the benefits originally projected. These aren't fringe numbers from cherry-picked failures, they're the baseline for the supposedly safer option.</p>
+<p>The problem isn't custom vs off-the-shelf. the real failure mode is poor discovery, weak delivery discipline, and decision-makers outsourcing accountability.</p>
+<p>Good bespoke delivery is not magic. It's clear scope, iterative delivery, measurable outcomes, and ruthless prioritisation.</p>
+<p>In other words, the same things that make any project work.</p>
+<h2 id="a-practical-rule-of-thumb">A practical rule of thumb</h2>
+<p>Use COTS when the problem is commodity.</p>
+<p>Go bespoke when the capability is differentiating, highly specific, or central to how you make money.</p>
+<p>And in either case, do a serious cost/risk comparison over 3-5 years, not just year one.</p>
+<p>If you only compare licence cost to build quote, you're not doing due diligence. You're shopping.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Bespoke software is not inherently expensive or risky. COTS is not inherently safe or cheap.</p>
+<p>Both can be excellent choices in the right context.</p>
+<p>But businesses of every size are too often sold certainty where there is only trade-off. SMBs are told they can't afford bespoke. Mid-market and enterprise are told they <em>shouldn't</em> go bespoke. The narratives are different but the destination is the same, and in both cases, the question that actually matters (is this capability core or commodity?) gets quietly skipped over.</p>
+<p>If this post has a point, it's this: evaluate the trade-off honestly, and include control, opportunity cost, and lock-in in the equation.</p>
+<p>Because if your systems are core to your business, the safe-looking option is often the riskiest one in disguise.</p>
+<h2 id="references-and-further-reading">References and further reading</h2>
+<ul>
+<li>Joel Spolsky, <a href="https://www.joelonsoftware.com/2001/10/14/in-defense-of-not-invented-here-syndrome/">&quot;In Defense of Not-Invented-Here Syndrome&quot;</a> (2001) — the canonical statement of the core-vs-commodity framing for software decisions.</li>
+<li><a href="https://www.panorama-consulting.com/resource-center/erp-report/">Panorama Consulting Group, <em>2025 ERP Report</em></a> — independent annual survey of ERP implementation outcomes, including budget overruns, schedule overruns, and benefits realisation.</li>
+<li>Opara-Martins, J., Sahandi, R., &amp; Tian, F. (2016). <a href="https://link.springer.com/article/10.1186/s13677-016-0054-z">&quot;Critical analysis of vendor lock-in and its impact on cloud computing migration: a business perspective&quot;</a>, <em>Journal of Cloud Computing</em>, 5:4 — peer-reviewed analysis of switching costs and vendor lock-in in SaaS contexts.</li>
+<li><a href="https://www.oecd.org/en/publications/the-digital-transformation-of-smes_bdb9256a-en.html">OECD, <em>The Digital Transformation of SMEs</em></a> (2021) — broader context on SMB technology adoption patterns and constraints. (<a href="https://www.oecd.org/content/dam/oecd/en/publications/reports/2021/02/the-digital-transformation-of-smes_ec3163f5/bdb9256a-en.pdf">PDF</a>)</li>
+<li>Samuelson, W., &amp; Zeckhauser, R. (1988). <a href="https://scholar.harvard.edu/files/rzeckhauser/files/status_quo_bias_in_decision_making.pdf">&quot;Status Quo Bias in Decision Making&quot;</a> — relevant to why &quot;default to COTS&quot; framing is so sticky even when the trade-offs don't favour it.</li>
+<li>CindyLouWho2, <a href="https://www.cindylouwho2.com/blog/2025/6/16/">&quot;Etsy Updated The Creativity Standards Without Notice&quot;</a> (June 2025) — detailed walkthrough of the policy change discussed above, including before/after comparisons via the Internet Archive.</li>
+</ul>
+<p>Cover image by <a href="https://pixabay.com/users/roszie-6000120/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7370147">Rosy / Bad Homburg / Germany</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7370147">Pixabay</a></p>
+]]></content:encoded>
+      </item>
+<item>
+        <title>Messaging Is a UI Code Smell</title>
+        <link>https://goforgoldman.com/posts/ui-messaging</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/ui-messaging</guid>
+        <pubDate>Sun, 08 Feb 2026 01:00:01 GMT</pubDate>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/ui-messaging.png" alt="Messaging Is a UI Code Smell" />
+          &#39;Decoupled&#39; messaging systems in UI applications are unsafe. There are better alternatives, and I&#39;ve yet to see a use case that couldn&#39;t be solved with them.]]>
+        </description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+        <category>code-smell</category>
+        <category>mvvm</category>
+        <category>messaging</category>
+        <content:encoded><![CDATA[<p>I gave a talk at <a href="https://mauiday.net/">MAUIDay</a> recently called <em>Opinionated by Necessity</em>, where I shared some lessons around building enterprise apps that scale; not in terms of concurrent users (that's largely a solved problem, and an easy one to band-aid with a SKU bump), but in terms of <em>teams</em>.</p>
+<p>I define apps that scale not as:</p>
+<blockquote class="blockquote">
+<p>Systems that don't fall over under load from millions of users</p>
+</blockquote>
+<p>but:</p>
+<blockquote class="blockquote">
+<p>Systems that don't fall over when the person who wrote the code is no longer around</p>
+</blockquote>
+<p>Never have I seen this better articulated than when <a href="https://www.jimmybogard.com/">Jimmy Bogard</a> said:</p>
+<blockquote class="blockquote">
+<p>Consistency &gt;&gt;&gt;&gt;&gt;&gt; your opinion</p>
+</blockquote>
+<p>This is a whole other topic in itself, but generally, I hold very strong opinions that your app should have an opinionated architecture and very loose opinions about what that architecture should be. I'll cover this more in another post.</p>
+<p>However, one idea in particular drew a lot of curiosity afterwards:</p>
+<p><strong>Messaging in a UI application is a code smell.</strong></p>
+<p>Not an anti-pattern per se, and certainly not a catastrophic bug. But it's a red flag, and should be something you reach for as a last resort, under very specific circumstances, with a well-reasoned justification, rather than a default. Especially when safer, more explicit alternatives exist.</p>
+<h2 id="what-i-mean-by-messaging">What I mean by “messaging”</h2>
+<p>When I say <em>messaging</em>, I'm talking about a global or ambient publish/subscribe mechanism inside a UI application. Typically something where:</p>
+<ul>
+<li>Publishers emit messages identified by a type, key, or string</li>
+<li>Subscribers register interest in those messages via a central broker</li>
+<li>Publishers and subscribers have no direct reference to each other</li>
+</ul>
+<p>Examples include in-process message buses, messengers, or event aggregators commonly used in MVVM frameworks.</p>
+<p>I am <em>not</em> talking about:</p>
+<ul>
+<li>Events exposed by a specific object</li>
+<li>Observables tied to a concrete source</li>
+<li>Explicit callbacks or continuations</li>
+</ul>
+<p>Those are subscriptions to a <em>publisher</em>. Messaging is subscription to a <em>system</em>.</p>
+<p>That distinction is key here. I am absolutely not opposed to subscriptions; in fact, I’d probably go so far as to say they’re essential in modern UI applications, especially for micro‑interactions.</p>
+<p>It’s <em>decoupled, ambient messaging</em> in a UI that gives me the heebee-jeebees.</p>
+<h2 id="lets-be-clear-about-what-i-am-not-saying">Let’s be clear about what I am not saying</h2>
+<p>I am not saying messaging is “bad”, or that nobody should ever use it. I am not saying your app is broken if it contains a message bus.</p>
+<p>What I <em>am</em> saying is that messaging shifts correctness from the compiler to human discipline. And that is a trade‑off we should be very cautious about in UI code, where issues that are hard to trace and slow to fix can emerge in the wild. Remember that no UI survives first contact with the users; anything that provides compile-time guard rails <em>for free</em> is always a first choice for me.</p>
+<p>Let's take a look at why I find this pattern so problematic.</p>
+<h2 id="messaging-removes-architectural-gravity">Messaging removes architectural gravity</h2>
+<p>In a typical MVVM‑style UI, there is a natural flow:</p>
+<ul>
+<li>Models publish facts about the world</li>
+<li>ViewModels coordinate behaviour and state</li>
+<li>Views observe and respond to state</li>
+</ul>
+<p>This isn't breaking news, but it's important grounding for one of the risk vectors that messaging introduces to your apps.</p>
+<p>Messaging neither directly undermines nor enforces this flow, but it is less aligned with it than other approaches.</p>
+<p>Once you introduce a global publish/subscribe mechanism, everything becomes equally reachable. Any layer can talk to any other layer, at any time, for any reason. The architecture stops pushing you back toward the correct shape.</p>
+<p>Yes, you can impose rules. I do. My rule is simple:</p>
+<ul>
+<li>All publishers live in the Model layer</li>
+<li>All subscribers live in the ViewModel layer</li>
+<li>No exceptions</li>
+</ul>
+<p>But notice what’s doing the work there. It’s not the tooling, it’s discipline. And discipline does not scale as well as structure.</p>
+<p>I recognise that this is not a showstopper argument, and that's fine. I'll state my stronger case next, but in my view, any pattern that doesn't either mechanically enforce, or (at least) culturally encourage good architectural discipline is dangerous.</p>
+<h2 id="ui-systems-are-deterministic.messaging-is-not">UI systems are deterministic. Messaging is not.</h2>
+<p>This is the most important point, and the one that seemed to resonate most with the audience.</p>
+<p>In distributed systems, messaging makes sense. Producers and consumers are non‑deterministic. A message may or may not be sent. A consumer may or may not be listening. That uncertainty is part of the model.</p>
+<p>A UI is different.</p>
+<p>If a ViewModel depends on something happening, that dependency is not optional. It is required for correctness. Treating it as best‑effort is a category error.</p>
+<p>Here is a very mundane failure mode:</p>
+<ul>
+<li>You have a subscriber listening for a message</li>
+<li>Someone deletes or refactors the publisher</li>
+<li>The app still builds</li>
+<li>Nothing tells you the behaviour is now broken</li>
+</ul>
+<p>You will find out at runtime (or, what actually happens, which is worse, a user will).</p>
+<p>Subscribing to a <em>system</em> makes sense when producers (and consumers, but that's a different scenario) are optional. Subscribing to a <em>publisher</em> is required when producers are essential.</p>
+<p>Events and observables encode that relationship explicitly. Messaging opts out of it entirely.</p>
+<h2 id="messaging-destroys-ownership">Messaging destroys ownership</h2>
+<p>With messaging, there is nothing stopping anyone else from publishing the same message.</p>
+<p>Once the message becomes the unit of coordination instead of the publisher, authority disappears. Behaviour can now be triggered by whoever feels like emitting, from wherever they happen to be.</p>
+<p>In a UI, that is not decoupling. That is abdication, and it actively erodes cohesion.</p>
+<p>With an event or an observable, behaviour flows from a known source. You can point to the owner. You can reason about when and why it fires. And, critically, you <em>can't</em> undermine, override, or work around it.</p>
+<p>With messaging, you get emergent behaviour. The hardest kind of bug to diagnose, and the easiest kind to introduce.</p>
+<h2 id="but-it-works-fine-for-us">“But it works fine for us”</h2>
+<p>I believe you.</p>
+<p>Most of the time, it works because experienced developers are compensating for the abstraction. You know, implicitly, where messages <em>should</em> come from. You follow conventions. You're careful.</p>
+<p>That does not make the system safe. It just means the safety lives in people’s heads.</p>
+<p>The real test is not whether something works today. It’s whether it fails loudly when someone makes a mistake tomorrow. And to be clear, loud failure is what you want. When things fail loudly, they tell you they are broken and demand to be fixed.</p>
+<p>Messaging fails quietly.</p>
+<h2 id="so-whats-the-actual-position">So what’s the actual position?</h2>
+<p>Messaging in a UI is not forbidden, it's simply too powerful for how little structure it provides.</p>
+<p>If you choose to use it, you should be able to answer, clearly:</p>
+<ul>
+<li>Who owns this behaviour?</li>
+<li>What guarantees that exactly one thing publishes this?</li>
+<li>What breaks if the publisher disappears?</li>
+<li>Why can’t this be modelled as an explicit dependency?</li>
+</ul>
+<p>If you cannot answer those questions, the abstraction is doing more harm than good.</p>
+<p>And if you <em>can</em> answer them, you'll likely find you don't need messaging at all.</p>
+<p>That’s why I call it a code smell, because it's not objectively or universally wrong.</p>
+<p>But it <em>is</em> unsafe by default.</p>
+<p>Fire isn’t &quot;wrong&quot; either. It’s the bedrock of human civilisation. We need it, and we use it. But we don’t light a fire wherever we happen to be whenever we feel cold. <em>Especially</em> not now, when we have warm clothing and controlled heating appliances.</p>
+<p>Messaging should be treated the same way.</p>
+<p>If there isn’t a better alternative for your use case, then your use case is the exception. If you <em>have</em> to use it, and you've exhausted other (better) options, that's fine. Just don't get burned.</p>
+]]></content:encoded>
+      </item>
 <item>
         <title>AI wasn&#39;t supposed to make us 10x workers</title>
         <link>https://goforgoldman.com/posts/half-x</link>
@@ -27,8 +315,8 @@
 <blockquote class="blockquote">
 <p>I'll add it to the list of things to do when I have time.</p>
 </blockquote>
-<p>And it stopped me cold. That moment of deferring my own health until some imaginary future wasn't just a personal quirk, it was a perfectly normalised response. And that's the problem.</p>
-<p>I recently read a blog post arguing that the &quot;10x developer&quot; myth is now real, and that with AI we all need to &quot;get our heads in the game&quot; and become 10x workers.</p>
+<p>It's something I've thought too many times to count, and I'm sure many of you have too. This time, though, I reflected on it, and it bothers me that we've normalised this.</p>
+<p>I recently read <a href="https://ulyssesmaclaren.com/2025/12/11/get-your-head-in-the-game-the-rise-of-the-10x-employee/">a blog post</a> arguing that the &quot;10x developer&quot; myth is now real, and that with AI we all need to &quot;get our heads in the game&quot; and become 10x workers. I’m pulling on just one thread here, but Uly (the author) makes some thoughtful points, and his post is well worth a read. But I'm going to linger on the 10x part.</p>
 <p>I'm sure most of us feel this, even get a thrill out of it. I know I do. I'm way more productive now than I was 2 years ago, and I won't deny that I love it. But we're so caught up in the race to capitalise on this new technology that we rarely pause to ask whether we're even asking the right questions.</p>
 <p>When I took a step back and thought about it, I realised this isn't what I want from AI.</p>
 <p>AI wasn't supposed to make us 10x workers.
@@ -39,9 +327,9 @@ It was supposed to make us 0.1x workers.</p>
 <p>And I have to wonder - if AI genuinely increases productivity, why is the default assumption that we must 10x output instead of maintaining output and reducing input?</p>
 <p>I'm not saying everyone should do that, I'm just concerned that it barely even enters the conversation.</p>
 <p>Maciejewska made a great point, but I'm talking about something even more fundamental. We already know this pattern well. We are culturally neglecting our health in the pursuit of profit, then acting surprised at the outcomes, talking about an &quot;obesity pandemic&quot; as if it appeared out of nowhere. We keep treating health as &quot;extra&quot;, something you do outside work, after work, when you're lucky enough to have time and energy, not just after work but after all the other necessary things that consume our daily lives.</p>
-<p>But we need to stop treating it like an optional extra, because it's not. It's infrastructure. I don't think this position needs defending, but if you want to look at it through a business lens, consider this: healthy, happy, focused people are more productive. That's not an opinion, that's an empirically established fact.</p>
+<p>We need to stop treating it like an optional extra, because it's not. It's infrastructure. I don't think this position needs defending, but if you want to look at it through a business lens, consider this: healthy, happy, focused people are more productive. That's not an opinion, that's an empirically established fact.</p>
 <p>But even setting business value aside for a second, there's a more basic question here about decency.</p>
-<p>It's nearly 2026. We live in a world of unprecedented wealth and technological capability, yet in the wealthiest nation on Earth, more than a tenth of the population lives below the poverty line, and people  still die from preventable and treatable conditions because they cannot afford to live. Somehow this is normal.</p>
+<p>It's nearly 2026. We live in a world of unprecedented wealth and technological capability, yet in the wealthiest nation on Earth, more than one in 10 people lives below the poverty line, and people still die from preventable and curable conditions because they cannot afford the treatment. Brings a whole new meaning to the term &quot;cost of living crisis&quot;; yet somehow this is normal.</p>
 <p>Every major technological shift becomes an opportunity to squeeze more out of workers, not to give anything back. But this isn't the 19th century, it's the 21st. AI isn't the first industrial revolution, it's the fourth. People in the past didn't have the benefit of hindsight. We do.</p>
 <p>I suspect many of you are still trying to figure out how to measure the productivity gains from AI. That's a whole other conversation (and I'm happy to help), so here's my suggestion heading into 2026: 
 If you're seeing gains, give some of that time back.
@@ -1873,172 +2161,8 @@ private void ThrottlePanUpdated(object sender, PanUpdatedEventArgs e)
 </ul>
 <p>These are just examples. If you think something is interesting, there's a good chance the rest of the community will want to see you explain it.</p>
 <h2 id="net-maui-ui-july-schedule">.NET MAUI UI July Schedule</h2>
-<table class="table">
-<thead>
-<tr>
-<th>Date</th>
-<th>Person</th>
-<th>Content</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Matt Goldman</td>
-<td><a href="/posts/batmobile-part-1/">Holy MauiGraphics Batman! Part 1: Batmobile Throttle Control</a></td>
-</tr>
-<tr>
-<td>2</td>
-<td>Matt Goldman</td>
-<td><a href="/posts/batmobile-part-2">Holy MauiGraphics Batman! Part 2: Batcave RPM Gauge</a></td>
-</tr>
-<tr>
-<td>3</td>
-<td>Matt Goldman</td>
-<td><a href="/posts/batmobile-part-3">Holy MauiGraphics Batman! Part 3: Clayface Level Trigonometry</a></td>
-</tr>
-<tr>
-<td>4</td>
-<td>Matt Goldman</td>
-<td><a href="/posts/outlook-toggle">Replicating Outlook's 'Focused/Other' toggle in .NET MAUI</a></td>
-</tr>
-<tr>
-<td>5</td>
-<td>Ed Schimmel</td>
-<td><a href="https://byte217.com/net-maui-managing-screen-sizes/">Managing Screen Sizes</a></td>
-</tr>
-<tr>
-<td>6</td>
-<td>Ed Schimmel</td>
-<td><a href="https://byte217.com/net-maui-scrolling-text-display/">Scrolling Text Display</a></td>
-</tr>
-<tr>
-<td>7</td>
-<td>Ed Schimmel</td>
-<td><a href="https://byte217.com/net-maui-tab-control-with-underlinement/">Custom Tab Control</a></td>
-</tr>
-<tr>
-<td>8</td>
-<td>François Raminosona</td>
-<td><a href="https://blog.francois.raminosona.com/sensors-in-net-maui-mauiuijuly/">Sensors in .NET MAUI</a></td>
-</tr>
-<tr>
-<td>9</td>
-<td>François Raminosona</td>
-<td><a href="https://blog.francois.raminosona.com/sensor-based-parallax-in-net-maui-using-the-gyroscope-mauiuijuly/">Gyroscope Parallax</a></td>
-</tr>
-<tr>
-<td>10</td>
-<td>Almir Vuk</td>
-<td>TBC</td>
-</tr>
-<tr>
-<td>11</td>
-<td>Ali Raza</td>
-<td><a href="https://mauiwithali.hashnode.dev/building-a-dynamic-milestone-journey-tracker-with-skiasharp-in-net-maui">Milestone Journey Tracker</a></td>
-</tr>
-<tr>
-<td>12</td>
-<td>Matt Goldman</td>
-<td><a href="/posts/bdd-app-downloads">Beer-Driven Downloads &amp; Microinteractions in .NET MAUI</a></td>
-</tr>
-<tr>
-<td>13</td>
-<td>Adolfo Marinucci</td>
-<td><a href="https://github.com/adospace/reactor-theme/blob/main/net_maui_july2025_article.md">Introduction to Reactor Theme</a></td>
-</tr>
-<tr>
-<td>14</td>
-<td>John Bijsterbosch</td>
-<td><a href="https://blog.johndotnet.nl/creating-your-very-first-net-maui-skiasharp-component-step-by-step/">Creating your first .NET MAUI SkiaSharp Component</a></td>
-</tr>
-<tr>
-<td>15</td>
-<td>Nick Alonge</td>
-<td><a href="https://dev.to/nick_alonge/reusable-views-in-net-maui-4n3c">Introduction to Reusable Views and Controls </a></td>
-</tr>
-<tr>
-<td>16</td>
-<td>Sebastian Jensen</td>
-<td><a href="https://medium.com/@@tsjdevapps/building-an-animated-countdown-control-in-net-maui-0b1faff7ed76">Building an Animated Countdown Control in .NET MAUI</a></td>
-</tr>
-<tr>
-<td>17</td>
-<td>Calin Ciurariu</td>
-<td><a href="https://medium.com/@@clinciurariu/calin-ciurariu-c153c8ceb9dd">Scrolling Label</a></td>
-</tr>
-<tr>
-<td>18</td>
-<td>Farshad Momtaz</td>
-<td>TBC</td>
-</tr>
-<tr>
-<td>19</td>
-<td>Leomaris Reyes</td>
-<td>TBC</td>
-</tr>
-<tr>
-<td>20</td>
-<td>Vladislav Antonyuk</td>
-<td><a href="https://vladislavantonyuk.github.io/articles/Turn-any-phone-into-an-IP-Camera-in-30-Minutes-using-.NET-MAUI/">Turn any phone into an IP Camera in 30 minutes using .NET MAUI</a></td>
-</tr>
-<tr>
-<td>21</td>
-<td>Shaun Lawrence</td>
-<td><a href="https://blog.bijington.com/2025/07/21/wheel-of-names.html">Create a Wheel of Names clone</a></td>
-</tr>
-<tr>
-<td>22</td>
-<td>Héctor Uriel Pérez Rojas</td>
-<td><a href="https://devs.school/create-viral-videos-with-sora-in-net-maui/">Create Viral Videos with SORA in .NET MAUI</a></td>
-</tr>
-<tr>
-<td>23</td>
-<td>David Nsai</td>
-<td><a href="https://medium.com/@@nsaidave/building-a-pedometer-fitness-tracker-using-net-maui-8723ad041c1d">Building a pedometer fitness tracker</a></td>
-</tr>
-<tr>
-<td>24</td>
-<td>Luis Antonio Beltran Prieto</td>
-<td><a href="https://dev.to/icebeam7/joystick-navigation-ui-in-net-maui-5974">Joystick Navigation in .NET MAUI</a></td>
-</tr>
-<tr>
-<td>25</td>
-<td>Nick Kovalsky</td>
-<td><a href="https://taublast.github.io/posts/Breakout/">Build Cross-Platform Games in .NET MAUI with DrawnUI</a></td>
-</tr>
-<tr>
-<td>26</td>
-<td>Johan Smarius</td>
-<td><a href="https://www.youtube.com/watch?v=T69XFmhjdzQ">Exploring the Syncfusion .NET MAUI Toolkit</a></td>
-</tr>
-<tr>
-<td>27</td>
-<td>Steven Thewissen</td>
-<td><a href="https://thewissen.io/maui-ui-july-crosswind-experiment/">The Crosswind Experiment</a></td>
-</tr>
-<tr>
-<td>28</td>
-<td>Gulam Ali H.</td>
-<td><a href="https://medium.com/@@freakyali/coach-marks-but-beautiful-in-net-maui-7cd861dc1058">Coach Marks, but Beautiful in .NET MAUI</a></td>
-</tr>
-<tr>
-<td>29</td>
-<td>Ed Gomez</td>
-<td><a href="https://www.linkedin.com/pulse/why-your-net-maui-app-should-absolutely-support-desktop-ed-gomez-jaekf">Why your .NET MAUI App Should Absolutely Support Desktop</a></td>
-</tr>
-<tr>
-<td>30</td>
-<td>David Ortinau</td>
-<td><a href="https://dev.to/davidortinau/my-top-5-ui-moments-of-2025-so-far-1h14">My top 5 UI Moments of 2025 (So Far)</a></td>
-</tr>
-<tr>
-<td>31</td>
-<td>Roman Jasek</td>
-<td><a href="https://www.riganti.cz/en/blog/maui-managing-accessibility-chapter-01">Accessibility in .NET MAUI - Chapter 1 - Introduction &amp; Motivation</a> (note remaining chapters are online and linked from the post)</td>
-</tr>
-</tbody>
-</table>
+<CalendarContainer SourceUrl=https://raw.githubusercontent.com/matt-goldman/matt-goldman.github.io/refs/heads/main/data/mauiuijuly-2025.csv Year=2025>
+</CalendarContainer>
 <p>I hope you enjoy .NET MAUI UI July!</p>
 ]]></content:encoded>
       </item>
@@ -2359,522 +2483,6 @@ return MopupService.Instance.PushAsync&lt;MyPopup&gt;(&quot;It's alive!&quot;);
 ]]></content:encoded>
       </item>
 <item>
-        <title>Parallax CollectionView in .NET MAUI</title>
-        <link>https://goforgoldman.com/posts/parallax-collection</link>
-        <guid isPermaLink="true">https://goforgoldman.com/posts/parallax-collection</guid>
-        <pubDate>Mon, 01 Jul 2024 00:00:01 GMT</pubDate>
-        <description>
-          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/parallax-collection.png" alt="Parallax CollectionView in .NET MAUI" />
-          Step-by-step tutorial for creating an engaging parallax scrolling effect in .NET MAUI CollectionView to add visual depth to your mobile app interfaces.]]>
-        </description>
-        <category>mobile</category>
-        <category>maui</category>
-        <category>ui</category>
-        <content:encoded><![CDATA[<p>Parallax is one of those effects that is dangerously easy to overuse in your apps, but equally, when done right, can add an extra &quot;wow!&quot; factor that elevates an otherwise flat app to give it some depth.</p>
-<TipContainer title="What is parallax?">
-<p>Parallax is the term given when things in the foreground appear to move quicker than things in the background. It was a <a href="https://www.youtube.com/watch?v=FIqpX4L5w2c">neat trick used in 16-bit games</a> to give a sense of depth of a 3D environment, and has recently become a <a href="https://www.wix.com/blog/what-is-parallax-scrolling-explained-with-examples">trend in web design</a>. And perhaps most interestingly, it's one of the <a href="https://lco.global/spacebook/distance/parallax-and-distance-measurement/">methods used to estimate the distance of stars</a> and other objects in space.</p>
-</TipContainer>
-<h2 id="getting-started">Getting started</h2>
-<p>Let's start with a basic app with a <code>CollectionView</code>. The app we will build is a simple superheroes information app, that shows a series of cards with a picture and some text. I've downloaded some images and placed them into the <code>Resources/images/posts/</code> folder, and I've installed the <a href="https://learn.microsoft.com/dotnet/communitytoolkit/mvvm/">MVVM Community Toolkit</a> and <a href="https://github.com/rrmanzano/maui-bindableproperty-generator">MAUI Bindable Property Generator</a> to reduce boilerplate.</p>
-<p>The code is available on <a href="https://github.com/matt-goldman/ParallaxCollection">GitHub</a>, I won't walk through the code here as it should be self-explanatory (and if not is outside the scope of this post, but if you want to learn more about this code you can check out the <a href="https://dotnet.microsoft.com/en-us/apps/maui">official documentation</a> or my book <a href="https://www.manning.com/books/dot-net-maui-in-action?utm_source=goforgoldman&utm_medium=affiliate&utm_campaign=book_goldman_dot_5_10_22&a_aid=goforgoldman&a_bid=38933097"><em>.NET MAUI in Action</em></a>). For convenience I've also added it below; it's collapsed so click on <code>Details</code> to unhide it.</p>
-<details>
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-&lt;ContentPage xmlns=&quot;http://schemas.microsoft.com/dotnet/2021/maui&quot;
-            xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
-            xmlns:vm=&quot;clr-namespace:ParallaxCollection.ViewModels;assembly=ParallaxCollection&quot;
-            x:DataType=&quot;vm:MainViewModel&quot;
-            x:Class=&quot;ParallaxCollection.MainPage&quot;&gt;
-    &lt;Grid&gt;
-        &lt;CollectionView ItemsSource=&quot;{Binding Heroes}&quot;
-                                    VerticalOptions=&quot;Center&quot;
-                                    x:Name=&quot;HeroesCollection&quot;&gt;
-            &lt;CollectionView.ItemTemplate&gt;
-                &lt;DataTemplate x:DataType=&quot;vm:HeroCardViewModel&quot;&gt;
-                    &lt;controls:HeroCard Background=&quot;{Binding Background}&quot;
-                                HeroName=&quot;{Binding Name}&quot;
-                                SecretIdentity=&quot;{Binding SecretIdentity}&quot;
-                                HeroImage=&quot;{Binding HeroImage}&quot;
-                                HeroLogo=&quot;{Binding LogoImage}&quot;/&gt;
-                &lt;/DataTemplate&gt;
-            &lt;/CollectionView.ItemTemplate&gt;
-        &lt;/CollectionView&gt;
-    &lt;/Grid&gt;
-&lt;/ContentPage&gt;
-</code></pre>
-<p>file=&quot;MainPage.xaml</p>
-<p>It's just got a simple binding in the code behind:</p>
-<pre><code class="language-csharp">using ParallaxCollection.ViewModels;
-
-namespace ParallaxCollection;
-
-public partial class MainPage : ContentPage
-{
-    private MainViewModel _viewModel;
-
-    public MainPage()
-    {
-        InitializeComponent();
-        _viewModel = new MainViewModel();
-        BindingContext = _viewModel;
-    }
-}
-</code></pre>
-<p>file=&quot;MainPage.xaml</p>
-<p>The ViewModel contains the collection of heroes and a method to seed the collection:</p>
-<pre><code class="language-csharp">using CommunityToolkit.Mvvm.ComponentModel;
-using System.Collections.ObjectModel;
-
-namespace ParallaxCollection.ViewModels;
-
-public partial class MainViewModel : ObservableObject
-{
-    public ObservableCollection&lt;HeroCardViewModel&gt; Heroes { get; set; } =
-    [
-        new HeroCardViewModel
-        {
-            Name = &quot;Superman&quot;,
-            SecretIdentity = &quot;Clark Kent&quot;,
-            HeroImage = &quot;superman.png&quot;,
-            LogoImage = &quot;superman_logo.png&quot;,
-            Background = Colors.Blue
-        },
-        new HeroCardViewModel
-        {
-            Name = &quot;Batman&quot;,
-            SecretIdentity = &quot;Bruce Wayne&quot;,
-            HeroImage = &quot;batman.png&quot;,
-            LogoImage = &quot;batman_logo.png&quot;,
-            Background = Colors.DarkGray
-        },
-        new HeroCardViewModel
-        {
-            Name = &quot;Wonder Woman&quot;,
-            SecretIdentity = &quot;Diana Prince&quot;,
-            HeroImage = &quot;wonderwoman.png&quot;,
-            LogoImage = &quot;wonderwoman_logo.png&quot;,
-            Background = Colors.Gold
-        },
-        new HeroCardViewModel
-        {
-            Name = &quot;The Flash&quot;,
-            SecretIdentity = &quot;Barry Allen&quot;,
-            HeroImage = &quot;theflash.png&quot;,
-            LogoImage = &quot;theflash_logo.png&quot;,
-            Background = Colors.Red
-        },
-        new HeroCardViewModel
-        {
-            Name = &quot;Green Lantern&quot;,
-            SecretIdentity = &quot;Hal Jordan&quot;,
-            HeroImage = &quot;greenlantern.png&quot;,
-            LogoImage = &quot;greenlantern_logo.png&quot;,
-            Background = Colors.Green
-        },
-        new HeroCardViewModel
-        {
-            Name = &quot;Shazam&quot;,
-            SecretIdentity = &quot;Billy Batson&quot;,
-            HeroImage = &quot;shazam.png&quot;,
-            LogoImage = &quot;shazam_logo.png&quot;,
-            Background = Colors.Red
-        }
-    ];
-}
-</code></pre>
-<p>file=&quot;ViewModels/MainViewModel.cs</p>
-<p>You can see that it's using a <code>HeroCardViewModel</code>.</p>
-<pre><code class="language-csharp">using ParallaxCollection.Models;
-
-namespace ParallaxCollection.ViewModels;
-
-public class HeroCardViewModel
-{
-    public string Name { get; set; } = hero.Name;
-    public string SecretIdentity { get; set; } = hero.SecretIdentity;
-    public string HeroImage { get; set; } = hero.HeroImage;
-    public string LogoImage { get; set; } = hero.LogoImage;
-    public Color Background { get; set; } = hero.Background;
-}
-</code></pre>
-<p>file=&quot;ViewModels/HeroCardViewModel.cs</p>
-<p>Finally the <code>HeroCard</code> view itself which is used as the data template in the collection:</p>
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-
-&lt;ContentView x:Class=&quot;ParallaxCollection.Controls.HeroCard&quot;
-            xmlns=&quot;http://schemas.microsoft.com/dotnet/2021/maui&quot;
-            xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;&gt;
-    &lt;Grid&gt;
-        &lt;Border x:Name=&quot;Card&quot;
-                Margin=&quot;30&quot;
-                StrokeShape=&quot;RoundRectangle 30&quot;&gt;
-            &lt;Border.Shadow&gt;
-                &lt;Shadow Brush=&quot;Black&quot;
-                        Offset=&quot;20,20&quot;
-                        Radius=&quot;40&quot;
-                        Opacity=&quot;0.8&quot; /&gt;
-            &lt;/Border.Shadow&gt;
-            &lt;Grid Padding=&quot;20&quot;
-                    ColumnDefinitions=&quot;2*,3*&quot;
-                    RowDefinitions=&quot;4*,*&quot;&gt;
-
-                &lt;Image x:Name=&quot;HeroLogoImage&quot;
-                        Grid.Row=&quot;1&quot;
-                        Grid.Column=&quot;0&quot;
-                        VerticalOptions=&quot;Center&quot;
-                        WidthRequest=&quot;75&quot;&gt;
-                    &lt;Image.Shadow&gt;
-                        &lt;Shadow Brush=&quot;Black&quot;
-                                Offset=&quot;20,20&quot;
-                                Radius=&quot;40&quot;
-                                Opacity=&quot;0.8&quot; /&gt;
-                    &lt;/Image.Shadow&gt;
-                &lt;/Image&gt;
-
-                &lt;VerticalStackLayout Grid.Row=&quot;1&quot;
-                                        Grid.Column=&quot;1&quot;
-                                        VerticalOptions=&quot;Center&quot;&gt;
-                    &lt;Label x:Name=&quot;HeroNameLabel&quot;
-                            Margin=&quot;10,0,0,0&quot;
-                            FontAttributes=&quot;Bold&quot;
-                            FontSize=&quot;Title&quot;
-                            TextColor=&quot;White&quot; /&gt;
-
-                    &lt;Label x:Name=&quot;SecretIdentityLabel&quot;
-                            Margin=&quot;10,0,0,0&quot;
-                            FontSize=&quot;Body&quot;
-                            TextColor=&quot;White&quot; /&gt;
-                &lt;/VerticalStackLayout&gt;
-            &lt;/Grid&gt;
-        &lt;/Border&gt;
-
-        &lt;Image x:Name=&quot;HeroImageImage&quot;
-                VerticalOptions=&quot;Center&quot;
-                HorizontalOptions=&quot;Center&quot;
-                Aspect=&quot;AspectFit&quot;
-                HeightRequest=&quot;400&quot; /&gt;
-    &lt;/Grid&gt;
-&lt;/ContentView&gt;
-</code></pre>
-<p>file=&quot;Controls/HeroCard.xaml</p>
-<pre><code class="language-csharp">using Maui.BindableProperty.Generator.Core;
-
-namespace ParallaxCollection.Controls;
-
-public partial class HeroCard : ContentView
-{
-    public HeroCard()
-    {
-        InitializeComponent();
-        BindingContext = this;
-    }
-
-    [AutoBindable(OnChanged = nameof(heroNameChanged))]
-    private string heroName;
-    private void heroNameChanged(string value)
-    {
-        HeroNameLabel.Text = value;
-    }
-
-    [AutoBindable(OnChanged = nameof(secretIdentityChanged))]
-    private string secretIdentity;
-    private void secretIdentityChanged(string value)
-    {
-        SecretIdentityLabel.Text = value;
-    }
-
-    [AutoBindable(OnChanged = nameof(heroLogoChanged))]
-    private string heroLogo;
-    private void heroLogoChanged(string value)
-    {
-        HeroLogoImage.Source = value;
-    }
-
-    [AutoBindable(OnChanged = nameof(heroImageChanged))]
-    private string heroImage;
-    private void heroImageChanged(string value)
-    {
-        HeroImageImage.Source = value;
-    }
-
-    [AutoBindable(OnChanged = nameof(backgroundChanged))]
-    private Color background;
-    private void backgroundChanged(Color value)
-    {
-        Card.Stroke = new SolidColorBrush(value);
-        Card.BackgroundColor = value;
-    }
-}
-</code></pre>
-<p>file=&quot;Controls/HeroCard.xaml.cs</p>
-</details>
-<br/>
-If you run and build the app now, you should see something like this:
-<p><figure><img src="/images/posts/parallax-collection-basic.gif" alt="The app with a standard "  style="max-width:100%;height:auto;" /><figcaption style="margin-left:auto;margin-right:auto;font-style:italic;text-align:center;">The app with a standard </figcaption></figure>
-<em>The app with the standard <code>CollectionView</code></em></p>
-<p>You can see I've added a shadow here which already adds a little depth, but we can add a bit more by adding a parallax effect.</p>
-<h2 id="the-logic">The logic</h2>
-<p>Before we get into the code, let's briefly discuss the logic of how this effect will work. We're going to manipulate the position of the images relative to the card, so that as we scroll, it appears the images are moving faster than the cards. This makes the image appear closer than the background, which creates the illusion of depth. To achieve this, every time the <code>OnScrolled</code> event of the <code>CollectionView</code> is fired, we'll check the center of the image and adjust the <code>Y</code> (vertical) position proportionally to the difference between the image's center and the screen's center. The further from the center of the screen it is, the more we'll offset it.</p>
-<p><figure><img src="/images/posts/parallax-logic-1.png" alt="As the center of the view moves further from the center of the screen, the vertical position of the image is offset from the background proportionally, giving it the sense that it is moving quicker and appears closer"  style="max-width:100%;height:auto;" /><figcaption style="margin-left:auto;margin-right:auto;font-style:italic;text-align:center;">As the center of the view moves further from the center of the screen, the vertical position of the image is offset from the background proportionally, giving it the sense that it is moving quicker and appears closer</figcaption></figure>
-<em>As the center of the view moves further from the center of the screen, the vertical position of the image is offset from the background proportionally, giving it the sense that it is moving quicker and appears closer</em></p>
-<h2 id="adding-the-controls">Adding the controls</h2>
-<p>I'm going to create two custom controls - a <code>ParallaxItemView</code>, which will expose a method that can be called when the <code>CollectionView</code> is scrolled, and a <code>ParallaxCollectionView</code>, which will call this event on its children when a scroll occurs.</p>
-<p>As the implementation of this effect is going to be different for each platform, I'm going to use partial classes, with the implementations in the relevant <code>Platforms</code> folders. For now the <code>ParallaxItemView</code> will just outline the required functionality. In a folder called <code>Controls</code>, I've added a file called <code>ParallaxItemView.cs</code></p>
-<pre><code class="language-csharp">namespace ParallaxCollection.Controls;
-
-public abstract partial class ParallaxItemView : ContentView
-{
-    private int _platformY;
-    private int _denominator;
-    protected double ParallaxOffsetY;
-    private double ThisCenter;
-    private double CenterY;
-
-    public ParallaxItemView()
-    {
-        ConfigurePlatform();
-    }
-
-    public virtual void OnScrolled()
-    {
-        if (Height == -1)
-            return;
-
-        CalculateCentre();
-        var diff = ThisCenter - CenterY;
-        ParallaxOffsetY = diff / _denominator;
-    }
-
-    partial void ConfigurePlatform();
-    partial void CalculateCentre();
-}
-</code></pre>
-<p>Let's talk through the variables in this class:</p>
-<ul>
-<li><code>_platformY</code>: This will represent the current vertical position of the view.</li>
-<li><code>ThisCenter</code>: This is going to represent the center of the item which we are offsetting.</li>
-<li><code>CenterY</code>: This represents the center of the screen.</li>
-<li><code>ParallaxOffsetY</code>: This is the main property we are going to manipulate to control the vertical position of the parallax item. Based on how far <code>ThisCenter</code> is from <code>CenterY</code>, we're going to adjust this to offset the item and create the parallax effect.</li>
-</ul>
-<p>Let's also talk about the methods (and method declarations):</p>
-<ul>
-<li><code>ConfigurePlatform</code>: This is called from the constructor and will set up the necessary platform specific pieces to make this work.</li>
-<li><code>CalculateCenter</code>: This will be called to calculate where on the screen the center of the item is, so that we know how far from the center of the screen it is and consequently how much it should be offset.</li>
-<li><code>OnScrolled</code>: This will be called when the item is scrolled so that the offset can be calculated. It's <code>virtual</code> because it will need to be overridden, so that the child class can apply the <code>ParallaxOffsetY</code> to whatever view it needs to after the calculations have completed.</li>
-</ul>
-<p>Note also the <code>_denominator</code> field. This is used as a scaling factor to control the extent of the effect. It will be set in the <code>ConfigurePlatform</code> method as it will be different on each platform, but we could make this a configurable value to make the pronouncement of the effect controllable.</p>
-<p>With the <code>ParallaxItemView</code> done, the next thing is to create the <code>ParallaxCollectionView</code>, also in the <code>Controls</code> folder:</p>
-<pre><code class="language-csharp">namespace ParallaxCollection.Controls;
-
-public class ParallaxCollectionView : CollectionView
-{
-    protected override void OnScrolled(ItemsViewScrolledEventArgs e)
-    {
-        base.OnScrolled(e);
-
-        var vte = (IVisualTreeElement)this;
-
-        var visualItems = vte.GetVisualChildren();
-
-        foreach (var item in visualItems)
-        {
-            if (item is ParallaxItemView parallaxItem)
-            {
-                parallaxItem.OnScrolled();
-            }
-        }
-    }
-}
-</code></pre>
-<p>This is fairly straightforward. It subclasses <code>CollectionView</code> and overrides the <code>OnScrolled</code> method. Every time the <code>CollectionView</code> is scrolled, it will cast itself to <code>IVisualTreeElement</code> so that it can get the child views. Then, each of these is checked to see if it's an instance of <code>ParallaxItemView</code>, and if so, the <code>OnScrolled</code> method is called.</p>
-<p>That's all the shared functionality complete, so with that out the way, we can take a look at the platform specifics.</p>
-<h2 id="android">Android</h2>
-<p>In the <code>Platforms/Android</code> folder, create a folder called <code>Controls</code>, and in here, add the partial implementation of the <code>ParallaxItemView</code>. I've put mine in a file called <code>ParallaxItemView.Android.cs</code>, but it's important to ensure it uses the same class name and namespace:</p>
-<pre><code class="language-csharp">using Microsoft.Maui.Handlers;
-
-namespace ParallaxCollection.Controls;
-
-public partial class ParallaxItemView
-{
-    partial void ConfigurePlatform()
-    {
-    }
-
-    partial void CalculateCentre()
-    {
-        ThisCenter = _platformY + (Height / 2);
-    }
-}
-</code></pre>
-<p>You can see here that we've started with partial implementations of the methods defined in the shared class. The <code>CalculateCenter</code> method is easy - it calculates the value for the center of the view as the <code>_platformY</code> position plus half the height of the view. The Y position is the distance from the top of the screen to the top of the view, so adding half the height of the view gives us the center of the view.</p>
-<p><figure><img src="/images/posts/parallax-android1.png" alt="platformY is the distance from the top of the screen to the top of the view, and ThisCenter (the center of the view) is calculated by adding half the height of the view"  style="max-width:100%;height:auto;" /><figcaption style="margin-left:auto;margin-right:auto;font-style:italic;text-align:center;">platformY is the distance from the top of the screen to the top of the view, and ThisCenter (the center of the view) is calculated by adding half the height of the view</figcaption></figure>
-_<em>platformY is the distance from the top of the screen to the top of the view, and ThisCenter (the center of the view) is calculated by adding half the height of the view</em></p>
-<p>Now we need to flesh out the <code>ConfigurePlatform</code> method, so let's start with two easy things: setting the values for <code>_denominator</code> and <code>CenterY</code>.</p>
-<pre><code class="language-csharp">partial void ConfigurePlatform()
-{
-    _denominator = 10;
-    CenterY = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density / 2;
-
-}
-</code></pre>
-<p>These are straightforward - <code>_denominator</code> is an arbitrary value (worked out in my case by trial and error, but could be whatever works for you on Android). We'll set a different value for iOS as it behaves differently, and talk about it a little more in the Challenges section at the end.</p>
-<p>The next line sets the <code>CenterY</code> value, which represents the center of the screen, using the cross-platform <code>DeviceDisplay.MainDisplayInfo</code> API from .NET MAUI (see <a href="https://learn.microsoft.com/dotnet/maui/platform-integration/device/display?view=net-maui-8.0">the docs</a>) to get the height and density of the screen. <code>Height</code> gives the total pixels, and dividing it by the <code>Density</code> (pixels per unit), gets the height of the display in <a href="https://learn.microsoft.com/previous-versions/xamarin/xamarin-forms/creating-mobile-apps-xamarin-forms/summaries/chapter05#pixels-points-dps-dips-and-dius">device independent units (DIUs)</a>.</p>
-<p>The last step is to get the position of the view to set the <code>_platformY</code> value. Unfortunately we can't just use the <code>Y</code> property of the view, as this will be relative to the parent (in this case the <code>ParallaxCollectionView</code>) and not the screen. But as the view is derived from <code>ContentView</code>, which maps to the <code>View</code> type on Android, there are some useful platform APIs we can use instead. First, we can use the <a href="https://developer.android.com/reference/android/view/View#getLocationOnScreen(int[])"><code>GetLocationOnScreen</code></a> method to get the view's position relative to the screen. And second, we can use the <a href="https://developer.android.com/reference/android/view/View#getViewTreeObserver()"><code>ViewTreeObserver</code></a> to subscribe to the <code>ScrollChanged</code> event, and update <code>_platformY</code> whenever the position changes.</p>
-<p><code>GetLocationOnScreen</code> returns an array of <code>int</code> with two values - one for <code>x</code> and one for <code>y</code>. So all we need to do is grab the <code>y</code> value and set <code>_platformY</code>. You can see the full code for the <code>ConfigurePlatform</code> method here:</p>
-<pre><code class="language-csharp">partial void ConfigurePlatform()
-{
-    _denominator = 10;
-    CenterY = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density / 2;
-
-    ContentViewHandler.Mapper.AppendToMapping(&quot;parallax&quot;, (handler, view) =&gt;
-    {
-        if (view is ParallaxItemView pView)
-        {
-            handler.PlatformView.ViewTreeObserver!.ScrollChanged += (s, e) =&gt;
-            {
-                int[] location = new int[2];
-                handler.PlatformView.GetLocationOnScreen(location);
-                int y = location[1];
-
-                pView._platformY = y;
-            };
-        }
-    });
-}
-</code></pre>
-<p>The <code>CalculateCenter</code> and <code>OnScrolled</code> methods already do the rest of the work - once we've got the correct value for <code>_platformY</code>, we call <code>CalculateCenter()</code> to get the correct value for the center. And then the rest of the <code>OnScrolled</code> method calculates and sets the <code>OffsetParallaxY</code> value.</p>
-<p>Which means that this is all the code we need on Android, so with that done we can move on to iOS.</p>
-<h2 id="ios">iOS</h2>
-<p>iOS works a little differently than Android, but we can start the same way but adding the partial implementation to the <code>Platforms/iOS/Controls</code> folder:</p>
-<pre><code class="language-csharp">using Microsoft.Maui.Handlers;
-
-namespace ParallaxCollection.Controls;
-
-public partial class ParallaxItemView
-{
-
-    partial void ConfigurePlatform()
-    {
-        _denominator = 3;
-        CenterY = 160;
-    }
-
-    partial void CalculateCentre()
-    {
-    }
-}
-</code></pre>
-<p>Be sure to use the same namespace and class name. In the <code>ConfigurePlatform</code> method, we've set a value for <code>_denominator</code>, but rather than obtaining the center of the screen programmatically, we're using a fixed value. For iOS, this is much easier than trying to get the value from the API, and iOS provides a fixed set of device specific resolutions (in points or DIUs). You can read more about these in the documentation, although I found <a href="https://www.appmysite.com/blog/the-complete-guide-to-iphone-screen-resolutions-and-sizes/">a nice write-up here</a> too.</p>
-<p>To improve this, we would want to get the device model and set this accordingly (see Challenges section below), but for now this works for our limited use case.</p>
-<p>The next step is to obtain the position of the view. This is not as straightforward as on Android; on iOS, <code>ContentView</code> maps to <code>UIView</code>, and its position is only ever relative to the parent view, and not the screen. But we can use the <a href="https://learn.microsoft.com/dotnet/api/uikit.uiview.convertpointtoview?view=xamarin-ios-sdk-12">iOS API</a> to obtain the position on-screen using the <code>ConvertPointToView</code> method. <code>ConvertPointToView</code> (on the <code>UIView</code> class) returns a <code>CGPoint</code> which contains <code>X</code> and <code>Y</code> values (<code>CGPoint</code> can be considered similar to a <code>Vector2</code> in .NET, although they are conceptually different).</p>
-<p>To use this, we need to cast the view to the native <code>UIView</code>, then call the <code>ConvertPointToView</code> method, passing the view's location bounds (which is also a <code>CGPoint</code>) as a parameter. This will convert the position from the view's coordinate system to the screen's coordinate system. From here we can get the <code>Y</code> value, and divide it by the density to get the position in DIUs.</p>
-<p>The complete code for the iOS implementation is here:</p>
-<pre><code class="language-csharp">using CoreGraphics;
-using UIKit;
-
-namespace ParallaxCollection.Controls;
-
-public partial class ParallaxItemView
-{
-    private readonly double _density = DeviceDisplay.MainDisplayInfo.Density;
-
-    partial void ConfigurePlatform()
-    {
-        _denominator = 3;
-        CenterY = DeviceDisplay.MainDisplayInfo.Height / DeviceDisplay.MainDisplayInfo.Density / 2;
-    }
-
-    partial void CalculateCentre()
-    {
-        CalculatePosition();
-        ThisCenter = _platformY + (Height / 2);
-    }
-
-    private void CalculatePosition()
-    {
-        var location = new CGPoint();
-        if (this.Handler?.PlatformView is UIView platformView)
-        {
-            location = platformView.ConvertPointToView(platformView.Bounds.Location, null);
-        }
-
-        _platformY = (int)(location.Y / _density);
-    }
-}
-</code></pre>
-<p>This completes the implementation, so with both the iOS and Android implementations complete, we can update our UI to use the new controls.</p>
-<h2 id="result">Result</h2>
-<p>Now that we've got an implementation for <code>ParallaxItemVeiw</code> on iOS and Android, we can update the hero card to inherit this instead of <code>ContentView</code> directly, and override the <code>OnScrolled</code> method to adjust the position of the image.</p>
-<pre><code class="language-csharp">using Maui.BindableProperty.Generator.Core;
-
-namespace ParallaxCollection.Controls;
-
-public partial class HeroCard : ParallaxItemView
-{
-    public HeroCard()
-    {
-        InitializeComponent();
-        BindingContext = this;
-    }
-
-    public override void OnScrolled()
-    {
-        base.OnScrolled();
-        HeroImageImage.TranslationY = ParallaxOffsetY;
-    }
-
-    /// ..
-}
-</code></pre>
-<p>Remember that the <code>ParallaxCollectionView</code> will check all its children to see if they are an instance of <code>ParallaxItemView</code>, and if they are will call this method. The platform implementations we've just created will set a value for <code>ParallaxOffsetY</code> when we call the <code>base</code> method, and here assign that offset to the <code>HeroImageImage</code> (note there's a <code>HeroLogoImage</code> and a <code>HeroImageImage</code> - we could apply an offset to both - see Challenges section).</p>
-<p>All that remains is to replace the <code>CollectionView</code> in <code>MainPage</code> with our new <code>ParallaxCollectionView</code>. As <code>ParallaxCollectionView</code> subclasses <code>CollectionView</code>, it's just a straight swap.</p>
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-&lt;ContentPage xmlns=&quot;http://schemas.microsoft.com/dotnet/2021/maui&quot;
-             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
-             xmlns:vm=&quot;clr-namespace:ParallaxCollection.ViewModels;assembly=ParallaxCollection&quot;
-             xmlns:controls=&quot;clr-namespace:ParallaxCollection.Controls;assembly=ParallaxCollection&quot;
-             x:DataType=&quot;vm:MainViewModel&quot;
-             x:Class=&quot;ParallaxCollection.MainPage&quot;&gt;
-
-    &lt;Grid&gt;
-        &lt;controls:ParallaxCollectionView ItemsSource=&quot;{Binding Heroes}&quot;
-                                         VerticalOptions=&quot;Center&quot;
-                                         x:Name=&quot;HeroesCollection&quot;&gt;
-            &lt;controls:ParallaxCollectionView.ItemTemplate&gt;
-                &lt;DataTemplate x:DataType=&quot;vm:HeroCardViewModel&quot;&gt;
-                    &lt;controls:HeroCard Background=&quot;{Binding Background}&quot;
-                                       HeroName=&quot;{Binding Name}&quot;
-                                       SecretIdentity=&quot;{Binding SecretIdentity}&quot;
-                                       HeroImage=&quot;{Binding HeroImage}&quot;
-                                       HeroLogo=&quot;{Binding LogoImage}&quot;/&gt;
-                &lt;/DataTemplate&gt;
-            &lt;/controls:ParallaxCollectionView.ItemTemplate&gt;
-        &lt;/controls:ParallaxCollectionView&gt;
-    &lt;/Grid&gt;
-
-&lt;/ContentPage&gt;
-</code></pre>
-<TipContainer >
-<p><strong>Note</strong><br/> It's actually not necessary to use <code>controls:ParallaxCollectionView</code> inside the view (i.e. for the <code>ItemTemplate</code> as I've done here). <code>CollectionView</code> works fine too, but I think it helps keep it more consistent to do it this way.</p>
-</TipContainer>
-<p>The changes here are minimal - the <code>ParallaxItemView</code> and <code>ParallaxCollectionView</code> do all the heavy lifting, so all we've done here is include the <code>controls</code> namespace and switch the references from <code>CollectionView</code> to <code>ParallaxCollectionView</code> (we didn't have to change anything on <code>HeroCard</code> because we've already updated it to inherit <code>ParallaxItemView</code>).</p>
-<p>If we run the app now, we see the scrolling effect we're after:</p>
-<p><figure><img src="/images/posts/android-parallax.gif" alt="The parallax effect on Android"  style="max-width:100%;height:auto;" /><figcaption style="margin-left:auto;margin-right:auto;font-style:italic;text-align:center;">The parallax effect on Android</figcaption></figure>
-<em>The parallax effect on Android</em></p>
-<p><figure><img src="/images/posts/ios-parallax.gif" alt="The parallax effect on iOS"  style="max-width:100%;height:auto;" /><figcaption style="margin-left:auto;margin-right:auto;font-style:italic;text-align:center;">The parallax effect on iOS</figcaption></figure>
-<em>The parallax effect on iOS</em></p>
-<h2 id="challenges">Challenges</h2>
-<p>This is a neat effect that we can use (while being careful not to overuse) to add some depth to our apps. This is very much a demo though; if you wanted to use this in a production app, there are some improvements you should consider. If you like this and want to take it a little further, here are some challenges you can take on to take this to the next level.</p>
-<ul>
-<li><strong>Other OSes:</strong> This currently only works on iOS and Android. See if you can get it working on macOS and Windows.</li>
-<li><strong>Shadows:</strong> To add an extra dimension to the depth, we could create a shadow of the image and insert it as a layer between the image and the card.</li>
-<li><strong>Configurable offset:</strong> With this approach, if I wanted to adjust the offset, I would use a modifier on the <code>ParallaxOffsetY</code> (more on this below), but we could consider making denominator configurable.</li>
-<li><strong>Multiple layers:</strong> Right now there are two layers - the foreground and the background. We could add more - an easy way would be to add a modifier to <code>ParallaxOffsetY</code> before applying it to a view, a harder way would be to make it reusable by adding some kind of layer property to the <code>ParallaxItemView</code> which already has the modifier. This could result in unnecessary calculations if the layers aren't in use, but the bigger challenge for us as developers is more likely keeping the effect subtle. When implementing a cool effect like this, it's tempting to make it pronounced so the whole world can see, but for something like this it's important to keep it barely noticeable. If in doubt, consult with your friendly neighbourhood UI expert 😉.</li>
-<li><strong>Better handling for <code>CenterY</code> on iPhone:</strong> This is currently using an arbitrary value, but we could get the device model and retrieve the center from a dictionary of known pixel heights for each device.</li>
-<li><strong>Find and implement your own:</strong> Find and implement a cool design on Dribble, or replicate the effect from another app you like.</li>
-</ul>
-]]></content:encoded>
-      </item>
-<item>
         <title>Passthrough Behavior: Attaching things where they don&#39;t belong</title>
         <link>https://goforgoldman.com/posts/passthrough-behavior</link>
         <guid isPermaLink="true">https://goforgoldman.com/posts/passthrough-behavior</guid>
@@ -3066,252 +2674,6 @@ public partial class HeroCard : ParallaxItemView
 <p>Using this passthrough behavior you can have your cake and eat it! You get all the flexibility of building custom controls using cross-platform .NET MAUI APIs while retaining the ability to use extensions intended for built-in controls.</p>
 <p>Will you use this in your projects? Do you have a better approach? Let me know your feedback in the comments!</p>
 <p>Check out the <a href="https://github.com/matt-goldman/PassthroughBehaviorDemo">full code sample here</a>.</p>
-]]></content:encoded>
-      </item>
-<item>
-        <title>.NET MAUI UI July - 2024</title>
-        <link>https://goforgoldman.com/posts/mauiuijuly-24</link>
-        <guid isPermaLink="true">https://goforgoldman.com/posts/mauiuijuly-24</guid>
-        <pubDate>Sun, 19 May 2024 00:00:01 GMT</pubDate>
-        <description>
-          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/maui-ui-july-bg.png" alt=".NET MAUI UI July - 2024" />
-          Announcing .NET MAUI UI July 2024, the third year of this community-driven event where developers share their passion for building beautiful .NET MAUI user interfaces.]]>
-        </description>
-        <category>mobile</category>
-        <category>maui</category>
-        <category>ui</category>
-        <content:encoded><![CDATA[<p>It's time for #MAUIUIJuly again!</p>
-<p>Based on an idea <a href="https://thewissen.io/introducing-xamarin-ui-july/">originally started for Xamarin by Steven Thewissen</a>, MAUI UI July is a month-long, community-driven event where anyone gets to share some of their enthusiasm and passion for .NET MAUI.</p>
-<p>This will be the third year running this event, and in previous years we've had fantastic contributions from the community, covering an incredible range of things to do with .NET MAUI. You can check out previous years' contributions here:</p>
-<ul>
-<li><a href="/posts/maui-ui-july">MAUI UI July (2022)</a></li>
-<li><a href="/posts/maui-ui-july-23">MAUI UI July (2023)</a></li>
-</ul>
-<p>Each day in July, we'll add a blog post or video to the calendar below, showcasing something cool you can do with .NET MAUI. Be sure to bookmark/favourite this post and check back every day for new content!</p>
-<p>And if you want to participate and contribute something, even better! Keep reading to see what's involved.</p>
-<h2 id="how-to-get-involved">How to Get Involved</h2>
-<p>MAUI UI July is open to community contributions, and is an opportunity to share your passion and knowledge with the world. All you have to do is pick a topic and create a blog post or video, and pick a day in July to release it. If you want to participate, comment below, shout out on socials using the hashtags #dotnetmaui and #MAUIUIJuly or ping me directly (I'm on Twitter/&quot;X&quot;, LinkedIn, and Mastodon - links are in the sidebar on the left), saying which day of the month you want to release your post or video on. Once you've picked a date I'll add your name to the list below to reserve your spot.</p>
-<p>From there, just get started on your content! Keep the following in mind:</p>
-<ol>
-<li>The topic must be related to UI in .NET MAUI</li>
-<li>Your blog post or video must be in English</li>
-<li>Your content should indicate what level it is pitched at (e.g., beginner or advanced)</li>
-<li>Link back to this post in your blog post or in the description of your video</li>
-<li>Publish your blog post or video on the date according to the list below</li>
-<li>Share your video or blog post on socials, using the hashtags #dotnetmaui and #MAUIUIJuly</li>
-</ol>
-<p>That's it! Looking forward to seeing what you all come up with. :)</p>
-<h2 id="what-should-my-content-cover">What should my content cover?</h2>
-<p>Completely up to you! As long as it's related to .NET MAUI UI, feel free to be as creative as you like. Some common topics people like for this kind of thing include:</p>
-<ul>
-<li>Replicate the UI of a well known app (see <a href="/posts/outlook-clone">this post</a> for example)</li>
-<li>Pick a fun or interesting design from <a href="https://dribbble.com">Dribbble</a> and show how you can build it with .NET MAUI</li>
-<li>Deep dive into a .NET MAUI UI feature</li>
-<li>Build a popular UI control that doesn't come in the box (like a <a href="https://blogs.xgenoapps.com/post/2022/07/23/maui-bottom-sheet">bottom sheet</a> for example)</li>
-</ul>
-<p>These are just examples. If you think something is interesting, there's a good chance the rest of the community will want to see you explain it.</p>
-<h2 id="net-maui-ui-july-schedule">.NET MAUI UI July Schedule</h2>
-<table class="table">
-<thead>
-<tr>
-<th>Date</th>
-<th>Person</th>
-<th>Content</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>Matt Goldman</td>
-<td>📰 <a href="/posts/parallax-collection/">Adding a parallax effect to CollectionView</a></td>
-</tr>
-<tr>
-<td>2</td>
-<td>David Ortinau</td>
-<td>📰 <a href="https://dev.to/davidortinau/all-the-lists-in-net-maui-33bd">All the lists in .NET MAUI</a></td>
-</tr>
-<tr>
-<td>3</td>
-<td>Luis Beltran</td>
-<td>📰 <a href="https://dev.to/icebeam7/animated-splash-screen-in-net-maui-android-2ipg">Animated splash screen in .NET MAUI Android</a></td>
-</tr>
-<tr>
-<td>4</td>
-<td>Vladislav Antonyuk</td>
-<td>📰 <a href="https://vladislavantonyuk.github.io/articles/Various-methods-for-barcode-scanning-in-.NET-MAUI/">Barcode scanning with .NET MAUI</a></td>
-</tr>
-<tr>
-<td>5</td>
-<td>David Platt</td>
-<td>📺 <a href="https://www.youtube.com/watch?v=PGdihJt1pzA">The Joy of UX in .NET MAUI: An MBTA Case Study</a></td>
-</tr>
-<tr>
-<td>6</td>
-<td>Available</td>
-<td></td>
-</tr>
-<tr>
-<td>7</td>
-<td>Sebastian Jensen</td>
-<td>📰 <a href="https://medium.com/@@tsjdevapps/create-a-gauge-control-using-skiasharp-in-net-maui-ce418e6320fb">Creating a Gauge Control with SkiaSharp in .NET MAUI</a></td>
-</tr>
-<tr>
-<td>8</td>
-<td>Roman Jasek</td>
-<td>📰 <a href="https://www.riganti.cz/en/blog-posts/maui-environment-ribbon-intro-and-basic-ui-part-1">MAUI Environment Ribbon Part 1 (links to parts 2 &amp; 3)</a></td>
-</tr>
-<tr>
-<td>9</td>
-<td>Mark Allibone</td>
-<td>📰 <a href="https://mallibone.com/post/maui-reactor-fit">Getting fit with MAUIReactor</a></td>
-</tr>
-<tr>
-<td>10</td>
-<td>Daniel Quintero Henao</td>
-<td>📺 <a href="https://www.youtube.com/watch?v=bw5APWXf1AI">Custom animations in .NET MAUI</a> (Spanish)</td>
-</tr>
-<tr>
-<td>11</td>
-<td>Matthew Robbins &amp; SSW TV</td>
-<td>📺 <a href="https://youtu.be/CfodwPUSfSg?si=qmKwSkAnVhynGnuX">Building Red Point - Unity + .NET MAUI Rock CLimbing app</a></td>
-</tr>
-<tr>
-<td>12</td>
-<td>Anton Polkanov</td>
-<td>📺 <a href="https://www.youtube.com/watch?v=KaRMUa3Sg38">Getting started with Android bindings in .NET MAUI</a></td>
-</tr>
-<tr>
-<td>13</td>
-<td>Michael Stonis</td>
-<td>📰 <a href="https://www.ston.is/what-is-this-sheet-a-bottom-sheet-for-maui/">What is this sheet? A bottom sheet for .NET MAUI</a></td>
-</tr>
-<tr>
-<td>14</td>
-<td>Michael Stonis</td>
-<td>📰 <a href="https://www.ston.is/componentizer4k-in-page-navigation-for-.net-maui/">In-page Navigation for .NET MAUI</a></td>
-</tr>
-<tr>
-<td>15</td>
-<td>Nick Kovalsky</td>
-<td>📰 <a href="https://taublast.github.io/posts/MauiJuly/">The Quest to Create Drawn .NET MAUI Apps</a></td>
-</tr>
-<tr>
-<td>16</td>
-<td>Roman Jasek</td>
-<td>📰 <a href="https://www.riganti.cz/en/blog-posts/maui-environment-ribbon-ui-customization-part-4">MAUI Environment Ribbon Part 4 (links to parts 5 &amp; 6)</a></td>
-</tr>
-<tr>
-<td>17</td>
-<td>Diego Rivero</td>
-<td>📰 <a href="https://grialkit.com/blog/emojis-in-net-maui">Emojis in .NET MAUI</a></td>
-</tr>
-<tr>
-<td>18</td>
-<td>Julian Ewers-Peters</td>
-<td>📰 <a href="https://blog.ewers-peters.de/white-labeling-net-maui-apps">White-labelling .NET MAUI apps</a></td>
-</tr>
-<tr>
-<td>19</td>
-<td>Matt Goldman</td>
-<td>📰 <a href="https://goforgoldman.com/posts/passthrough-behavior/">Passing through attached behaviors to a child control</a></td>
-</tr>
-<tr>
-<td>20</td>
-<td>Shaun Lawrence</td>
-<td>📰 <a href="https://blog.bijington.com/2024/07/31/creating-a-sprite-editor.html">Creating a Sprite editor in .NET MAUI</a></td>
-</tr>
-<tr>
-<td>21</td>
-<td>Nick Alonge</td>
-<td>📰 <a href="https://dev.to/nick_alonge/using-local-browser-storage-in-net-maui-blazor-hybrid-3loe">Using browser local storage with .NET MAUI Blazor hybrid</a></td>
-</tr>
-<tr>
-<td>22</td>
-<td>Sam Basu</td>
-<td>📰 <a href="https://www.telerik.com/blogs/web-styles-native-apps">Web Styles in Native Apps</a></td>
-</tr>
-<tr>
-<td>23</td>
-<td>David Nsai</td>
-<td>📰 <a href="https://medium.com/@@nsaidave/creating-an-engaging-onboarding-experience-in-net-maui-using-devexpress-a948592df09e">Creating engaging onboarding experiences with DevExpress</a></td>
-</tr>
-<tr>
-<td>24</td>
-<td>Héctor Pérez</td>
-<td>📰 <a href="https://devs.school/net-maui-data-template-selector/">Apply Different Item Templates in One CollectionView</a></td>
-</tr>
-<tr>
-<td>25</td>
-<td>Pavle Davitković</td>
-<td>TBA</td>
-</tr>
-<tr>
-<td>26</td>
-<td>Farshad Momtaz</td>
-<td>📰 <a href="https://dev.to/fdmomtaz/my-journey-in-making-a-game-with-net-maui-4hjk">Building a Sudoku game in .NET MAUI</a></td>
-</tr>
-<tr>
-<td>27</td>
-<td>Adolfo Marinucci</td>
-<td>📺 <a href="https://www.youtube.com/watch?v=q-oM2PO0ZtU">Building a task management app with MAUIReactor</a></td>
-</tr>
-<tr>
-<td>28</td>
-<td>Daniel Monettelli</td>
-<td>📰 <a href="https://danielmonettelli.github.io/posts/rantiy-mobile-app-with-dotnetmaui-part-1/">Rantiy Mobile app with .NET MAUI, Part 1</a></td>
-</tr>
-<tr>
-<td>29</td>
-<td>David Ortinau</td>
-<td>📰 <a href="https://dev.to/davidortinau/chasing-curiosity-4ip2">Chasing Curiosity</a></td>
-</tr>
-<tr>
-<td>30</td>
-<td>Tanaka Mawere</td>
-<td>Making an InDrive/Uber clone using MAUI</td>
-</tr>
-<tr>
-<td>31</td>
-<td>Brandon Minnick</td>
-<td>📰 <a href="https://codetraveler.io/2024/07/29/upgrading-from-xamarin-communitytoolkit-markup-to-communitytoolkit-maui-markup/">Upgrading from Xamarin.CommunityToolkit.Markup to CommunityToolkit.Maui.Markup</a></td>
-</tr>
-</tbody>
-</table>
-<p>I hope you enjoy .NET MAUI UI July!</p>
-]]></content:encoded>
-      </item>
-<item>
-        <title>The Status Quo Bias and Overcorrection</title>
-        <link>https://goforgoldman.com/posts/status-quo-overcorrection</link>
-        <guid isPermaLink="true">https://goforgoldman.com/posts/status-quo-overcorrection</guid>
-        <pubDate>Sat, 13 Apr 2024 00:00:01 GMT</pubDate>
-        <description>
-          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/the-status-quo-bias.png" alt="The Status Quo Bias and Overcorrection" />
-          Exploring the status quo bias in decision-making and the risks of overcorrection when trying to avoid this cognitive bias in business and technology choices.]]>
-        </description>
-        <category>management</category>
-        <category>leadership</category>
-        <category>architecture</category>
-        <category>design</category>
-        <content:encoded><![CDATA[<p>In my <a href="/posts/platinum-hammer/">last post</a> I discussed cognitive biases in decision making and introduced the concept of the platinum hammer. An extension of the well-known golden hammer, the platinum hammer is a predilection for the latest new thing as opposed to the familiar. None of us are immune to cognitive biases, but the more we know about them, the more we can avoid them through careful reflection and self-awareness, and in this post I want to discuss a related cognitive bias - the Status Quo Bias.</p>
-<h2 id="the-status-quo-bias">The Status Quo Bias</h2>
-<p>Research has shown that people disproportionately favour the 'do nothing' approach, in everything from business strategy to personal finance and health. This phenomenon is known as <a href="https://scholar.harvard.edu/files/rzeckhauser/files/status_quo_bias_in_decision_making.pdf">The Status Quo Bias</a> and is, in a sense, closely related to the golden hammer - it's about a predilection for sticking with the comfortable and well-known. The topic is well researched and discussed, and consequently well understood by many people. There is a wealth of information about how to spot this tendency in yourself, and how to mitigate it.</p>
-<h2 id="mitigating-the-status-quo-bias">Mitigating the Status Quo Bias</h2>
-<p>As with any cognitive bias, the first and most important step is recognising it - without self-awareness there is no hope, but there are strategies for avoiding over-reliance on our comfortable defaults. A common approach is to <a href="https://time.com/45995/want-to-succeed-you-should-seriously-consider-do-nothing/">frame 'do nothing' as a choice</a>, thereby making choosing to maintain the status quo an active decision rather than a passive one. This can often motivate people to more rigorously pursue a better option.</p>
-<p>This is why 'do nothing' is often included in business cases, something I always do, as it forces us to evaluate the costs of this approach. The costs (often <a href="https://www.investopedia.com/terms/o/opportunitycost.asp">opportunity cost</a>) associated with the status quo are not immediately apparent, but by weighing them against the alternatives, these hidden costs can be surfaced. I have been involved in organisations where changes that were initially dismissed were later pursued after this approach.</p>
-<p>Another common approach is to <a href="https://online.wharton.upenn.edu/blog/status-quo-bias/">consider 'do nothing' as a default negative</a>. The Status Quo Bias is fuelled by <a href="https://thedecisionlab.com/biases/loss-aversion">loss aversion</a>, meaning that the perceived potential loss associated with change carries more weight than the perceived potential gain, so inherently considering 'do nothing' as a loss can help to overcome this.</p>
-<h2 id="overcorrection">Overcorrection</h2>
-<p>While this is a valuable strategy, there is a problem with this approach. I mentioned above that the Status Quo Bias is well known and understood by many people. A consequence of this is that some people can have a tendency to over-correct, favouring change as the default and dismissing the status quo as a viable option altogether. The problem here is that sometimes when we frame 'do nothing' as an active choice, we forget to frame it as a <em>viable</em> choice.</p>
-<blockquote class="blockquote">
-<p>Doing something is better than doing nothing.</p>
-</blockquote>
-<p><em>An actual quote from a real executive I have worked with</em></p>
-<p>There are several problems associated with this overcorrection. The most obvious is that it can lead to regression - the new solution could be worse than the status quo. This is often not the case however; more often, it leads to an outcome that is only slightly less sub-optimal than the status quo, an improvement that is also often completely disproportionate to the investment made in the change. While this is obviously inherently wasteful, it also results in greater opportunity cost.</p>
-<p>I have seen this play out multiple times in my career; in fact, I have worked for two companies that spent <em>millions</em> on huge software projects and associated organisational change management, simply because the current solution wasn't up to scratch. In both cases, the new solution was inarguably superior, but orders of magnitude less superior than the associated cost. And more importantly, it closed the door on better opportunities.</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>When considering all available courses of action, it's critical to mitigate the Status Quo Bias by evaluating the 'do nothing' option objectively and critically, rather than letting it take priority as a comfortable default. This means treating it with equal consideration as other options, and arguably dismissing it out of hand is as bad as ignoring the Status Quo Bias altogether.</p>
-<p>While the Status Quo Bias needs to be avoided, there are certainly situations, where upon careful consideration of all available courses of action, the status quo or 'do nothing' approach is the right choice. That doesn't mean it has to be the right choice forever - note my use of &quot;<em>all available</em> courses of action&quot;; if there are no better options than the status quo at the time, that doesn't mean that better options may not become available in the future. The very fact that alternatives have been considered suggests there is a problem or area for improvement, and if a thorough analysis indicates that the status quo is the best option, this calls for vigilance and looking out for new opportunities. This is inherently a valid strategy for mitigating the Status Quo Bias, and a better one than leaping to a potentially worse decision purely for the sake of change.</p>
-<p>I'm sure we've all been involved in projects driven more by the desire for change than by an objective improved outcome. Do you have any stories to share about change for change's sake? What methods have you found effective in avoiding overcorrection?</p>
 ]]></content:encoded>
       </item>
 </channel>

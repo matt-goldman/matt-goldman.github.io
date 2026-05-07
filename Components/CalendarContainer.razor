@@ -84,7 +84,15 @@
                                     @entry.ContentName
                                 </div>
                             }
-                            <div class="hidden sm:block text-[10px] text-gray-500 dark:text-gray-400 truncate mt-1">@entry.Person</div>
+
+                            @{
+                                string personClass = "hidden sm:block text-[12px] text-gray-500 dark:text-gray-400 truncate mt-1";
+                                if (entry.Person != null && entry.Person != "Available")
+                                {
+                                    personClass += " font-bold";
+                                }
+                            }
+                            <div class="@personClass">@entry.Person</div>
                         </div>
                     }
                 </div>
