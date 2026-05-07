@@ -45,7 +45,7 @@ That's it! Looking forward to seeing what you all come up with. :)
 
 ## .NET MAUI UI July Schedule
 
-:::calendar SourceUrl=http://localhost:5187/data/mauiuijuly-2022.csv Year=2022
+:::calendar SourceUrl=https://raw.githubusercontent.com/matt-goldman/matt-goldman.github.io/refs/heads/main/data/mauiuijuly-2022.csv Year=2022
 :::
 
 I hope you enjoy .NET MAUI UI July!

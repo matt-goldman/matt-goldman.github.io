@@ -54,7 +54,7 @@ These are just examples. If you think something is interesting, there's a good c
 
 ## .NET MAUI UI July Schedule
 
-:::calendar SourceUrl=http://localhost:5187/data/mauiuijuly-2026.csv Year=2026
+:::calendar SourceUrl=https://raw.githubusercontent.com/matt-goldman/matt-goldman.github.io/refs/heads/main/data/mauiuijuly-2026.csv Year=2026
 :::
 
 I hope you enjoy .NET MAUI UI July!
