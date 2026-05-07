@@ -19,7 +19,7 @@ This will be the fourth year running this event, and in previous years we've had
 * [MAUI UI July (2022)](/posts/maui-ui-july)
 * [MAUI UI July (2023)](/posts/maui-ui-july-23)
 * [MAUI UI July (2024)](/posts/mauiuijuly-24/)
-* [MAUI UI July (2025)](/posts/mauiuijuly-26/)
+* [MAUI UI July (2025)](/posts/mauiuijuly-25/)
 
 Each day in July, we'll add a blog post or video to the calendar below, showcasing something cool you can do with .NET MAUI. Be sure to bookmark/favourite this post and check back every day for new content!
 
@@ -54,40 +54,7 @@ These are just examples. If you think something is interesting, there's a good c
 
 ## .NET MAUI UI July Schedule
 
-| Date | Person    | Content |
-| ---- | --------- | ------- |
-| 2    | Available |         |
-| 3    | Available |         |
-| 1    | Available |         |
-| 4    | Available |         |
-| 5    | Available |         |
-| 6    | Available |         |
-| 7    | Available |         |
-| 8    | Available |         |
-| 9    | Available |         |
-| 10   | Available |         |
-| 11   | Available |         |
-| 12   | Available |         |
-| 13   | Available |         |
-| 14   | Available |         |
-| 15   | Available |         |
-| 16   | Available |         |
-| 17   | Available |         |
-| 18   | Available |         |
-| 19   | Available |         |
-| 20   | Available |         |
-| 21   | Available |         |
-| 22   | Available |         |
-| 23   | Available |         |
-| 24   | Available |         |
-| 25   | Available |         |
-| 26   | Available |         |
-| 27   | Available |         |
-| 28   | Available |         |
-| 29   | Available |         |
-| 30   | Available |         |
-| 31   | Available |         |
-
-
+:::calendar SourceUrl=http://localhost:5187/data/mauiuijuly-2026.csv Year=2026
+:::
 
 I hope you enjoy .NET MAUI UI July!

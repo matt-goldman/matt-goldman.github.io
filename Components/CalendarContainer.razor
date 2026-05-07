@@ -1,4 +1,5 @@
 @inject HttpClient Http
+@inject IJSRuntime JS
 
 <div class="mx-auto w-full max-w-5xl mb-6">
     <div class="flex items-center justify-between mb-4 gap-2 flex-wrap">
@@ -44,8 +45,15 @@
 
             @foreach (var entry in _calendarEntries)
             {
-                <div class="aspect-square border border-gray-200 dark:border-gray-700 rounded-md p-1 sm:p-2 flex flex-col bg-white dark:bg-gray-800 overflow-hidden">
-                    <div class="text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-200">@entry.DayOfMonth</div>
+                var isToday = IsToday(entry);
+                <div class="@GetCellClass(isToday)">
+                    <div class="flex items-start justify-between gap-1">
+                        <div class="text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-200">@entry.DayOfMonth</div>
+                        @if (isToday)
+                        {
+                            <span class="shrink-0 inline-flex items-center rounded-full bg-blue-600 text-white text-[8px] sm:text-[10px] font-semibold uppercase tracking-wide px-1.5 py-0.5">New!</span>
+                        }
+                    </div>
                     @if (_isLoading)
                     {
                         <div class="flex-1 mt-1 space-y-1 animate-pulse">
@@ -62,6 +70,13 @@
                                    class="block text-[10px] sm:text-xs leading-tight text-blue-600 dark:text-blue-300 hover:underline line-clamp-2 sm:line-clamp-3">
                                     @entry.ContentName
                                 </a>
+                                @if (HasSecondary(entry))
+                                {
+                                    <a href="@entry.SecondaryUrl" target="_blank" rel="noopener"
+                                       class="hidden sm:inline-block mt-1 text-[10px] text-blue-500 dark:text-blue-400 hover:underline">
+                                        @GetSecondaryLabel(entry)
+                                    </a>
+                                }
                             }
                             else
                             {
@@ -91,8 +106,17 @@
                 <tbody>
                     @foreach (var entry in _calendarEntries)
                     {
-                        <tr class="border-b border-gray-100 dark:border-gray-800">
-                            <td class="py-2 px-2 align-top font-mono text-gray-700 dark:text-gray-300">@entry.DayOfMonth</td>
+                        var isToday = IsToday(entry);
+                        <tr class="@GetRowClass(isToday)">
+                            <td class="py-2 px-2 align-top font-mono text-gray-700 dark:text-gray-300">
+                                <div class="flex items-center gap-2">
+                                    <span>@entry.DayOfMonth</span>
+                                    @if (isToday)
+                                    {
+                                        <span class="inline-flex items-center rounded-full bg-blue-600 text-white text-[10px] font-semibold uppercase tracking-wide px-1.5 py-0.5">New!</span>
+                                    }
+                                </div>
+                            </td>
                             @if (_isLoading)
                             {
                                 <td class="py-2 px-2"><div class="h-3 bg-gray-200 dark:bg-gray-700 rounded w-32 animate-pulse"></div></td>
@@ -106,6 +130,12 @@
                                     {
                                         <a href="@entry.ContentUrl" target="_blank" rel="noopener"
                                            class="text-blue-600 dark:text-blue-300 hover:underline">@entry.ContentName</a>
+                                        @if (HasSecondary(entry))
+                                        {
+                                            <span class="text-gray-400 dark:text-gray-500"> &middot; </span>
+                                            <a href="@entry.SecondaryUrl" target="_blank" rel="noopener"
+                                               class="text-blue-500 dark:text-blue-400 hover:underline text-xs">@GetSecondaryLabel(entry)</a>
+                                        }
                                     }
                                     else
                                     {
@@ -130,6 +160,7 @@
 
     private int _resolvedYear;
     private bool _showCalendar = true;
+    private bool _viewportChecked;
     private bool _isLoading = true;
     private bool _errorOccurred;
     private string _errorMessage = string.Empty;
@@ -148,8 +179,36 @@
         ("Sunday", "S"),
     };
 
-    private void ShowCalendar() => _showCalendar = true;
-    private void ShowList() => _showCalendar = false;
+    private void ShowCalendar()
+    {
+        _showCalendar = true;
+        _viewportChecked = true; // user choice wins; don't override later
+    }
+
+    private void ShowList()
+    {
+        _showCalendar = false;
+        _viewportChecked = true;
+    }
+
+    private bool IsToday(CalendarEntry entry)
+    {
+        var today = DateTime.Now.Date;
+        return today.Year == _resolvedYear
+            && today.Month == 7
+            && today.Day == entry.DayOfMonth
+            && HasLink(entry);
+    }
+
+    private static string GetCellClass(bool isToday) =>
+        isToday
+            ? "aspect-square border-2 border-blue-500 dark:border-blue-400 ring-2 ring-blue-200 dark:ring-blue-900 rounded-md p-1 sm:p-2 flex flex-col bg-white dark:bg-gray-800 overflow-hidden"
+            : "aspect-square border border-gray-200 dark:border-gray-700 rounded-md p-1 sm:p-2 flex flex-col bg-white dark:bg-gray-800 overflow-hidden";
+
+    private static string GetRowClass(bool isToday) =>
+        isToday
+            ? "border-b border-gray-100 dark:border-gray-800 bg-blue-50 dark:bg-blue-950"
+            : "border-b border-gray-100 dark:border-gray-800";
 
     private string GetToggleClass(bool active) =>
         active
@@ -159,6 +218,13 @@
     private static bool HasLink(CalendarEntry entry) =>
         !string.IsNullOrWhiteSpace(entry.ContentUrl)
         && Uri.TryCreate(entry.ContentUrl, UriKind.Absolute, out _);
+
+    private static bool HasSecondary(CalendarEntry entry) =>
+        !string.IsNullOrWhiteSpace(entry.SecondaryUrl)
+        && Uri.TryCreate(entry.SecondaryUrl, UriKind.Absolute, out _);
+
+    private static string GetSecondaryLabel(CalendarEntry entry) =>
+        string.IsNullOrWhiteSpace(entry.SecondaryLabel) ? "Alt" : entry.SecondaryLabel;
 
     protected override async Task OnParametersSetAsync()
     {
@@ -171,7 +237,7 @@
 
         // Seed placeholder entries so the shimmer always renders 31 cells
         _calendarEntries = Enumerable.Range(1, 31)
-            .Select(d => new CalendarEntry(d, string.Empty, string.Empty, string.Empty))
+            .Select(d => new CalendarEntry(d, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty))
             .ToList();
 
         if (!Uri.TryCreate(SourceUrl, UriKind.Absolute, out var uri)
@@ -210,6 +276,31 @@
         }
     }
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender || _viewportChecked)
+        {
+            return;
+        }
+
+        _viewportChecked = true;
+
+        try
+        {
+            // Tailwind's `lg` breakpoint is 1024px. Below that, default to list view.
+            var isLargeViewport = await JS.InvokeAsync<bool>("mediaMatches", "(min-width: 1024px)");
+            if (!isLargeViewport && _showCalendar)
+            {
+                _showCalendar = false;
+                StateHasChanged();
+            }
+        }
+        catch
+        {
+            // If JS interop isn't available (e.g. prerender), fall back to the calendar default.
+        }
+    }
+
     private void SetError(string message)
     {
         _errorOccurred = true;
@@ -232,7 +323,9 @@
                 day,
                 parts[1].Trim(),
                 parts[2].Trim(),
-                parts[3].Trim()));
+                parts[3].Trim(),
+                parts.Count > 4 ? parts[4].Trim() : string.Empty,
+                parts.Count > 5 ? parts[5].Trim() : string.Empty));
         }
 
         return entries;
@@ -288,5 +381,11 @@
         return result;
     }
 
-    private record CalendarEntry(int DayOfMonth, string Person, string ContentName, string ContentUrl);
+    private record CalendarEntry(
+        int DayOfMonth,
+        string Person,
+        string ContentName,
+        string ContentUrl,
+        string SecondaryUrl,
+        string SecondaryLabel);
 }
