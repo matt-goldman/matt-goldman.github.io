@@ -216,12 +216,26 @@
             : "px-3 py-1.5 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700";
 
     private static bool HasLink(CalendarEntry entry) =>
-        !string.IsNullOrWhiteSpace(entry.ContentUrl)
-        && Uri.TryCreate(entry.ContentUrl, UriKind.Absolute, out _);
+        IsSafeLinkTarget(entry.ContentUrl);
 
     private static bool HasSecondary(CalendarEntry entry) =>
-        !string.IsNullOrWhiteSpace(entry.SecondaryUrl)
-        && Uri.TryCreate(entry.SecondaryUrl, UriKind.Absolute, out _);
+        IsSafeLinkTarget(entry.SecondaryUrl);
+
+    private static bool IsSafeLinkTarget(string? url)
+    {
+        if (string.IsNullOrWhiteSpace(url))
+        {
+            return false;
+        }
+
+        if (url.StartsWith('/') && !url.StartsWith("//"))
+        {
+            return true;
+        }
+
+        return Uri.TryCreate(url, UriKind.Absolute, out var uri)
+            && (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps);
+    }
 
     private static string GetSecondaryLabel(CalendarEntry entry) =>
         string.IsNullOrWhiteSpace(entry.SecondaryLabel) ? "Alt" : entry.SecondaryLabel;
