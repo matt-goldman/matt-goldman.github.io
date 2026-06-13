@@ -2,7 +2,7 @@
 description: "Everyone's arguing about whether the AI bubble will burst. They're asking the wrong question."
 title:  "Where AI Goes Next"
 date:   2026-06-14 00:00:01 +1000
-image:  /images/posts/Enshittification
+image:  /images/posts/where-ai-goes-next.png
 tags:   [long-form, ai, opinion, consumerisation]
 categories: [AI]
 author: Matt Goldman
