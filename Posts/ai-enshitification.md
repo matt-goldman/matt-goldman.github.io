@@ -10,91 +10,112 @@ authorTitle: Owner
 avatar: "/images/authors/mattg.png"
 ---
 
-## End of the Free Ride
-
-On the first of June 2026, [GitHub Copilot moved to usage-based billing](https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/). The community thread filled up with the predictable outrage, [somewhere north of 900 downvotes](https://github.com/orgs/community/discussions/192948), and [TechCrunch ran a piece](https://techcrunch.com/2026/05/30/what-a-joke-github-copilots-new-token-based-billing-spurs-consternation-among-devs/) quoting developers watching their bills jump from the price of a nice dinner to the price of a mortgage payment.
-
-But outrage is to be expected. The interesting part is how many people *weren't* outraged. A surprising number looked at the new pricing and said, essentially: this is fair, we just can't afford it. That's a very different complaint to "you're ripping us off." It's the sound of a subsidy ending, and a market discovering what something actually costs.
-
-That moment is what this post is about. Not whether AI is good or bad; that argument is, while tired, still raging. It's about what happens to it now that the bill has arrived.
-
-Here's where I part company with almost everyone writing about this. One camp insists the AI bubble is about to burst, that it's crypto with better PR, a mania waiting for its margin call. The other camp insists there's no bubble at all, that we're at the foot of an exponential and the only mistake is thinking too small. But both perspectives are wrong, because they've framed it as a binary.
-
-The truth is more nuanced, but also obvious to anyone who looks. The value isn't going to vaporise, and it isn't going to compound forever. It's just going to **move.** Where it moves from and to depends on your perspective, but it's moving. What looks like a bubble bursting will actually be a transfer, and the signals pointing to it are all sitting in plain sight. To see them, we need to look at the last fifteen years of consumer technology, because we've seen this exact movie before. We just keep forgetting how it ends.
-
-## We've seen this before (but not where you think)
-
-The obvious comparison is crypto, and the slightly-less-obvious one is IoT. Both get reached for because they share a shape with AI: interesting technology, a flood of money, a hype cycle, and (the bubble-bursters assume) an inevitable crash to follow. But neither is the best historical parallel, and there's one significant reason why.
-
-IoT was - well, is — a hobby. The name gives it away: "internet of things" is not a phrase serious people use to describe serious infrastructure. It's the domain of makers and tinkerers, and that's exactly what it was meant to be. Granted, there are real enterprise IoT use cases. I spent a decade in healthcare, which is a prime and frankly terrifying example, and I have a client now whose entire business is buildings intelligence. But it's *niche*, and not just in the commercial use cases, but as a hobby too. It was never a transformational technology that everyone could capitalise on.
-
-Crypto was, in my opinion, different in that the technology genuinely was interesting, only we never got to find out just _how_ interesting, because big money pumped and dumped it into a punchline before the actual use cases could breathe. Blockchain has real applications; we mostly didn't get to see them. What we got instead was a wealth-transfer machine, and unless you're a government literally printing money, when one person makes a fortune, someone else loses one. Crypto wiped out ordinary people's savings while the people gambling with the world's money got rich no matter which way it fell. *(That's a whole other discussion, and I have no interest in rehashing Taleb's* [Skin in the Game](https://www.penguin.com.au/books/skin-in-the-game-9780141982656) *here.)*
-
-Here's why both fail as parallels: **ubiquity**, and it's the same reason they're the wrong model for what happens next. Crypto and IoT stayed niche. AI didn't. AI is something anyone and everyone can use, and does. Most people are sick to death of having it shoved down their throat — that very shoehorning is a symptom of the cost pressure this whole piece is about — but it is genuinely, broadly *useful* in a way crypto and IoT never were for ordinary folks. It helps with work, with creativity, with the small administrative friction of being alive.
-
-And that's exactly why the bubble-burst crowd is wrong. Crypto and IoT could deflate without anyone much noticing because, for the ordinary person, there was nothing real underneath to miss. When the speculative money left crypto, the value left with it, because the value *was* the speculation. AI is not that. The utility is real and it's already in tens of millions of hands. You cannot have a crypto-style pop when the thing actually works and everyone is already using it. But, and this is where the no-bubble crowd is equally wrong, that doesn't mean the money sloshing around it is rational either, or that today's spend is sustainable, or that the current players keep their thrones. The froth is real. It's just that when it blows off, it won't take the substance with it.
-
-If you want a real historical parallel, one where the technology was genuinely useful, genuinely ubiquitous, and the value quietly moved somewhere nobody expected rather than evaporating, you don't want crypto or IoT. You want smartphones.
-
-## The smartphone arc
-
-Before the iPhone, the "smartphone" was an executive toy. The Nokia Communicator, the various PalmPilot derivatives. These were the form factors, and they belonged to the wealthy and the senior. They were enterprise tools, just not transformational ones.
-
-BlackBerry changed things though. The BlackBerry was an *actual* phone, a sensible one you could actually use as a phone. But through BlackBerry Enterprise Server and that beloved keyboard, it was also a real email tool. It was aspirational in a way the earlier devices weren't. Not everyone wanted one, but it *was* a status symbol.
-
-Then the iPhone made the smartphone something *everyone* wanted, and that changed personal computing entirely. I'm fond of [Steve Ballmer's 2007 interview](https://www.thurrott.com/mobile/ios/84810/steve-ballmer-right-iphone-premium) where he mocked the iPhone for lacking a keyboard and being a poor email device. The irony is that he was completely right about the thing and completely wrong about what it meant. The keyboard *was* worse for business email. It just turned out that didn't matter, because a barrier is not the same as a hard fail.
-
-What happened next is the bit that maps directly onto AI. Smartphones were easy to justify: they came on mobile plans, sometimes subsidised, and even unsubsidised they were a computer in your pocket. Then came the iPad, and the iPad was different. People bought tablets with their own money believing they'd be productivity tools, then brought them into work and demanded their employers build value around a personal purchase. The market wasn't ready. The software ecosystem didn't exist.
-
-And this is the first lesson: **the only people who made money in that gold rush were the ones selling shovels.** "Enterprise mobility" became an industry overnight. The corporate box-shifters and systems integrators pushed MDM and enterprise wifi like it was the future. None of it mattered, because the software wasn't there yet.
-
-Here's the tell, sixteen years on. In the first eight years after the iPad launched, how often did you see someone using a tablet in a meeting? And how often now? It's not zero today, but the people who do are using it with a keyboard (it's a laptop) or a stylus (the very thing Steve Jobs supposedly forbade, though he was misunderstood; "if you see a stylus, they blew it" was about *navigation*, not text input. Don't forget he killed the Newton due to mismanagement, not because he didn't like the stylus). The tablet didn't become the productivity revolution anyone sold. It became a personal device that occasionally does work, on the user's terms, with the user's accessories.
-
-That's the smartphone arc: a technology sold *to* enterprise, that found its real value *with individuals*, leaving enterprise to spend more than a decade retrofitting a justification. AI is running the same arc, just compressed into a fraction of the time.
-
-## Why the corporate version didn't deliver
-
-I've written about this in more depth [on the Arinco blog](https://arinco.com.au/blog/why-youre-not-seeing-ai-business-value/), so I'll keep it tight here. The headline finding from [MIT's NANDA initiative](https://aimagazine.com/news/mit-why-95-of-enterprise-ai-investments-fail-to-deliver) — their "GenAI Divide" report — is that something like 95% of enterprise AI pilots fail to deliver measurable impact on the bottom line. That's the stat everyone quotes.
-
-The stat everyone *skips* is the second half: the same research finds that individual-level tools — people quietly using ChatGPT and Copilot to get their actual jobs done — are succeeding. They called it the "shadow AI economy." The technology works. It just works for people, not for org charts.
-
-Saying "corporate AI has failed" is too blunt and invites a fair rebuttal. Plenty of organisations are seeing genuine gains in coding, support, and analysis. The sharper claim is this: **enterprise AI didn't fail, it bifurcated.** The half that empowers individuals worked. The half that was sold as cost reduction (and in corporate-speak, "cost saving" is almost always a euphemism for headcount) did not. And because the returns that justified the capital expenditure were the labour-reduction returns, the half that worked is the half nobody knows how to put on a balance sheet. We covered exactly this tension [on the podcast](https://www.beerdriven.dev/episodes/62/).
-
-## The economics don't work, and now everyone knows it
-
-The Copilot repricing was a canary. Here's the mine.
-
-OpenAI has [committed to something on the order of $1.4 trillion](https://www.rdworldonline.com/facing-14b-losses-in-2026-openai-is-now-seeking-100b-in-funding-but-can-it-ever-turn-a-profit/) in compute and energy deals against a tiny fraction of that in revenue. The renegotiated Microsoft arrangement reportedly caps the revenue-share trajectory dramatically lower than it once was. Burn projections run into the tens of billions a year, with cash-flow positivity not penciled in until the end of the decade. And when [investors did the maths](https://fortune.com/2026/01/29/microsoft-stock-openai-sam-altman-debt-capital-expenditure-ai-oracle/) on how much of Microsoft's own remaining performance obligations were tethered to OpenAI, a staggering amount of market value evaporated in a single stretch.
-
-The temptation is to say OpenAI is in a death spiral. It isn't. It has enormous usage and fast-growing revenue. But it *is* cornered: structurally exposed in a way its own partners are slowly, publicly, backing away from. And cornered is the more interesting diagnosis than dead, because cornered animals are predictable.
-
-## The warehouses full of chips nobody is using
-
-There's a second economic absurdity hiding behind the first. The [hyperscalers have committed hundreds of billions](https://www.ciodive.com/news/hyperscalers-two-thirds-data-center-capacity-2031/817016/) for 2026 alone, but only a sliver of the planned data-centre [capacity](https://tech-insider.org/us-ai-data-center-delays-cancellations-7gw-capacity-crisis-2026/) is actually under active construction. The bottleneck isn't chips and it isn't capital. It's *power*: transformers, switchgear, and grid connections that take five to seven years to build. (Yes, the terrifying amount of energy AI is already guzzling is a drop in the ocean compared to what's planned).
-
-So the GPUs and the high-bandwidth memory exist. They're bought. They're stockpiled, sitting in warehouses, driving up prices for everyone else, waiting for substations that don't exist yet. The gap is staggering: vast tracts of announced capacity, only a fraction of it actually drawing power. We are pricing consumers out of memory and graphics hardware to build data centres that can't be switched on.
-
-## The hardware tell: they just pivoted to your desk
-
-Here is the single clearest tell for the whole thesis. At GTC, [NVIDIA and Microsoft announced the RTX Spark](https://nvidianews.nvidia.com/news/nvidia-microsoft-windows-pcs-agents-rtx-spark), built on the DGX Spark / GB10 silicon, and [Microsoft's own blog](https://blogs.windows.com/windowsexperience/2026/05/31/introducing-a-powerful-new-chapter-for-windows-pcs-accelerated-by-nvidia-rtx-spark/) framed it in two words: *personal AI*. [Jensen Huang said NVIDIA's goal is to "reinvent the PC"](https://www.tomshardware.com/tech-industry/artificial-intelligence/jensen-huang-says-nvidia-wants-to-reinvent-the-single-most-important-tool-of-humanity-with-rtx-spark-nvidia-ceo-touts-support-of-literally-every-computer-maker-in-the-world-for-its-agentic-ai-pc-platform), with focus "100% on Windows." There's a multi-generation roadmap behind it — Vera Rubin, then Rosa Feynman — and an enterprise tier (DGX Station for Windows) sitting above it.
-
-Microsoft and NVIDIA. One dominates enterprise after two decades of failing to matter in consumer; the other dominates consumer silicon while straining to be taken seriously in enterprise.
-
-The two companies whose subsidised infrastructure made OpenAI viable, are now both betting publicly that the durable value of AI lives on the user's own device. Built into the computer you were going to buy anyway over the next decade, rather than rented from someone else's cloud forever.
-
-Where does that leave OpenAI? Without the two partners it most depended on. Microsoft and NVIDIA didn't say a word against them. They just announced where the next decade of investment is going, and it wasn't into renting frontier models to consumers. It was into putting the model on your desk.
+---
+## Salvage Box
 
 Contrary to popular opinion, Jensen has *not* said that he wants out of gaming. Unquestionably, though, NVIDIA has decisively deprioritised the consumer gaming GPU in favour of high-margin AI silicon, and the RTX Spark makes the personal-AI bet explicit.
 
-## So the consumer pays — but not in cash
+---
 
-If the enterprise subsidy isn't coming, and the real cost is arriving, someone has to pay. And we already know how this goes, because Google taught us and social media confirmed it: the consumer doesn't pay in money. The consumer *becomes the product.*
+## Bursting Bubbles
 
-A surprising number of people have proven willing to pay for AI. More than I'd have guessed, and across a broader demographic than just tech enthusiasts. (I'll own my biases: I'm overexposed to people predisposed to pay and able to, and there's a survivorship effect in that the people talking about AI are by definition the ones who got to use it.) But willingness among the few isn't the same as the mass adoption AI needs to be commercially sustainable. And mass-market consumers have been trained for two decades by Google and the social platforms to expect that what they consume online is free. So we'll get the model those two decades built: not the one that serves the user best, but the one that monetises them most reliably.
+By now most people have formed an opinion about the future of AI, and it tends to fall into one of two camps. In one are those calling AI a bubble, set to burst any minute, with the other insisting that there's no bubble and that the growth is only just getting started.
 
-It's already started. [ChatGPT introduced advertising](https://www.emarketer.com/content/chatgpt-ads-debut-agencies-test-influence-over-clicks) into its free and lower tiers. Right now those ads sit in the UI, *adjacent* to the model's responses, clearly separated from them. But that's exactly how Google started: ads all over the page, clearly marked as distinct from the results.
+But both perspectives are wrong, because they've framed it as a binary. The truth is a little more nuanced, but also obvious. 
 
-And we know how that ended. Google won by having the best index; you could find anything, if you refined your google-fu. Then SEO arrived, and the burden quietly inverted. It was no longer Google's job to find everything, it was *your* job to make your content findable. We should have read that as the warning it was. We didn't. And now we have full enshittification: you don't optimise to rank, you *pay* to rank, and as a user you scroll past the first screen entirely to reach anything real.
+Where AI goes next is neither crash nor continual growth, and fortunately (or unfortunately, which is an equally valid perspective) we have enough facts and historical precedent to tell us exactly what will happen instead.
+
+## End of the Free Ride
+
+Predictions about AI as bubble or infinite money printer aren't new, but the past eight months have been a slow turning point, with a hard pivot at the start of this month.
+
+On the first of June 2026, [GitHub Copilot moved to usage-based billing](https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/), which carried an expected increase in price. Less expected was just how much of an increase; [as reported by TechCrunch](https://techcrunch.com/2026/05/30/what-a-joke-github-copilots-new-token-based-billing-spurs-consternation-among-devs/), users saw jumps from $29 a month to $750, and in the time since we've seen bills in the thousands, for _individuals_. That's the difference between a streaming service and a mortgage.
+
+This isn't your typical price increase, and it isn't a frog-in-boiling water scenario ([GitHub telegraphed it](https://github.com/github/copilot-billing-preview)), and unsurprisingly has led to outrage - [the Community Discussion TechCrunch reported on got more than 900 downvotes](https://github.com/orgs/community/discussions/192948). Two weeks in and people are still understandably angry, but perhaps most interesting are the number of people who, while disappointed and even angry, _understand_. Amidst the rage cancellations migrations to other tools are plenty of people quietly saying this is fair, we just can't afford it.
+
+## We've seen this before (but not where you think)
+
+It's easy to reach for crypto as a comparison, and to a lesser extent IoT, but neither are the best historical parallel.
+
+IoT was - well, is — a hobby. The name gives it away: "internet of things" is not a phrase serious people use to describe serious infrastructure. It's the domain of makers and tinkerers, and that's exactly what it was meant to be. Granted, there are real enterprise IoT use cases, including some I've had exposure to. I spent a decade in healthcare, which is a prime and frankly terrifying example, one of my more recent clients is a buildings intelligence company. But attempts to turn it into the next big thing went nowhere; the uses are real, but niche, both commercially and as a hobby. It was never a transformational technology that everyone could capitalise on.
+
+Crypto was, in my opinion, different in that the technology genuinely was interesting, only we never got to find out just _how_ interesting, because big money pumped and dumped it into a joke before the actual use cases (at least for Blockchain more broadly) saw the light of day.  Instead we got a wealth-transfer machine, and yes some people made a lot of money, but unless you're a government, literally printing money, when one person makes a fortune, someone else loses one. Crypto wiped out ordinary people's savings while people gambling with the world's money got rich no matter which way it fell. *(That's a whole other discussion, and I have no interest in rehashing Taleb's* [Skin in the Game](https://www.penguin.com.au/books/skin-in-the-game-9780141982656) *here.)*
+
+Both have several parallels with AI, but neither is the best model for what comes next for one important reason: _ubiquity_.
+
+Crypto was huge, but not ubiquitous. IoT _wasn't_ huge, and perhaps because it never blew up out of its niche it gets taken more seriously now. But AI is different in that it's something anyone and everyone can use, and does. Most people are sick to death of having it shoved down their throat, but it is broadly *useful* in a way crypto and IoT never were for ordinary folks. It helps with work, with creativity, with the small administrative friction of being alive.
+
+And that's exactly why the bubble-burst crowd is wrong. Crypto and IoT could deflate without anyone much noticing because, for the ordinary person, there was nothing real underneath to miss. When the speculative money left crypto, the value left with it, because the value *was* the speculation. But with AI, the utility is real and it's already in tens of millions of hands. You cannot have a crypto-style pop when the thing actually works and everyone is already using it. But, and this is where the no-bubble crowd is equally wrong, that doesn't mean the money sloshing around it is rational either, or that today's spend is sustainable. The froth is real, it's just that when it blows off, the substance underneath remains.
+
+But there _is_ a real historical parallel, one where the technology was genuinely useful, and genuinely ubiquitous. And it helps show us exactly what happens next.
+
+## The smartphone arc
+
+Before the iPhone, the "smartphone" was an executive toy. The Nokia Communicator, the various PalmPilot derivatives. These were the form factors, and they belonged to the wealthy and the senior. And I'm sure some people found ways to eek productivity out of them, but they were largely just very expensive toys.
+
+BlackBerry changed things though. The BlackBerry was an *actual* phone, a sensible one you could actually use as a phone. But through BlackBerry Enterprise Server and that beloved keyboard, it was also a real email tool. It was aspirational in a way the earlier devices weren't. Not everyone wanted one, but it *was* a status symbol.
+
+Then the iPhone made the smartphone something *everyone* wanted, and that changed personal computing entirely. I'm fond of [Steve Ballmer's 2007 interview](https://www.thurrott.com/mobile/ios/84810/steve-ballmer-right-iphone-premium) where he criticised the iPhone for lacking a keyboard and being a poor email device. People like to mock that now, but he was absolutely right: touchscreen keyboards _are_ terrible, but he never said that would doom the iPhone, he said we would have to wait and see whether it mattered. And, of course, it didn't.
+
+They came on mobile plans, sometimes subsidised, sometimes not. Changes to the mobile data pricing model played a big part, but those changes were driven by pressure from Apple and are inseparable. And soon enough, millions of people could justify having an internet connected computer in their pocket, and smartphones became ubiquitous.
+
+Then came the iPad, and the clones that followed, but they were different. People bought tablets with their own money, believing they'd get the same value or more as they did from their smartphones. They brought them into work and demanded their employers build value around a personal purchase. But the market wasn't ready. The software ecosystem didn't exist.
+
+But [when things get big, enterprise wants in](https://www.beerdriven.dev/episodes/59/). "Enterprise mobility" became an industry overnight. The corporate box-shifters and systems integrators pushed MDM and enterprise Wi-Fi like it was the future. But none of it mattered, because the software wasn't there yet. The only people who got rich in that gold rush were the ones selling shovels.
+
+As always, you can (and should) follow the money. Sales of smartphones aren't going anywhere, but tablets are barely a blip now. But for social proof, think about meetings. In the first few years since the iPad launched, how manu people did you see bring a tablet into a meeting? And how about now, 16 years on? It's not zero today, but the people who do either use them with with a keyboard or a stylus - the very thing Steve Jobs supposedly forbade. Though he was misunderstood; "if you see a stylus, they blew it" was about *navigation*, not text input. Don't forget the Newton which he killed due to mismanagement, _not_ because he didn't like the stylus.
+
+Neither smartphones or tablets became the productivity revolution anyone sold. they became personal devices that occasionally do work, on the user's terms, with the user's accessories.
+
+That's the smartphone arc: a technology enterprise tried to capitalise on, that found its real value *with individuals*.
+
+## Why the corporate AI vision didn't deliver
+
+I've written about this in more depth [on the Arinco blog](https://arinco.com.au/blog/why-youre-not-seeing-ai-business-value/), so I'll keep it brief here. The core finding from [MIT's NANDA initiative](https://aimagazine.com/news/mit-why-95-of-enterprise-ai-investments-fail-to-deliver), their "GenAI Divide" report, is that around 95% of enterprise AI pilots fail to deliver measurable impact on the bottom line.
+
+That's the part people seem to focus on, but the more interesting point is that the same research finds that at an individual level — people using ChatGPT and Copilot to get their actual jobs done, AI is working. They called it the "shadow AI economy." The technology works; it just works for people, not for org charts.
+
+To say that corporate AI has failed isn't fair, plenty of organisations are seeing genuine gains. What's actually happened, [as on the podcast](https://www.beerdriven.dev/episodes/62/), is that initiatives that saw AI as a tool that that empowers individuals worked. Those that aw it as an opportunity for cost reduction (and in corporate-speak, "cost saving" is almost always a euphemism for headcount) did not.
+
+## The economics don't work, and now everyone knows it
+
+It's not just Copilot.
+
+OpenAI has [committed to something on the order of $1.4 trillion](https://www.rdworldonline.com/facing-14b-losses-in-2026-openai-is-now-seeking-100b-in-funding-but-can-it-ever-turn-a-profit/) in compute and energy deals against a tiny fraction of that in revenue. The renegotiated Microsoft arrangement reportedly caps the revenue-share trajectory dramatically lower than it once was. Burn projections run into the tens of billions a year, with cash-flow positivity not pencilled in until the end of the decade. And when [investors did the maths](https://fortune.com/2026/01/29/microsoft-stock-openai-sam-altman-debt-capital-expenditure-ai-oracle/) on how much of Microsoft's own remaining performance obligations were tethered to OpenAI, a staggering amount of market value evaporated in a single stretch.
+
+It's tempting to say OpenAI is in a death spiral. It isn't - it has enormous usage and fast-growing revenue - but it *is* cornered: structurally exposed in a way its own partners are publicly backing away from. And cornered is the more interesting diagnosis than dead, because cornered animals are unpredictable.
+
+## The warehouses full of chips nobody is using
+
+There's another giant pile of unrealised revenue. The [hyperscalers have committed hundreds of billions](https://www.ciodive.com/news/hyperscalers-two-thirds-data-center-capacity-2031/817016/) for 2026 alone, but only a sliver of the planned data-centre [capacity](https://tech-insider.org/us-ai-data-center-delays-cancellations-7gw-capacity-crisis-2026/) is actually under active construction. The bottleneck isn't hardware or, it's _energy_: transformers, switchgear, and grid connections that take five to seven years to build. (Yes, the terrifying amount of energy AI is already guzzling is a drop in the ocean compared to what's planned).
+
+So the GPUs and the high-bandwidth memory are [stockpiled, sitting in warehouses, driving up prices for everyone else, waiting for electricity infrastructure that doesn't exist](https://www.tomshardware.com/tech-industry/artificial-intelligence/microsoft-ceo-says-the-company-doesnt-have-enough-electricity-to-install-all-the-ai-gpus-in-its-inventory-you-may-actually-have-a-bunch-of-chips-sitting-in-inventory-that-i-cant-plug-in). The gap is staggering: vast tracts of announced capacity, only a fraction of it actually drawing power. We are pricing consumers out of memory and graphics hardware to build data centres that can't be switched on.
+
+## The hardware tell: they just pivoted to your desk
+
+I said earlier you should follow the money, so let's do that. At GTC, [NVIDIA and Microsoft announced the RTX Spark](https://nvidianews.nvidia.com/news/nvidia-microsoft-windows-pcs-agents-rtx-spark), built on the DGX Spark / GB10 silicon, and [Microsoft's own blog](https://blogs.windows.com/windowsexperience/2026/05/31/introducing-a-powerful-new-chapter-for-windows-pcs-accelerated-by-nvidia-rtx-spark/) framed it in two words: *personal AI*. [Jensen Huang said NVIDIA's goal is to "reinvent the PC"](https://www.tomshardware.com/tech-industry/artificial-intelligence/jensen-huang-says-nvidia-wants-to-reinvent-the-single-most-important-tool-of-humanity-with-rtx-spark-nvidia-ceo-touts-support-of-literally-every-computer-maker-in-the-world-for-its-agentic-ai-pc-platform), with focus "100% on Windows."
+
+Microsoft and NVIDIA. One dominates enterprise after two decades of failing to matter in consumer; the other dominates consumer silicon while desperate to be taken seriously in enterprise.
+
+The two companies whose subsidised infrastructure made OpenAI viable are now both betting publicly that the long term value of AI lives on the user's own device. Built into the computers we're going to buy anyway over the next decade, rather than rented from someone else's cloud forever.
+
+That leaves OpenAI without the two partners it most depended on. Microsoft and NVIDIA didn't say a word against them, they just announced where the next decade of investment is going, and it isn't into renting frontier models to consumers. It's into putting the model on your desk.
+
+## Consumers pay the AI bill (just not in cash)
+
+The enterprise subsidy isn't coming, and the real cost has arrived, but someone still has to pay. And we already know how this goes, because Google taught us, and social media confirmed it: the consumer doesn't pay, they *become the product.*
+
+A surprising number of people have proven willing to pay for AI. More than I'd have guessed, and across a broader demographic than just tech enthusiasts. Granted, I'm overexposed to people predisposed and able to pay, and there's a survivorship bias in that the people talking about AI are by definition the ones who use it. But willingness among the few isn't the same as the mass adoption AI needs to be commercially sustainable. And mass-market consumers have been trained for two decades by Google and the social platforms to expect that what they consume online is free. So we'll get the model those two decades built: not the one that serves the user best, but the one that monetises them most reliably.
+
+It's already started. The [sycophancy in Gpt-4o](https://www.bbc.com/news/articles/cn4jnwdvg9qo), earlier last year, was driven by feedback and obviously was not well received, but it was at the tail end of last year that I started to fell that ChatGPT was noticeably different. Not a change in the model, but a change in the algorithm: reflexive follow-up question to keep me typing, the sense of being held on the line rather than helped and let go. It felt a lot like something we've all grown fed up of.
+
+It's anecdotal, but there's a compelling story behind it. In September 2025, [OpenAI had paid $1.1 billion for Statsig](https://www.cnbc.com/2025/09/02/openai-buys-statsig-for-1point1-billion-hires-ceo-as-applications-exec.html), a platform built around A/B testing and engagement optimisation of which they were already a customer. They installed its founder, [who spent a decade working on consumer engagement engineering at Facebook](https://www.forbes.com/sites/justinwarren/2022/04/20/statsig-experimentation-product-raises-43-million-series-b/), as CTO of Applications, in charge of ChatGPT itself.
+
+This at least raises an eyebrow on its own, but it wasn't alone, it was followed by [an announcement](https://openai.com/index/our-approach-to-advertising-and-expanding-access/) in January that ChatGPT would start including ads in the free and a newly announced $8 a month tier. An engagement-driven platform that shows ads is something we recognise well. It's [enshittification](https://en.wikipedia.org/wiki/Enshittification).
+
+OpenAI promised the ads would sit in the UI, *adjacent* to the model's responses, clearly separated from them, and relevant. [That's already a broken promise](https://www.pcmag.com/news/im-seeing-ads-in-chatgpt-openai-broke-its-promise-what-they-look-like), but even if it wasn't, let's not forget that's exactly how Google started, or how it ended. The ads, which used to be in your face but easily distinguishable from search results, are now at least the first full page.
+
+Google won by having the best index; you could find anything, if you refined your google-fu. Then SEO arrived, and the burden inverted. It was no longer Google's job to find everything, it was *your* job to make your content findable. We should have read that as the warning it was. We didn't. And now we have full enshittification: you don't optimise to rank, you *pay* to rank.
 
 The terms "AEO" and "AIO" — answer-engine and AI optimisation — are already being sold. Remember the shovel-merchants from the smartphone gold rush, the ones who got rich selling MDM and enterprise wifi into a market that wasn't ready? They're back, and this time they're promising to make sure your brand surfaces when a customer asks an AI for options. And Cambridge Analytica already showed us who's willing to exploit a pipe like that. So no, I don't think we can honestly claim LLM outputs *haven't already* been shaped by commercial and political interests. The ads in the margin are the polite phase. Google took two decades to go fully pay-to-play. I don't think AI has that long a tail.
 
