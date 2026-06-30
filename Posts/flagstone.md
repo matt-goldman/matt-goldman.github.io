@@ -131,6 +131,8 @@ That's it. The rest of the Shell file remains identical. The background shape an
 
 Simple. Even without creating your own tab bar, you already have styling control over your tabs that you don't get with Shell.
 
+You can see the full code in the sample app in the [Flagstone UI repo](https://github.com/matt-goldman/flagstone-ui).
+
 ## Action buttons
 
 The tab bar navigation paradigm is ubiquitous on mobile. You'd recognise it anywhere, and one of its most common features is not possible in .NET MAUI out of the box, and that's an _action button_. I'm talking about a button in the middle of the navigation bar, that doesn't navigate but performs an action instead.
@@ -367,32 +369,175 @@ In fact it's dead simple. It's a `FlexLayout` in a `Grid` with an `ImageButton` 
 
 With `FsShell`, you can easily implement a common UI/UX paradigm that is impossible out of the box without platform code. And as you can see, it's all just bog-standard, cross-platform .NET MAUI code.
 
+The full code is available [here](https://github.com/matt-goldman/instagrim).
 
-1. Case study three: Beer Driven Devs (500-600 words)
-Purpose: Show the upper end of what's possible — fully custom navigation that no off-the-shelf solution could provide.
-Beats:
+## Toward more...interesting...navigation
 
-Design intent: a podcast app with a persistent media player. The player needs to live in the navigation chrome (so it stays visible during navigation) and needs to expand into a full-screen now-playing view. Below it, navigation needs to be vertically oriented because the layout suits it better than tabs.
-The obstacle: stock Shell doesn't support custom navigation orientations at all. Adding a persistent media player on top of Shell is a fight — Shell wants to own the chrome, and putting anything in the chrome that Shell didn't put there means working against the framework rather than with it.
-What FsShell gives you: the navigation chrome as a composable surface, not an opaque control. You can put what you need where you need it, and the navigation logic doesn't fight you.
-Visual: clip showing the BDD app — playback continuing across navigation, expanding player view, vertical nav behaviour.
-The takeaway sentence: when stock navigation isn't an option, FsShell isn't a workaround. It's the right tool.
+I started out with grand ambitions of wacky and interesting navigation examples, like the rotary dial and radial menu I mentioned, but time makes fools of us all. Still, I wanted to do something at least a little out of the ordinary, and as it happens I also wanted to revive the Beer Driven Devs app I used to [demo some cool micro interactions for last year's MAUI UI July](/posts/bdd-app-downloads).
 
-5. The throughline (200-300 words)
-Purpose: Tie the three case studies together with the bigger point.
-Beats:
+For the BDD app, I wanted a media player to occupy the space at the bottom of the screen typically taken up by the tab bar. This is also a common UX paradigm for audio apps (music, podcasts, audio books, etc). So I needed somewhere else to put the navigation UI. Here's how I did it:
 
-The three case studies sit on a progression: vanilla-but-better, conventional-but-richer, fully-custom.
-Same library, same primitives, three completely different navigation outcomes. That's the point of FsShell — it doesn't push you toward one design. It gets out of the way of whatever design you've already decided on.
-The "production-ready" milestone isn't about FsShell becoming feature-complete. It's about FsShell being trustworthy enough that you can build real apps on it without hedging.
-(Optional: nod to the broader Flagstone UI ecosystem, since FsShell elevating to production is what unlocks the rest.)
+:::video Source=SourceType.File FilePath='/images/posts/instagrim.mp4' Width='600px' Caption='The bottom bar in the BDD app is a media player, and the navigation is handled by an expander (from the Community Toolkit)'
+:::
+_A fully custom navigation UI that utilises the Shell functionality_
 
-6. Where to go from here (100-150 words)
-Purpose: Send the reader somewhere useful without padding.
-Beats:
+If you look at the video, you can see the play/pause state is fully syncrhonised between the button on the bottom bar and the buttons on individual episode cards. The button in the bottom right shows a vertically stacked nav menu that automatically hides as you navigate. And the player is persistent.
 
-Link to docs for the how-to.
-Link to the repo / NuGet.
-One or two lines about what's next (without committing to a roadmap you don't want to commit to).
-If you're doing a livestream later in July, mention it briefly here as a deeper dive.
+This one is obviously a bit bigger, so I won't go through the whole implementation here, but the actual Shell specific part is still very simple:
 
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<fs:FsTabBarBase xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fs="clr-namespace:FlagstoneUI.Core.Controls;assembly=FlagstoneUI.Core"
+             xmlns:controls="clr-namespace:BeerDrivenDevsApp.Controls"
+             BackgroundColor="Transparent"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="BeerDrivenDevsApp.Controls.BddTabBar">
+    <fs:FsTabBarBase.ItemTemplate>
+        <DataTemplate x:DataType="fs:FsTabContext">
+            <Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Unselected">
+                        <VisualState.Setters>
+                            <Setter TargetName="TabBorder" Property="Border.StrokeThickness" Value="0"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Selected">
+                        <VisualState.Setters>
+                            <Setter TargetName="TabBorder" Property="Border.StrokeThickness" Value="1"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+            <Border StrokeThickness="0"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="5"
+                    x:Name="TabBorder"
+                    Stroke="{DynamicResource Amber300}">
+                <HorizontalStackLayout HorizontalOptions="Fill"
+                                       Spacing="5">
+                    <Image VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Source="{Binding Icon}"/>
+                    <Label Text="{Binding Title}"
+                           FontSize="32"
+                           TextColor="{DynamicResource Amber950}"
+                           VerticalOptions="Center"
+                           VerticalTextAlignment="Center"/>
+                </HorizontalStackLayout>
+            </Border>
+            </Grid>
+        </DataTemplate>
+    </fs:FsTabBarBase.ItemTemplate>
+    <Grid>
+        <Border ...>
+            <!-- The media player controls go here -->
+        </Border>
+            
+        <toolkit:Expander VerticalOptions="End"
+                          HorizontalOptions="End"
+                          Direction="Up"
+                          Margin="10,0,15,15"
+                          ExpandedChanged="Expander_OnExpandedChanged"
+                          x:Name="NavExpander">
+            <toolkit:Expander.Header>
+                <Border HeightRequest="50"
+                        WidthRequest="50"
+                        StrokeShape="Ellipse"
+                        Background="{StaticResource BackgroundGradient}"
+                        HorizontalOptions="End">
+                             <Label Text="{x:Static controls:Icons.ChevronsUp}"
+                                    FontFamily="Lucide"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center"
+                                    FontSize="24"
+                                    x:Name="ChevronLabel"/>
+                </Border>
+            </toolkit:Expander.Header>
+            <Border Stroke="{DynamicResource Amber300}"
+                    StrokeShape="RoundRectangle 20"
+                    BackgroundColor="{DynamicResource Amber100}"
+                    Margin="0,0,0,15"
+                    Padding="10">
+                <VerticalStackLayout x:Name="TabBar"
+                                     Spacing="15"
+                                     TranslationY="300"
+                                     BackgroundColor="{DynamicResource Amber100}" />
+            </Border>
+        </toolkit:Expander>
+    </Grid>
+</fs:FsTabBarBase>
+```
+
+You can see that logically this is identical to the others - you have a data template that defines your tabs' appearance (in this case, horizontally arranged, with an icon and text), and a layout to host them. In this case it's the `VerticalStackLayout` inside the `Expander`: it's named `TabBar`, and in the code behind we can see it's returned by the `TabLayout` property:
+
+```csharp
+using CommunityToolkit.Maui.Core;
+using FlagstoneUI.Core.Controls;
+
+namespace BeerDrivenDevsApp.Controls;
+
+public partial class BddTabBar : FsTabBarBase
+{
+    public BddTabBar()
+    {
+        InitializeComponent();
+        InitializeTabContainer();
+    }
+
+    protected override Layout TabContainer => TabBar;
+
+    private void Expander_OnExpandedChanged(object? sender, ExpandedChangedEventArgs e)
+    {
+        _ = e.IsExpanded ? OpenNav() : CloseNav();
+    }
+
+    public void HandleNavigated()
+    {
+        _ = CloseNav();
+    }
+
+    private async Task OpenNav()
+    {
+        var rotateTask = ChevronLabel.RotateToAsync(180);
+        var tabTask = TabBar.TranslateToAsync(0, 0);
+        await Task.WhenAll(rotateTask, tabTask);
+    }
+
+    private async Task CloseNav()
+    {
+        var rotateTask = ChevronLabel.RotateToAsync(0);
+        var tabTask = TabBar.TranslateToAsync(0, 300);
+        await Task.WhenAll(rotateTask, tabTask);
+        NavExpander.IsExpanded = false;
+    }
+}
+```
+
+This follows the same pattern of returning the appropriate layout via the `TabContainer` property, and calling the `InitializeTabContainer()` base method in the constructor.
+
+There are a few other things going on here but as you can see none of these are exotic, just standard view manipulation you'd expect to be able to do anywhere in a .NET MAUI app. And that's the point.
+
+There's obviously a lot more I haven't shown here, covering the media playing specifically. But that's not specific to the custom Shell implementation (it's in place of it), so I won't go through it here. But you can see it, along with everything else in full, in the [Beer Driven Devs app repo](https://github.com/matt-goldman/BeerDrivenDevsApp).
+
+## What next?
+
+I know you're itching to try this yourself, so if you've maintained enough discipline to get to here without dropping everything and building your own `FsShell` app, congratulations! But you can go and do that now :)
+
+As mentioned you can see all the code, docs, and the sample app in the [Flagstone UI repo](https://github.com/matt-goldman/flagstone-ui).
+
+Or you can just install it into your app and start playing with it:
+
+```bash
+dotnet add package FlagstoneUI.Core --version 2.0.4
+```
+
+There's more to see than just `FsShell` - Flagstone UI let's you do anything. The examples here mostly show `FsShell`, but the sample app in the rpeo has a complete controls showcase. You can also see a more complete, real-world inspired app called [MyContoso](https://github.com/matt-goldman/MyContoso). It was created as a demo for a talk at [MAUI Dau](https://mauiday.net/), but it's based on requirements (and problems) from actual client projects. It's not especially exciting but is a comprehensive showcase of Flagstone UI in action.
+
+So what will you build?
+
+## A challenge
+
+Today is the first of July. Why not pick up Flagstone UI and `FsShell` and see if you can use it to replicate a popular app? If you write it up or record a video before the end of the month, let me know, and I'll include it on the official MAUI UI July calendar.
