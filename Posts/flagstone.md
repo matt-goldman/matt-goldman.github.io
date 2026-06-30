@@ -18,6 +18,10 @@ Welcome to MAUI UI July 2026! I'm kicking things off with a celebration: Flagsto
 
 It's been around for a while, some of you may even be using it, and it's been stable. I haven't and am not planning to make any breaking changes to the API, but I've been reluctant to remove the "experimental" caveat because it has felt incomplete. But the latest release includes a new control, `FsShell`, which to me elevates Flagstone UI to a full and valuable addition to any .NET MAUI app.
 
+:::note
+This post is part of MAUI UI July 2026. [See the full lineup here](/posts/mauiuijuly-26) and check back every day for new content!
+:::
+
 ## Why `FsShell` is important
 
 `FsShell` may not sound like a big deal but it's a prime example of the specific reason why Flagstone UI exists.

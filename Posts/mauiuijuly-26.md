@@ -8,6 +8,7 @@ categories: [.NET, Mobile]
 author: Matt Goldman
 authorTitle: Owner
 avatar: "/images/authors/mattg.png"
+featured: true
 ---
 
 It's time for #MAUIUIJuly again!
