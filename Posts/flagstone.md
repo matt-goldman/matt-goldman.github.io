@@ -1,5 +1,5 @@
 ---
-description: "."
+description: "With `FsShell`, Flagstone UI comes out of the experimental phase. This article gives you a taste of what you can do with it; but the only limit is your imagination."
 title:  "Flagstone UI goes GA with FsShell"
 date:   2026-07-01 00:00:01 +1000
 image:  /images/posts/flagstoneui.png
@@ -16,15 +16,17 @@ Welcome to MAUI UI July 2026! I'm kicking things off with a celebration: Flagsto
 
 It's been around for a while, some of you may even be using it, and it's been stable. I haven't and am not planning to make any breaking changes to the API, but I've been reluctant to remove the "experimental" caveat because it has felt incomplete. But the latest release includes a new control, `FsShell`, which to me elevates Flagstone UI to a full and valuable addition to any .NET MAUI app.
 
-`FsShell` may not sound like a big deal but it's a prime example of the specific reason why Flagstone UI exists. .NET MAUI is great, but it doesn't expose the full gamut of styling capabilities at the cross-platform layer that modern apps require. They're all there, but you have to drop down to platform code to get access to them, which for many developers, especially those coming from .NET rather than iOS or Android, defeats the purpose. Flagstone UI addresses that by lifting a common set of styling properties to the cross-platform layer.
+## Why `FsShell` is important
 
-Shell is a powerful tool, providing opinionated routing and navigation foundations, and for the past four years it has been included in the default .NET MAUI app template. But Shell has a few problems:
+`FsShell` may not sound like a big deal but it's a prime example of the specific reason why Flagstone UI exists.
 
-* Routes are magic strings, which turns navigation from strongly-typed to stringly typed. `FsShell` doesn't help with that (but `[Plugin.Maui.SmartNavigation](https://github.com/matt-goldman/Plugin.Maui.SmartNavigation/)` does).
-* It's opinionated about routing and navigation, which is good, but it's also opinionated about UI, which is not. This is exacerbated by:
-* It couples navigation and presentation. This is the biggest problem.
+.NET MAUI is great, but it doesn't expose the full gamut of styling capabilities at the cross-platform layer that modern apps require. They're all there, but you have to drop down to platform code to get access to them, which is a barrier for many developers, especially those coming from .NET rather than iOS or Android. Flagstone UI addresses that by lifting a common set of styling properties to the cross-platform layer.
 
-The second two points are arguably two sides of the same coin, either way it's a big problem. Common complaints about .NET MAUI apps looking like .NET MAUI apps come from this. You have very limited styling options with Shell, and you can't wholesale lift out the UI and replace it with your own while still using the built-in routing and navigation framework.
+Shell is a powerful tool. It provides opinionated routing and navigation foundations, and it's been the default for new MAUI apps for the past four years. Most apps benefit from leaning into Shell's conventions rather than fighting them.
+
+But Shell makes an architectural choice that limits what you can build on top of it: it couples navigation and presentation. Routing, navigation state, lifecycle, and the visual chrome are the same code, as far as your app is concerned. You can't take Shell's routing without also taking Shell's UI. You can't customise the chrome without working against the framework rather than with it.
+
+This is the reason people often say all .NET MAUI apps look like .NET MAUI apps. It's a structural problem rather than a styling one. Shell's UI is bound to its navigation, and the customisation flexibility is limited in a way you don't see in other UI frameworks. Unfortunately, you simply can't take the functional side of Shell without the UI.
 
 Well, you _couldn't_; you can now.
 
@@ -46,11 +48,11 @@ Or you can create your own custom tab bar, or in fact not use a tab bar at all -
 
 If you do nothing else, you should replace Shell in your app with `FsShell`. Even if you don't need a fancy tab bar or bespoke navigation. Why? Well, take a look at this:
 
-:::video Source=SourceType.File FilePath='/images/posts/demoshell.mp4' Width='600px' Caption='The default FsShell tab bar allows you to format your tabs, this example includes an emoji instead of an icon and the title, arranged horizontally instead of vertically, with scaling and background animations'
+:::video Source=SourceType.File FilePath='/images/posts/demoshell.mp4' Width='300px' Caption='The default FsShell tab bar allows you to format your tabs, this example includes an emoji instead of an icon and the title, arranged horizontally instead of vertically, with scaling and background animations'
 :::
 _The included `FsTabBar` allows you to style tabs with an `ItemTemplate`, just like you can with Flyout items in stock Shell._
 
-This may not be particularly sophisticated, and to be honest the stock `FsTabBar` is intended as a reference, but it should still replace the default Shell in your apps. An `ItemTemplate` defines what the tabs look like, and you can see three things in this example that you can't do with stock Shell but are trivial here:
+This may not be particularly sophisticated, and to be honest the stock `FsTabBar` is intended as a reference, but it should still replace the default Shell in your apps. An `ItemTemplate` defines what the tabs look like, and that unlocks some specific things which, while trivial, are now trivial to _implement_:
 
 * The layout of the tab is horizontal instead of vertical
 * The icon (emoji) changes based on selected state
@@ -135,15 +137,15 @@ You can see the full code in the sample app in the [Flagstone UI repo](https://g
 
 ## Action buttons
 
-The tab bar navigation paradigm is ubiquitous on mobile. You'd recognise it anywhere, and one of its most common features is not possible in .NET MAUI out of the box, and that's an _action button_. I'm talking about a button in the middle of the navigation bar, that doesn't navigate but performs an action instead.
+The tab bar navigation paradigm is ubiquitous on mobile. One of its most common features, an action button in the middle of the bar that performs an action rather than navigating, is a trivial layout to achieve in a `ContentView`, so with `FsShell` that's exactly what you do.
 
 Let's take a look at _Instagrim_, a halloween themed social photos app:
 
-:::video Source=SourceType.File FilePath='/images/posts/instagrim.mp4' Width='600px' Caption='The Instagrim app has a large action button in the middle of the tab bar, featuring a camera icon, making it obvious it activates the camera rather than navigating the app. One of the tabs also has a badge with a notification app.'
+:::video Source=SourceType.File FilePath='/images/posts/instagrim.mp4' Width='300px' Caption='The Instagrim app has a large action button in the middle of the tab bar, featuring a camera icon, making it obvious it activates the camera rather than navigating the app. One of the tabs also has a badge with a notification app.'
 :::
 _A custom `IFsTabBar` implementation that features an action button and a notification badge_
 
-The Instagrim app demonstrates a couple of things you can't do with a stock Shell:
+The Instagrim app actually showcases two common UX paradigms:
 
 * the aforementioned action button
 * A notification count badge on one of the tabs
@@ -197,7 +199,7 @@ Implementation is a bit trickier, this requires a fill custom `ContentView` to r
 
 You can see that everything else is essentially the same. A couple of other things to note here:
 
-* First the elephant in the room: yep I have a do nothing tab in the middle to create space for the action button. That's a hack, but the alternatives were hackier. I'll show you how I handle that later. There are other ways to solve this, i just didn't have the motivation (or time) for those.
+* First, you'll notice a placeholder tab for the action button. I'll show you how I handle that later. There are other ways to solve this, but this was a quick pragmatic choice.
 * You can see there's a bindable property `TabBarIsDocked` here that is set to `False`. That's not strictly necessary - the default is `True` which anchors the nav bar to the bottom of the screen, and even though this tab bar is at the bottom, when `True` it gets rendered inside the app's OS native tab bar space; when false it's just a `ContentView` rendered over the top of your UI, which as I said above can be anything. But the reason I set it to false here is because doing so allows me to place the `ImageButton` for the camera outside the hit target boundary of the bar. (This is more important in the next example).
 
 The custom tab bar defines the presentation, but Shell is still responsible for the app hierarchy definition, routing, and navigation. We've decoupled presentation and functionality.
@@ -367,7 +369,7 @@ The view code is actually also not particularly complex:
 
 In fact it's dead simple. It's a `FlexLayout` in a `Grid` with an `ImageButton` overlaid in the middle. That's it, that and the `ItemTemplate` with `VisualStateManager`, but that's not particularly exotic. The only thing of note here is the badge, which you can see is mocked but easy enough to wire up to some state; and we'll see a working example of that in the next sample.
 
-With `FsShell`, you can easily implement a common UI/UX paradigm that is impossible out of the box without platform code. And as you can see, it's all just bog-standard, cross-platform .NET MAUI code.
+With `FsShell`, you can easily implement common UI/UX paradigms, and as you can see, it's all just bog-standard, cross-platform .NET MAUI code.
 
 The full code is available [here](https://github.com/matt-goldman/instagrim).
 
@@ -377,7 +379,7 @@ I started out with grand ambitions of wacky and interesting navigation examples,
 
 For the BDD app, I wanted a media player to occupy the space at the bottom of the screen typically taken up by the tab bar. This is also a common UX paradigm for audio apps (music, podcasts, audio books, etc). So I needed somewhere else to put the navigation UI. Here's how I did it:
 
-:::video Source=SourceType.File FilePath='/images/posts/instagrim.mp4' Width='600px' Caption='The bottom bar in the BDD app is a media player, and the navigation is handled by an expander (from the Community Toolkit)'
+:::video Source=SourceType.File FilePath='/images/posts/bdd.mp4' Width='300px' Caption='The bottom bar in the BDD app is a media player, and the navigation is handled by an expander (from the Community Toolkit)'
 :::
 _A fully custom navigation UI that utilises the Shell functionality_
 
