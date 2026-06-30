@@ -14,6 +14,8 @@ avatar: "/images/authors/mattg.png"
 
 Welcome to MAUI UI July 2026! I'm kicking things off with a celebration: Flagstone UI is now generally available.
 
+![Some examples of apps built with Flagstone UI](/images/posts/flagstone-samples.png)
+
 It's been around for a while, some of you may even be using it, and it's been stable. I haven't and am not planning to make any breaking changes to the API, but I've been reluctant to remove the "experimental" caveat because it has felt incomplete. But the latest release includes a new control, `FsShell`, which to me elevates Flagstone UI to a full and valuable addition to any .NET MAUI app.
 
 ## Why `FsShell` is important
