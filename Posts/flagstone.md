@@ -2,7 +2,7 @@
 description: "."
 title:  "Flagstone UI goes GA with FsShell"
 date:   2026-07-01 00:00:01 +1000
-image:  /images/posts/where-ai-goes-next.png
+image:  /images/posts/flagstoneui.png
 tags:   [mobile, maui, ui]
 categories: [.NET, Mobile]
 author: Matt Goldman
@@ -10,32 +10,41 @@ authorTitle: Owner
 avatar: "/images/authors/mattg.png"
 ---
 
-Microsoft Shell is the navigation framework that ships with MAUI, and it does a lot well. Routing, deep linking, navigation state, lifecycle — the infrastructure underneath Shell is solid. If you've built a MAUI app with conventional navigation, you've probably had a fine time with it.
+## Welcome MAUI UI July and Flagstone UI!
 
-Right up until you wanted the navigation to look like something Shell hadn't anticipated.
+Welcome to MAUI UI July 2026! I'm kicking things off with a celebration: Flagstone UI is now generally available.
 
-The problem with Shell isn't that it's opinionated about presentation. Plenty of frameworks are opinionated and that's fine — you work within the opinions, you ship the app. The problem with Shell is that the opinions and the infrastructure are the same code. The tab bar isn't a presentation layer sitting on top of Shell's navigation system; it is Shell's navigation system, as far as your app is concerned. There's no seam between them. You can't take the routing without also taking the chrome. You can't customise the chrome without fighting the routing.
+It's been around for a while, some of you may even be using it, and it's been stable. I haven't and am not planning to make any breaking changes to the API, but I've been reluctant to remove the "experimental" caveat because it has felt incomplete. But the latest release includes a new control, `FsShell`, which to me elevates Flagstone UI to a full and valuable addition to any .NET MAUI app.
 
-This is why every MAUI app that needs a non-default-shaped nav ends up in the same place: hacks layered on Shell until something breaks, or Shell abandoned entirely in favour of building navigation from scratch. Neither is a good answer. The first is fragile. The second throws away infrastructure that took Microsoft years to build.
+`FsShell` may not sound like a big deal but it's a prime example of the specific reason why Flagstone UI exists. .NET MAUI is great, but it doesn't expose the full gamut of styling capabilities at the cross-platform layer that modern apps require. They're all there, but you have to drop down to platform code to get access to them, which for many developers, especially those coming from .NET rather than iOS or Android, defeats the purpose. Flagstone UI addresses that by lifting a common set of styling properties to the cross-platform layer.
 
-FsShell is the missing seam. It separates the navigation system from the navigation presentation — so you get Shell-grade routing, state, and lifecycle, and you get to decide what the chrome actually looks like. The two aren't fused. They're composed.
+Shell is a powerful tool, providing opinionated routing and navigation foundations, and for the past four years it has been included in the default .NET MAUI app template. But Shell has a few problems:
 
-FsShell just hit production-ready. This post is three apps that show what that means in practice — one that uses FsShell to make the conventional better, one that uses it to reach patterns Shell can't, and one that uses it to build navigation that nothing off-the-shelf would have given you. Same library, same primitives, three completely different navigation outcomes. That's the point.
+* Routes are magic strings, which turns navigation from strongly-typed to stringly typed. `FsShell` doesn't help with that (but `[Plugin.Maui.SmartNavigation](https://github.com/matt-goldman/Plugin.Maui.SmartNavigation/)` does).
+* It's opinionated about routing and navigation, which is good, but it's also opinionated about UI, which is not. This is exacerbated by:
+* It couples navigation and presentation. This is the biggest problem.
 
-(The docs cover the how. This post is about the what-for.)
+The second two points are arguably two sides of the same coin, either way it's a big problem. Common complaints about .NET MAUI apps looking like .NET MAUI apps come from this. You have very limited styling options with Shell, and you can't wholesale lift out the UI and replace it with your own while still using the built-in routing and navigation framework.
 
----
+Well, you _couldn't_; you can now.
+
+Much like the other controls in Flagstone UI, `FsShell` doesn't try to give you a stylish looking Shell replacement, instead it completely decouples presentation from navigation. You can use everything you get with Shell (routes, navigation state, everything) and use your own UI for the presentation, fully built in cross-platform .NET MAUI (XAML or C#). With that said it does come with a relatively straightforward tab bar out of the box, it's not overly sophisticated but it gives you an `ItemTemplate` for tabs; something stock Shell only gives you for flyout items. It also provides some primitives for building your own Shell navigation UI so you don't have to start completely from scratch.
+
+In a sense, you can think of Flagstone UI as being analogous to Tailwind. It's not a control library, but rather a styling surface that gives you more control, and gives you the tools you need to build your UI using .NET MAUI rather than platform code wrapped in C#.
+
+In this post I'll show you three apps that show what that means in practice. One that uses `FsShell` to improve on the standard tab bar, one that uses it to reach patterns stock Shell can't, and one that uses it to build navigation that nothing off-the-shelf would have given you.
+
+This article includes code snippets, but it's more showcase than documentation. You can find full docs, including tutorials, [in the repo](https://github.com/matt-goldman/flagstone-ui).
+
+## A better tab bar
+
+If you do nothing else, you should replace Shell in your app with `FsShell`. Even if you don't need a fancy tab bar or bespoke navigation. Why? Well, take a look at this:
+
+[TODO: insert video here of stock FsShell tab bar]
+
+This may not be particularly sophisticated, and to be honest the stock `FsTabBar` is intended as a reference, but it should still replace the default Shell in your apps/
+
 Notes:
-FsShell: Production-ready navigation for MAUI
-1. Opening (200-300 words)
-Purpose: Hook the reader on the problem, establish that FsShell exists to solve it, signal the post's structure.
-Beats:
-
-Shell is Microsoft's opinion about navigation, and it's a strong one. Flyout or tabs. Limited customisation. The rest is off-limits.
-This is fine until you want a navigation shape Shell didn't anticipate. Then you're either fighting Shell or rebuilding from scratch.
-FsShell is the missing middle: a navigation framework that gives you Shell's structure and conventions without Shell's ceiling.
-It just hit production-ready. This post is three apps that show what that means in practice.
-(Brief acknowledgment: docs exist for the how; this post is about the what for.)
 
 2. Case study one: The default tab bar (300-400 words)
 Purpose: Show that even "stock-looking" navigation is better with FsShell. Lowest barrier to entry for the reader.
