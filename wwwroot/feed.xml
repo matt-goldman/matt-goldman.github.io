@@ -4,12 +4,581 @@
     <title>GoForGoldman</title>
     <link>https://goforgoldman.com</link>
     <description>A blog about mobile dev, .NET, VR, motorcycles, science, Superman and homebrewing</description>
-    <lastBuildDate>Thu, 07 May 2026 06:50:47 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 23:02:00 GMT</lastBuildDate>
     <image>
       <url>https://goforgoldman.com/image/default.png</url>
       <title>GoForGoldman Home Page</title>
       <link>https://goforgoldman.com</link>
     </image>
+<item>
+        <title>Easy Custom Navigation with Flagstone UI</title>
+        <link>https://goforgoldman.com/posts/flagstone</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/flagstone</guid>
+        <pubDate>Wed, 01 Jul 2026 00:00:01 GMT</pubDate>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/flagstone-post-banner.png" alt="Easy Custom Navigation with Flagstone UI" />
+          With `FsShell`, Flagstone UI comes out of the experimental phase. This article gives you a taste of what you can do with it; but the only limit is your imagination.]]>
+        </description>
+        <category>mobile</category>
+        <category>maui</category>
+        <category>ui</category>
+        <content:encoded><![CDATA[<h2 id="welcome-maui-ui-july-and-flagstone-ui">Welcome MAUI UI July and Flagstone UI!</h2>
+<p>Welcome to MAUI UI July 2026! I'm kicking things off with a celebration: Flagstone UI is now generally available.</p>
+<p><figure><img src="/images/posts/flagstone-samples.png" alt="Some examples of apps built with Flagstone UI"  style="max-width:100%;height:auto;" /><figcaption style="margin-left:auto;margin-right:auto;font-style:italic;text-align:center;">Some examples of apps built with Flagstone UI</figcaption></figure></p>
+<p>It's been around for a while, some of you may even be using it, and it's been stable. I haven't and am not planning to make any breaking changes to the API, but I've been reluctant to remove the &quot;experimental&quot; caveat because it has felt incomplete. But the latest release includes a new control, <code>FsShell</code>, which to me elevates Flagstone UI to a full and valuable addition to any .NET MAUI app.</p>
+<h2 id="why-fsshell-is-important">Why <code>FsShell</code> is important</h2>
+<p><code>FsShell</code> may not sound like a big deal but it's a prime example of the specific reason why Flagstone UI exists.</p>
+<p>.NET MAUI is great, but it doesn't expose the full gamut of styling capabilities at the cross-platform layer that modern apps require. They're all there, but you have to drop down to platform code to get access to them, which is a barrier for many developers, especially those coming from .NET rather than iOS or Android. Flagstone UI addresses that by lifting a common set of styling properties to the cross-platform layer.</p>
+<p>Shell is a powerful tool. It provides opinionated routing and navigation foundations, and it's been the default for new MAUI apps for the past four years. Most apps benefit from leaning into Shell's conventions rather than fighting them.</p>
+<p>But Shell makes an architectural choice that limits what you can build on top of it: it couples navigation and presentation. Routing, navigation state, lifecycle, and the visual chrome are the same code, as far as your app is concerned. You can't take Shell's routing without also taking Shell's UI. You can't customise the chrome without working against the framework rather than with it.</p>
+<p>This is the reason people often say all .NET MAUI apps look like .NET MAUI apps. It's a structural problem rather than a styling one. Shell's UI is bound to its navigation, and the customisation flexibility is limited in a way you don't see in other UI frameworks. Unfortunately, you simply can't take the functional side of Shell without the UI.</p>
+<p>Well, you <em>couldn't</em>; you can now.</p>
+<p>Much like the other controls in Flagstone UI, <code>FsShell</code> doesn't try to give you a stylish looking Shell replacement, instead it completely decouples presentation from navigation. You can use everything you get with Shell (routes, navigation state, everything) and use your own UI for the presentation, fully built in cross-platform .NET MAUI (XAML or C#). With that said it does come with a relatively straightforward tab bar out of the box, it's not overly sophisticated but it gives you an <code>ItemTemplate</code> for tabs; something stock Shell only gives you for flyout items. It also provides some primitives for building your own Shell navigation UI so you don't have to start completely from scratch.</p>
+<p>In a sense, you can think of Flagstone UI as being analogous to Tailwind. It's not a control library, but rather a styling surface that gives you more control, and gives you the tools you need to build your UI using .NET MAUI rather than platform code wrapped in C#.</p>
+<p>In this post I'll show you three apps that show what that means in practice. One that uses <code>FsShell</code> to improve on the standard tab bar, one that uses it to reach patterns stock Shell can't, and one that uses it to build navigation that nothing off-the-shelf would have given you.</p>
+<p>This article includes code snippets, but it's more showcase than documentation. You can find full docs, including tutorials, <a href="https://github.com/matt-goldman/flagstone-ui">in the repo</a>.</p>
+<h2 id="what-is-fsshell">What is FsShell?</h2>
+<p>It's a sub-classed, drop-in replacement for <code>Shell</code> in .NET MAUI apps. You can add the Flagstone UI nuget package to your app, and change the <code>AppShell</code> base class to <code>FsShell</code> and do nothing else and it will work identically. Except now you'll be able to style your tabs, without creating your own custom tab bar.</p>
+<p>Or you can create your own custom tab bar, or in fact not use a tab bar at all - it's just a <code>ContentView</code>, so you could use something else entirely for navigation - a floating radial menu, a rotary telephone dial (note to self: that's cool, I'm gonna do that), literally anything you can imagine.</p>
+<h2 id="a-better-tab-bar">A better tab bar</h2>
+<p>If you do nothing else, you should replace Shell in your app with <code>FsShell</code>. Even if you don't need a fancy tab bar or bespoke navigation. Why? Well, take a look at this:</p>
+<VideoContainer Source=SourceType.File FilePath='/images/posts/demoshell.mp4' Width='300px' Caption='The default FsShell tab bar allows you to format your tabs, this example includes an emoji instead of an icon and the title, arranged horizontally instead of vertically, with scaling and background animations'>
+</VideoContainer>
+<p><em>The included <code>FsTabBar</code> allows you to style tabs with an <code>ItemTemplate</code>, just like you can with Flyout items in stock Shell.</em></p>
+<p>This may not be particularly sophisticated, and to be honest the stock <code>FsTabBar</code> is intended as a reference, but it should still replace the default Shell in your apps. An <code>ItemTemplate</code> defines what the tabs look like, and that unlocks some specific things which, while trivial, are now trivial to <em>implement</em>:</p>
+<ul>
+<li>The layout of the tab is horizontal instead of vertical</li>
+<li>The icon (emoji) changes based on selected state</li>
+<li>The icon and text scale based on selected state</li>
+<li>A background shape animates to the selected tab</li>
+</ul>
+<p>Those last two could be combined to create a refraction/glassmorphic effect, if you're into that sort of thing.</p>
+<p>This whole thing was easy enough. As mentioned above subclass <code>FsShell</code> instead of <code>Shell</code>:</p>
+<pre><code class="language-csharp">using FlagstoneUI.Core.Controls;
+
+namespace FlagstoneUI.SampleApp;
+
+public partial class AppShell : FsShell
+{
+	public AppShell()
+	{
+		InitializeComponent();
+	}
+}
+</code></pre>
+<p>Update the XAML too:</p>
+<pre><code class="language-xml">&lt;fs:FsShell
+  x:Class=&quot;FlagstoneUI.SampleApp.DemoShell&quot;
+  xmlns=&quot;http://schemas.microsoft.com/dotnet/2021/maui&quot;
+  xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+  xmlns:fs=&quot;clr-namespace:FlagstoneUI.Core.Controls;assembly=FlagstoneUI.Core&quot;
+  Title=&quot;FlagstoneUI.SampleApp&quot;&gt;
+  &lt;!-- ... --&gt;
+&lt;/fs:FsShell&gt;
+</code></pre>
+<p>Define an <code>ItemTemplate</code> for the tabs. Note I use <code>VisualStateManager</code>l <code>FsShell</code> exposes some custom states to assist here.</p>
+<pre><code class="language-xml">&lt;fs:FsShell.TabBarItemTemplate&gt;
+&lt;DataTemplate&gt;
+    &lt;HorizontalStackLayout Spacing=&quot;4&quot;
+                           Padding=&quot;12,8&quot;
+                           HorizontalOptions=&quot;Center&quot;
+                           x:DataType=&quot;fs:FsTabContext&quot;&gt;
+    &lt;VisualStateManager.VisualStateGroups&gt;
+        &lt;VisualStateGroup x:Name=&quot;CommonStates&quot;&gt;
+        &lt;VisualState x:Name=&quot;Unselected&quot;&gt;
+            &lt;VisualState.Setters&gt;
+            &lt;Setter Property=&quot;Scale&quot; Value=&quot;1&quot; /&gt;
+            &lt;Setter TargetName=&quot;IconLabel&quot; Property=&quot;Label.Text&quot; Value=&quot;🙈&quot;/&gt;
+            &lt;Setter TargetName=&quot;TabLabel&quot; Property=&quot;Label.FontAttributes&quot; Value=&quot;None&quot;/&gt;
+            &lt;/VisualState.Setters&gt;
+        &lt;/VisualState&gt;
+        &lt;VisualState x:Name=&quot;Selected&quot;&gt;
+            &lt;VisualState.Setters&gt;
+            &lt;Setter Property=&quot;Scale&quot; Value=&quot;1.3&quot; /&gt;
+            &lt;Setter TargetName=&quot;IconLabel&quot; Property=&quot;Label.Text&quot; Value=&quot;🐵&quot;/&gt;
+            &lt;Setter TargetName=&quot;TabLabel&quot; Property=&quot;Label.FontAttributes&quot; Value=&quot;Bold&quot;/&gt;
+            &lt;/VisualState.Setters&gt;
+        &lt;/VisualState&gt;
+        &lt;/VisualStateGroup&gt;
+    &lt;/VisualStateManager.VisualStateGroups&gt;
+    &lt;Label Text=&quot;🙈&quot;
+            FontSize=&quot;14&quot;
+            x:Name=&quot;IconLabel&quot;/&gt;
+    &lt;Label Text=&quot;{Binding Title}&quot; FontSize=&quot;14&quot;
+            x:Name=&quot;TabLabel&quot;/&gt;
+    &lt;/HorizontalStackLayout&gt;
+&lt;/DataTemplate&gt;
+&lt;/fs:FsShell.TabBarItemTemplate&gt;
+</code></pre>
+<p><code>FsTabBarContext</code> is assigned automatically by <code>FsShell</code> and includes metadata about the specific tab state, like route, title, and whether it's selected or not.</p>
+<p>That's it. The rest of the Shell file remains identical. The background shape animation and colour are handled by the stock <code>FsTabBar</code>, and are backed by bindable properties that you can set in the header too.</p>
+<p>Simple. Even without creating your own tab bar, you already have styling control over your tabs that you don't get with Shell.</p>
+<p>You can see the full code in the sample app in the <a href="https://github.com/matt-goldman/flagstone-ui">Flagstone UI repo</a>.</p>
+<h2 id="action-buttons">Action buttons</h2>
+<p>The tab bar navigation paradigm is ubiquitous on mobile. One of its most common features, an action button in the middle of the bar that performs an action rather than navigating, is a trivial layout to achieve in a <code>ContentView</code>, so with <code>FsShell</code> that's exactly what you do.</p>
+<p>Let's take a look at <em>Instagrim</em>, a halloween themed social photos app:</p>
+<VideoContainer Source=SourceType.File FilePath='/images/posts/instagrim.mp4' Width='300px' Caption='The Instagrim app has a large action button in the middle of the tab bar, featuring a camera icon, making it obvious it activates the camera rather than navigating the app. One of the tabs also has a badge with a notification app.'>
+</VideoContainer>
+<p><em>A custom <code>IFsTabBar</code> implementation that features an action button and a notification badge</em></p>
+<p>The Instagrim app actually showcases two common UX paradigms:</p>
+<ul>
+<li>the aforementioned action button</li>
+<li>A notification count badge on one of the tabs</li>
+</ul>
+<p>Implementation is a bit trickier, this requires a fill custom <code>ContentView</code> to replace the tab bar. This is a bindable property in <code>FsShell</code> which allows you to replace the default <code>FsTabBar</code>:</p>
+<pre><code class="language-xml">&lt;fs:FsShell
+    x:Class=&quot;instagrim.AppShell&quot;
+    xmlns=&quot;http://schemas.microsoft.com/dotnet/2021/maui&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    xmlns:pages=&quot;clr-namespace:instagrim.Pages&quot;
+    xmlns:controls=&quot;clr-namespace:instagrim.Controls&quot;
+    xmlns:fs=&quot;clr-namespace:FlagstoneUI.Core.Controls;assembly=FlagstoneUI.Core&quot;
+    NavBarIsVisible=&quot;False&quot;
+    TabBarIsDocked=&quot;False&quot;
+    Title=&quot;instagrim&quot;&gt;
+    &lt;fs:FsShell.TabBar&gt;  &lt;!-- Add this --&gt;
+        &lt;controls:NavBar /&gt;
+    &lt;/fs:FsShell.TabBar&gt;
+    &lt;TabBar&gt;
+        &lt;ShellContent
+            Title=&quot;Feed&quot;
+            ContentTemplate=&quot;{DataTemplate pages:FeedPage}&quot;
+            Route=&quot;feed&quot; /&gt;
+        
+        &lt;ShellContent
+            Title=&quot;Discover&quot;
+            ContentTemplate=&quot;{DataTemplate pages:DiscoverPage}&quot;
+            Route=&quot;discover&quot; /&gt;
+        
+        &lt;!-- no content, reserves space for the action button --&gt;
+        &lt;ShellContent
+            Title=&quot;Action&quot;
+            Route=&quot;action&quot; /&gt;
+        
+        &lt;ShellContent
+            Title=&quot;Hauntings&quot;
+            ContentTemplate=&quot;{DataTemplate pages:HauntingsPage}&quot;
+            Route=&quot;hauntings&quot; /&gt;
+        
+        &lt;ShellContent
+            Title=&quot;Profile&quot;
+            ContentTemplate=&quot;{DataTemplate pages:ProfilePage}&quot;
+            Route=&quot;profile&quot; /&gt;
+    &lt;/TabBar&gt;
+
+&lt;/fs:FsShell&gt;
+</code></pre>
+<p>You can see that everything else is essentially the same. A couple of other things to note here:</p>
+<ul>
+<li>First, you'll notice a placeholder tab for the action button. I'll show you how I handle that later. There are other ways to solve this, but this was a quick pragmatic choice.</li>
+<li>You can see there's a bindable property <code>TabBarIsDocked</code> here that is set to <code>False</code>. That's not strictly necessary - the default is <code>True</code> which anchors the nav bar to the bottom of the screen, and even though this tab bar is at the bottom, when <code>True</code> it gets rendered inside the app's OS native tab bar space; when false it's just a <code>ContentView</code> rendered over the top of your UI, which as I said above can be anything. But the reason I set it to false here is because doing so allows me to place the <code>ImageButton</code> for the camera outside the hit target boundary of the bar. (This is more important in the next example).</li>
+</ul>
+<p>The custom tab bar defines the presentation, but Shell is still responsible for the app hierarchy definition, routing, and navigation. We've decoupled presentation and functionality.</p>
+<p>The <code>TabBar</code> control itself is pretty straightforward. I'll show the code-behind:</p>
+<pre><code class="language-csharp">using FlagstoneUI.Core.Controls;
+using instagrim.Pages;
+
+namespace instagrim.Controls;
+
+public partial class NavBar : FsTabBarBase
+{
+    public NavBar()
+    {
+        InitializeComponent();
+        InitializeTabContainer();
+    }
+
+    protected override Layout TabContainer =&gt; Tabs;
+
+    protected override void OnTabTapped(FsTabContext context)
+    {
+        if (context.Title == &quot;Action&quot;)
+        {
+            return;
+        }
+        
+        base.OnTabTapped(context);
+    }
+
+    private async void ActionButton_OnClicked(object? sender, EventArgs e)
+    {
+        var page = Application.Current!.Windows[0].Page!;
+        if (DeviceInfo.Current.Platform == DevicePlatform.iOS &amp;&amp; DeviceInfo.Current.DeviceType == DeviceType.Virtual)
+        {
+            await page.DisplayAlertAsync(&quot;Camera not available&quot;, &quot;Camera is not available on simulator&quot;, &quot;OK&quot;);
+        }
+        else
+        {
+            await page.Navigation.PushModalAsync(new NavigationPage(new CameraPage()));
+        }
+    }
+}
+</code></pre>
+<p>A few things to point out here:</p>
+<ul>
+<li>You can see it inherits <code>FsTabBarBase</code>; strictly you don't need this, you just need to implement <code>IFsTabBar</code>. But <code>FsTabBarBase</code> has all the plumbing you would need for pretty much any navigation UI I can think of, but you don't have to use it if you have something exotic.</li>
+<li>The constructor calls <code>InitializeTabBarContainer()</code>, this is necessary to register the tabs with <code>FsShell</code>. I think I will likely move this in future so you just call <code>base()</code>, but for now you need to call it.</li>
+<li>You have to provide a <code>Layout</code> called <code>TabContainer</code>. This is required by <code>FsShell</code> and defined on the <code>IFsTabBar</code> interface, and is what <code>FsShell</code> looks for to render the tabs.</li>
+<li>You can see I'm overriding the <code>OnTabTapped</code> method here, and essentially just doing nothing if the tab's title is &quot;Action&quot;. That's the hack</li>
+</ul>
+<NoteContainer >
+<p>Fun fact: I tried using the route property as a more definitive reference but turns out Shell injects a prefix. I could have adapted to that but decided instead to match the canonical value from my Shell.</p>
+</NoteContainer>
+<ul>
+<li>And of course the event handler for the action button.</li>
+</ul>
+<p>The view code is actually also not particularly complex:</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;fs:FsTabBarBase xmlns=&quot;http://schemas.microsoft.com/dotnet/2021/maui&quot;
+                 xmlns:fs=&quot;clr-namespace:FlagstoneUI.Core.Controls;assembly=FlagstoneUI.Core&quot;
+                 xmlns:icons=&quot;clr-namespace:Plugin.Maui.Lucide.Controls;assembly=Plugin.Maui.Lucide&quot;
+                 xmlns:converters=&quot;clr-namespace:instagrim.Converters&quot;
+                 xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+                 xmlns:mct=&quot;http://schemas.microsoft.com/dotnet/2022/maui/toolkit&quot;
+                 x:Class=&quot;instagrim.Controls.NavBar&quot;&gt;
+    &lt;fs:FsTabBarBase.Resources&gt;
+        &lt;converters:TitleToGlyphConverter x:Key=&quot;TitleToGlyph&quot; /&gt;
+        &lt;converters:TitleToIsVisibleConverter x:Key=&quot;TitleToVisible&quot; /&gt;
+        &lt;mct:IsEqualConverter x:Key=&quot;IsEqual&quot; /&gt;
+    &lt;/fs:FsTabBarBase.Resources&gt;
+    &lt;fs:FsTabBarBase.ItemTemplate&gt;
+        &lt;DataTemplate x:DataType=&quot;fs:FsTabContext&quot;&gt;
+            &lt;Grid MinimumWidthRequest=&quot;50&quot;&gt;
+                &lt;VisualStateManager.VisualStateGroups&gt;
+                    &lt;VisualStateGroup x:Name=&quot;CommonStates&quot;&gt;
+                        &lt;VisualState x:Name=&quot;Unselected&quot;&gt;
+                            &lt;VisualState.Setters&gt;
+                                &lt;Setter TargetName=&quot;IconImage&quot; Property=&quot;icons:Icon.Color&quot; Value=&quot;White&quot;/&gt;
+                            &lt;/VisualState.Setters&gt;
+                        &lt;/VisualState&gt;
+                        &lt;VisualState x:Name=&quot;Selected&quot;&gt;
+                            &lt;VisualState.Setters&gt;
+                                &lt;Setter TargetName=&quot;IconImage&quot; Property=&quot;icons:Icon.Color&quot; Value=&quot;{DynamicResource Primary}&quot;/&gt;
+                            &lt;/VisualState.Setters&gt;
+                        &lt;/VisualState&gt;
+                    &lt;/VisualStateGroup&gt;
+                &lt;/VisualStateManager.VisualStateGroups&gt;
+                &lt;Grid HorizontalOptions=&quot;Center&quot;
+                      VerticalOptions=&quot;Center&quot;&gt;
+                    &lt;icons:Icon HorizontalOptions=&quot;Center&quot;
+                                IsVisible=&quot;{Binding Title, Converter={StaticResource TitleToVisible}}&quot;
+                                Name=&quot;{Binding Title, Converter={StaticResource TitleToGlyph}}&quot;
+                                Color=&quot;White&quot;
+                                Size=&quot;36&quot;
+                                x:Name=&quot;IconImage&quot;/&gt;
+                    &lt;Border HorizontalOptions=&quot;End&quot;
+                            VerticalOptions=&quot;Start&quot;
+                            StrokeShape=&quot;Ellipse&quot;
+                            StrokeThickness=&quot;0&quot;
+                            HeightRequest=&quot;20&quot;
+                            WidthRequest=&quot;20&quot;
+                            TranslationX=&quot;5&quot;
+                            TranslationY=&quot;-5&quot;
+                            Background=&quot;{DynamicResource Accent}&quot;
+                            IsVisible=&quot;{Binding Title, Converter={StaticResource IsEqual}, ConverterParameter='Hauntings'}&quot;&gt;
+                        &lt;Label HorizontalOptions=&quot;Center&quot;
+                               VerticalOptions=&quot;Center&quot;
+                               HorizontalTextAlignment=&quot;Center&quot;
+                               VerticalTextAlignment=&quot;Center&quot;
+                               FontAttributes=&quot;Bold&quot;
+                               FontFamily=&quot;OpenSansSemibold&quot;
+                               FontSize=&quot;12&quot;
+                               Text=&quot;6&quot; /&gt;
+                    &lt;/Border&gt;
+                &lt;/Grid&gt;
+            &lt;/Grid&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/fs:FsTabBarBase.ItemTemplate&gt;
+    &lt;Grid Margin=&quot;0&quot;
+          Padding=&quot;0&quot;
+          VerticalOptions=&quot;End&quot;
+          HorizontalOptions=&quot;Fill&quot;
+          BackgroundColor=&quot;{DynamicResource Background}&quot;&gt;
+        &lt;BoxView Color=&quot;{DynamicResource Border}&quot;
+                 HeightRequest=&quot;1&quot;
+                 HorizontalOptions=&quot;Fill&quot;
+                 VerticalOptions=&quot;Start&quot;/&gt;
+        &lt;FlexLayout x:Name=&quot;Tabs&quot;
+                    Direction=&quot;Row&quot;
+                    HorizontalOptions=&quot;Fill&quot;
+                    VerticalOptions=&quot;Center&quot;
+                    JustifyContent=&quot;SpaceAround&quot;
+                    AlignContent=&quot;Center&quot;
+                    AlignItems=&quot;Center&quot;
+                    HeightRequest=&quot;70&quot;&gt;
+        
+        &lt;/FlexLayout&gt;
+        
+        &lt;ImageButton VerticalOptions=&quot;Center&quot;
+                     HorizontalOptions=&quot;Center&quot;
+                     WidthRequest=&quot;80&quot;
+                     HeightRequest=&quot;80&quot;
+                     CornerRadius=&quot;40&quot;
+                     TranslationY=&quot;-40&quot;
+                     BackgroundColor=&quot;{DynamicResource Primary}&quot;
+                     BorderColor=&quot;{DynamicResource PrimaryForeground}&quot;
+                     BorderWidth=&quot;3&quot;
+                     Padding=&quot;20&quot;
+                     Source=&quot;{FontImageSource FontFamily=Lucide,
+                                              Glyph={StaticResource Camera},
+                                              Color={DynamicResource PrimaryForeground}}&quot;
+                     x:Name=&quot;ActionButton&quot;
+                     Clicked=&quot;ActionButton_OnClicked&quot;&gt;
+            &lt;ImageButton.Shadow&gt;
+                &lt;Shadow Brush=&quot;{DynamicResource PrimaryBrush}&quot; Offset=&quot;0,0&quot; Radius=&quot;20&quot; Opacity=&quot;0.9&quot; /&gt;
+            &lt;/ImageButton.Shadow&gt;
+        &lt;/ImageButton&gt;
+    &lt;/Grid&gt;
+&lt;/fs:FsTabBarBase&gt;
+</code></pre>
+<p>In fact it's dead simple. It's a <code>FlexLayout</code> in a <code>Grid</code> with an <code>ImageButton</code> overlaid in the middle. That's it, that and the <code>ItemTemplate</code> with <code>VisualStateManager</code>, but that's not particularly exotic. The only thing of note here is the badge, which you can see is mocked but easy enough to wire up to some state; and we'll see a working example of that in the next sample.</p>
+<p>With <code>FsShell</code>, you can easily implement common UI/UX paradigms, and as you can see, it's all just bog-standard, cross-platform .NET MAUI code.</p>
+<p>The full code is available <a href="https://github.com/matt-goldman/instagrim">here</a>.</p>
+<h2 id="toward-more.interesting.navigation">Toward more...interesting...navigation</h2>
+<p>I started out with grand ambitions of wacky and interesting navigation examples, like the rotary dial and radial menu I mentioned, but time makes fools of us all. Still, I wanted to do something at least a little out of the ordinary, and as it happens I also wanted to revive the Beer Driven Devs app I used to <a href="/posts/bdd-app-downloads">demo some cool micro interactions for last year's MAUI UI July</a>.</p>
+<p>For the BDD app, I wanted a media player to occupy the space at the bottom of the screen typically taken up by the tab bar. This is also a common UX paradigm for audio apps (music, podcasts, audio books, etc). So I needed somewhere else to put the navigation UI. Here's how I did it:</p>
+<VideoContainer Source=SourceType.File FilePath='/images/posts/bdd.mp4' Width='300px' Caption='The bottom bar in the BDD app is a media player, and the navigation is handled by an expander (from the Community Toolkit)'>
+</VideoContainer>
+<p><em>A fully custom navigation UI that utilises the Shell functionality</em></p>
+<p>If you look at the video, you can see the play/pause state is fully syncrhonised between the button on the bottom bar and the buttons on individual episode cards. The button in the bottom right shows a vertically stacked nav menu that automatically hides as you navigate. And the player is persistent.</p>
+<p>This one is obviously a bit bigger, so I won't go through the whole implementation here, but the actual Shell specific part is still very simple:</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;fs:FsTabBarBase xmlns=&quot;http://schemas.microsoft.com/dotnet/2021/maui&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
+             xmlns:fs=&quot;clr-namespace:FlagstoneUI.Core.Controls;assembly=FlagstoneUI.Core&quot;
+             xmlns:controls=&quot;clr-namespace:BeerDrivenDevsApp.Controls&quot;
+             BackgroundColor=&quot;Transparent&quot;
+             xmlns:toolkit=&quot;http://schemas.microsoft.com/dotnet/2022/maui/toolkit&quot;
+             x:Class=&quot;BeerDrivenDevsApp.Controls.BddTabBar&quot;&gt;
+    &lt;fs:FsTabBarBase.ItemTemplate&gt;
+        &lt;DataTemplate x:DataType=&quot;fs:FsTabContext&quot;&gt;
+            &lt;Grid&gt;
+            &lt;VisualStateManager.VisualStateGroups&gt;
+                &lt;VisualStateGroup x:Name=&quot;CommonStates&quot;&gt;
+                    &lt;VisualState x:Name=&quot;Unselected&quot;&gt;
+                        &lt;VisualState.Setters&gt;
+                            &lt;Setter TargetName=&quot;TabBorder&quot; Property=&quot;Border.StrokeThickness&quot; Value=&quot;0&quot;/&gt;
+                        &lt;/VisualState.Setters&gt;
+                    &lt;/VisualState&gt;
+                    &lt;VisualState x:Name=&quot;Selected&quot;&gt;
+                        &lt;VisualState.Setters&gt;
+                            &lt;Setter TargetName=&quot;TabBorder&quot; Property=&quot;Border.StrokeThickness&quot; Value=&quot;1&quot;/&gt;
+                        &lt;/VisualState.Setters&gt;
+                    &lt;/VisualState&gt;
+                &lt;/VisualStateGroup&gt;
+            &lt;/VisualStateManager.VisualStateGroups&gt;
+            &lt;Border StrokeThickness=&quot;0&quot;
+                    StrokeShape=&quot;RoundRectangle 20&quot;
+                    Padding=&quot;5&quot;
+                    x:Name=&quot;TabBorder&quot;
+                    Stroke=&quot;{DynamicResource Amber300}&quot;&gt;
+                &lt;HorizontalStackLayout HorizontalOptions=&quot;Fill&quot;
+                                       Spacing=&quot;5&quot;&gt;
+                    &lt;Image VerticalOptions=&quot;Center&quot;
+                           HorizontalOptions=&quot;Center&quot;
+                           Source=&quot;{Binding Icon}&quot;/&gt;
+                    &lt;Label Text=&quot;{Binding Title}&quot;
+                           FontSize=&quot;32&quot;
+                           TextColor=&quot;{DynamicResource Amber950}&quot;
+                           VerticalOptions=&quot;Center&quot;
+                           VerticalTextAlignment=&quot;Center&quot;/&gt;
+                &lt;/HorizontalStackLayout&gt;
+            &lt;/Border&gt;
+            &lt;/Grid&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/fs:FsTabBarBase.ItemTemplate&gt;
+    &lt;Grid&gt;
+        &lt;Border ...&gt;
+            &lt;!-- The media player controls go here --&gt;
+        &lt;/Border&gt;
+            
+        &lt;toolkit:Expander VerticalOptions=&quot;End&quot;
+                          HorizontalOptions=&quot;End&quot;
+                          Direction=&quot;Up&quot;
+                          Margin=&quot;10,0,15,15&quot;
+                          ExpandedChanged=&quot;Expander_OnExpandedChanged&quot;
+                          x:Name=&quot;NavExpander&quot;&gt;
+            &lt;toolkit:Expander.Header&gt;
+                &lt;Border HeightRequest=&quot;50&quot;
+                        WidthRequest=&quot;50&quot;
+                        StrokeShape=&quot;Ellipse&quot;
+                        Background=&quot;{StaticResource BackgroundGradient}&quot;
+                        HorizontalOptions=&quot;End&quot;&gt;
+                             &lt;Label Text=&quot;{x:Static controls:Icons.ChevronsUp}&quot;
+                                    FontFamily=&quot;Lucide&quot;
+                                    HorizontalOptions=&quot;Center&quot;
+                                    VerticalOptions=&quot;Center&quot;
+                                    FontSize=&quot;24&quot;
+                                    x:Name=&quot;ChevronLabel&quot;/&gt;
+                &lt;/Border&gt;
+            &lt;/toolkit:Expander.Header&gt;
+            &lt;Border Stroke=&quot;{DynamicResource Amber300}&quot;
+                    StrokeShape=&quot;RoundRectangle 20&quot;
+                    BackgroundColor=&quot;{DynamicResource Amber100}&quot;
+                    Margin=&quot;0,0,0,15&quot;
+                    Padding=&quot;10&quot;&gt;
+                &lt;VerticalStackLayout x:Name=&quot;TabBar&quot;
+                                     Spacing=&quot;15&quot;
+                                     TranslationY=&quot;300&quot;
+                                     BackgroundColor=&quot;{DynamicResource Amber100}&quot; /&gt;
+            &lt;/Border&gt;
+        &lt;/toolkit:Expander&gt;
+    &lt;/Grid&gt;
+&lt;/fs:FsTabBarBase&gt;
+</code></pre>
+<p>You can see that logically this is identical to the others - you have a data template that defines your tabs' appearance (in this case, horizontally arranged, with an icon and text), and a layout to host them. In this case it's the <code>VerticalStackLayout</code> inside the <code>Expander</code>: it's named <code>TabBar</code>, and in the code behind we can see it's returned by the <code>TabLayout</code> property:</p>
+<pre><code class="language-csharp">using CommunityToolkit.Maui.Core;
+using FlagstoneUI.Core.Controls;
+
+namespace BeerDrivenDevsApp.Controls;
+
+public partial class BddTabBar : FsTabBarBase
+{
+    public BddTabBar()
+    {
+        InitializeComponent();
+        InitializeTabContainer();
+    }
+
+    protected override Layout TabContainer =&gt; TabBar;
+
+    private void Expander_OnExpandedChanged(object? sender, ExpandedChangedEventArgs e)
+    {
+        _ = e.IsExpanded ? OpenNav() : CloseNav();
+    }
+
+    public void HandleNavigated()
+    {
+        _ = CloseNav();
+    }
+
+    private async Task OpenNav()
+    {
+        var rotateTask = ChevronLabel.RotateToAsync(180);
+        var tabTask = TabBar.TranslateToAsync(0, 0);
+        await Task.WhenAll(rotateTask, tabTask);
+    }
+
+    private async Task CloseNav()
+    {
+        var rotateTask = ChevronLabel.RotateToAsync(0);
+        var tabTask = TabBar.TranslateToAsync(0, 300);
+        await Task.WhenAll(rotateTask, tabTask);
+        NavExpander.IsExpanded = false;
+    }
+}
+</code></pre>
+<p>This follows the same pattern of returning the appropriate layout via the <code>TabContainer</code> property, and calling the <code>InitializeTabContainer()</code> base method in the constructor.</p>
+<p>There are a few other things going on here but as you can see none of these are exotic, just standard view manipulation you'd expect to be able to do anywhere in a .NET MAUI app. And that's the point.</p>
+<p>There's obviously a lot more I haven't shown here, covering the media playing specifically. But that's not specific to the custom Shell implementation (it's in place of it), so I won't go through it here. But you can see it, along with everything else in full, in the <a href="https://github.com/matt-goldman/BeerDrivenDevsApp">Beer Driven Devs app repo</a>.</p>
+<h2 id="what-next">What next?</h2>
+<p>I know you're itching to try this yourself, so if you've maintained enough discipline to get to here without dropping everything and building your own <code>FsShell</code> app, congratulations! But you can go and do that now :)</p>
+<p>As mentioned you can see all the code, docs, and the sample app in the <a href="https://github.com/matt-goldman/flagstone-ui">Flagstone UI repo</a>.</p>
+<p>Or you can just install it into your app and start playing with it:</p>
+<pre><code class="language-bash">dotnet add package FlagstoneUI.Core --version 2.0.4
+</code></pre>
+<p>There's more to see than just <code>FsShell</code> - Flagstone UI let's you do anything. The examples here mostly show <code>FsShell</code>, but the sample app in the rpeo has a complete controls showcase. You can also see a more complete, real-world inspired app called <a href="https://github.com/matt-goldman/MyContoso">MyContoso</a>. It was created as a demo for a talk at <a href="https://mauiday.net/">MAUI Dau</a>, but it's based on requirements (and problems) from actual client projects. It's not especially exciting but is a comprehensive showcase of Flagstone UI in action.</p>
+<p>So what will you build?</p>
+<h2 id="a-challenge">A challenge</h2>
+<p>Today is the first of July. Why not pick up Flagstone UI and <code>FsShell</code> and see if you can use it to replicate a popular app? If you write it up or record a video before the end of the month, let me know, and I'll include it on the official MAUI UI July calendar.</p>
+]]></content:encoded>
+      </item>
+<item>
+        <title>Where AI Goes Next</title>
+        <link>https://goforgoldman.com/posts/ai-enshitification</link>
+        <guid isPermaLink="true">https://goforgoldman.com/posts/ai-enshitification</guid>
+        <pubDate>Sun, 14 Jun 2026 00:00:01 GMT</pubDate>
+        <description>
+          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/where-ai-goes-next.png" alt="Where AI Goes Next" />
+          Everyone&#39;s arguing about whether the AI bubble will burst. They&#39;re asking the wrong question.]]>
+        </description>
+        <category>long-form</category>
+        <category>ai</category>
+        <category>opinion</category>
+        <category>consumerisation</category>
+        <content:encoded><![CDATA[<h2 id="bursting-bubbles">Bursting Bubbles</h2>
+<p>By now most people have formed an opinion about the future of AI, and it tends to fall into one of two camps. In one are those calling AI a bubble, set to burst any minute, with the other insisting that there's no bubble and that the growth is only just getting started.</p>
+<p>But both perspectives are wrong, because they are framed as a binary. The truth is a little more nuanced, but not unprecedented.</p>
+<p>Where AI goes next is neither crash nor continual growth, and fortunately (or unfortunately, which is an equally valid perspective) we have enough facts and historical precedent to tell us exactly what will happen instead.</p>
+<h2 id="end-of-the-free-ride">End of the Free Ride</h2>
+<p>Predictions about AI as bubble or infinite money printer aren't new, but the past eight months have been a slow turning point, with a hard pivot at the start of this month.</p>
+<p>On the first of June 2026, <a href="https://github.blog/news-insights/company-news/github-copilot-is-moving-to-usage-based-billing/">GitHub Copilot moved to usage-based billing</a>, which carried an expected increase in price. Less expected was just how much of an increase, <a href="https://techcrunch.com/2026/05/30/what-a-joke-github-copilots-new-token-based-billing-spurs-consternation-among-devs/">as reported by TechCrunch</a>, users saw jumps from $29 a month to $750, and in the time since we've seen bills in the thousands, for <em>individuals</em>. That's the difference between a streaming service and a mortgage.</p>
+<p>This isn't your typical price increase, and it isn't a frog-in-boiling water scenario (<a href="https://github.com/github/copilot-billing-preview">GitHub telegraphed it</a>), and unsurprisingly has led to outrage - <a href="https://github.com/orgs/community/discussions/192948">the Community Discussion TechCrunch reported on got more than 900 downvotes</a>. Two weeks in and people are still understandably angry, but perhaps most interesting are the number of people who, while disappointed and even angry, <em>understand</em>. Amidst the rage cancellations and migrations to other tools are plenty of people quietly saying this is fair, we just can't afford it.</p>
+<h2 id="weve-seen-this-before-but-not-where-you-think">We've seen this before (but not where you think)</h2>
+<p>It's easy to reach for crypto as a comparison, and to a lesser extent IoT, but neither are the best historical parallel.</p>
+<p>IoT was, and is, a hobby. The name gives it away: 'internet of things' is not a phrase serious people use to describe serious infrastructure. It's the domain of makers and tinkerers, and that's exactly what it was meant to be. Granted, there are real enterprise IoT use cases, including some I've had exposure to. Such as in healthcare, where I spent a decade, which is a prime and frankly terrifying example, and more recently within a buildings intelligence company. But attempts to turn it into the next big thing went nowhere; the uses are real, but niche, both commercially and as a hobby. It was never a transformational technology that everyone could capitalise on.</p>
+<p>Crypto was, in my opinion, different in that the technology genuinely was interesting, only we never got to find out just <em>how</em> interesting, because big money pumped and dumped it into a joke before the actual use cases (at least for Blockchain more broadly) saw the light of day.  Instead we got a wealth-transfer machine, and yes some people made a lot of money, but unless you're a government, literally printing money, when one person makes a fortune, someone else loses one. Crypto wiped out ordinary people's savings while those gambling with the world's money got rich no matter which way it fell. <em>(That's a whole other discussion, but I won't rehash Taleb's</em> <a href="https://www.penguin.com.au/books/skin-in-the-game-9780141982656">Skin in the Game</a> <em>here.)</em></p>
+<p>Both have several parallels with AI, but neither is the best model for what comes next for one important reason: <em>ubiquity</em>.</p>
+<p>Crypto was huge, but not ubiquitous. IoT <em>wasn't</em> huge, and perhaps because it never blew up out of its niche it gets taken more seriously now. But AI is different in that it's something anyone and everyone can use, and does. Most people are sick to death of having it shoved down their throat, but it is broadly <em>useful</em> in a way crypto and IoT never were for ordinary folks. It helps with work, with creativity, and with the small administrative friction of being alive.</p>
+<p>And that's exactly why the bubble-burst crowd is wrong. Crypto and IoT could deflate without anyone much noticing because, for the ordinary person, there was nothing real underneath to miss. When the speculative money left crypto, the value left with it, because the value <em>was</em> the speculation. With AI, though, the utility is real and it's already in tens of millions of hands. You don't get a crypto-style pop for something that actually works and everyone is already using. But the no-bubble crowd is equally wrong, because the money sloshing around it is not rational or sustainable either. The froth is real, it's just that when it blows off, the substance underneath remains.</p>
+<p>But there <em>is</em> a historical parallel, one where the technology was genuinely useful, and genuinely ubiquitous. And it helps show us exactly what happens next.</p>
+<h2 id="the-smartphone-arc">The smartphone arc</h2>
+<p>Before the iPhone, smartphones were an executive toy. The Nokia Communicator, the various PalmPilot derivatives - these were the form factors, and they belonged to the wealthy and the senior. And I'm sure some people found ways to eke productivity out of them, but they were largely just very expensive toys.</p>
+<p>BlackBerry changed things though. The BlackBerry was an <em>actual</em> phone, a sensible one you could actually use as a phone. But through BlackBerry Enterprise Server and that beloved keyboard, it was also a real email tool. It was aspirational in a way the earlier devices weren't. Not everyone wanted one, but it <em>was</em> a status symbol.</p>
+<p>Then the iPhone made the smartphone something <em>everyone</em> wanted, and that changed personal computing entirely. I'm fond of <a href="https://www.thurrott.com/mobile/ios/84810/steve-ballmer-right-iphone-premium">Steve Ballmer's 2007 interview</a> where he criticised the iPhone for lacking a keyboard and being a poor email device. People like to mock that now, but he was absolutely right: touchscreen keyboards <em>are</em> terrible, but he never said that would doom the iPhone, he said we would have to wait and see whether it mattered. And, of course, it didn't.</p>
+<p>They came with mobile plans, sometimes subsidised, sometimes not. Changes to the mobile data pricing model played a big part, but those changes were driven by pressure from Apple and are inseparable. And soon enough, millions of people could justify having an internet connected computer in their pocket, and smartphones became ubiquitous.</p>
+<p>Then came the iPad, and the clones that followed, but they were different. People bought tablets with their own money, believing they'd get the same value or more as they did from their smartphones. They brought them into work and demanded their employers build value around a personal purchase. But the market wasn't ready. The software ecosystem didn't exist.</p>
+<p>But <a href="https://www.beerdriven.dev/episodes/59/">when things get big, enterprise wants in</a>. 'Enterprise mobility' became an industry overnight. The corporate box-shifters and systems integrators pushed MDM and enterprise Wi-Fi like it was the future. But none of it mattered, because the software wasn't there yet. The only people who got rich in that gold rush were the ones selling shovels.</p>
+<p>As always, you can (and should) follow the money. Sales of smartphones aren't going anywhere, but tablets are barely a blip now. But for social proof, think about meetings. In the first few years since the iPad launched, how many people did you see bring a tablet into a meeting? And how about now, 16 years on? It's not zero today, but the people who do either use them with a keyboard or a stylus - the very thing Steve Jobs supposedly forbade. Though he was misunderstood: &quot;if you see a stylus, they blew it&quot; was about <em>navigation</em>, not text input. Don't forget the Newton, which he killed due to mismanagement, <em>not</em> because he didn't like the stylus.</p>
+<p>Neither smartphones or tablets became the productivity revolution anyone sold. They became personal devices that occasionally do work, on the user's terms, with the user's accessories.</p>
+<p>That's the smartphone arc: a technology enterprise tried to capitalise on, that found its real value <em>with individuals</em>.</p>
+<h2 id="why-the-corporate-ai-vision-didnt-deliver">Why the corporate AI vision didn't deliver</h2>
+<p>I've written about this in more depth <a href="https://arinco.com.au/blog/why-youre-not-seeing-ai-business-value/">on the Arinco blog</a>, so I'll keep it brief here. The core finding from <a href="https://aimagazine.com/news/mit-why-95-of-enterprise-ai-investments-fail-to-deliver">MIT's NANDA initiative</a>, their &quot;GenAI Divide&quot; report, is that around 95% of enterprise AI pilots fail to deliver measurable impact on the bottom line.</p>
+<p>That's the part people seem to focus on, but the more interesting point is that the same research finds that at an individual level, for people using ChatGPT and Copilot to get their actual jobs done, AI is working. They called it the &quot;shadow AI economy.&quot; The technology works; it just works for people, not for org charts.</p>
+<p>To say that corporate AI has failed isn't fair. Plenty of organisations are seeing genuine gains. What's actually happened, <a href="https://www.beerdriven.dev/episodes/62/">as we discussed on the podcast</a>, is that initiatives that saw AI as a tool that empowers individuals worked. Those that saw it as an opportunity for cost reduction (and in corporate-speak, 'cost saving' is a euphemism for headcount) did not.</p>
+<h2 id="the-economics-dont-work-and-now-everyone-knows-it">The economics don't work, and now everyone knows it</h2>
+<p>It's not just Copilot.</p>
+<p>OpenAI has <a href="https://www.rdworldonline.com/facing-14b-losses-in-2026-openai-is-now-seeking-100b-in-funding-but-can-it-ever-turn-a-profit/">committed to something on the order of $1.4 trillion</a> in compute and energy deals against a tiny fraction of that in revenue. The renegotiated Microsoft arrangement reportedly caps the revenue-share trajectory dramatically lower than it once was. Burn projections run into the tens of billions a year, with cash-flow positivity not pencilled in until the end of the decade. And when <a href="https://fortune.com/2026/01/29/microsoft-stock-openai-sam-altman-debt-capital-expenditure-ai-oracle/">investors did the maths</a> on how much of Microsoft's own remaining performance obligations were tethered to OpenAI, a staggering amount of market value evaporated in a single stretch.</p>
+<p>It's tempting to say OpenAI is in a death spiral. It isn't,it has enormous usage and fast-growing revenue, but it <em>is</em> cornered: structurally exposed in a way its own partners are publicly backing away from. And cornered is more interesting than dead, because cornered animals are unpredictable.</p>
+<h2 id="the-warehouses-full-of-chips-nobody-is-using">The warehouses full of chips nobody is using</h2>
+<p>There's another giant pile of unrealised revenue. The <a href="https://www.ciodive.com/news/hyperscalers-two-thirds-data-center-capacity-2031/817016/">hyperscalers have committed hundreds of billions</a> for 2026 alone, but only a sliver of the planned data-centre <a href="https://tech-insider.org/us-ai-data-center-delays-cancellations-7gw-capacity-crisis-2026/">capacity</a> is actually under active construction. The bottleneck isn't hardware, it's <em>energy</em>: transformers, switchgear, and grid connections that take five to seven years to build. (Yes, the terrifying amount of energy AI is already guzzling is a drop in the ocean compared to what's planned).</p>
+<p>So the GPUs and the high-bandwidth memory are <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/microsoft-ceo-says-the-company-doesnt-have-enough-electricity-to-install-all-the-ai-gpus-in-its-inventory-you-may-actually-have-a-bunch-of-chips-sitting-in-inventory-that-i-cant-plug-in">stockpiled, sitting in warehouses, driving up prices for everyone else, waiting for electricity infrastructure that doesn't exist</a>. The gap is staggering: vast tracts of announced capacity, only a fraction of it actually drawing power. We are pricing consumers out of memory and graphics hardware to build data centres that can't be switched on.</p>
+<h2 id="the-hardware-tell-they-just-pivoted-to-your-desk">The hardware tell: they just pivoted to your desk</h2>
+<p>I said earlier you should follow the money, so let's do that. At GTC, <a href="https://nvidianews.nvidia.com/news/nvidia-microsoft-windows-pcs-agents-rtx-spark">NVIDIA and Microsoft announced the RTX Spark</a>, built on the DGX Spark / GB10 silicon, and <a href="https://blogs.windows.com/windowsexperience/2026/05/31/introducing-a-powerful-new-chapter-for-windows-pcs-accelerated-by-nvidia-rtx-spark/">Microsoft's own blog</a> framed it in two words: <em>personal AI</em>. <a href="https://www.tomshardware.com/tech-industry/artificial-intelligence/jensen-huang-says-nvidia-wants-to-reinvent-the-single-most-important-tool-of-humanity-with-rtx-spark-nvidia-ceo-touts-support-of-literally-every-computer-maker-in-the-world-for-its-agentic-ai-pc-platform">Jensen Huang said NVIDIA's goal is to &quot;reinvent the PC&quot;</a>, with focus &quot;100% on Windows.&quot;</p>
+<p>Microsoft and NVIDIA. One dominates enterprise after two decades of failing to matter in consumer; the other dominates consumer silicon while desperate to be taken seriously in enterprise.</p>
+<p>The two companies whose subsidised infrastructure made OpenAI viable are now both betting publicly that the long term value of AI lives on the user's own device. Built into the computers we're going to buy anyway over the next decade, rather than rented from someone else's cloud forever.</p>
+<p>That leaves OpenAI without the two partners it most depended on. Microsoft and NVIDIA didn't say a word against them, they just announced where the next decade of investment is going, and it isn't into renting frontier models to consumers. It's into putting the model on your desk.</p>
+<h2 id="consumers-pay-the-ai-bill-just-not-in-cash">Consumers pay the AI bill (just not in cash)</h2>
+<p>The enterprise subsidy isn't coming, and the real cost has arrived, but someone still has to pay. And we already know how this goes, because Google taught us, and social media confirmed it: the consumer doesn't pay, they <em>become the product.</em></p>
+<p>A surprising number of people have proven willing to pay for AI. More than I'd have guessed, and across a broader demographic than just tech enthusiasts. Granted, I'm overexposed to people predisposed and able to pay, and there's a survivorship bias in that the people talking about AI are by definition the ones who use it. But willingness among the few isn't the same as the mass adoption AI needs to be commercially sustainable. And mass-market consumers have been trained for two decades by Google and the social platforms to expect that what they consume online is free. So we'll get the model those two decades built: not the one that serves the user best, but the one that monetises them most reliably.</p>
+<p>It's already started. The <a href="https://www.bbc.com/news/articles/cn4jnwdvg9qo">sycophancy in GPT-4o</a>, earlier last year, was driven by feedback and obviously was not well received, but by the end of the year I started to feel that ChatGPT was noticeably different. Not a change in the model, but a change in the algorithm: reflexive follow-up questions to keep me typing, the sense of being held on the line rather than helped and let go. It felt a lot like something we've all grown fed up of.</p>
+<p>It's anecdotal, but there's a compelling story behind it. In September 2025, <a href="https://www.forbes.com/sites/justinwarren/2022/04/20/statsig-experimentation-product-raises-43-million-series-b/">OpenAI had paid $1.1 billion for Statsig</a>, a platform built around A/B testing and engagement optimisation of which they were already a customer. They <a href="https://www.cnbc.com/2025/09/02/openai-buys-statsig-for-1point1-billion-hires-ceo-as-applications-exec.html">installed its founder</a>, who spent a decade <a href="https://www.flagsmith.com/blog/why-openai-acquired-statsig">working on consumer engagement engineering at Facebook</a>, as CTO of Applications, in charge of ChatGPT itself.</p>
+<p>On its own, this at least raises an eyebrow. But it wasn't alone. It was followed by <a href="https://openai.com/index/our-approach-to-advertising-and-expanding-access/">an announcement</a> in January that ChatGPT would start including ads in the free and a newly announced $8 a month tier. OpenAI promised the ads would sit in the UI, <em>adjacent</em> to the model's responses, clearly separated from them, and relevant. <a href="https://www.pcmag.com/news/im-seeing-ads-in-chatgpt-openai-broke-its-promise-what-they-look-like">That's already a broken promise</a>, but even if it wasn't, let's not forget that's exactly how Google started. The ads, which were always in your face but used to be easily distinguishable from search results, now fill the first page.</p>
+<p>Google won by having the best index; you could find anything, if you refined your google-fu. Then SEO arrived, and the burden inverted. It was no longer Google's job to find everything; it was <em>your</em> job to make your content findable. We should have read that as the warning it was. We didn't. And now we have full enshittification: you don't optimise to rank, you <em>pay</em> to rank.</p>
+<p>The terms 'AEO' and 'AIO' — answer-engine and AI optimisation — are already being sold. Remember the shovel-merchants from the smartphone gold rush, the ones who got rich selling MDM and enterprise Wi-Fi into a market that wasn't ready? They're back, and this time they're promising to make sure your brand surfaces when a customer asks an AI for options. And Cambridge Analytica already showed us who's willing to exploit a pipe like that. So no, I don't think we can honestly claim LLM outputs <em>haven't already</em> been shaped by commercial and political interests. The ads in the margin are the polite phase. Google took two decades to go fully pay-to-play. I don't think AI has that long a tail.</p>
+<h2 id="meanwhile-the-consumer-revolt-is-already-underway">Meanwhile, the consumer revolt is already underway</h2>
+<p>The increasingly hopeful consumer response is being driven from exactly the niche NVIDIA appears to be distancing itself from: gaming. While Jensen Huang has not explicitly stated that he wants out of gaming (contrary to popular opinion; in fact he has said the opposite), NVIDIA has unquestionably and decisively deprioritised the consumer gaming GPU in favour of high-margin AI silicon, and the RTX Spark makes the personal-AI bet explicit.</p>
+<p>Independent of GPU prices, gamers are fed up. The big studios have consolidated, products are driven by profit rather than craft, and consumers are turning to indie and AA studios, to European and Japanese houses. They don't want live-service games. They didn't appreciate being told <a href="https://www.ign.com/articles/ubisoft-exec-says-gamers-need-to-get-comfortable-not-owning-their-games-for-subscriptions-to-take-off">by Ubisoft</a> (understandably, but incorrectly, often misattributed to EA) that they need to &quot;get comfortable&quot; not owning their games. Then, in an act of short-sighted self-sabotage, Ubisoft proved the point by switching off <em>The Crew</em>, a game people had <em>paid for</em>, and that catalysed the <a href="https://en.wikipedia.org/wiki/Stop_Killing_Games">Stop Killing Games</a> movement, which has since gathered over 1.4 million validated signatures in the EU and spun up <a href="https://www.notebookcheck.net/Stop-Killing-Games-launches-EU-and-US-watchdog-NGOs-as-Ross-Scott-says-I-think-we-re-going-to-win-this.1235433.0.html">formal NGOs on two continents</a>.</p>
+<p>People are also sick of 100GB downloads for games that don't even work. They're sick of the abandonment of optimisation; not because developers can't optimise, but because the corporate engine behind them doesn't value the hours it takes. Retro gaming is having a renaissance, partly because the games actually load instantly and demonstrate real creativity, and partly because ten-year-old games still hold up, as the advances since are locked behind hardware nobody can afford.</p>
+<p>There's a similar reaction among AI enthusiasts. LLMs are marvels, but they are nowhere near optimised. Chinese labs are already shipping models that run well on modest, even consumer, hardware. There's <a href="https://www.forbes.com/sites/davealtavilla/2026/04/28/tenstorrent-unveils-galaxy-ai-platform-targeting-scale-and-efficiency/">open work on more efficient GPU designs</a>, paired with software that does more with less. Gamers aren't the only ones demanding efficiency.</p>
+<p>And it's part of a broader social movement: right-to-repair, the rise of self-hosting, the cyberdeck subculture, and the don't-kill-games campaign. The common thread is consumers who've simply had enough.</p>
+<h2 id="the-musical-chairs-of-who-gets-to-charge-you">The musical chairs of who gets to charge you</h2>
+<p>The hardware market tells a bigger story than just 'everything is too expensive'.</p>
+<p>Intel is quietly shipping what are becoming the best value-for-money cards on the market. The <a href="https://videocardz.com/newz/intel-launches-arc-pro-b70-at-949-with-32gb-gddr6-memory">Arc Pro B70</a> launched in March 2026 with 32GB of GDDR6 and an MSRP of $949 USD, under $1,500 AUD, explicitly aimed at local LLM inference, pitched on tokens-per-dollar against NVIDIA's workstation cards. You'd be hard pressed to find one at MSRP, but you <em>can</em> get them for less than $2,000 AUD, which is still less than half the NVIDIA equivalent in terms of VRAM. They have the same ecosystem problem AMD once had, but two things are different: they're actually addressing it, and market forces are on their side. Intel has reportedly <a href="https://www.tomshardware.com/pc-components/gpus/intels-arc-pro-b70-workstation-gpu-with-32gb-of-vram-gets-tested-in-games-roughly-twice-as-fast-as-arc-b580-on-average-beats-rtx-5060-ti-in-some-titles">killed discrete <em>gaming</em> GPUs for its next architecture entirely</a>. They, too, have read the room.</p>
+<p>With NVIDIA and Intel both walking away from the consumer gaming GPU, that leaves AMD. And the tragedy is that three or four years ago many gamers would have loved to jump from team green to team red, but AMD didn't invest in the ecosystem and their products never reached their full potential. AMD could have eaten NVIDIA's lunch, but instead they squandered the goodwill that they had. They still have more of that than NVIDIA (an admittedly low bar), but less <em>confidence</em>, which is not the same thing.</p>
+<p>But GPUs aren't the whole story. Intel's CPUs aren't the exclusive kings they once were. AMD has outlasted every Intel challenger (remember Cyrix?) and has genuinely competed on performance for a long time, but the old reliability reputation lingers unfairly. There's pressure from ARM: Apple's M-series started it, now Snapdragon PCs continue it. Intel's lead is gone. <strong>And yet Intel's CPU prices have not come down.</strong> Will the RTX Spark also be expensive? Yes. Less than an RTX GPU, but still expensive.</p>
+<p>That's the game, and the house always wins.</p>
+<h2 id="the-sovereignty-angle-and-why-this-matters-more-here">The sovereignty angle (and why this matters more here)</h2>
+<p>There's a dimension to local-first AI that the pure consumerism framing misses. Personal AI on personal silicon isn't only driven by cost; it's the only path that doesn't route your thinking through someone else's ad-supported, jurisdiction-bound, politically-shapeable inference layer.</p>
+<p>The CLOUD Act reaches a model running in OpenAI's data centre. It does not reach a model running on the laptop in front of you (for now). For anyone outside the United States, and especially for those of us watching <a href="https://www.beerdriven.dev/episodes/70/">US tech policy lurch toward economic nationalism</a>, the AI you actually control stops being a hobbyist's preference and starts being the only viable option. The RTX Spark, the Arc Pro B70, the whole local-inference turn - frame it as sovereignty and it reads very differently to an Australian audience than it does to Silicon Valley.</p>
+<h2 id="prices-wont-fall.well-demand-longevity-instead">Prices won't fall. We'll demand longevity instead.</h2>
+<p>I don't think we're ever going back to pre-Bitcoin consumer hardware pricing. But I do think we're going back to longer tails on investment. And maybe that's fine. We should remember that computers used to be obscenely expensive; it's the cheap years that were the anomaly. This is just a renormalisation.</p>
+<p>But renormalisation comes with a demand attached. The reflexive consumer churn that defined tech — new phone every year, new GPU every cycle — is dying. People will still spend the money; they just won't spend it <em>every year</em>. They'll expect a computer to last five or ten years, and, crucially, they'll expect developers to keep catering to it. That's what all those movements I mentioned are really about: when an unstoppable force meets an immovable object, you get a compromise. We'll buy the absurdly expensive hardware, but we'll demand the right to repair it, and the right to make it last. I also suspect gamers will find a way of wringing gaming performance out of inference cards, just like LLM tinkerers do with gaming cards.</p>
+<h2 id="who-actually-loses">Who actually loses</h2>
+<p>On the tech-titan side, the only long-term loser, I think, is OpenAI. Not dead (yet), but cornered, deserted by its two great patrons, holding compute commitments it can't pay against a consumer market discovering it doesn't want to rent what it can eventually own.</p>
+<p>But the real losers are the ones who always lose: the consumers without access to paid tiers or their own silicon. The local-AI future is genuinely liberating, but only if you can afford the hardware to hold it. For everyone else, it's the same deal that search and social already taught them.</p>
+<p>And we know how much appetite there is to do anything about it: Facebook knew its product was harming people, the internal documents proved it, the hearings happened, and then it was business as usual. <em><a href="https://www.imdb.com/title/tt37510326/">The Social Reckoning</a></em>, in cinemas later this year and teased just last week, dramatises exactly that episode. The conversation around it is already, fittingly, about the reckoning that never came.</p>
+<p>That's the precedent.</p>
+<p>The people who can afford their own silicon will opt out. Everyone else, which is most of humanity, gets the other version: their thinking routed through a layer that answers to advertisers and interests rather than to them.</p>
+<h2 id="this-is-what-comes-next">This is what comes next</h2>
+<p>For the first time, the consumer revolt and the enterprise reckoning are arriving <em>simultaneously</em>, not in sequence. Smartphones took the better part of a decade to go from launch to the quiet enterprise admission that the iPad-as-productivity-tool pitch never landed. AI is doing the whole arc, from subsidy and ubiquity, to enterprise disappointment and consumer reclamation, in about two years.</p>
+<p>Everything that took Google twenty years and smartphones ten is happening to AI at once, in front of us, in real time.</p>
+<p>Here is the factual argument, the one you can check. The bet for the last five years was enterprise transformation, and 'transformation' was always a polite word for headcount reduction. That bet has not paid out, and we can now say so without hedging. The research has been telling us for the better part of a year; the MIT numbers are only the most-quoted version of it. But research is easy to argue with, capital expenditure is not. When NVIDIA and Microsoft stop selling the AI-transformed workforce and start building silicon for your desk, that is the industry conceding the bet. And it isn't a pivot, however much the timing makes it look like one. Consumer was always the target. <a href="https://www.acquired.fm/episodes/the-steve-ballmer-interview">Ballmer says as much</a>, that Microsoft began as a consumer company, and that one of his biggest regrets is not sustaining that. They aren't repositioning, they're arriving where they were always headed. The write-down accelerated the schedule, but it didn't change the destination.</p>
+<p>So the real question isn't when, or if, the bubble will burst. It's if the enterprise windfall isn't coming, but the technology is real, ubiquitous, and expensive, who pays, and how? And we have the answer, twice over.</p>
+<p>When search shifted the cost of being found onto us, we got SEO, then pay-to-rank, and now a first page you scroll straight past. When social media made our attention the product, we got engagement optimisation, and a machine that learned outrage travels furthest. Both times the value didn't vanish; it moved, from the thing offered <em>to</em> us to the thing extracted <em>from</em> us.</p>
+<p>That is the historical imperative, and it is why this isn't speculation. Enshittification is not a risk AI might slide into. It is the completed pattern of every consumer technology that became too expensive to give away and too useful to abandon. The bubble doesn't burst, it just fills with shit. This is what comes next, because it is what has always come next.</p>
+]]></content:encoded>
+      </item>
 <item>
         <title>.NET MAUI UI July - 2026</title>
         <link>https://goforgoldman.com/posts/mauiuijuly-26</link>
@@ -2276,404 +2845,6 @@ var cosmos = builder.AddAzureCosmosDB(&quot;cosmos&quot;)
 <h2 id="final-thoughts">Final Thoughts</h2>
 <p>I've come to love .NET Aspire and use it as the default for most projects now, but debugging this issue highlighted both the strengths and challenges of using tools like Aspire and the Cosmos DB Emulator. While it simplifies the setup of complex distributed systems, this abstraction can sometimes make diagnosing edge cases tricky. Thanks to the open-source nature of nearly every component involved, however, it's always possible to dig deeper and find solutions (with enough determination).</p>
 <p>Have you run into similar roadblocks with Aspire or Cosmos DB Emulator? Share your experiences in the comments below—I’d love to hear about them!</p>
-]]></content:encoded>
-      </item>
-<item>
-        <title>PageResolver Updates – The Missing Piece of .NET MAUI, Now Ready for .NET 9!</title>
-        <link>https://goforgoldman.com/posts/page-resolver-updates</link>
-        <guid isPermaLink="true">https://goforgoldman.com/posts/page-resolver-updates</guid>
-        <pubDate>Mon, 11 Nov 2024 01:00:01 GMT</pubDate>
-        <description>
-          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/page-resolver-updates.png" alt="PageResolver Updates – The Missing Piece of .NET MAUI, Now Ready for .NET 9!" />
-          Latest improvements to PageResolver for .NET MAUI, making MVVM setup easier with automatic view and ViewModel resolution through dependency injection.]]>
-        </description>
-        <category>mobile</category>
-        <category>maui</category>
-        <category>ui</category>
-        <category>di</category>
-        <content:encoded><![CDATA[<h2 id="introduction">Introduction</h2>
-<p>With the launch of .NET 9, now is the perfect time to introduce the latest improvements to PageResolver! While it's aligned with .NET LTS releases, PageResolver remains fully compatible with .NET 9, ready to support developers exploring the latest features. Designed to be the easiest way to set up MVVM in .NET MAUI, PageResolver pairs perfectly with the MVVM CommunityToolkit and MAUI CommunityToolkit to provide a solid baseline for any app, without the need for a heavyweight MVVM framework.</p>
-<h2 id="what-is-pageresolver">What is PageResolver?</h2>
-<p>PageResolver simplifies hierarchical navigation in .NET MAUI apps, providing automatic view and ViewModel resolution with dependency injection, enabling you to leverage the MVVM pattern without abandoning the default navigation patterns. It's a productivity booster for developers who want to avoid boilerplate and focus on building great features.</p>
-<p>As an example, let's say you have a view called <code>ProfilePage</code> and a corresponding ViewModel called <code>ProfileViewModel</code>. With PageResolver, you can navigate to <code>ProfilePage</code> and have <code>ProfileViewModel</code> automatically resolved and injected into the page, including the ViewModel's dependencies as well (e.g. an <code>IProfileService</code> abstraction). This eliminates the need for manual wiring and makes your code cleaner and more maintainable.</p>
-<p>These might be setup like this:</p>
-<pre><code class="language-csharp">public class ProfilePage : ContentPage
-{
-    public ProfilePage(ProfileViewModel viewModel)
-    {
-        BindingContext = viewModel;
-    }
-}
-
-public class ProfileViewModel
-{
-    public ProfileViewModel(IProfileService profileService)
-    {
-        profileService = profileService;
-    }
-
-    public IProfileService profileService { get; }
-}
-
-public class ProfileService : IProfileService
-{
-    // Implementation
-}
-</code></pre>
-<p>If you're using Shell, this will work out of the box. But for apps using hierarchical navigation, or even if you're using modals or popups (more on this later), you would have to instantiate your views and pass your dependencies to them in the caller, or use a service locator to resolve your view models. This is obviously riddled with code smells and anti-patterns, but with PageResolver, you can simply navigate by type instead of by instance, and let PageResolver handle the rest.</p>
-<pre><code class="language-csharp">await Navigation.PushAsync&lt;ProfilePage&gt;();
-</code></pre>
-<h2 id="new-features-in-pageresolver">New Features in PageResolver</h2>
-<p>PageResolver has added several powerful features to further streamline the MVVM setup in .NET MAUI, even for more complex setups like popups, modals, or custom navigation patterns.</p>
-<h3 id="parameterized-constructors">Parameterized Constructors</h3>
-<p>Sometimes you need to pass data to your pages (or to their binding context). In Shell, you can use a combination of query parameters or the navigation state dictionary. With PageResolver, you can use parameterised constructors in your pages and view models, making it straightforward to pass values alongside injected dependencies directly as part of the navigation call.</p>
-<pre><code class="language-csharp">public class ProfilePage : ContentPage
-{
-    // In this example userId is a Page parameter
-    // But it works the same way for ViewModels
-    public ProfilePage(ProfileViewModel viewModel, string userId)
-    {
-        BindingContext = viewModel;
-    }
-}
-
-/// Navigate with parameters:
-
-await Navigation.PushAsync&lt;ProfilePage&gt;(&quot;123&quot;);
-</code></pre>
-<p>PageResolver automatically injects registered dependencies into your Pages and ViewModels, so you don't need to pass these as navigation arguments. Other values are passed to either the Page or ViewModel, matched based on constructor parameters.</p>
-<h3 id="xaml-markup-extensions-for-dependency-resolution">XAML Markup Extensions for Dependency Resolution</h3>
-<p>With XAML markup extensions, you can now resolve dependencies directly within your XAML, allowing you to declare view models with dependencies in a more expressive way. This might align better with your coding style, but is especially useful for complex views or custom controls.</p>
-<pre><code class="language-xml">&lt;ContentPage xmlns:local=&quot;clr-namespace:MyApp&quot;
-             xmlns:resolver=&quot;clr-namespace:Maui.Plugins.PageResolver;assembly=Maui.Plugins.PageResolver&quot;
-             xmlns:vm=&quot;clr-namespace:MyApp.ViewModels&quot;
-             BindingContext=&quot;{resolver:ResolveViewModel x:TypeArguments=vm:ProfileViewModel}&quot;&gt;
-    &lt;!-- Page Content --&gt;
-&lt;/ContentPage&gt;
-</code></pre>
-<p>This page (or any other view) will have its ViewModel resolved and injected automatically, without the need for manual wiring, and set as the binding context.</p>
-<h3 id="automatic-dependency-registration">Automatic Dependency Registration</h3>
-<p>Dependency Injection is a core part of any modern app, but it requires a lot of boilerplate to set up. PageResolver uses a source generator to automatically register your pages, ViewModels, and services and remove the need for this boilerplate. Using a conventions-based approach, PageResolver scans your assemblies for classes that match specific criteria and registers them with the dependency injection container. Unlike with reflection-based approaches, this is done at compile time, so there's no performance overhead. This eliminates the need for manual registration, making your code cleaner and more maintainable.</p>
-<p><strong>Before:</strong></p>
-<pre><code class="language-csharp">namespace MyApp
-{
-    public static class MauiProgram
-    {
-        public static MauiApp CreateMauiApp()
-        {
-            var builder = MauiApp.CreateBuilder();
-            builder
-            .UseMauiApp&lt;App&gt;()
-            .ConfigureFonts(fonts =&gt;
-            {
-                fonts.AddFont(&quot;OpenSans-Regular.ttf&quot;, &quot;OpenSansRegular&quot;);
-            })
-            .UsePageResolver();
-
-            builder.Services.AddSingleton&lt;IMyService, MyService&gt;();
-            builder.Services.AddTransient&lt;MyViewModel&gt;();
-            builder.Services.AddTransient&lt;MyPage&gt;();
-            builder.Services.UsePageResolver();
-
-            // etc.
-
-            return builder.Build();
-        }
-    }
-}
-</code></pre>
-<p><strong>After:</strong></p>
-<pre><code class="language-csharp">namespace MyApp
-{
-    public static class MauiProgram
-    {
-        public static MauiApp CreateMauiApp()
-        {
-            var builder = MauiApp.CreateBuilder();
-            builder
-            .UseMauiApp&lt;App&gt;()
-            .ConfigureFonts(fonts =&gt;
-            {
-                fonts.AddFont(&quot;OpenSans-Regular.ttf&quot;, &quot;OpenSansRegular&quot;);
-            })
-            .UseAutodependencies();
-
-            return builder.Build();
-        }
-    }
-}
-</code></pre>
-<h3 id="explicit-registration-with-attributes">Explicit Registration with Attributes</h3>
-<p>Customise how your components are registered with attributes. Dependency registration commonly follows a familiar pattern, so the PageResolver conventions are intended as &quot;sensible defaults,&quot; but they may not be appropriate for every scenario. You can override these by using attributes to specify the lifetime of your dependencies, or even prevent them from being registered at all.</p>
-<pre><code class="language-csharp">// Services are registered as singletons by default
-// This service will be registered as a transient service
-[Transient]
-public class ProfileService : IProfileService
-{
-    // Implementation
-}
-
-// ViewModels are registered as transient by default
-// This ViewModel will be registered as a singleton
-[Singleton]
-public class ProfileViewModel
-{
-    public ProfileViewModel(IProfileService profileService)
-    {
-        profileService = profileService;
-    }
-
-    public IProfileService profileService { get; }
-}
-
-// Pages are registered as transient by default
-// This page will not be registered
-// Note this would break if combined with the above example
-[Ignore]
-public class ProfilePage : ContentPage
-{
-    public ProfilePage(ProfileViewModel viewModel)
-    {
-        BindingContext = viewModel;
-    }
-}
-</code></pre>
-<p>There is no need to use these attributes in most cases, but they are available if you need them. The default conventions should work for most scenarios.</p>
-<InfoContainer >
-<p><strong>Note:</strong> <code>Scoped</code> is not supported by either the conventions or the attributes, as it doesn't make sense in the context of a mobile app. There's no request pipeline to scope to, so it's not a useful concept in this context.</p>
-</InfoContainer>
-<h3 id="mopups-integration">Mopups Integration</h3>
-<p>PageResolver now has extensions available for use with the popular Mopups library, making it simple to integrate popups. While you could previously use the XAML markup extensions to support your popups, the new Mopups integration provides a more streamlined approach and allows you to call your popups directly from your ViewModels.</p>
-<pre><code class="language-csharp">return MopupService.Instance.PushAsync&lt;MyPopup&gt;();
-
-// or with a parameter
-return MopupService.Instance.PushAsync&lt;MyPopup&gt;(&quot;It's alive!&quot;);
-</code></pre>
-<h3 id="community-contributions">Community Contributions</h3>
-<p>While PageResolver started as an experiment to see whether navigation could work in .NET MAUI the way I personally believed it should, it seems to have resonated with the community. Many people are using it to simplify their MVVM setup, and many have contributed to its growth, through feedback, bug reports, discussions, and even code contributions. This has been instrumental in keeping the momentum going and ensuring that PageResolver remains a valuable tool for the community, especially during the past year when I've been unable to dedicate as much time to it as I would have liked.</p>
-<p>A huge thank you to everyone who has contributed to PageResolver, whether through code, discussions, feedback, or even simply using it in your projects!</p>
-<h2 id="looking-ahead">Looking Ahead</h2>
-<p>With .NET 10 on the horizon, there are some changes coming to look out for. These will be breaking changes, but by aligning these with LTS releases, and announcing these now, I hope to give you plenty of time to prepare for them.</p>
-<ul>
-<li><strong>.NET 10 Support:</strong> PageResolver will continue to support the latest .NET LTS releases, including .NET 10. With the LTS release the minimum version will be changed.</li>
-<li><strong>Manually triggered source generation:</strong> The source generator is designed to be seamless and automatic, but there are scenarios where you might want to trigger it manually. As an immediate workaround, you can use a <code>[NoAutoDependencies]</code> attribute on your <code>MauiProgram</code> class to prevent it from generating the dependency registrations. I think this should work the other way around, but didn't want to introduce a breaking change at this stage. So, for .NET 10, ths will be reversed. You'll still need to chain <code>UseAutoDependencies()</code> to your <code>MauiAppBuilder</code> as this passes the service registrations to the DI container, but you'll also need to add a <code>[AutoDependencies]</code> attribute to your <code>MauiProgram</code> class. This allows a more explicit intentionality, which is more of a 'sensible default' approach.</li>
-<li><strong>Potential name and namespace change:</strong> The namespace will be updated to align with .NET MAUI plugin conventions. PageResolver was created before the first version of .NET MAUI was released, and name reservations on NuGet were still unclear (and in fairness I was overeager to publish it). The in-code namespace will change from <code>Maui.Plugins.PageResolver</code> to <code>Plugin.Maui.PageResolver</code> which is the standard. Additionally, I'm also considering renaming the package. &quot;PageResolver&quot; clearly reflects what it does at its core, but I feel like it's too narrow in scope. Even putting aside the extra functionality, without at the very least including something about navigation, the name has low discoverability. I don't know what the new name will be yet, but I'm open to suggestions. If you have any ideas, please let me know!</li>
-<li><strong>Package name update:</strong> Hopefully come .NET 10 I'll have gotten over my naming woes! The package name will be updated to reflect the new name (and possibly namespace).</li>
-</ul>
-<TipContainer >
-<p>I'll be opening a discussion on the GitHub repository to gather feedback on the name change. If you have any thoughts on this, please share them there. I'm open to any suggestions, and I want to make sure the new name is something that resonates with the community.</p>
-</TipContainer>
-<h2 id="why-choose-pageresolver-for-mvvm-in.net-maui">Why Choose PageResolver for MVVM in .NET MAUI?</h2>
-<p>.NET MAUI uses the familiar host builder pattern, including built-in dependency injection. While .NET MAUI provides a way to use this with Shell, not all apps are a good fit for Shell, and many developers prefer to use hierarchical navigation. PageResolver provides a way to use the built-in dependency injection with hierarchical navigation.</p>
-<p>This offers a simple, lightweight way to consumer dependencies in your views, without the need for an opinionated MVVM framework. PageResolver is certainly opinionated, but only about the things it's designed to do. It doesn't dictate how you structure your app, or how you write your ViewModels, or even whether you use the MVVM pattern, MVU, or just raw dog your code-behind. It simply provides a way to resolve your dependencies in your views, and that's it.</p>
-<h2 id="getting-started">Getting Started</h2>
-<ol>
-<li><p>Install PageResolver via NuGet</p>
-</li>
-<li><p>Configure PageResolver in your app's startup to handle view model resolutions automatically</p>
-</li>
-<li><p>Start building your app simplified navigation and minimal boilerplate</p>
-</li>
-<li><p>...profit?</p>
-</li>
-</ol>
-<p>To find out more, visit the <a href="https://github.com/matt-goldman/Maui.Plugins.PageResolver">PageResolver GitHub repository</a>. Check out the wiki for more detailed information on how to use PageResolver in your projects, and explore the demo project. Use the issues and discussions to ask questions, provide feedback, or report bugs. And if you like what you see, please consider starring the repository to show your support.</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>.NET 9 opens exciting new possibilities, and PageResolver is ready to support your projects. If you're looking for a simplified, effective way to manage consume dependencies in views in .NET MAUI apps, now's the time to give PageResolver a try. With the latest updates, including parameterised constructors, XAML markup extensions, automatic dependency registration, and Mopups integration, the killer trifecta of the MVVM and MAUI toolkits plus PageResolver gives you everything you need to set your apps up for success.</p>
-]]></content:encoded>
-      </item>
-<item>
-        <title>Passthrough Behavior: Attaching things where they don&#39;t belong</title>
-        <link>https://goforgoldman.com/posts/passthrough-behavior</link>
-        <guid isPermaLink="true">https://goforgoldman.com/posts/passthrough-behavior</guid>
-        <pubDate>Mon, 01 Jul 2024 00:00:01 GMT</pubDate>
-        <description>
-          <![CDATA[<img align="left" hspace="5" src="https://goforgoldman.com/images/posts/passthrough-behavior.jpeg" alt="Passthrough Behavior: Attaching things where they don&#39;t belong" />
-          Implementing a passthrough behavior pattern in .NET MAUI to attach validation functionality to custom controls that wrap Entry and Editor elements.]]>
-        </description>
-        <category>mobile</category>
-        <category>maui</category>
-        <category>ui</category>
-        <content:encoded><![CDATA[<h2 id="introduction">Introduction</h2>
-<p>I spent some time over the last year helping <a href="https://trashmob.eco">TrashMob</a> build their mobile app. TrashMob is an initiative designed to allow people to self-organise community cleanup events - it's a wonderful initiative and you should definitely check it out if you haven't already. Like most mobile apps, they have their own <a href="https://uxplanet.org/design-language-system-d438f4aa30e0">design language system</a> and wanted to implement their consistent, branded look-and-feel across the mobile app. This involved customising the appearance of the out of the box controls, including the <code>Entry</code> and <code>Editor</code> controls.</p>
-<p>Often you can use <a href="https://learn.microsoft.com/dotnet/maui/user-interface/styles/xaml">styles</a> to customise controls in .NET MAUI apps, but these don't always give you full control over all the aspects you need to modify. In this case you need to use <a href="https://learn.microsoft.com/dotnet/maui/user-interface/handlers">handlers</a> to change the way .NET MAUI renders controls on the target platforms.</p>
-<p>There are a couple of approaches you can take here. One is to fully customise the platform view - this was a common approach with the renderer architecture in Xamarin.Forms. Another, and my preferred approach, is instead to <a href="https://github.com/matt-goldman/MauiMaterialEntry">strip away the platform styling and then wrap the control in a <code>ContentView</code></a>. Using the rich styling capabilities in .NET MAUI makes it much easier create a consistent cross-platform custom experience than manipulating platform APIs directly. But this approach comes with some trade-offs.</p>
-<p>In the case of the <code>Entry</code> and <code>Editor</code> controls, bindable properties like <code>Text</code> and <code>Placeholder</code> need to be reproduced, and sometimes events (although this approach also makes it trivial to create your own bindable commands). If you're using this approach for a control library, you probably need to expose pretty much all of the properties and events of a control when you &quot;wrap&quot; it like this, although for an internal control as in my scenario this is usually not necessary. In any case, using a source generator like those in the <a href="https://learn.microsoft.com/dotnet/communitytoolkit/mvvm/">MVVM Community Toolkit</a> and the <a href="https://github.com/rrmanzano/maui-bindableproperty-generator">bindable property generator</a> make it a cinch.</p>
-<h2 id="the-challenge">The challenge</h2>
-<p>Speaking of community toolkits, the TrashMob mobile app uses the <a href="https://learn.microsoft.com/dotnet/communitytoolkit/maui/">MAUI Community Toolkit</a> extensively including, among other things, for <a href="https://learn.microsoft.com/dotnet/communitytoolkit/maui/behaviors/text-validation-behavior">validation on user input</a>. As these are <a href="https://learn.microsoft.com/dotnet/maui/fundamentals/behaviors">.NET MAUI behaviors rather than attached behaviors</a>, adding them to a custom control isn't a problem, but consuming the functionality in a meaningful way is.</p>
-<p>I considered a few options:</p>
-<ul>
-<li>Customise <code>Entry</code> and <code>Editor</code> entirely through handlers. This would have been a lot more work and would require maintaining different sets of styling per platform.</li>
-<li>Manually replicate all the validation functionality myself. Also a lot of work and re-inventing the wheel.</li>
-<li>Add every conceivable validator to the <code>Editor</code> and <code>Entry</code> and then expose properties on the wrapper control to enable them. Would also require bindable properties for certain things like valid patterns or number ranges. Also a lot of work and hard to maintain, and likely would include lot's of things that wouldn't be necessary.</li>
-</ul>
-<p>None of these seemed like particularly good ideas, so I decided on a different approach,</p>
-<h2 id="my-solution">My solution</h2>
-<p>I opted instead to create a simple, reusable &quot;passthrough behavior&quot; attachment. Rather than add the behavior directly to a control, I wanted to pass it through - give it to the wrapper control which would in turn add it to the wrapped control.</p>
-<p>What this means is that I can provide the behavior I want to the wrapper control and it will pass it through to the wrapped <code>Entry</code> (<code>Editor</code> too but in this demo I'm only showing <code>Entry</code> - although if you want to see the full solution you can check out the <a href="https://github.com/TrashMob-eco/TrashMob">TrashMob repo on GitHub</a> - and feel free to contribute to them too!).</p>
-<p>Before we look at the passthrough behavior, let's take a quick look at the custom entry control:</p>
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-&lt;ContentView xmlns=&quot;http://schemas.microsoft.com/dotnet/2021/maui&quot;
-             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
-             xmlns:controls=&quot;clr-namespace:PassthroughBehaviorDemo.Controls&quot;
-             x:Class=&quot;PassthroughBehaviorDemo.Controls.CustomEntry&quot;&gt;
-    &lt;Border Stroke=&quot;Gold&quot;
-            StrokeShape=&quot;RoundRectangle 10&quot;&gt;
-        &lt;controls:BorderlessEntry x:Name=&quot;WrappedEntry&quot;
-                                  TextChanged=&quot;WrappedEntry_TextChanged&quot;/&gt;
-    &lt;/Border&gt;
-&lt;/ContentView&gt;
-</code></pre>
-<p>We can see that this control itself is called <code>CustomEntry</code>, and it's simply a <code>Border</code> around a <code>BorderlessEntry</code>. <code>BorderlessEntry</code> is just a subclass of <code>Entry</code>, and I'm using the <code>TextChanged</code> event here to bubble up the <code>Text</code> property to the wrapper control.</p>
-<pre><code class="language-csharp">public partial class CustomEntry : ContentView
-{
-	public CustomEntry()
-	{
-		InitializeComponent();
-	}
-
-    private void WrappedEntry_TextChanged(object sender, TextChangedEventArgs e)
-    {
-        if (Text != e.NewTextValue)
-        {
-            Text = e.NewTextValue;
-        }
-    }
-
-    [AutoBindable(DefaultBindingMode = &quot;TwoWay&quot;, OnChanged = nameof(TextPropertyChanged))]
-    private string _text;
-    private void TextPropertyChanged(string newValue)
-    {
-        if (WrappedEntry.Text != newValue)
-        {
-            WrappedEntry.Text = newValue;
-        }
-    }
-}
-</code></pre>
-<p>I'm using the bindable property generator linked above here to automatically generate the <code>Text</code> property.</p>
-<NoteContainer >
-<p>Don't use names like <code>CustomEntry</code>. I just used it here for this demo but it's a terrible name. Use something meaningful like <code>BorderlessEntry</code> or <code>RoundedEntry</code>. Or if it's branded something like <code>TMEntry</code> (TM for TrashMob, which is what I actually used in this case), although while this works for a control library, a name that is descriptive of the customisation is probably better.</p>
-</NoteContainer>
-<p>The <code>BorderlessEntry</code> as mentioned is just a subclass of <code>Entry</code>, but with a handler mapping to remove the default borders:</p>
-<pre><code class="language-csharp">public class BorderlessEntry : Entry
-{
-    public BorderlessEntry()
-    {
-        Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(&quot;Borderless&quot;, (handler, view) =&gt;
-        {
-            if (view is BorderlessEntry)
-            {
-#if ANDROID
-                handler.PlatformView.Background = null;
-                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
-                handler.PlatformView.BackgroundTintList =
-                    Android.Content.Res.ColorStateList.ValueOf(Android.Graphics.Color.Transparent);
-#elif IOS
-                handler.PlatformView.BackgroundColor = UIKit.UIColor.Clear;
-                handler.PlatformView.Layer.BorderWidth = 0;
-                handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
-#endif
-            }
-        });
-
-        var transparentBackgroundSetter = new Setter
-        {
-            Property = BackgroundColorProperty,
-            Value = Colors.Transparent
-        };
-
-        var focusedTrigger = new Trigger(typeof(Entry));
-        focusedTrigger.Property = IsFocusedProperty;
-        focusedTrigger.Value = true;
-        focusedTrigger.Setters.Add(transparentBackgroundSetter);
-
-        Triggers.Add(focusedTrigger);
-    }
-}
-</code></pre>
-<p>With the custom controls now set up, let's take a look at the code to pass through validation behaviors from the MAUI Community Toolkit:</p>
-<pre><code class="language-csharp">public static class BehaviorAttachment
-{
-    public static readonly BindableProperty PassthroughBehaviorProperty =
-        BindableProperty.CreateAttached(
-            &quot;PassthroughBehavior&quot;,
-            typeof(Behavior),
-            typeof(BehaviorAttachment),
-            null,
-            propertyChanged: OnBehaviorChanged);
-
-    public static void SetPassthroughBehavior(BindableObject view, Behavior value)
-    {
-        view.SetValue(PassthroughBehaviorProperty, value);
-    }
-
-    public static Behavior GetPassthroughBehavior(BindableObject view)
-    {
-        return (Behavior)view.GetValue(PassthroughBehaviorProperty);
-    }
-
-    static void OnBehaviorChanged(BindableObject bindable, object oldValue, object newValue)
-    {
-        if (newValue is Behavior newBehavior)
-        {
-            if (bindable is CustomEntry customEntry)
-            {
-                var entry = customEntry.FindByName&lt;Entry&gt;(&quot;WrappedEntry&quot;);
-                if (entry != null)
-                {
-                    entry.Behaviors.Add(newBehavior);
-                }
-            }
-        }
-    }
-}
-</code></pre>
-<p>This is an <a href="https://learn.microsoft.com/dotnet/maui/fundamentals/behaviors#attached-behaviors">attached behavior</a> that essentially takes any other behavior and adds it to the wrapped <code>Entry</code> control.</p>
-<p>It implements the get and set methods required for an attached behavior (named by convention), and for the property changed event of the bindable property, first checks to see if the value being bound is a behavior, then checks to see if the bindable object is an instance of the wrapper control (<code>CustomEntry</code> in this case). If both these things are true, the behavior that is being attached gets added to the wrapped <code>Entry</code> control, or &quot;passed through&quot;.</p>
-<p>This is an incredibly simple yet powerful addition that enables me to keep my simplified approach and still benefit from the awesome validators in the community toolkit. Let's take a look at it in action:</p>
-<pre><code class="language-xml">&lt;ContentPage xmlns=&quot;http://schemas.microsoft.com/dotnet/2021/maui&quot;
-             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2009/xaml&quot;
-             xmlns:controls=&quot;clr-namespace:PassthroughBehaviorDemo.Controls&quot;
-             xmlns:mct=&quot;http://schemas.microsoft.com/dotnet/2022/maui/toolkit&quot;
-             x:Class=&quot;PassthroughBehaviorDemo.MainPage&quot;&gt;
-    &lt;ContentPage.Resources&gt;
-        &lt;Style x:Key=&quot;InvalidEntryStyle&quot; TargetType=&quot;Entry&quot;&gt;
-            &lt;Setter Property=&quot;TextColor&quot; Value=&quot;Red&quot; /&gt;
-        &lt;/Style&gt;
-        &lt;Style x:Key=&quot;ValidEntryStyle&quot; TargetType=&quot;Entry&quot;&gt;
-            &lt;Setter Property=&quot;TextColor&quot; Value=&quot;Green&quot; /&gt;
-        &lt;/Style&gt;
-    &lt;/ContentPage.Resources&gt;
-
-    &lt;ScrollView&gt;
-        &lt;VerticalStackLayout
-            Padding=&quot;30,0&quot;
-            Spacing=&quot;25&quot;&gt;
-            &lt;!-- ... --&gt;
-
-            &lt;controls:CustomEntry&gt;
-                &lt;controls:BehaviorAttachment.PassthroughBehavior&gt;
-                    &lt;mct:EmailValidationBehavior
-                         InvalidStyle=&quot;{StaticResource InvalidEntryStyle}&quot;
-                         ValidStyle=&quot;{StaticResource ValidEntryStyle}&quot;
-                         Flags=&quot;ValidateOnValueChanged&quot; /&gt;
-                &lt;/controls:BehaviorAttachment.PassthroughBehavior&gt;
-            &lt;/controls:CustomEntry&gt;
-        &lt;/VerticalStackLayout&gt;
-    &lt;/ScrollView&gt;
-
-&lt;/ContentPage&gt;
-</code></pre>
-<p>You can see here I have brought in namespaces for my control and for the community toolkit, and then simply dropped in an instance of <code>CustomEntry</code>, just as I would a regular entry. Using my <code>PassthroughBehavior</code> I've added an email validator from the CommunityToolkit, using a couple of styles I've defined in the page to highlight valid and invalid inputs.</p>
-<p>Easy right? Let's take a look at the result:</p>
-<p><figure><img src="/images/posts/passthrough-behavior.gif" alt="The passthrough behavior in action on Windows"  style="max-width:100%;height:auto;" /><figcaption style="margin-left:auto;margin-right:auto;font-style:italic;text-align:center;">The passthrough behavior in action on Windows</figcaption></figure>
-<em>The passthrough behavior in action on Windows</em></p>
-<p>You can see here that this is using a custom <code>Entry</code> control - it has a rounded gold border, and email validation is working, relying on the functionality from the community toolkit with barely any extra effort. And of course this is reusable and can be used with any instance of the custom entry control and any behavior.</p>
-<h2 id="conclusion">Conclusion</h2>
-<p>Using this passthrough behavior you can have your cake and eat it! You get all the flexibility of building custom controls using cross-platform .NET MAUI APIs while retaining the ability to use extensions intended for built-in controls.</p>
-<p>Will you use this in your projects? Do you have a better approach? Let me know your feedback in the comments!</p>
-<p>Check out the <a href="https://github.com/matt-goldman/PassthroughBehaviorDemo">full code sample here</a>.</p>
 ]]></content:encoded>
       </item>
 </channel>
