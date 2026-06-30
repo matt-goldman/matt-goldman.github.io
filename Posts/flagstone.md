@@ -1,6 +1,6 @@
 ---
 description: "With `FsShell`, Flagstone UI comes out of the experimental phase. This article gives you a taste of what you can do with it; but the only limit is your imagination."
-title:  "Flagstone UI goes GA with FsShell"
+title:  "Easy Custom Navigation with Flagstone UI"
 date:   2026-07-01 00:00:01 +1000
 image:  /images/posts/flagstoneui.png
 tags:   [mobile, maui, ui]
