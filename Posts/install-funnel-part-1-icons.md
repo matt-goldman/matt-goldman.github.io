@@ -1,7 +1,7 @@
 ---
 description: "Your icon should never be an after thought, but in this post I explore the interesting trend of using prominent white items, why it might be the case, and how we can do this in our .NET MAUI apps."
 title:  "The Install Funnel, Part 1: Make Your Icon Stand Out"
-date:   2026-07-01 00:00:01 +1000
+date:   2026-07-02 00:00:01 +1000
 image:  /images/posts/install-funnel-part1.png
 tags:   [mobile, maui, ui]
 categories: [.NET, Mobile]
