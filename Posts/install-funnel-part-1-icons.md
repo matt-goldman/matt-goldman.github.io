@@ -1,8 +1,8 @@
 ---
 description: "Your icon should never be an after thought, but in this post I explore the interesting trend of using prominent white items, why it might be the case, and how we can do this in our .NET MAUI apps."
 title:  "The Install Funnel, Part 1: Make Your Icon Stand Out"
-date:   2026-07-02 00:00:01 +1000
-image:  /images/posts/flagstone-post-banner.png
+date:   2026-07-01 00:00:01 +1000
+image:  /images/posts/install-funnel-part1.png
 tags:   [mobile, maui, ui]
 categories: [.NET, Mobile]
 author: Matt Goldman
@@ -40,7 +40,8 @@ I took the top 25 apps from three lists:
 
 - **iOS App Store — Top Free**
 - **iOS App Store — Top Paid**
-- **Google Play Store — Top Free**
+- **Google Play Store — Top Free Apps**
+- **Google Play Store — Top Free Games**
 
 I skipped Google Play's paid category because Google only publishes "top grossing," which I didn't think was a like-for-like or fair comparison (it's dominated by IAP-heavy games and doesn't measure install intent the same way).
 
