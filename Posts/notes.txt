@@ -2,58 +2,69 @@
 
 *A demo for MAUI UI July.*
 
----
 
 ## TL;DR
 
-- The framework's default navigation chrome is one option, not the only option.
-- With `FsShell` (from FlagstoneUI) plus a bit of `TranslateTo`/`FadeTo`, you can build a novel navigation shell **and** custom page transitions using only the cross-platform API — no platform handlers required.
-- Respect `prefers-reduced-motion` before you write a single line of animation code.
-- I'm not telling you to build *this* UX. I'm telling you that you *can* build any UX. Choose wisely.
+The default navigation chrome MAUI hands you is one option, not the only option. In this post I build a novel navigation shell — a ship's wheel with four compass points — and pair it with directional page transitions that respond to where you're navigating. Everything runs on the cross-platform API. No handlers, no per-platform code, no SkiaSharp. It also respects the OS reduced-motion setting, because if it didn't the whole thing would be an accessibility failure dressed up as a UI experiment.
+
+I'm not telling you to build *this* UX — in fact I think it's a bad navigation pattern for a real app. I'm telling you that you *can* build any UX. The framework is more of a canvas than a control kit, and it's a shame how rarely people treat it that way.
 
 > **File map for this post**
 > - Nav shell: `src/AppShell.xaml`, `src/Controls/NavWheel.xaml`, `src/Controls/NavWheel.xaml.cs`
 > - Page transitions: `src/CompassPage.cs`, `src/Pages/*Page.xaml.cs`
 > - Accessibility: `Plugin.Maui.Accessibility` — used in both files above
 
----
-
 ## 1. Accessibility first (seriously, do this first)
 
-- I want this section at the top because I want it to be the part you remember. I added the a11y plugin as the very first change to the project, before I animated anything.
-- If a user has "reduce motion" turned on at the OS level, your fancy nav wheel spin and your slide-fade page transitions become a hostile UX. Not a stylistic quibble — an actual accessibility failure.
-- Use [`Plugin.Maui.Accessibility`](https://www.nuget.org/packages/Plugin.Maui.Accessibility/) to read the OS setting cross-platform:
+I'm putting this section at the top on purpose, because if you only remember one thing from this post, I want it to be this one. The very first change I made to this project, before I laid out a single page or animated anything, was to add [`Plugin.Maui.Accessibility`](https://www.nuget.org/packages/Plugin.Maui.Accessibility/) and wire up a `ReduceMotion` check.
+
+If your user has reduce motion turned on at the OS level, they've told the operating system they don't want animations. Modern OSes expose that setting for a reason: for some people, motion in a UI ranges from mildly unpleasant to genuinely nauseating or vertigo-inducing. When you build a custom navigation control that spins on tap, or a page transition that slides the whole screen sideways, you are stomping all over that preference unless you check it. It stops being a stylistic quibble and becomes an actual accessibility failure.
+
+Reading the setting cross-platform is a one-liner with the plugin:
 
 ```csharp
 private bool ReduceMotion =>
     AccessibilityInfo.Default.UseReducedMotion == PossiblyUnknownBool.True;
 ```
 
-- Apply it everywhere you animate. Two places in this app:
-  - `NavWheel.xaml.cs` — animation duration collapses to `0u` when reduce-motion is on, so the wheel and compass points snap open/closed instead of spinning and sliding.
-  - `CompassPage.cs` — page transitions are skipped entirely; the animated root just snaps to its final opacity/translation.
-- Rule of thumb I'm going to keep repeating: **check for reduced motion in every animation code path, or don't animate at all.**
+Everywhere I animate in this project, that flag is respected. Two places:
 
----
+- **`NavWheel.xaml.cs`:** the wheel-spin and the compass-point translate/fade have their duration collapsed to `0u` when reduce-motion is on. The state still changes; it just snaps instead of animating.
+- **`CompassPage.cs`:** the page-in / page-out translate-and-fade is skipped entirely. The animated root just jumps to its final opacity and translation.
+
+That's the rule of thumb I'm going to keep repeating: **check for reduced motion in every animation code path, or don't animate at all.** Both are fine. What isn't fine is animating anyway and hoping nobody notices.
 
 ## 2. The setup — MAUI UI July, the demo, the pancakes
 
-- What MAUI UI July is; brief nod to organisers and community.
-- What this app is: a mock pancake-ordering app called PiratePetes. Nautical theme. Five pages arranged as a compass: Hub (helm), N (sails), E (cannons), S (crew), W (cargo hold).
-- What it demos, in one line: **custom navigation chrome + custom page transitions, all cross-platform.**
-- The over-arching point: "Use MAUI as a canvas, not just a control kit." You don't have to accept the default shell chrome, and you don't have to drop down to platform APIs to do something different.
-- Disclaimer up front: I'm **not** advocating for this specific UX. It's probably not a good navigation model in a real app. The point is what's *possible*, not what's *advisable*.
+If you're reading this on the calendar, you already know what MAUI UI July is: a month-long, community-run series where MAUI devs post about UI they've built, tricks they've learned, or things they wish more people knew about. Huge thanks to Matt Goldman *(TODO: link to the round-up post and to the organiser)* for pulling it together again this year.
 
----
+My contribution is a small demo app called **PiratePetes** — nominally a pancake-ordering app for pirates, mostly an excuse to try something silly with navigation. It has five pages laid out as a compass: **Helm** in the centre (the hub), and **Sails**, **Cannons**, **Crew**, and **Cargo Hold** at north, east, south, and west respectively.
+
+What it demonstrates, in one line: **a fully custom navigation chrome, plus custom directional page transitions, both entirely on the cross-platform API.**
+
+The over-arching point I want to make is that MAUI is more of a canvas than most people treat it as. The default Shell chrome is convenient, and the default page navigation is fine, but neither is a ceiling. If you want to do something weirder — and sometimes you should — you don't have to abandon the cross-platform API to get there.
+
+One disclaimer up front, and I'll come back to it later: **I am not advocating for this specific UX**. A ship's-wheel navigation shell is probably not a good pattern for a real app. Users don't know where the pages live in the compass. The mental model is fun to demo and annoying to actually use. The value of this post is in the *technique*, not the *design*.
 
 ## 3. The navigation model — a hub-and-spokes compass
 
-- Layout:
-  - Hub page in the centre (`Helm`).
-  - Four other pages, one per compass point (`Sails` N, `Cannons` E, `Crew` S, `Cargo` W).
-  - You can go **hub → any**. You can go **any → hub**. You can't go point-to-point (you have to come back to the hub first).
-- Why that constraint? It keeps the mental model simple and gives the wheel a clean "enabled point = this is where you can go from here" story.
-- Show `src/AppShell.xaml` — five `ShellContent` entries with routes `Hub`, `North`, `East`, `South`, `West`, using `FsShell` with a custom `TabBar`.
+The app has five pages arranged as a compass:
+
+- **Helm** — the hub, in the centre.
+- **Sails** — north.
+- **Cannons** — east.
+- **Crew** — south.
+- **Cargo Hold** — west.
+
+The navigation rule is deliberately restrictive:
+
+- From the **hub**, you can go to any compass point.
+- From any **compass point**, you can only go back to the hub.
+- Point-to-point navigation isn't allowed — you have to come back to the hub first.
+
+Why the constraint? Two reasons. First, it keeps the mental model simple: the hub is the fan-out, the points are leaves. Second, it gives the wheel a clean visual story — the *enabled* compass points on the wheel always tell you where you can go from here. On the hub, all four points light up. On any leaf page, only the point that would take you back to the hub is enabled.
+
+Here's `AppShell.xaml`. The important bits: it's an `FsShell` (from FlagstoneUI) with its `NavBarIsVisible` and `TabBarIsDocked` turned off, and its `TabBar` set to our custom `NavWheel` control. The five `ShellContent` entries carry the compass routes.
 
 ```xml
 <fs:FsShell
@@ -70,34 +81,78 @@ private bool ReduceMotion =>
 </fs:FsShell>
 ```
 
-- Key observation: this is still a Shell app. Deep linking, route-based navigation, the whole model — all still works. We've just replaced the visual chrome.
-
----
+Worth calling out: **this is still a Shell app**. Route-based navigation, deep linking, the back stack, all of it — still works exactly the way you'd expect. All I've done is swap out the visual chrome. That's the whole trick, really: keep the parts of Shell that are good, and replace the part that's stopping you doing the thing you want to do.
 
 ## 4. Building the wheel — `FsShell` + `FsTabBarBase`
 
-- Quick primer on `FsShell` / `FsTabBarBase` from FlagstoneUI: they let you plug an entirely custom control in as the tab bar while keeping Shell semantics.
-- Walk through `NavWheel.xaml`:
-  - A 3×3 grid — corners empty, edges are the four compass buttons, centre is the ship's wheel `ImageButton`.
-  - Every compass button is laid out **in its open (visible) position** and then translated *inward* to the wheel's centre to hide it. Note the closed-state `TranslationX/Y="100"`-and-friends in the XAML.
-  - The `ItemTemplate` is deliberately empty — we're not letting Shell render tabs; we're doing it ourselves.
-- Walk through `NavWheel.xaml.cs`:
-  - Compass-point records with an `Opposite` route and closed-state translations.
-  - Tapping the wheel toggles `OpenCloseWheel()` — rotate the wheel 360°, translate each point in/out, fade in/out.
-  - The comment in the source is worth quoting verbatim in the post: buttons live in their real positions and get translated *in* to hide, because if you do it the other way round (park them at centre, translate them out to reveal), **touch targets don't reliably follow translation**. That's a real cross-platform gotcha and a good "hack for real" moment.
+`FsShell` and `FsTabBarBase` are two pieces of FlagstoneUI I built specifically to unlock this kind of customisation. In short: `FsShell` is a drop-in replacement for `Shell` that lets you attach an arbitrary control as the tab bar, and `FsTabBarBase` is the base class that arbitrary control inherits from. It gives you the Shell tab semantics — the current route, the item collection, navigation to a route — while letting you render whatever you want. I won't go deeper into FlagstoneUI internals in this post; if you're curious, the docs cover it *(TODO: link)*.
 
-```csharp
-// Buttons are laid out in their real (open) positions in the surrounding
-// 3x3 Grid and translated *into* the wheel's centre to hide them; doing it
-// the other way round (centre by default, translate out to reveal) breaks
-// touch targets, which don't reliably follow translation.
+### 4a. The XAML
+
+`NavWheel.xaml` is a 3×3 `Grid`. The corners are empty, the four edges hold the compass buttons, and the centre holds the ship's-wheel `ImageButton` itself.
+
+```xml
+<Grid ColumnDefinitions="50,100,50" RowDefinitions="50,100,50" x:Name="Wheel">
+
+    <!-- north -->
+    <Button Grid.Column="1" Text="N" TranslationY="100"  Clicked="Compass_OnClicked" Opacity="0" x:Name="North" />
+
+    <!-- south -->
+    <Button Grid.Column="1" Grid.Row="2" Text="S" TranslationY="-100" Clicked="Compass_OnClicked" Opacity="0" x:Name="South" />
+
+    <!-- east -->
+    <Button Grid.Row="1" Grid.Column="2" Text="E" TranslationX="-100" Clicked="Compass_OnClicked" Opacity="0" x:Name="East" />
+
+    <!-- west -->
+    <Button Grid.Row="1" Text="W" TranslationX="100" Clicked="Compass_OnClicked" Opacity="0" x:Name="West" />
+
+    <!-- wheel -->
+    <ImageButton Grid.Row="1" Grid.Column="1" Source="shipwheel" Clicked="Shipwheel_Clicked" x:Name="Shipwheel" />
+</Grid>
 ```
 
-### 4a. Enabling / disabling compass points
+Two things to notice.
 
-- The rule again: from **hub** you can go anywhere; from **anywhere else** you can only go back to the hub (the *opposite* compass point).
-- Implementation is `SetTabStates()` — walk the compass, enable each button if the current route is `hub`, or if the current route matches this button's `Opposite`.
-- Edge case: on first load `SelectedRoute` may be null, so we force East on so the user can always reach the hub.
+First, the `ItemTemplate` on the `FsTabBarBase` is empty. We're not letting anything auto-generate tabs for us — we're rendering the four buttons and the wheel by hand, and using the base class purely for its Shell-integration behaviour.
+
+Second — and this is the part I want to draw a big circle around — **each compass button is laid out in its real, open position, and translated *inward* to the centre of the wheel to hide it**. Look at North: it lives in the top-centre grid cell, but its initial `TranslationY` is `100`, pulling it down into the centre where the wheel sits. Same story for the other three, mirrored appropriately. All four also start at `Opacity="0"`.
+
+You might reasonably ask: why not lay them out at the centre and translate them *out* to reveal them? That's what I tried first, and it's the wrong answer. **Touch targets don't reliably follow translation across platforms.** If you park a button at the centre and translate it out to (0, -100), the button will visually appear where you want it, but the tappable region may still be at the original centre position — or it may not, depending on platform, layout pass, and phase of the moon. Laying the buttons out in their real positions and translating *in* to hide them dodges the problem entirely, because when the buttons are showing (translation of 0) they are exactly where the layout put them, and the touch region matches the pixels.
+
+That's a hack, and it's a good one. It's the kind of thing you can only find by trying, failing, and being willing to shrug and go with what works.
+
+### 4b. Opening and closing the wheel
+
+Tapping the wheel toggles the four compass buttons in and out. Three animations happen at once: the wheel `ImageButton` rotates 360°, each compass button translates back to its open position (translation 0), and each compass button fades in.
+
+```csharp
+private void OpenCloseWheel()
+{
+    if (!_isOpen)
+    {
+        SetTabStates();
+    }
+
+    var duration = ReduceMotion ? 0u : AnimationDuration;
+    var opacity = _isOpen ? 0 : 1;
+
+    Shipwheel.RotateToAsync(_isOpen ? 0 : 360, duration, Easing.CubicOut);
+
+    foreach (var point in _compass)
+    {
+        point.Button.TranslateToAsync(_isOpen ? point.ClosedX : 0, _isOpen ? point.ClosedY : 0, duration, Easing.CubicOut);
+        point.Button.FadeToAsync(opacity, duration, Easing.CubicOut);
+    }
+
+    _isOpen = !_isOpen;
+}
+```
+
+Note the reduced-motion path: it doesn't skip the animation, it collapses its duration to `0u`. `TranslateToAsync` and `FadeToAsync` still run, they just resolve instantly. The final state is identical either way — this matters, because I want the "wheel open" state to look and behave the same whether you got there via a nice cubic-eased 500ms spin or a straight cut.
+
+### 4c. Enabling and disabling compass points
+
+The nav rule from earlier — hub-goes-anywhere, everywhere-else-goes-hub — is enforced by which compass buttons are enabled at any given time. `SetTabStates()` walks the compass and enables each button if we're currently on the hub, or if the current route matches this button's *opposite* direction (i.e. this button, from where we are, points back to the hub).
 
 ```csharp
 private void SetTabStates()
@@ -114,34 +169,42 @@ private void SetTabStates()
 }
 ```
 
-- Navigation itself is boring on purpose — `Shell.Current.GoToAsync($"//{route}")`. We didn't replace navigation; we replaced the *chrome*.
+There's a small edge case: on first load, `SelectedRoute` may be null before Shell has picked up its initial route. That would leave every button disabled and the user marooned. The fallback is to enable East arbitrarily, so the user can always reach the hub from a cold start.
 
-### 4b. Animating the wheel (with reduced motion)
-
-- Two animations: the wheel spins on tap (`RotateToAsync`), and the four points fade+translate in/out.
-- Reduced motion collapses `AnimationDuration` from `500u` to `0u`, so the tasks resolve instantly. The state still changes; it just doesn't animate.
+The actual navigation, once you tap a compass point, is deliberately boring:
 
 ```csharp
-var duration = ReduceMotion ? 0u : AnimationDuration;
-Shipwheel.RotateToAsync(_isOpen ? 0 : 360, duration, Easing.CubicOut);
-foreach (var point in _compass)
-{
-    point.Button.TranslateToAsync(_isOpen ? point.ClosedX : 0, _isOpen ? point.ClosedY : 0, duration, Easing.CubicOut);
-    point.Button.FadeToAsync(opacity, duration, Easing.CubicOut);
-}
+await Shell.Current.GoToAsync($"//{target.Route}");
 ```
 
----
+We didn't replace navigation. We replaced the *chrome*. Shell still does the routing.
 
 ## 5. Directional page transitions — `CompassPage`
 
-- Now for the second half: page-to-page transitions that reflect the compass direction.
-  - Navigate from Hub to North → the page slides out to the south and fades, then the North page slides in from the north and fades in.
-  - Navigate from West back to Hub → West slides east, Hub slides in from the west.
-- The mechanism: a base `CompassPage : ContentPage` that pages inherit from. Each concrete page tells the base:
-  1. what its **animated root** is (`AnimatedRoot` — the visual element to translate/fade), and
-  2. what its **compass direction** is (`Direction` — Center/N/E/S/W).
-- Then `OnNavigatingFrom` and `OnNavigatedTo` do the actual animation, computing the offset as the vector *from this page's direction to the other page's direction* (or vice versa).
+That's the wheel. The second half of the demo is the page transitions themselves.
+
+The behaviour I wanted: when you navigate from the Hub to North, the Hub page should slide out to the south (like the camera is panning north) and fade, and then the North page should slide in from the north and fade in. When you navigate from West back to the Hub, West slides east, and the Hub slides in from the west. Every direction handled, symmetrically, with the animation direction always matching the compass movement.
+
+The mechanism is a base class, `CompassPage : ContentPage`, that every navigable page inherits from. Concrete pages tell the base two things:
+
+1. **What their animated root is** — the `VisualElement` to translate and fade. Usually the page's outermost layout.
+2. **What their compass direction is** — one of `Center`, `North`, `East`, `South`, `West`.
+
+For example, `SailsPage`:
+
+```csharp
+public partial class SailsPage : CompassPage
+{
+    public SailsPage() => InitializeComponent();
+
+    protected override VisualElement AnimatedRoot => PageLayout;
+    protected override Compass Direction => Compass.North;
+}
+```
+
+That's it. The page declares what it is and where it lives on the compass. The base class does the animation.
+
+The two lifecycle overrides in `CompassPage` are where the work happens. `OnNavigatingFrom` runs on the page being left, and `OnNavigatedTo` runs on the page being arrived at. Both compute an offset vector from *my* direction to the *other* page's direction, and animate accordingly.
 
 ```csharp
 protected override void OnNavigatingFrom(NavigatingFromEventArgs args)
@@ -160,57 +223,57 @@ protected override void OnNavigatingFrom(NavigatingFromEventArgs args)
 }
 ```
 
-- Cross-platform, no handlers, no lifecycle hooks per platform. Every page just declares its direction and its animated root — the base class does the rest.
+`OnNavigatedTo` is the mirror image: place the new page's animated root at the offset from *its* direction to the previous page's direction (which is where it should "come from"), then animate it back to (0, 0) and fade it in.
+
+That's the whole trick. Cross-platform. No custom handlers, no per-platform lifecycle overrides, no fiddling with `UIViewController` transitions or Android `Fragment` animations. Just the shared MAUI animation API and a bit of vector arithmetic.
 
 ### 5a. Sizing — where does `App.PageWidth` come from?
 
-- The animation offset is a full page-width or page-height, so we need to know how big the page is.
-- Trick used here: any page — `CargoHoldPage` in this codebase — captures its own size in `OnSizeAllocated` and stashes it on `App.PageWidth`/`App.PageHeight`. Cheap and cheerful.
-- Call this out as *one of the "hacks"*. It's not elegant. It's fine. Ship it.
+To slide a page a whole screen width or height, we need to know how big the page is. The trick I've used here is unapologetically cheap: any page — `CargoHoldPage` in the current codebase — captures its own size in `OnSizeAllocated` and stashes it on static fields on `App`:
+
+```csharp
+protected override void OnSizeAllocated(double width, double height)
+{
+    base.OnSizeAllocated(width, height);
+    App.PageWidth = width;
+    App.PageHeight = height;
+}
+```
+
+Is this elegant? No. Is it a "proper" cross-cutting layout observer? Also no. Does it work? Yes, reliably, for the cost of about four lines of code. This is what I mean by hacks being good enough. If the demo grows into something that needs to react to orientation changes mid-session or handle multiple windows, I'd revisit it. It doesn't, so I won't.
 
 ### 5b. Reduced motion (again)
 
-- Same pattern. If reduce-motion is on, skip the animation and jump to the final state. `OnNavigatingFrom` sets opacity to 0; `OnNavigatedTo` sets everything back to visible.
+Same principle as the wheel: if reduce-motion is on, don't animate. In `OnNavigatingFrom` we just set the outgoing root's opacity to 0. In `OnNavigatedTo` we set the incoming root's translation to (0, 0) and its opacity back to 1. End state identical; motion skipped.
 
----
+The reason I'm calling this out a second time is that it would be very easy to add the check in one place, feel like you've done the right thing, and forget the other. In a project with more than two animation surfaces you'll want a proper helper — but even in a tiny demo like this one, both surfaces need to check it independently, because they run on completely separate lifecycles.
 
 ## 6. The framework is more of a canvas than a kit
 
-- Pull the thread through: with `FsShell` + a custom `TabBarBase` + a bit of `TranslateTo`/`FadeTo`/`RotateTo`, we got:
-  - a fully custom navigation chrome shaped like a ship's wheel,
-  - directional page transitions that respond to the target page's compass direction,
-  - a working reduced-motion path,
-  - zero platform-specific code.
-- The point isn't "use MAUI's animation API for everything." Sometimes you *do* need to drop to a handler, or use SkiaSharp, or reach for Compose/SwiftUI interop. But **often you don't**. The cross-platform surface is more capable than people assume, and "hacky" solutions (like translating buttons to hide them, or stashing page dimensions on a static) are more than enough for real apps.
-- If there's a takeaway: **before you reach for a platform API, ask whether a bit of creativity with the cross-platform one would get you there.** For a lot of "impossible" UI, the answer is yes.
+Let me pull the thread through. With `FsShell` plus a custom `FsTabBarBase`, plus `TranslateToAsync` / `FadeToAsync` / `RotateToAsync`, I got:
 
----
+- a fully custom navigation chrome shaped like a ship's wheel,
+- directional page transitions that respond to where you're going,
+- a working reduced-motion path in both places,
+- and zero platform-specific code.
+
+The point isn't "use MAUI's animation API for everything." Sometimes you really do need to drop into a handler, or reach for SkiaSharp, or use SwiftUI or Compose interop. Those exits exist for good reasons and you should use them when the situation calls for it.
+
+But *often, you don't need to*. The cross-platform surface is a lot more capable than people assume. And the "hacky" solutions — translating buttons in to hide them, stashing page dimensions on a static field — are more than good enough for real, shipping apps. They only feel wrong if you've absorbed a certain sensibility about what "proper" code looks like. Proper code is code that solves the user's problem well and doesn't cause more problems than it solves. That's the whole spec.
+
+If there's one takeaway I want you to leave with (well, two — the first was the accessibility one): **before you reach for a platform API, ask whether a bit of creativity with the cross-platform one would get you there.** A surprising amount of the time, the answer is yes.
 
 ## 7. Caveats (say it again)
 
-- I'm not telling you to ship a compass-wheel navigation shell. I don't think it's a good pattern. It looks cool in a demo and it would probably confuse the hell out of a real user in a real app.
-- The value here is the *technique*, not the *design*. Use it to build UX that actually fits your users. Then test with reduce-motion on. Then test with a screen reader. Then test with someone who wasn't in the room when you designed it.
+I said this at the top and I'll say it again at the bottom, because I'd rather be repetitive than misunderstood: **I am not telling you to ship a compass-wheel navigation shell**. It looks cool in a demo. It would confuse the hell out of a real user in a real app. Users don't have a mental map of your app that maps cleanly to a compass; they don't know that Sails is north, and they shouldn't have to. The pattern doesn't scale past five pages, doesn't accommodate hierarchy, and hides its available destinations behind a tap.
 
----
+The value in this post is the *technique*, not the *design*. Use the technique to build UX that actually fits your users. And then test it with reduce-motion turned on. And then test it with a screen reader. And then — this is the one that always catches me — test it with someone who wasn't in the room when you designed it.
 
 ## 8. Wrap-up
 
-- Links:
-  - Repo: [PiratePetes on GitHub] *(TODO)*
-  - FlagstoneUI: [nuget.org/packages/FlagstoneUI.Core]
-  - `Plugin.Maui.Accessibility`: [nuget.org/packages/Plugin.Maui.Accessibility]
-  - MAUI UI July index: *(TODO — link to the calendar / round-up post)*
-- Credit MAUI UI July + organiser, thank readers.
-- Sign-off pancake pun goes here.
+- **Repo**: [PiratePetes on GitHub] *(TODO)*
+- **FlagstoneUI**: [nuget.org/packages/FlagstoneUI.Core](https://www.nuget.org/packages/FlagstoneUI.Core/)
+- **Plugin.Maui.Accessibility**: [nuget.org/packages/Plugin.Maui.Accessibility](https://www.nuget.org/packages/Plugin.Maui.Accessibility/)
+- **MAUI UI July index**: *(TODO — link to the calendar / round-up post)*
 
----
-
-### Scaffold notes for me (delete before publishing)
-
-- Screenshots / GIFs to capture:
-  - Wheel closed → tap → spin + points fan out.
-  - Navigating Hub → North (up-slide) and Hub → West (side-slide).
-  - Same flows with reduce-motion enabled (should just cut).
-- Consider a short video at the top of the post.
-- Decide whether to explain `FsShell`/`FsTabBarBase` internals or just link to FlagstoneUI docs — probably link, keep this post focused on the demo.
-- Consider one paragraph on why *Shell* specifically was worth keeping (routes, deep linking, back-stack) rather than rolling nav from scratch.
+Thanks to everyone who runs MAUI UI July, to everyone contributing posts this month, and to you for reading. Now go build something odd on purpose.
